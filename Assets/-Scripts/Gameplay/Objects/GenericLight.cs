@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class GenericLight : MonoBehaviour, ILight
 {
-    public bool isOn { get; set; } = true;
+    public bool isOn { get; set; }
     public List<IController> Controllers { get; set; } = new();
-    [field: SerializeField]public Material OnMaterial { get; set; }
-    [field: SerializeField]public Material OffMaterial { get; set; }
+    [field: SerializeField] public Material OnMaterial { get; set; }
+    [field: SerializeField] public Material OffMaterial { get; set; }
+    [field: SerializeField] public bool DefaultState { get; set; } = true;
     private MeshRenderer _meshRenderer;
 
-    private void Start() => _meshRenderer = GetComponent<MeshRenderer>();
+    private void Start() { 
+        _meshRenderer = GetComponent<MeshRenderer>();
+        isOn = DefaultState;
+        ChangeMaterial ();
+    }
     
     public void ChangeMaterial()
     {

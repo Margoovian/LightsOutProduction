@@ -8,9 +8,9 @@ using UnityEngine.Events;
 public class GenericSwitch : MonoBehaviour, ISwitch
 {
     [field: SerializeField] public float InteractionRange { get; set; }
-    public UnityEvent<bool> Event { get; set; }
+    public UnityEvent<bool> Event { get; set; } = new();
     public ILight[] Lights { get => _lights; set => _lights = (GenericLight[])value; }
-    [SerializeField] private GenericLight[] _lights;
+    [SerializeField] protected GenericLight[] _lights;
 
     private void OnEnable()
     {
@@ -55,6 +55,7 @@ public class GenericSwitch : MonoBehaviour, ISwitch
         {
             light?.Toggle();
         }
+        Event?.Invoke(true);
     }
 
     private void OnDrawGizmosSelected()
