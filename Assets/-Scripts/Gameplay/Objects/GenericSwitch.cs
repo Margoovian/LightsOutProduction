@@ -43,7 +43,6 @@ public class GenericSwitch : MonoBehaviour, ISwitch
     {
         PlayerController player;
         if (!GameManager.Instance.TryGetPlayer(out player)) return;
-        Debug.Log("Working!");
         if (Vector3.Distance(player.transform.position, gameObject.transform.position) > InteractionRange) return;
         Interact();
 
@@ -52,7 +51,7 @@ public class GenericSwitch : MonoBehaviour, ISwitch
     private void InteractWrapper(bool var) => Evaluate();
     public virtual void Interact()
     {
-        foreach (ILight light in Lights)
+        foreach (GenericLight light in _lights)
         {
             light?.Toggle();
         }

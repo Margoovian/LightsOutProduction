@@ -19,6 +19,6 @@ public interface ILight
     /// <summary>
     /// Toggle isOn
     /// </summary>
-    public void Toggle() => isOn = !isOn;
+    public void Toggle();
     public void ChangeMaterial();
 }

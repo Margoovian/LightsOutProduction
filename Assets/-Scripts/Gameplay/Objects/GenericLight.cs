@@ -21,4 +21,6 @@ public class GenericLight : MonoBehaviour, ILight
         else
             _meshRenderer.material = OffMaterial;
     }
+
+    public void Toggle() { isOn = !isOn; ChangeMaterial();  }
 }
