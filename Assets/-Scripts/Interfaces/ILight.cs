@@ -7,15 +7,18 @@ public interface ILight
     /// <summary>
     /// Is it on?
     /// </summary>
-    [SerializeField] public bool isOn { get; set; }
+    public bool isOn { get; set; }
+    public Material OnMaterial { get; set; }
+    public Material OffMaterial { get; set; }
 
     /// <summary>
     /// The Controller that controls the light
     /// </summary>
-    [SerializeField] public IController Controller { get; set; }
+    public List<IController> Controllers { get; set; }
 
     /// <summary>
     /// Toggle isOn
     /// </summary>
-    [SerializeField] public void Toggle() => isOn = !isOn;
+    public void Toggle() => isOn = !isOn;
+    public void ChangeMaterial();
 }

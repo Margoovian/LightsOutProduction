@@ -1,35 +1,66 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class GenericSwitch : MonoBehaviour, ISwitch
 {
-    public UnityEvent<bool> Event { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
-    public ILight[] Lights { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+    [field: SerializeField] public float InteractionRange { get; set; }
+    public UnityEvent<bool> Event { get; set; }
+    public ILight[] Lights { get => _lights; set => _lights = (GenericLight[])value; }
+    [SerializeField] private GenericLight[] _lights;
 
-    public void Evaluate()
+    private void OnEnable()
     {
-        
+        HelperFunctions.WaitForTask(WaitForManagers(), () =>
+        {
+            InputManager.Instance.Player_Interact.AddListener(InteractWrapper);
+        });
+    }
+    private async Task WaitForManagers()
+    {
+        while (InputManager.Instance == null)
+            await Task.Yield();
     }
 
-    public void Interact()
+    private void OnDisable()
+    {
+        if(InputManager.Instance != null)
+            InputManager.Instance.Player_Interact.RemoveListener(InteractWrapper);
+    }
+
+    private void Start()
     {
         foreach (ILight light in Lights)
         {
-            light.Toggle();
+            light?.Controllers.Add(this);
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public virtual void Evaluate()
     {
-        
+        PlayerController player;
+        if (!GameManager.Instance.TryGetPlayer(out player)) return;
+        Debug.Log("Working!");
+        if (Vector3.Distance(player.transform.position, gameObject.transform.position) > InteractionRange) return;
+        Interact();
+
     }
 
-    // Update is called once per frame
-    void Update()
+    private void InteractWrapper(bool var) => Evaluate();
+    public virtual void Interact()
     {
-        
+        foreach (ILight light in Lights)
+        {
+            light?.Toggle();
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(gameObject.transform.position, InteractionRange);
     }
 }

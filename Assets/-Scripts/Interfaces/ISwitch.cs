@@ -5,5 +5,6 @@ using UnityEngine;
 
 public interface ISwitch : IController
 {
+    public float InteractionRange { get; set; }
     public virtual void Interact() => Evaluate();
 }

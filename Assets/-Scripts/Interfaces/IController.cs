@@ -8,11 +8,11 @@ public interface IController
     /// <summary>
     /// Subscribable Event that triggers after Evaluate
     /// </summary>
-    [SerializeField] public UnityEvent<bool> Event { get; set; }
+    public UnityEvent<bool> Event { get; set; }
     /// <summary>
     /// List of Lights
     /// </summary>
-    [SerializeField] public ILight[] Lights { get; set; }
+    public ILight[] Lights { get; set; }
 
     /// <summary>
     /// Used for evaluating a logic
