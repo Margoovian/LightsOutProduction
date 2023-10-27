@@ -10,6 +10,7 @@ public interface ILight
     public bool isOn { get; set; }
     public Material OnMaterial { get; set; }
     public Material OffMaterial { get; set; }
+    public bool DefaultState { get; set; }
 
     /// <summary>
     /// The Controller that controls the light
