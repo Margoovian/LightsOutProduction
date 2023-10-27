@@ -34,7 +34,7 @@ public class SwitchBox : MonoBehaviour, IController
         }
     }
     private void EvaluateWrapper(bool var) => Evaluate();
-    public void Evaluate()
+    public virtual void Evaluate()
     {
         bool eval = true;
         foreach (Combo combo in SwitchCombos) {

@@ -13,4 +13,6 @@ public static class HelperFunctions
         else
             Debug.LogWarning("Instance of managers not found!");
     }
+
+    public static async Task Timer(int timeMS) => await Task.Delay(timeMS);
 }
