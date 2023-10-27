@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
@@ -27,7 +24,7 @@ public class GenericSwitch : MonoBehaviour, ISwitch, IInteractable
 
     private void OnDisable()
     {
-        if(InputManager.Instance != null)
+        if (InputManager.Instance != null)
             InputManager.Instance.Player_Interact.RemoveListener(InteractWrapper);
     }
 
