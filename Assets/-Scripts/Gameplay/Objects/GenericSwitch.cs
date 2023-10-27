@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class GenericSwitch : MonoBehaviour, ISwitch
+public class GenericSwitch : MonoBehaviour, ISwitch, IInteractable
 {
     [field: SerializeField] public float InteractionRange { get; set; }
     public UnityEvent<bool> Event { get; set; } = new();
