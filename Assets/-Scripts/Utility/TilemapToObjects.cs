@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -9,7 +8,7 @@ public class TilemapToObjects : MonoBehaviour
     [field: SerializeField] public Vector2 CellSize { get; set; }
     [field: SerializeField] public Transform Dump { get; set; }
     [field: SerializeField] public TileSpriteCorrelationMap CorrelationMap { get; set; }
-    public Dictionary<Sprite, GameObject> Glossary { get; set; }
+    public Dictionary<Sprite, TileSpriteCorrelationMap.SpriteTileCombo> Glossary { get; set; }
 
     private Tilemap _tileMap;
     void Start()
@@ -45,10 +44,11 @@ public class TilemapToObjects : MonoBehaviour
                 Sprite s = _tileMap.GetSprite(localPlace);
                 if (s != null && Glossary.ContainsKey(s))
                 {
-                    Debug.Log(s.name);
-                    GameObject obj = Instantiate(Glossary[s]);
+                    //Debug.Log(s.name);
+                    GameObject obj = Instantiate(Glossary[s].Tile);
                     obj.transform.SetParent(Dump, false);
                     obj.transform.position = new(localPlace.x * CellSize.x, 0, localPlace.y * CellSize.y);
+                    obj.transform.rotation = Quaternion.Euler(Glossary[s].Rotation);
                     obj.isStatic = true;
                 };
             }
