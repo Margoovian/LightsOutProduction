@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
@@ -66,7 +63,7 @@ public class GameSettingsEditor : Editor
         }
         GUILayout.EndHorizontal();
 
-        EditorGUILayout.LabelField("Misc");
+        EditorGUILayout.LabelField("Miscellanous");
         GUILayout.BeginHorizontal();
         {
             GUILayout.BeginVertical("GroupBox");

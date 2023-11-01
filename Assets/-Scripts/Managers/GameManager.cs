@@ -16,13 +16,16 @@ public class GameManager : MonoBehaviour
 
     private void Initialize()
     {
-
+        Debug.LogWarning("Add initalization code here!");
     }
 
     public bool TryGetPlayer(out PlayerController player)
     {
         player = Player;
-        if (Player == null) return false;    
+        
+        if (Player == null) 
+            return false;    
+        
         return true;
     } 
 
