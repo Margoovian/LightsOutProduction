@@ -9,10 +9,11 @@ public class GenericLight : MonoBehaviour, ILight
     [field: SerializeField] public Material OnMaterial { get; set; }
     [field: SerializeField] public Material OffMaterial { get; set; }
     [field: SerializeField] public bool DefaultState { get; set; } = true;
-    private MeshRenderer _meshRenderer;
+    protected MeshRenderer _meshRenderer;
+    [field: SerializeField] private LightVolume LightVolume { get; set; }
 
     private void Start() { 
-        _meshRenderer = GetComponent<MeshRenderer>();
+        _meshRenderer = GetComponentInChildren<MeshRenderer>();
         isOn = DefaultState;
         ChangeMaterial ();
     }
@@ -22,10 +23,16 @@ public class GenericLight : MonoBehaviour, ILight
         if (OnMaterial == null) { Debug.LogWarning("No OnMaterial", this); return; }
         if (OffMaterial == null) { Debug.LogWarning("No OffMaterial", this); return; }
         if (isOn)
+        {
             _meshRenderer.material = OnMaterial;
+            if (LightVolume) { LightVolume.enabled = true; LightVolume.Renderer.enabled = true; LightVolume.Mesh.enabled = true; }
+        }
         else
+        {
             _meshRenderer.material = OffMaterial;
+            if (LightVolume) { LightVolume.enabled = false; LightVolume.Renderer.enabled = false; LightVolume.Mesh.enabled = false; }
+        }
     }
 
-    public void Toggle() { isOn = !isOn; ChangeMaterial();  }
+    public virtual void Toggle() { isOn = !isOn; ChangeMaterial();  }
 }

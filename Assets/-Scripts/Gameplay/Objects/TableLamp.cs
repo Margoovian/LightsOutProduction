@@ -4,17 +4,11 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class TableLamp : MonoBehaviour, IController, ILight, IInteractable
+public class TableLamp : GenericLight, IController, IInteractable
 {
     public UnityEvent<bool> Event { get; set; } = new();
     public ILight[] Lights { get; set; }
-    public bool isOn { get; set; }
-    [field: SerializeField] public Material OnMaterial { get; set; }
-    [field: SerializeField] public Material OffMaterial { get; set; }
-    [field: SerializeField] public bool DefaultState { get; set; } = true;
-    public List<IController> Controllers { get; set; } = new();
     [field: SerializeField] public float InteractionRange { get; set; }
-    private MeshRenderer _meshRenderer;
     private void OnEnable()
     {
         HelperFunctions.WaitForTask(WaitForManagers(), () =>
@@ -40,15 +34,6 @@ public class TableLamp : MonoBehaviour, IController, ILight, IInteractable
         isOn = DefaultState;
         ChangeMaterial();
     }
-    public void ChangeMaterial()
-    {
-        if (OnMaterial == null) { Debug.LogWarning("No OnMaterial", this); return; }
-        if (OffMaterial == null) { Debug.LogWarning("No OffMaterial", this); return; }
-        if (isOn)
-            _meshRenderer.material = OnMaterial;
-        else
-            _meshRenderer.material = OffMaterial;
-    }
 
     public void InteractWrapper(bool var) => Evaluate();
     public virtual void Evaluate()
@@ -61,7 +46,7 @@ public class TableLamp : MonoBehaviour, IController, ILight, IInteractable
 
     public virtual void Interact() => Toggle();
 
-    public void Toggle() { isOn = !isOn; ChangeMaterial(); Event.Invoke(isOn); }
+    public override void Toggle() { isOn = !isOn; ChangeMaterial(); Event.Invoke(isOn); }
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;
