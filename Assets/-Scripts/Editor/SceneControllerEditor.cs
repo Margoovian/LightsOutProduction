@@ -10,6 +10,7 @@ public class SceneControllerEditor : Editor
     private static int selectedDropDown;
     private static List<string> levelNames;
     private static Dictionary<string,int> levels;
+    private static string specificScene;
     
     private void OnEnable()
     {
@@ -56,6 +57,13 @@ public class SceneControllerEditor : Editor
 
             if (GUILayout.Button("To Selected (Destructive)"))
                 SceneController.Instance.LoadSpecific(selectedLevel, () => { Destroy(GameManager.Instance.Player); });
+
+            GUILayout.EndHorizontal();
+
+            GUILayout.BeginHorizontal();
+            specificScene = EditorGUILayout.TextField(specificScene);
+            if (GUILayout.Button("To Specific"))
+                SceneController.Instance.LoadScene(specificScene);
 
             GUILayout.EndHorizontal();
 
