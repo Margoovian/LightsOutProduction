@@ -8,6 +8,7 @@ public class SceneControllerEditor : Editor
 {
     private static int selectedLevel;
     private static int selectedDropDown;
+    private static int selectedDropDownStartup;
     private static List<string> levelNames;
     private static Dictionary<string,int> levels;
     private static string specificScene;

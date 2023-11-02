@@ -7,7 +7,12 @@ using UnityEngine.SceneManagement;
 public class SceneController : MonoBehaviour
 {
 
-    [Serializable] public class SceneCombo { 
+    [Serializable] public class SceneCombo {
+        public SceneCombo() { }
+        public SceneCombo(string Name, int LoadOrder) {
+            this.Name = Name;
+            this.LoadOrder = LoadOrder;
+        }
         public string Name;
         public int LoadOrder;
     } 
@@ -16,6 +21,7 @@ public class SceneController : MonoBehaviour
     [field: SerializeField] public SceneCombo[] Scenes { get; set; }
     internal int _currentLevel = -1;
     public Dictionary<int, string> SceneGlossary = new();
+
     private void Awake() { 
         Instance = this;
         Initialize();
@@ -39,7 +45,9 @@ public class SceneController : MonoBehaviour
         SceneManager.sceneLoaded += OnSceneLoad;
         SceneManager.sceneUnloaded += OnSceneUnloaded;
 
+
     }
+
     public void NextLevel(Action beforeLoad = null)
     {
         Debug.Log(SceneGlossary[_currentLevel + 1]);
