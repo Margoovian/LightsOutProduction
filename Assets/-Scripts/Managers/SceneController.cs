@@ -59,6 +59,8 @@ public class SceneController : MonoBehaviour
         Instance._currentLevel = level;
     }
 
+    public void LoadScene(string scene) => SceneManager.LoadScene(scene);
+
     private void OnSceneLoad(Scene scene, LoadSceneMode mode)
     {
 
