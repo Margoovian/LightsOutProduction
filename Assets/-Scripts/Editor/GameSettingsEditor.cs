@@ -55,7 +55,29 @@ public class GameSettingsEditor : Editor
                     {
                         settings.FearTickAmount = EditorGUILayout.FloatField(settings.FearTickAmount);
                     });
+                });
 
+                HelperFunctions.GroupWrapper("Glow Toy", () => 
+                {
+                    HelperFunctions.LabeledWrapper("Glow Toy Fade In", () =>
+                    {
+                        settings.GlowToyFadeIn = EditorGUILayout.FloatField(settings.GlowToyFadeIn);
+                    });
+
+                    HelperFunctions.LabeledWrapper("Glow Toy Fade Modifier", () =>
+                    {
+                        settings.GlowToyFadeModifier = EditorGUILayout.FloatField(settings.GlowToyFadeModifier);
+                    });
+
+                    HelperFunctions.LabeledWrapper("Glow Toy Max Battery", () =>
+                    {
+                        settings.GlowToyMaxBattery = EditorGUILayout.FloatField(settings.GlowToyMaxBattery);
+                    });                    
+                    
+                    HelperFunctions.LabeledWrapper("Glow Toy Battery Tick", () =>
+                    {
+                        settings.GlowToyBatteryTick = EditorGUILayout.FloatField(settings.GlowToyBatteryTick);
+                    });
                 });
 
             }

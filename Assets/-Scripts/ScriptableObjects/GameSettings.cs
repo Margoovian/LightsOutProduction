@@ -11,6 +11,10 @@ public class GameSettings : ScriptableObject
     [field: SerializeField] public float MaxFear { get; set; }
     [field: SerializeField] public float FearTickRate { get; set; }
     [field: SerializeField] public float FearTickAmount { get; set; }
+    [field: SerializeField] public float GlowToyFadeIn { get; set; }
+    [field: SerializeField] public float GlowToyFadeModifier { get; set; }
+    [field: SerializeField] public float GlowToyMaxBattery { get; set; }
+    [field: SerializeField] public float GlowToyBatteryTick { get; set; }
 
     [field: Header("Miscellaneous")]
     [field: SerializeField] public bool EnableTimer { get; set; }
