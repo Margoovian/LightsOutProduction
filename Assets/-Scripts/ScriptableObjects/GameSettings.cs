@@ -11,29 +11,42 @@ public class GameSettings : ScriptableObject
     [field: SerializeField] public float MaxFear { get; set; }
     [field: SerializeField] public float FearTickRate { get; set; }
     [field: SerializeField] public float FearTickAmount { get; set; }
+    [field: SerializeField] public float GlowToyFadeIn { get; set; }
+    [field: SerializeField] public float GlowToyFadeModifier { get; set; }
+    [field: SerializeField] public float GlowToyMaxBattery { get; set; }
+    [field: SerializeField] public float GlowToyBatteryTick { get; set; }
 
-    [field: Header("Misc")]
+    [field: Header("Miscellaneous")]
     [field: SerializeField] public bool EnableTimer { get; set; }
 
-    [field: Header("Cheats")]
+    [field: Header("Debug / Cheats")]
     [field: SerializeField] public bool EnableGodMode { get; set; }
     [field: SerializeField] public bool EnableSpeedModifier { get; set; }
     [field: SerializeField] public float SpeedModifier { get; set; } = 1f;
-
-
 
     private void OnEnable()
     {
         SetCheatsFalse();
     }
+
     private void OnDisable()
     {
+
     }
+
     private void SetCheatsFalse()
     {
 #if DEVELOPMENT_BUILD
         EnableGodMode = false;
         EnableSpeedModifier = false;
+#endif
+    }
+
+    private void SetCheatsTrue()
+    {
+        #if DEVELOPMENT_BUILD
+            EnableGodMode = true;
+            EnableSpeedModifier = true;
 #endif
     }
 }
