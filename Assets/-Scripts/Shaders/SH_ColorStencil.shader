@@ -3,6 +3,7 @@ Shader "Custom/StencilLight Color"
     Properties
     {
         [HDR] _Color("Color",Color) = (1,1,1,1)
+        _Emission("Emission", float) = 0
     }
         HLSLINCLUDE
 
@@ -28,11 +29,12 @@ Shader "Custom/StencilLight Color"
 
     CBUFFER_START(UnityPerMaterial)
         float4 _Color;
+        float _Emission;
     CBUFFER_END
 
         float4 frag(v2f i) : SV_Target
     {
-        return _Color * _Color.a;
+        return _Color * _Color.a* _Emission;
     }
         ENDHLSL
 
@@ -49,7 +51,7 @@ Shader "Custom/StencilLight Color"
             Zwrite off
             Ztest Lequal
             Cull Back
-            Blend DstColor One
+            Blend OneMinusDstColor One
 
             Stencil
             {
@@ -74,7 +76,7 @@ Shader "Custom/StencilLight Color"
             ZTest always
             ZWrite on
             Cull Front
-            Blend DstColor One
+            Blend OneMinusDstColor One
 
             Stencil
             {
