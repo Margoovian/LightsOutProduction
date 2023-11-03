@@ -17,7 +17,8 @@ public class InputManager : MonoBehaviour
     
     #endregion
     private void Awake() {
-        Instance = this;
+        if (!Instance)
+            Instance = this;
         Initialize();     
     }
 

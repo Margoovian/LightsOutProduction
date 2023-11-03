@@ -10,13 +10,14 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        Instance = this;
+        if(!Instance)
+            Instance = this;
         Initialize();     
     }
 
     private void Initialize()
     {
-        Debug.LogWarning("Add initalization code here!");
+        //Debug.LogWarning("Add initalization code here!");
     }
 
     public bool TryGetPlayer(out PlayerController player)
