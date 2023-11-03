@@ -35,11 +35,20 @@ public class GenericLight : MonoBehaviour, ILight
         if (isOn)
         {
             _meshRenderer.material = OnMaterial;
+
             if (LightVolume) { 
                 LightVolume.enabled = true;
                 if(LightVolume.Renderer) LightVolume.Renderer.enabled = true;
                 if (LightVolume.Mesh) LightVolume.Mesh.enabled = true;
             }
+
+            if (LightVolume) 
+            { 
+                LightVolume.enabled = true; 
+                LightVolume.Renderer.enabled = true; 
+                LightVolume.Mesh.enabled = true; 
+            }
+
             return;
 
         }
@@ -47,11 +56,17 @@ public class GenericLight : MonoBehaviour, ILight
         _meshRenderer.material = OffMaterial;
         if (LightVolume)
         {
+
             _meshRenderer.material = OffMaterial;
             if (LightVolume) { 
                 LightVolume.enabled = false;
                 if (LightVolume.Renderer) LightVolume.Renderer.enabled = false;
                 if (LightVolume.Mesh) LightVolume.Mesh.enabled = false; }
+
+            LightVolume.enabled = false;
+            LightVolume.Renderer.enabled = false;
+            LightVolume.Mesh.enabled = false;
+
         }
     }
 
