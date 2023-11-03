@@ -5,5 +5,5 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance { get; internal set; }
-    private void Awake() => Instance = this;
+    private void Awake() { if (!Instance) Instance = this; }
 }
