@@ -78,5 +78,6 @@ public class SceneController : MonoBehaviour
     {
 
     }
-
+    public void NextLevelClickable() => NextLevel();
+    public void LoadSpecificClickable(int level) => LoadSpecific(level);
 }

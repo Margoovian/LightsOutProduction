@@ -5,6 +5,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; internal set; }
     [field: SerializeField] public Cinemachine.CinemachineVirtualCamera Camera { get; set; }
     [field: SerializeField] public GameSettings GameSettings;
+    [field: SerializeField] public PlayerData PlayerData;
     public PlayerController Player { get; set; }
 
     private void Awake()
