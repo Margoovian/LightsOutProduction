@@ -28,6 +28,8 @@ public class PlayerDataEditor : Editor
                     GUILayout.EndVertical();
                 });
 
+            GUILayout.Space(24);
+
             if (GameManager.Instance)
                 HelperFunctions.LabeledWrapper($"Battery Level {self.BatteryLife / GameManager.Instance.GameSettings.GlowToyMaxBattery * 100}%", () => {
                     GUILayout.BeginVertical("GroupBox");
@@ -41,6 +43,8 @@ public class PlayerDataEditor : Editor
                     EditorGUILayout.FloatField(self.BatteryLife);
                     GUILayout.EndVertical();
                 });
+
+            GUILayout.Space(24);
 
             HelperFunctions.LabeledWrapper($"Elapsed Time", () => {
                 EditorGUILayout.LabelField($"{self.ElapsedTime}(s)");

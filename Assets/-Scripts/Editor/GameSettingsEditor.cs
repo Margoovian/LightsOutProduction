@@ -94,6 +94,11 @@ public class GameSettingsEditor : Editor
                 {
                     settings.EnableTimer = EditorGUILayout.Toggle(settings.EnableTimer);
                 });
+                
+                HelperFunctions.LabeledWrapper("Enable Random Rooms", () =>
+                {
+                    settings.EnableRandomRooms = EditorGUILayout.Toggle(settings.EnableRandomRooms);
+                });
             }
             GUILayout.EndVertical();
 

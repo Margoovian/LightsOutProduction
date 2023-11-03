@@ -45,6 +45,9 @@ public class PlayerController : MonoBehaviour
         {
             GameManager.Instance.Player = this;
             InputManager.Instance.Player_Move.AddListener(Move);
+
+            GameManager.Instance.PlayerData.InMenu = false;
+
         });
     }
 

@@ -45,8 +45,6 @@ public class GlowToy : MonoBehaviour
             return;
         }
 
-        Debug.Log(CurrentFadeIn);
-
         if (HoldingInputDown)
         {
             if (!gameObject.activeSelf)

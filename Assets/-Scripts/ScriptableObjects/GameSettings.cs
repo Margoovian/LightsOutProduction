@@ -18,6 +18,7 @@ public class GameSettings : ScriptableObject
 
     [field: Header("Miscellaneous")]
     [field: SerializeField] public bool EnableTimer { get; set; }
+    [field: SerializeField] public bool EnableRandomRooms { get; set; }
 
     [field: Header("Debug / Cheats")]
     [field: SerializeField] public bool EnableGodMode { get; set; }
