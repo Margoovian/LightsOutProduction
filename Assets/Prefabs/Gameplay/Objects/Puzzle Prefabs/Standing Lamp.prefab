@@ -63,9 +63,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2355989398760636415}
-  - component: {fileID: 2355989398760636400}
   - component: {fileID: 2355989398760636401}
-  - component: {fileID: 2355989398760636414}
+  - component: {fileID: 2080776888763330018}
   m_Layer: 0
   m_Name: Lampshade
   m_TagString: Untagged
@@ -89,14 +88,6 @@ Transform:
   m_Father: {fileID: 2355989398199010481}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &2355989398760636400
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2355989398760636412}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &2355989398760636401
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -139,8 +130,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &2355989398760636414
-SphereCollider:
+--- !u!65 &2080776888763330018
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -148,9 +139,9 @@ SphereCollider:
   m_GameObject: {fileID: 2355989398760636412}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Size: {x: 1, y: 4, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2355989398896430326
 GameObject:
