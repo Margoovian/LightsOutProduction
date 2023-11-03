@@ -12,15 +12,32 @@ public class SceneController : MonoBehaviour
         public SceneCombo(string Name, int LoadOrder) {
             this.Name = Name;
             this.LoadOrder = LoadOrder;
+            
         }
+
+        public void Init()
+        {
+            this.RandomLevel = RandomLevelFromPool();
+        }
+
+        private string RandomLevelFromPool()
+        {
+            if (Pool.Length <= 0) return "";
+            var random = new System.Random();
+            return Pool[random.Next(Pool.Length)];
+        }
+
         public string Name;
+        public string RandomLevel;
         public int LoadOrder;
+        public string[] Pool;
+
     } 
 
     public static SceneController Instance { get; internal set; }
     [field: SerializeField] public SceneCombo[] Scenes { get; set; }
     internal int _currentLevel = -1;
-    public Dictionary<int, string> SceneGlossary = new();
+    public Dictionary<int, SceneCombo> SceneGlossary = new();
 
     private void Awake() {
         if (!Instance)
@@ -40,7 +57,8 @@ public class SceneController : MonoBehaviour
         foreach(SceneCombo combo in Scenes)
         {
             if (SceneGlossary.ContainsKey(combo.LoadOrder)) continue;
-            SceneGlossary.Add(combo.LoadOrder, combo.Name);
+            SceneGlossary.Add(combo.LoadOrder, combo);
+            combo.Init();
         }
 
         SceneManager.sceneLoaded += OnSceneLoad;
@@ -51,19 +69,19 @@ public class SceneController : MonoBehaviour
 
     public void NextLevel(Action beforeLoad = null)
     {
-        Debug.Log(SceneGlossary[_currentLevel + 1]);
         if (!SceneGlossary.ContainsKey(_currentLevel + 1)) { Debug.LogWarning("No More Levels!"); return; }
         beforeLoad?.Invoke();
         Instance._currentLevel += 1;
-        SceneManager.LoadScene(SceneGlossary[_currentLevel]);
 
+        TryLoadRandom(_currentLevel);
     }
 
     public void LoadSpecific(int level, Action beforeLoad = null)
     {
         if (!SceneGlossary.ContainsKey(level)) { Debug.LogWarning("Level does not exist!"); return; }
         beforeLoad?.Invoke();
-        SceneManager.LoadScene(SceneGlossary[level]);
+
+        TryLoadRandom(level);
 
         Instance._currentLevel = level;
     }
@@ -81,4 +99,18 @@ public class SceneController : MonoBehaviour
     }
     public void NextLevelClickable() => NextLevel();
     public void LoadSpecificClickable(int level) => LoadSpecific(level);
+
+    private void TryLoadRandom(int level)
+    {
+        if (!GameManager.Instance) { SceneManager.LoadScene(SceneGlossary[level].Name); return; }
+
+        if (GameManager.Instance.GameSettings.EnableRandomRooms)
+        {
+            if (SceneGlossary[_currentLevel].RandomLevel == "") { SceneManager.LoadScene(SceneGlossary[level].Name); return; }
+            SceneManager.LoadScene(SceneGlossary[level].RandomLevel);
+            return;
+        }
+        SceneManager.LoadScene(SceneGlossary[level].Name);
+    }
+
 }

@@ -1,18 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class PlayerData : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private Task _timer = null;
+    public float BatteryLife { get; set; }
+    public float FearLevel { get; set; }
+    public float ElapsedTime { get; set; }
+    public bool InMenu { get; set; } = true;
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        
+        if(_timer == null)
+            _timer = Timer();
+
+    }
+    private async Task Timer()
+    {
+        while (true)
+        {
+            if(!InMenu)
+                ElapsedTime += Time.deltaTime;
+            await Task.Yield();
+        }
     }
 }
