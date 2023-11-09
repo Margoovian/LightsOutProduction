@@ -64,8 +64,9 @@ public class PlayerController : MonoBehaviour
         if (InputManager.Instance)
             InputManager.Instance.Player_Move.RemoveListener(Move);
     }
-    void Start()
+    private void Start()
     {
+        name = "Player";
         _characterController = GetComponent<CharacterController>();
         CharacterSpeed = GameManager.Instance.GameSettings.PlayerBaseSpeed;
     }
