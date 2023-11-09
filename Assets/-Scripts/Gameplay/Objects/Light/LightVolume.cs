@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider))]
@@ -10,8 +8,11 @@ public class LightVolume : MonoBehaviour, IVolume
 
     private void Start()
     {
-        Renderer = GetComponent<MeshRenderer>();
-        Mesh = GetComponent<MeshCollider>();
+        Renderer = gameObject.GetComponent<MeshRenderer>();
+        Mesh = gameObject.GetComponent<MeshCollider>();
+
+        Debug.Log(Renderer, this);
+        Debug.Log(Mesh, this);
     }
 
     public void OnTriggerEnter(Collider other)
