@@ -69,14 +69,24 @@ public class GameSettingsEditor : Editor
                         settings.GlowToyFadeModifier = EditorGUILayout.FloatField(settings.GlowToyFadeModifier);
                     });
 
+                    HelperFunctions.LabeledWrapper("Glow Toy Debounce Modifier", () =>
+                    {
+                        settings.GlowToyDebounceModifier = EditorGUILayout.FloatField(settings.GlowToyDebounceModifier);
+                    });
+
                     HelperFunctions.LabeledWrapper("Glow Toy Max Battery", () =>
                     {
                         settings.GlowToyMaxBattery = EditorGUILayout.FloatField(settings.GlowToyMaxBattery);
                     });                    
                     
-                    HelperFunctions.LabeledWrapper("Glow Toy Battery Tick", () =>
+                    HelperFunctions.LabeledWrapper("Glow Toy Battery Rate", () =>
                     {
-                        settings.GlowToyBatteryTick = EditorGUILayout.FloatField(settings.GlowToyBatteryTick);
+                        settings.GlowToyBatteryTickRate = EditorGUILayout.FloatField(settings.GlowToyBatteryTickRate);
+                    });
+
+                    HelperFunctions.LabeledWrapper("Glow Toy Battery Amount", () =>
+                    {
+                        settings.GlowToyBatteryTickAmount = EditorGUILayout.FloatField(settings.GlowToyBatteryTickAmount);
                     });
                 });
 
