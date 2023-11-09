@@ -69,6 +69,11 @@ public class GameSettingsEditor : Editor
                         settings.GlowToyFadeModifier = EditorGUILayout.FloatField(settings.GlowToyFadeModifier);
                     });
 
+                    HelperFunctions.LabeledWrapper("Glow Toy Debounce Modifier", () =>
+                    {
+                        settings.GlowToyDebounceModifier = EditorGUILayout.FloatField(settings.GlowToyDebounceModifier);
+                    });
+
                     HelperFunctions.LabeledWrapper("Glow Toy Max Battery", () =>
                     {
                         settings.GlowToyMaxBattery = EditorGUILayout.FloatField(settings.GlowToyMaxBattery);
