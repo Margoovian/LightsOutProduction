@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,10 +8,12 @@ public class GenericLight : MonoBehaviour, ILight
     [field: SerializeField] public Material OnMaterial { get; set; }
     [field: SerializeField] public Material OffMaterial { get; set; }
     [field: SerializeField] public bool DefaultState { get; set; } = true;
-    protected MeshRenderer _meshRenderer;
     [field: SerializeField] private LightVolume LightVolume { get; set; }
+    
+    protected MeshRenderer _meshRenderer;
 
-    private void Start() { 
+    private void Start()
+    {
         _meshRenderer = GetComponentInChildren<MeshRenderer>();
         isOn = DefaultState;
         ChangeMaterial();
@@ -20,6 +21,8 @@ public class GenericLight : MonoBehaviour, ILight
     
     public void ChangeMaterial()
     {
+        //Debug.LogWarning(this);
+
         if (OnMaterial == null) 
         { 
             Debug.LogWarning("No OnMaterial", this); 
@@ -31,29 +34,32 @@ public class GenericLight : MonoBehaviour, ILight
             Debug.LogWarning("No OffMaterial", this); 
             return; 
         }
-        
+
+        if (LightVolume == null)
+            return;
+
         if (isOn)
-        {
             _meshRenderer.material = OnMaterial;
+        else
+            _meshRenderer.material = OffMaterial;
 
-            if (LightVolume) 
-            { 
-                LightVolume.enabled = true;
-                LightVolume.Renderer.enabled = true;
-                LightVolume.Mesh.enabled = true;
-            }
-
+        if (LightVolume.Renderer == null)
+        {
+            Debug.LogWarning("No LightVolume 'MeshRenderer'", LightVolume);
             return;
         }
 
-        _meshRenderer.material = OffMaterial;
+        if (LightVolume.Mesh == null)
+        {
+            Debug.LogWarning("No LightVolume 'MeshCollider'", LightVolume);
+            return;
+        }
 
         if (LightVolume)
         {
-            LightVolume.enabled = false;
-            LightVolume.Renderer.enabled = false;
-            LightVolume.Mesh.enabled = false;
-
+            LightVolume.enabled = isOn;
+            LightVolume.Renderer.enabled = isOn;
+            LightVolume.Mesh.enabled = isOn;
         }
     }
 

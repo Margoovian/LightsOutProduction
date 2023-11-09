@@ -111,9 +111,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ae7b4501ed90c149961a3f426ce855c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <OnMaterial>k__BackingField: {fileID: 2100000, guid: 848390390ab9d3740bfc096a1bdda56b,
+  <OnMaterial>k__BackingField: {fileID: 2100000, guid: f1e38594f14520c48bc546f3a41f4f56,
     type: 2}
-  <OffMaterial>k__BackingField: {fileID: 2100000, guid: efe26027cacc84b409062a6cff9b90c4,
+  <OffMaterial>k__BackingField: {fileID: 2100000, guid: 7ec4e7373ac023f42bc829945cdcdf38,
     type: 2}
   <DefaultState>k__BackingField: 0
   <LightVolume>k__BackingField: {fileID: 8912703125159520310}
@@ -216,17 +216,17 @@ PrefabInstance:
     - target: {fileID: 8359118008064338980, guid: d242a7c117f194e479c447147a411731,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 365.99625
+      value: 200.00002
       objectReference: {fileID: 0}
     - target: {fileID: 8359118008064338980, guid: d242a7c117f194e479c447147a411731,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 365.99625
+      value: 200.00002
       objectReference: {fileID: 0}
     - target: {fileID: 8359118008064338980, guid: d242a7c117f194e479c447147a411731,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 365.99625
+      value: 200.00002
       objectReference: {fileID: 0}
     - target: {fileID: 8359118008064338980, guid: d242a7c117f194e479c447147a411731,
         type: 3}
@@ -277,6 +277,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8359118008064338980, guid: d242a7c117f194e479c447147a411731,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9172246011711501982, guid: d242a7c117f194e479c447147a411731,
         type: 3}

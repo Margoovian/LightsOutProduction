@@ -79,9 +79,14 @@ public class GameSettingsEditor : Editor
                         settings.GlowToyMaxBattery = EditorGUILayout.FloatField(settings.GlowToyMaxBattery);
                     });                    
                     
-                    HelperFunctions.LabeledWrapper("Glow Toy Battery Tick", () =>
+                    HelperFunctions.LabeledWrapper("Glow Toy Battery Rate", () =>
                     {
-                        settings.GlowToyBatteryTick = EditorGUILayout.FloatField(settings.GlowToyBatteryTick);
+                        settings.GlowToyBatteryTickRate = EditorGUILayout.FloatField(settings.GlowToyBatteryTickRate);
+                    });
+
+                    HelperFunctions.LabeledWrapper("Glow Toy Battery Amount", () =>
+                    {
+                        settings.GlowToyBatteryTickAmount = EditorGUILayout.FloatField(settings.GlowToyBatteryTickAmount);
                     });
                 });
 
@@ -98,6 +103,11 @@ public class GameSettingsEditor : Editor
                 HelperFunctions.LabeledWrapper("Enable Timer", () =>
                 {
                     settings.EnableTimer = EditorGUILayout.Toggle(settings.EnableTimer);
+                });
+                
+                HelperFunctions.LabeledWrapper("Enable Random Rooms", () =>
+                {
+                    settings.EnableRandomRooms = EditorGUILayout.Toggle(settings.EnableRandomRooms);
                 });
             }
             GUILayout.EndVertical();

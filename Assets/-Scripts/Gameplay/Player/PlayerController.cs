@@ -22,20 +22,19 @@ public class PlayerController : MonoBehaviour
     private float _speed;
     public float Fear 
     { 
-        get => _fear; 
+        get => GameManager.Instance.PlayerData.FearLevel; 
         
         set {
             if (!GameManager.Instance.GameSettings.EnableGodMode)
             {
-                _fear = value;
+                GameManager.Instance.PlayerData.FearLevel = value;
                 return;
             }
-            
-            _fear = 0;
+
+            GameManager.Instance.PlayerData.FearLevel = 0;
         }}
 
-    private float _fear = 0;
-    private float _time;
+    private float _fearTime;
     private Vector2 _moveDirection;
     private CharacterController _characterController;
 
@@ -46,6 +45,9 @@ public class PlayerController : MonoBehaviour
         {
             GameManager.Instance.Player = this;
             InputManager.Instance.Player_Move.AddListener(Move);
+
+            GameManager.Instance.PlayerData.InMenu = false;
+
         });
     }
 
@@ -73,18 +75,18 @@ public class PlayerController : MonoBehaviour
     {
         _characterController.Move(new Vector3(_moveDirection.x * CharacterSpeed, -Gravity, _moveDirection.y * CharacterSpeed) * Time.deltaTime);
 
-        if (_time >= GameManager.Instance.GameSettings.FearTickRate)
+        if (_fearTime >= GameManager.Instance.GameSettings.FearTickRate)
         {
             if (isInLight) 
                 Fear = Mathf.Clamp(Fear - GameManager.Instance.GameSettings.FearTickAmount, 0, GameManager.Instance.GameSettings.MaxFear);
             else 
                 Fear = Mathf.Clamp(Fear + GameManager.Instance.GameSettings.FearTickAmount, 0, GameManager.Instance.GameSettings.MaxFear);
             
-            _time = 0;
+            _fearTime = 0;
         }
         
         else 
-            _time += Time.deltaTime;
+            _fearTime += Time.deltaTime;
     }
 
     private void Move(Vector2 direction) => _moveDirection = direction;

@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -9,6 +8,8 @@ public class GlowToy : GenericLight
     private float FadeModifier { get => GameManager.Instance.GameSettings.GlowToyFadeModifier; }
     private float MaxFadeIn { get => GameManager.Instance.GameSettings.GlowToyFadeIn; }
     private float MaxBattery { get => GameManager.Instance.GameSettings.GlowToyMaxBattery; }
+    private float BatteryTickRate { get => GameManager.Instance.GameSettings.GlowToyBatteryTickRate; }
+    private float BatteryTickAmount { get => GameManager.Instance.GameSettings.GlowToyBatteryTickAmount; }
     private float DebounceModifier { get => GameManager.Instance.GameSettings.GlowToyDebounceModifier; }
 
     // These are shown in the inspector temporarily for debug reasons, they're not meant to be directly editable!
@@ -30,9 +31,19 @@ public class GlowToy : GenericLight
         HoldingInputDown = value;
     }
 
-    private void ToggleLight()
+    private async void HandleBattery()
     {
+        if (CurrentBattery <= 0)
+        {
+            // audioManager.Play("GlowToyBatteryLost", false);
+            CurrentBattery = 0;
+            Toggle();
 
+            return;
+        }
+
+        await Task.Delay((int)BatteryTickRate * 1000);
+        CurrentBattery -= BatteryTickAmount * Time.deltaTime;
     }
 
     #endregion
@@ -41,7 +52,7 @@ public class GlowToy : GenericLight
 
     public async Task WaitForManagers()
     {
-        while (InputManager.Instance == null || GameManager.Instance == null )
+        while (InputManager.Instance == null || GameManager.Instance == null)
             await Task.Yield();
     }
 
@@ -72,8 +83,6 @@ public class GlowToy : GenericLight
 
     private void Update()
     {
-        Debug.Log(isOn);
-
         if (isOn)
         {
             if (!HoldingInputDown && WaitingForRelease)
@@ -82,15 +91,12 @@ public class GlowToy : GenericLight
             if (HoldingInputDown && !WaitingForRelease)
             {
                 CurrentDebounce = 1.0f;
-                
-                isOn = false;
                 Toggle();
 
                 return;
             }
 
-            // do battery code here!
-
+            HandleBattery();
             return;
         }
 
@@ -107,15 +113,15 @@ public class GlowToy : GenericLight
             return;
         }
 
-        if (HoldingInputDown)
+        if (HoldingInputDown && CurrentBattery > 0)
         {
             if (!gameObject.activeSelf)
                 gameObject.SetActive(true);
 
             if (CurrentFadeIn < MaxFadeIn)
             {
-                // audioName : string, playOnce : boolean
-                //audioManager.Play("GlowToyRising", true);
+                // audioName : string, looping : boolean
+                //audioManager.Play("GlowToyRising", false);
                 
                 CurrentFadeIn += FadeModifier * Time.deltaTime;
                 return;
@@ -123,23 +129,18 @@ public class GlowToy : GenericLight
 
             CurrentFadeIn = 0.0f;
             WaitingForRelease = true;
-            
-            isOn = true;
             Toggle();
+
+            return;
         }
 
-        else
+        if (CurrentFadeIn > 0.0f)
         {
-            if (CurrentFadeIn > 0.0f)
-            {
-                CurrentFadeIn -= FadeModifier * Time.deltaTime;
-                return;
-            }
-
-            CurrentFadeIn = 0.0f;
+            CurrentFadeIn -= FadeModifier * Time.deltaTime;
+            return;
         }
 
-        return;
+        CurrentFadeIn = 0.0f;
     }
 
     #endregion
