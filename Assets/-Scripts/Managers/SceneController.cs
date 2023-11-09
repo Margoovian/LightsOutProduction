@@ -22,8 +22,9 @@ public class SceneController : MonoBehaviour
     internal int _currentLevel = -1;
     public Dictionary<int, string> SceneGlossary = new();
 
-    private void Awake() { 
-        Instance = this;
+    private void Awake() {
+        if (!Instance)
+            Instance = this;
         Initialize();
     }
 
@@ -78,5 +79,6 @@ public class SceneController : MonoBehaviour
     {
 
     }
-
+    public void NextLevelClickable() => NextLevel();
+    public void LoadSpecificClickable(int level) => LoadSpecific(level);
 }
