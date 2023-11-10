@@ -98,7 +98,7 @@ public class PlayerController : MonoBehaviour
             float degree = 180 * radian / Mathf.PI;
             float rotation = (360 + Mathf.Round(degree)) % 360;
 
-            Model.transform.rotation = Quaternion.Euler(0,rotation-90, 0);
+            Model.transform.rotation = Quaternion.Euler(-20,rotation-90, 0);
         }
     }
 

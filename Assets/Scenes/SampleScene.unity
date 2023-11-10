@@ -6155,6 +6155,46 @@ PrefabInstance:
       propertyPath: m_Name
       value: Scene Essentials
       objectReference: {fileID: 0}
+    - target: {fileID: 7966588693149933208, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
+        type: 3}
+      propertyPath: field of view
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8011862604077279137, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8011862604077279137, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8011862604077279137, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8011862604077279137, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8011862604077279137, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8011862604077279137, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8011862604077279137, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a8d24b0118a61f40bfbd1ff284b1300, type: 3}
 --- !u!1 &1117177190
@@ -6972,6 +7012,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneIndex: 1
+  ignoreIndex: 1
 --- !u!54 &1317603711
 Rigidbody:
   m_ObjectHideFlags: 0
