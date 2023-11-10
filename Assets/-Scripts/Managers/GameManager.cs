@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     [field: SerializeField] public PlayerData PlayerData;
     public PlayerController Player { get; set; }
 
+    // The GODController is sorta hard-coded for the moment, sorry about that Devlyn!
+
     private void Awake()
     {
         if (!Instance)
@@ -16,9 +18,14 @@ public class GameManager : MonoBehaviour
         Initialize();     
     }
 
+    private void Update()
+    {
+        GODController.Instance.Update();
+    }
+
     private void Initialize()
     {
-        //Debug.LogWarning("Add initalization code here!");
+        GODController.Instance.Initalize();
     }
 
     public bool TryGetPlayer(out PlayerController player)
