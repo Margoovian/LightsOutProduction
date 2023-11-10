@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class footsteps : MonoBehaviour
 {
-
-    public AudioSource player_foot;
+    public AudioSource footstepsSound;
 
     void Update()
     {
-        if (Input.GetKey("w")) || Input.GetKey("a") || Input.GetKey("s") || Input.GetKey("d") ||{ 
-            footsteps.enabled = true;
-        
-        else 
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
         {
-            footsteps.enabled = false;
+            footstepsSound.enabled = true;
         }
+        else
+        {
+            footstepsSound.enabled = false;
+        }
+    }
 }
