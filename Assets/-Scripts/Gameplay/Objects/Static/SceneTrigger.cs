@@ -3,6 +3,8 @@ using UnityEngine;
 public class SceneTrigger : MonoBehaviour
 {
     public int sceneIndex;
+    public bool ignoreIndex;
+
     private BoxCollider trigger;
 
     private void Start()
@@ -17,6 +19,13 @@ public class SceneTrigger : MonoBehaviour
             return;
 
         SceneController Inst = SceneController.Instance;
-        Inst.LoadSpecificAndTransfer(sceneIndex);
+
+        if (ignoreIndex)
+        {
+            Inst.NextLevel();
+            return;
+        }
+
+        Inst.LoadSpecific(sceneIndex);
     }
 }
