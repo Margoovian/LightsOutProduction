@@ -10,6 +10,7 @@ public class PlayerData : MonoBehaviour
     public float FearLevel { get; set; }
     public float ElapsedTime { get; set; }
     public bool InMenu { get; set; } = true;
+    public bool ToyOn { get; set; } = false;
 
     private void Awake()
     {
