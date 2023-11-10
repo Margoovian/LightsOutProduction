@@ -35,31 +35,16 @@ public class GenericLight : MonoBehaviour, ILight
             return; 
         }
 
-        if (LightVolume == null)
-            return;
-
         if (isOn)
             _meshRenderer.material = OnMaterial;
         else
             _meshRenderer.material = OffMaterial;
 
-        if (LightVolume.Renderer == null)
-        {
-            Debug.LogWarning("No LightVolume 'MeshRenderer'", LightVolume);
-            return;
-        }
-
-        if (LightVolume.Mesh == null)
-        {
-            Debug.LogWarning("No LightVolume 'MeshCollider'", LightVolume);
-            return;
-        }
-
         if (LightVolume)
         {
             LightVolume.enabled = isOn;
-            LightVolume.Renderer.enabled = isOn;
-            LightVolume.Mesh.enabled = isOn;
+            if(LightVolume.Renderer) LightVolume.Renderer.enabled = isOn;
+            if (LightVolume.Mesh) LightVolume.Mesh.enabled = isOn;
         }
     }
 
