@@ -35,18 +35,6 @@ public class OutlineFeature : ScriptableRendererFeature
             //_profilingSampler = new ProfilingSampler(name);
         }
 
-        //public CustomRenderPass(OutlineSettings settings, string name)
-        //{
-        //    this.outlineSettings = settings;
-        //    filteringSettings = new FilteringSettings(RenderQueueRange.opaque, settings.layerMask);
-
-        //    // Use default tags
-        //    shaderTagsList.Add(new ShaderTagId("SRPDefaultUnlit"));
-        //    shaderTagsList.Add(new ShaderTagId("UniversalForward"));
-        //    shaderTagsList.Add(new ShaderTagId("UniversalForwardOnly"));
-
-        //    _profilingSampler = new ProfilingSampler(name);
-        //}
 
 
         // This method is called before executing the render pass.
@@ -112,7 +100,7 @@ public class OutlineFeature : ScriptableRendererFeature
     public override void Create()
     {
         outlinePass = new OutlinePass(settings);
-        outlinePass.renderPassEvent = RenderPassEvent.AfterRenderingTransparents;
+        outlinePass.renderPassEvent = RenderPassEvent.BeforeRenderingTransparents;
         outlineTexture.Init("_OutlineTexture");
     }
 
