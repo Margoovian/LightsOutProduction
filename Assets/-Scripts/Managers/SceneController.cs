@@ -94,20 +94,6 @@ public class SceneController : MonoBehaviour
         Instance._currentLevel = level;
     }
 
-    public void LoadSpecificAndTransfer(int level)
-    {
-        LoadSpecific(level);
-
-        // this gets the scene loaded previously, not the currently active scene, please fix asap!
-        Scene currentScene = SceneManager.GetActiveScene();
-
-        Debug.Log("Reading From Scene: " + currentScene.name);
-        foreach (GameObject i in currentScene.GetRootGameObjects())
-        {
-            Debug.Log(i.name);
-        }
-    }
-
     public void LoadScene(string scene) => SceneManager.LoadScene(scene);
 
     private void OnSceneLoad(Scene scene, LoadSceneMode mode)
