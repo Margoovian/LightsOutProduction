@@ -1,10 +1,12 @@
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
     public bool isInLight { get; set; }
+    [field: SerializeField]public GameObject Model { get; set; }
     public float CharacterSpeed { 
         get 
         {
@@ -86,8 +88,18 @@ public class PlayerController : MonoBehaviour
             _fearTime = 0;
         }
         
-        else 
+        else
             _fearTime += Time.deltaTime;
+            _fearTime += Time.deltaTime;
+
+        if (_moveDirection.magnitude > 0)
+        {
+            float radian = Mathf.Atan2(_moveDirection.y, _moveDirection.x * -1);
+            float degree = 180 * radian / Mathf.PI;
+            float rotation = (360 + Mathf.Round(degree)) % 360;
+
+            Model.transform.rotation = Quaternion.Euler(0,rotation-90, 0);
+        }
     }
 
     private void Move(Vector2 direction) => _moveDirection = direction;
