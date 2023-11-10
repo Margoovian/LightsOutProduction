@@ -1,10 +1,12 @@
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
     public bool isInLight { get; set; }
+    [field: SerializeField]public GameObject Model { get; set; }
     public float CharacterSpeed { 
         get 
         {
@@ -22,20 +24,19 @@ public class PlayerController : MonoBehaviour
     private float _speed;
     public float Fear 
     { 
-        get => _fear; 
+        get => GameManager.Instance.PlayerData.FearLevel; 
         
         set {
             if (!GameManager.Instance.GameSettings.EnableGodMode)
             {
-                _fear = value;
+                GameManager.Instance.PlayerData.FearLevel = value;
                 return;
             }
-            
-            _fear = 0;
+
+            GameManager.Instance.PlayerData.FearLevel = 0;
         }}
 
-    private float _fear = 0;
-    private float _time;
+    private float _fearTime;
     private Vector2 _moveDirection;
     private CharacterController _characterController;
 
@@ -46,6 +47,9 @@ public class PlayerController : MonoBehaviour
         {
             GameManager.Instance.Player = this;
             InputManager.Instance.Player_Move.AddListener(Move);
+
+            GameManager.Instance.PlayerData.InMenu = false;
+
         });
     }
 
@@ -62,8 +66,9 @@ public class PlayerController : MonoBehaviour
         if (InputManager.Instance)
             InputManager.Instance.Player_Move.RemoveListener(Move);
     }
-    void Start()
+    private void Start()
     {
+        name = "Player";
         _characterController = GetComponent<CharacterController>();
         CharacterSpeed = GameManager.Instance.GameSettings.PlayerBaseSpeed;
     }
@@ -73,18 +78,28 @@ public class PlayerController : MonoBehaviour
     {
         _characterController.Move(new Vector3(_moveDirection.x * CharacterSpeed, -Gravity, _moveDirection.y * CharacterSpeed) * Time.deltaTime);
 
-        if (_time >= GameManager.Instance.GameSettings.FearTickRate)
+        if (_fearTime >= GameManager.Instance.GameSettings.FearTickRate)
         {
             if (isInLight) 
                 Fear = Mathf.Clamp(Fear - GameManager.Instance.GameSettings.FearTickAmount, 0, GameManager.Instance.GameSettings.MaxFear);
             else 
                 Fear = Mathf.Clamp(Fear + GameManager.Instance.GameSettings.FearTickAmount, 0, GameManager.Instance.GameSettings.MaxFear);
             
-            _time = 0;
+            _fearTime = 0;
         }
         
-        else 
-            _time += Time.deltaTime;
+        else
+            _fearTime += Time.deltaTime;
+            _fearTime += Time.deltaTime;
+
+        if (_moveDirection.magnitude > 0)
+        {
+            float radian = Mathf.Atan2(_moveDirection.y, _moveDirection.x * -1);
+            float degree = 180 * radian / Mathf.PI;
+            float rotation = (360 + Mathf.Round(degree)) % 360;
+
+            Model.transform.rotation = Quaternion.Euler(0,rotation-90, 0);
+        }
     }
 
     private void Move(Vector2 direction) => _moveDirection = direction;
