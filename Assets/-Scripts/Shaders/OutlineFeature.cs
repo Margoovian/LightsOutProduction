@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
@@ -10,6 +11,10 @@ public class OutlineFeature : ScriptableRendererFeature
         private RenderTargetHandle destination { get; set; }
         public Material outlineMaterial = null;
         RenderTargetHandle temporaryColorTexture;
+        private List<ShaderTagId> shaderTagsList = new List<ShaderTagId>();
+        private FilteringSettings filteringSettings;
+        private OutlineSettings outlineSettings;
+        private ProfilingSampler _profilingSampler;
 
         public void Setup(RenderTargetIdentifier source, RenderTargetHandle destination)
         {
@@ -17,11 +22,31 @@ public class OutlineFeature : ScriptableRendererFeature
             this.destination = destination;
         }
 
-        public OutlinePass(Material outlineMaterial)
+        public OutlinePass(OutlineSettings settings)
         {
-            this.outlineMaterial = outlineMaterial;
+            this.outlineMaterial = settings.outlineMaterial;
+            this.outlineSettings = settings;
+            filteringSettings = new FilteringSettings(RenderQueueRange.opaque, settings.layerMask);
+
+            shaderTagsList.Add(new ShaderTagId("SRPDefaultUnlit"));
+            shaderTagsList.Add(new ShaderTagId("UniversalForward"));
+            shaderTagsList.Add(new ShaderTagId("UniversalForwardOnly"));
+
+            //_profilingSampler = new ProfilingSampler(name);
         }
 
+        //public CustomRenderPass(OutlineSettings settings, string name)
+        //{
+        //    this.outlineSettings = settings;
+        //    filteringSettings = new FilteringSettings(RenderQueueRange.opaque, settings.layerMask);
+
+        //    // Use default tags
+        //    shaderTagsList.Add(new ShaderTagId("SRPDefaultUnlit"));
+        //    shaderTagsList.Add(new ShaderTagId("UniversalForward"));
+        //    shaderTagsList.Add(new ShaderTagId("UniversalForwardOnly"));
+
+        //    _profilingSampler = new ProfilingSampler(name);
+        //}
 
 
         // This method is called before executing the render pass.
@@ -56,6 +81,12 @@ public class OutlineFeature : ScriptableRendererFeature
 
             context.ExecuteCommandBuffer(cmd);
             CommandBufferPool.Release(cmd);
+
+            // Draw Renderers to Render Target (set up in OnCameraSetup)
+            SortingCriteria sortingCriteria = renderingData.cameraData.defaultOpaqueSortFlags;
+            DrawingSettings drawingSettings = CreateDrawingSettings(shaderTagsList, ref renderingData, sortingCriteria);
+            context.DrawRenderers(renderingData.cullResults, ref drawingSettings, ref filteringSettings);
+
         }
 
         /// Cleanup any allocated resources that were created during the execution of this render pass.
@@ -71,15 +102,16 @@ public class OutlineFeature : ScriptableRendererFeature
     public class OutlineSettings
     {
         public Material outlineMaterial = null;
+        public LayerMask layerMask = 1;
     }
 
     public OutlineSettings settings = new OutlineSettings();
-    OutlinePass outlinePass;
+    private OutlinePass outlinePass;
     RenderTargetHandle outlineTexture;
 
     public override void Create()
     {
-        outlinePass = new OutlinePass(settings.outlineMaterial);
+        outlinePass = new OutlinePass(settings);
         outlinePass.renderPassEvent = RenderPassEvent.AfterRenderingTransparents;
         outlineTexture.Init("_OutlineTexture");
     }
