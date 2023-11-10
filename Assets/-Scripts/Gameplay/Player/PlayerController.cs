@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
         get => GameManager.Instance.PlayerData.FearLevel; 
         
         set {
-            if (!GameManager.Instance.GameSettings.EnableGodMode)
+            if (!GameManager.Instance.GameSettings.EnableGodMode )
             {
                 GameManager.Instance.PlayerData.FearLevel = value;
                 return;
@@ -80,7 +80,7 @@ public class PlayerController : MonoBehaviour
 
         if (_fearTime >= GameManager.Instance.GameSettings.FearTickRate)
         {
-            if (isInLight) 
+            if (isInLight || PlayerData.Instance.ToyOn) 
                 Fear = Mathf.Clamp(Fear - GameManager.Instance.GameSettings.FearTickAmount, 0, GameManager.Instance.GameSettings.MaxFear);
             else 
                 Fear = Mathf.Clamp(Fear + GameManager.Instance.GameSettings.FearTickAmount, 0, GameManager.Instance.GameSettings.MaxFear);
