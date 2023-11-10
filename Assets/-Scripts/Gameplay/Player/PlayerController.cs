@@ -92,22 +92,13 @@ public class PlayerController : MonoBehaviour
             _fearTime += Time.deltaTime;
             _fearTime += Time.deltaTime;
 
-        if (_moveDirection.magnitude > 0 && (_moveDirection.x >= 1 || _moveDirection.y >= 1 || _moveDirection.x <= -1 || _moveDirection.y <= -1))
-            //Hacky Work Around
+        if (_moveDirection.magnitude > 0)
         {
-            float radian = Mathf.Atan2(_moveDirection.y, _moveDirection.x);
+            float radian = Mathf.Atan2(_moveDirection.y, _moveDirection.x * -1);
             float degree = 180 * radian / Mathf.PI;
             float rotation = (360 + Mathf.Round(degree)) % 360;
 
-            Model.transform.rotation = Quaternion.Euler(0,rotation-90,0);
-        }
-        else if(_moveDirection.magnitude > 0)
-        {
-            float radian = Mathf.Atan2(_moveDirection.y, _moveDirection.x);
-            float degree = 180 * radian / Mathf.PI;
-            float rotation = (360 + Mathf.Round(degree)) % 360;
-
-            Model.transform.rotation = Quaternion.Euler(0, rotation, 0);
+            Model.transform.rotation = Quaternion.Euler(0,rotation-90, 0);
         }
     }
 
