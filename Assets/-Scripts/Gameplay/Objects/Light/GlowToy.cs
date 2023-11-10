@@ -2,7 +2,7 @@ using System;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public class GlowToy : GenericLight
+public class GlowToy : MonoBehaviour
 {
     #region Definitions
 
@@ -19,6 +19,7 @@ public class GlowToy : GenericLight
     private float BatteryTickRate { get => GameManager.Instance.GameSettings.GlowToyBatteryTickRate; }
     private float BatteryTickAmount { get => GameManager.Instance.GameSettings.GlowToyBatteryTickAmount; }
     private float DebounceModifier { get => GameManager.Instance.GameSettings.GlowToyDebounceModifier; }
+    private bool isOn { get => PlayerData.Instance.ToyOn; set => PlayerData.Instance.ToyOn = value; }
     public float CurrentBattery
     {
         get => PlayerData.Instance.BatteryLife;
@@ -98,6 +99,11 @@ public class GlowToy : GenericLight
         CurrentBattery -= BatteryTickAmount * Time.deltaTime;
     }
 
+    private void Toggle()
+    {
+        isOn = !isOn;
+    }
+
     #endregion
 
     #region Public Methods
@@ -171,8 +177,8 @@ public class GlowToy : GenericLight
             BatteryUIRenderer.enabled = false;
 
         CurrentBattery = MaxBattery;
-        _meshRenderer = GetComponentInChildren<MeshRenderer>();
-        ChangeMaterial();
+        //_meshRenderer = GetComponentInChildren<MeshRenderer>();
+        //ChangeMaterial();
     }
 
     private void Update()
