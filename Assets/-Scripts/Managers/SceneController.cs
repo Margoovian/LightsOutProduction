@@ -35,8 +35,10 @@ public class SceneController : MonoBehaviour
 
     public static SceneController Instance { get; internal set; }
     [field: SerializeField] public SceneCombo[] Scenes { get; set; }
-    internal int _currentLevel = -1;
     public Dictionary<int, SceneCombo> SceneGlossary = new();
+
+    internal int _startLevel = -1;
+    internal int _currentLevel;
 
     private void Awake() {
         if (!Instance)
@@ -53,6 +55,8 @@ public class SceneController : MonoBehaviour
 
     internal void Initialize()
     {
+        _currentLevel = _startLevel;
+
         foreach(SceneCombo combo in Scenes)
         {
             if (SceneGlossary.ContainsKey(combo.LoadOrder)) 
@@ -64,6 +68,16 @@ public class SceneController : MonoBehaviour
 
         SceneManager.sceneLoaded += OnSceneLoad;
         SceneManager.sceneUnloaded += OnSceneUnloaded;
+    }
+
+    public int GetStartIndex()
+    {
+        return _startLevel;
+    }
+
+    public int GetCurrentIndex()
+    {
+        return _currentLevel;
     }
 
     public void NextLevel(Action beforeLoad = null)
