@@ -6,10 +6,29 @@ public class GODManager : MonoBehaviour
     public Button restartBtn;
     public Button backBtn;
 
+    public void ResetVariables()
+    {
+        GODController.Instance.triggered = false;
+        PlayerData.Instance.FearLevel = 0.0f;
+        PlayerData.Instance.BatteryLife = GameManager.Instance.GameSettings.GlowToyMaxBattery;
+    }
+
+    private void RestartSelected()
+    {
+        Debug.Log(SceneController.Instance.GetCurrentIndex());
+        SceneController.Instance.LoadSpecific(SceneController.Instance.GetCurrentIndex(), ResetVariables);
+    }
+
+    private void BackSelected()
+    {
+        Debug.Log(SceneController.Instance.GetStartIndex());
+        SceneController.Instance.LoadSpecific(SceneController.Instance.GetStartIndex(), ResetVariables);
+    }
+
     private void Start()
     {
         GameManager.Instance.PlayerData.InMenu = true;
-        restartBtn.onClick.AddListener(delegate { SceneController.Instance.LoadSpecific(0); });
-        backBtn.onClick.AddListener(delegate { SceneController.Instance.LoadSpecific(1); });
+        backBtn.onClick.AddListener(BackSelected);
+        restartBtn.onClick.AddListener(RestartSelected);
     }
 }
