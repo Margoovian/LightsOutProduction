@@ -1,12 +1,11 @@
 using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
     public bool isInLight { get; set; }
-    [field: SerializeField]public GameObject Model { get; set; }
+    [field: SerializeField] public GameObject Model { get; set; }
     public float CharacterSpeed { 
         get 
         {

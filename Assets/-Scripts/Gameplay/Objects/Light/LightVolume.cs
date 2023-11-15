@@ -10,9 +10,6 @@ public class LightVolume : MonoBehaviour, IVolume
     {
         Renderer = gameObject.GetComponent<MeshRenderer>();
         Mesh = gameObject.GetComponent<MeshCollider>();
-
-        Debug.Log(Renderer, this);
-        Debug.Log(Mesh, this);
     }
 
     public void OnTriggerEnter(Collider other)

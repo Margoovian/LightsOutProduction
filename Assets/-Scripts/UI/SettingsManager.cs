@@ -1,9 +1,9 @@
-/* 
 using System;
 using System.Linq;
 using System.Collections.Generic;
 
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Audio;
 using UnityEngine.Events;
 
@@ -19,7 +19,7 @@ public class SettingsManager : MonoBehaviour
     public class Target
     {
         public GameObject Frame;
-        public ActionButtonManager Action;
+        public Button Action;
     }
 
     [Serializable]
@@ -39,32 +39,30 @@ public class SettingsManager : MonoBehaviour
     #region Unity Inspector
 
     [Header("Frames and Buttons")]
-    public PromptManager promptFrame;
     public List<Target> targets = new();
 
     [Header("Confirm / Deny")]
-    public ActionButtonManager applyBtn;
-    public ActionButtonManager revertBtn;
+    public Button applyBtn;
+    public Button revertBtn;
 
     [Header("Setup")]
     public TMP_Text title;
-    public Settings settings;
+    public SettingsData settings;
     public RectTransform safeZone;
+    public Button exitBtn;
 
     [Header("Values - Audio")]
-    public SliderManager masterVolumeSlider;
-    public SliderManager soundVolumeSlider;
-    public SliderManager musicVolumeSlider;
-    public AudioSource testSound;
+    public SlideManager masterVolumeSlider;
+    public SlideManager soundVolumeSlider;
+    public SlideManager musicVolumeSlider;
 
     [Header("Values - Video")]
-    public CheckboxManager fullscreenCheckbox;
+    public Toggle fullscreenCheckbox;
+    public SlideManager hudScaleSlider;
     public DropdownManager resolutionDropdown;
     public DropdownManager qualityDropdown;
-    public SliderManager hudScaleSlider;
 
-    [Header("Audio Mixer Groups")]
-    public AudioMixer gameMixer;
+    [Header("Audio Mixing")]
     public string[] mixerValues = new string[3];
 
     #endregion
@@ -74,6 +72,7 @@ public class SettingsManager : MonoBehaviour
     private GameObject currentFrame;
     private GameObject previousFrame;
 
+    // figure out wtf is happening with this before commiting all these changes!
     private UnityEvent<bool, string> passthroughEvent;
 
     [Header("Miscellaneous")]
@@ -124,7 +123,7 @@ public class SettingsManager : MonoBehaviour
             hudScale = currentHudScale
         };
 
-        settings.ApplyChanges(newerSettings);
+        settings.ApplySettings(newerSettings);
 
         #endregion
     }
@@ -154,7 +153,7 @@ public class SettingsManager : MonoBehaviour
 
         resolutionDropdown.dropdown.value = currentResolution;
         qualityDropdown.dropdown.value = currentQuality;
-        fullscreenCheckbox.toggle.isOn = currentFullscreen;
+        fullscreenCheckbox.isOn = currentFullscreen;
         hudScaleSlider.slider.value = currentHudScale;
 
         #endregion
@@ -162,12 +161,12 @@ public class SettingsManager : MonoBehaviour
 
     public void ApplyDenied()
     {
-        promptFrame.SetFrameVisibility(false);
+        PromptManager.Instance.SetFrameVisibility(false);
     }
 
     public void RevertDenied()
     {
-        promptFrame.SetFrameVisibility(false);
+        PromptManager.Instance.SetFrameVisibility(false);
     }
 
     private void ToggleMenu(Target Data)
@@ -192,12 +191,13 @@ public class SettingsManager : MonoBehaviour
 
     public void OnPromptFrame(string title, string body, string eventName)
     {
-        promptFrame.StartPrompt(title, body, eventName, passthroughEvent);
+        PromptManager.Instance.StartPrompt(title, body, eventName, passthroughEvent);
     }
 
     public void PromptResultReceived(bool result, string eventName)
     {
         // visibility and unhooking of buttons happen automatically as of now!
+        Debug.Log(eventName);
 
         foreach (Events i in applicableEvents)
         {
@@ -228,23 +228,20 @@ public class SettingsManager : MonoBehaviour
     private void MasterSliderChanged(float value)
     {
         currentMasterVolume = value;
-        gameMixer.SetFloat(mixerValues[0], AudioSliderCalculations(value));
+        GameManager.Instance.GameMixer.SetFloat(mixerValues[0], AudioSliderCalculations(value));
     }
 
     private void SoundSliderChanged(float value)
     {
         currentSoundVolume = value;
-        gameMixer.SetFloat(mixerValues[1], AudioSliderCalculations(value));
-
-        // This may need to be adjusted!
-        if (!testSound.isPlaying)
-            testSound.Play();
+        GameManager.Instance.GameMixer.SetFloat(mixerValues[1], AudioSliderCalculations(value));
+        AudioManager.Instance.PlaySFX("TestSound");
     }
 
     private void MusicSliderChanged(float value)
     {
         currentMusicVolume = value;
-        gameMixer.SetFloat(mixerValues[2], AudioSliderCalculations(value));
+        GameManager.Instance.GameMixer.SetFloat(mixerValues[2], AudioSliderCalculations(value));
     }
 
     private void HudScaleSliderChanged(float value)
@@ -337,7 +334,7 @@ public class SettingsManager : MonoBehaviour
         qualityDropdown.dropdown.value = settings.baseSettings.quality;
         QualitySettings.SetQualityLevel(settings.baseSettings.quality);
 
-        fullscreenCheckbox.toggle.isOn = settings.baseSettings.fullscreen;
+        fullscreenCheckbox.isOn = settings.baseSettings.fullscreen;
 
         hudScaleSlider.slider.value = settings.baseSettings.hudScale;
         hudScaleSlider.inputField.text = settings.baseSettings.hudScale.ToString();
@@ -346,10 +343,10 @@ public class SettingsManager : MonoBehaviour
         currentMasterVolume = settings.baseSettings.masterVolume;
         currentSoundVolume = settings.baseSettings.soundVolume;
         currentMusicVolume = settings.baseSettings.musicVolume;
-        
-        gameMixer.SetFloat(mixerValues[0], AudioSliderCalculations(currentMasterVolume));
-        gameMixer.SetFloat(mixerValues[1], AudioSliderCalculations(currentSoundVolume));
-        gameMixer.SetFloat(mixerValues[2], AudioSliderCalculations(currentMusicVolume));
+
+        GameManager.Instance.GameMixer.SetFloat(mixerValues[0], AudioSliderCalculations(currentMasterVolume));
+        GameManager.Instance.GameMixer.SetFloat(mixerValues[1], AudioSliderCalculations(currentSoundVolume));
+        GameManager.Instance.GameMixer.SetFloat(mixerValues[2], AudioSliderCalculations(currentMusicVolume));
 
         currentResolution = settings.baseSettings.resolution;
         currentFullscreen = settings.baseSettings.fullscreen;
@@ -359,13 +356,15 @@ public class SettingsManager : MonoBehaviour
         soundVolumeSlider.slider.onValueChanged.AddListener(SoundSliderChanged);
         musicVolumeSlider.slider.onValueChanged.AddListener(MusicSliderChanged);
 
-        fullscreenCheckbox.toggle.onValueChanged.AddListener((bool value) => { currentFullscreen = value; });
+        fullscreenCheckbox.onValueChanged.AddListener((bool value) => { currentFullscreen = value; });
         resolutionDropdown.dropdown.onValueChanged.AddListener((int value) => { currentResolution = value; });
         qualityDropdown.dropdown.onValueChanged.AddListener(QualityChanged);
         hudScaleSlider.slider.onValueChanged.AddListener(HudScaleSliderChanged);
 
-        applyBtn.button.onClick.AddListener(() => { OnPromptFrame(applicableEvents[0].promptTitle, applicableEvents[0].promptBody, applicableEvents[0].eventName); });
-        revertBtn.button.onClick.AddListener(() => { OnPromptFrame(applicableEvents[1].promptTitle, applicableEvents[1].promptBody, applicableEvents[1].eventName); });
+        applyBtn.onClick.AddListener(() => { OnPromptFrame(applicableEvents[0].promptTitle, applicableEvents[0].promptBody, applicableEvents[0].eventName); });
+        revertBtn.onClick.AddListener(() => { OnPromptFrame(applicableEvents[1].promptTitle, applicableEvents[1].promptBody, applicableEvents[1].eventName); });
+
+        exitBtn.onClick.AddListener(delegate { gameObject.SetActive(false); });
     }
 
     #endregion
@@ -397,7 +396,7 @@ public class SettingsManager : MonoBehaviour
         }
 
         foreach (Target i in targets)
-            i.Action.button.onClick.AddListener(delegate { ToggleMenu(i); });
+            i.Action.onClick.AddListener(delegate { ToggleMenu(i); });
 
         SetupResolutions();
         ValidateData();
@@ -406,4 +405,3 @@ public class SettingsManager : MonoBehaviour
 
     #endregion
 }
-*/
