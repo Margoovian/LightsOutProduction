@@ -1,3 +1,5 @@
+using UnityEngine.SceneManagement;
+
 public class GODController
 {
     private static GODController instance;
@@ -11,7 +13,7 @@ public class GODController
         }
     }
 
-    public bool triggered = false;
+    public bool triggered;
 
     public void Initalize()
     {
@@ -20,10 +22,10 @@ public class GODController
 
     public void Update()
     {
-        if (GameManager.Instance.PlayerData.FearLevel >= 100 && !triggered)
+        if (GameManager.Instance.PlayerData.FearLevel >= GameManager.Instance.GameSettings.MaxFear && !triggered)
         {
             triggered = true;
-            SceneController.Instance.LoadSpecific(10);
+            SceneManager.LoadScene("GameOverDeath");
         }
     }
 }
