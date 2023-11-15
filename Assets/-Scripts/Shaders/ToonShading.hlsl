@@ -2,7 +2,7 @@ void ToonShading_float(in float3 Normal, in float ToonRampSmoothness, in float3 
 {
     // set the shader graph node previews
 #ifdef SHADERGRAPH_PREVIEW
-        ToonRampOutput = float3(0.5,0.5,0);
+        ToonRampOutput = float3(0.5,0.5,0.0);
         Direction = float3(0.5,0.5,0);
 #else
  
