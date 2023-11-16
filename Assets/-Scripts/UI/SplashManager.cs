@@ -9,19 +9,22 @@ public class SplashManager : MonoBehaviour
     [Tooltip("Delay before Splash Screen starts formatted in Seconds.")]
     public int startupDelay;
 
-    [Tooltip("The Background of the Splash Logo, used as Transition")]
+    [Tooltip("The Background of the Splash Logo, used as Transition.")]
     public Image background;
 
-    [Tooltip("Hide the Mouse Cursor during the Splash Screen")]
+    [Tooltip("Hide the Mouse Cursor during the Splash Screen.")]
     public bool hideCursor;
 
     [Header("Assets")]
     [Tooltip("The Logo used within the Splash Screen.")]
     public Image logo;
 
-    [Tooltip("The Title Screen loaded before the Splash Logo Transition occurs")]
+    [Tooltip("The Title Screen loaded before the Splash Logo Transition occurs.")]
     public GameObject titleUI;
 
+    [Tooltip("The music that's played when the Title Screen apperas, leave empty to not play any music!")]
+    public string MusicName;
+    
     private async void Start()
     {
         if (titleUI.activeSelf)
@@ -52,6 +55,9 @@ public class SplashManager : MonoBehaviour
 
         if (!titleUI.activeSelf)
             titleUI.SetActive(true);
+
+        if (MusicName != string.Empty)
+            AudioManager.Instance.PlayMusic(MusicName);
 
         Task _ = FadeImage(logo, false);
         

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class GameManager : MonoBehaviour
 {
@@ -6,6 +7,7 @@ public class GameManager : MonoBehaviour
     [field: SerializeField] public Cinemachine.CinemachineVirtualCamera Camera { get; set; }
     [field: SerializeField] public GameSettings GameSettings;
     [field: SerializeField] public PlayerData PlayerData;
+    [field: SerializeField] public AudioMixer GameMixer;
     public PlayerController Player { get; set; }
 
     // The GODController is sorta hard-coded for the moment, sorry about that Devlyn!

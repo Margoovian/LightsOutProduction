@@ -19,8 +19,7 @@ public class BaseSettings
     public float hudScale; // 0.00 - 1.00
 }
 
-[CreateAssetMenu(fileName = "NewPlayerSettings", menuName = "Lights Out/PlayerSettings")]
-public class PlayerSettings : ScriptableObject
+public class SettingsData : MonoBehaviour
 {
     public BaseSettings baseSettings;
 
@@ -110,7 +109,7 @@ public class PlayerSettings : ScriptableObject
         #endregion
     }
 
-    public void BeginDataInitalization()
+    private void Start()
     {
         resolutions = Screen.resolutions;
         ManageData();
