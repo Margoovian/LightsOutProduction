@@ -36,6 +36,7 @@ public class GameSettingsEditor : Editor
                         settings.PlayerBaseSpeed = EditorGUILayout.FloatField(settings.PlayerBaseSpeed);
                     });
 
+
                     EditorHelperFunctions.LabeledWrapper("Fear Speed Multiplyer", () =>
                     {
                         settings.FearSpeedMultiplyer = EditorGUILayout.CurveField(settings.FearSpeedMultiplyer);
@@ -54,6 +55,19 @@ public class GameSettingsEditor : Editor
                     EditorHelperFunctions.LabeledWrapper("Fear Tick Amout", () =>
                     {
                         settings.FearTickAmount = EditorGUILayout.FloatField(settings.FearTickAmount);
+                    });
+                });
+
+                EditorHelperFunctions.GroupWrapper("End Sequence", () =>
+                {
+                    EditorHelperFunctions.LabeledWrapper("Fear Wall Speed", () =>
+                    {
+                        settings.FearWallSpeed = EditorGUILayout.FloatField(settings.FearWallSpeed);
+                    });
+
+                    EditorHelperFunctions.LabeledWrapper("Fear Wall Tick", () =>
+                    {
+                        settings.FearWallTick = EditorGUILayout.FloatField(settings.FearWallTick);
                     });
                 });
 

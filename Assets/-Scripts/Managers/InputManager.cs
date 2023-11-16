@@ -25,21 +25,41 @@ public class InputManager : MonoBehaviour
 
     private void OnEnable()
     {
-        Inputs.Player.Move.performed += PlayerMove;
+        
         Inputs.Player.Fire.performed += PlayerFire;
-        Inputs.Player.GlowToy.performed += PlayerGlowtoy;
         Inputs.Player.Interact.performed += PlayerInteract;
+
+        Inputs.Player.Move.performed += PlayerMove;
         Inputs.Player.Look.performed += PlayerLook;
+        Inputs.Player.GlowToy.performed += PlayerGlowtoy;
+
+        Inputs.Player.Move.started += PlayerMove;
+        Inputs.Player.Look.started += PlayerLook;
+        Inputs.Player.GlowToy.started += PlayerGlowtoy;
+
+        Inputs.Player.Move.canceled += PlayerMove;
+        Inputs.Player.Look.canceled += PlayerLook;
+        Inputs.Player.GlowToy.canceled += PlayerGlowtoy;
 
         Inputs.Player.Enable();
     }
     private void OnDisable()
     {
-        Inputs.Player.Move.performed -= PlayerMove;
-        Inputs.Player.Fire.performed -= PlayerFire;
-        Inputs.Player.GlowToy.performed -= PlayerGlowtoy;
+
         Inputs.Player.Interact.performed -= PlayerInteract;
+        Inputs.Player.Fire.performed -= PlayerFire;
+
+        Inputs.Player.Move.performed -= PlayerMove;
+        Inputs.Player.GlowToy.performed -= PlayerGlowtoy;  
         Inputs.Player.Look.performed -= PlayerLook;
+
+        Inputs.Player.Move.started -= PlayerMove;
+        Inputs.Player.Look.started -= PlayerLook;
+        Inputs.Player.GlowToy.started -= PlayerGlowtoy;
+
+        Inputs.Player.Move.canceled -= PlayerMove;
+        Inputs.Player.Look.canceled -= PlayerLook;
+        Inputs.Player.GlowToy.canceled -= PlayerGlowtoy;
 
         Inputs.Player.Disable();
     }

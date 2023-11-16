@@ -40,5 +40,15 @@ public class GameManager : MonoBehaviour
         
         return true;
     } 
-
+    public void GameOver(GameOverType type)
+    {
+        switch (type)
+        {
+            case GameOverType.FearWander: break;
+            case GameOverType.FearWall: break;
+            case GameOverType.Timeout: break;
+            default: break;
+            
+        }
+    }
 }
