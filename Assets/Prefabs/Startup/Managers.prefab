@@ -281,7 +281,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1085657980120587453}
-  - component: {fileID: 7140009903461184765}
+  - component: {fileID: 4403457727567812962}
   m_Layer: 0
   m_Name: Music
   m_TagString: Untagged
@@ -304,7 +304,7 @@ Transform:
   m_Father: {fileID: 2423531116417032915}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &7140009903461184765
+--- !u!82 &4403457727567812962
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -313,10 +313,9 @@ AudioSource:
   m_GameObject: {fileID: 5057834704436141334}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -2958962885310635547, guid: 7f9d3a509ce85454897128499aa3082d,
-    type: 2}
+  OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -495,10 +494,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a686862a5a528c49979019dfc7897a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  music: []
-  sounds: []
-  musicSource: {fileID: 0}
-  soundSource: {fileID: 0}
+  music:
+  - nameIt: TestMusic
+    clip: {fileID: 8300000, guid: e7b42a6b7494a7f4ba340adbb4a18e27, type: 3}
+    isLoopable: 1
+  sounds:
+  - nameIt: TestSound
+    clip: {fileID: 8300000, guid: c480a49539657ce4b96960a72179278e, type: 3}
+    isLoopable: 0
+  - nameIt: Footsteps
+    clip: {fileID: 8300000, guid: edf6fc2d600d38e44b08bb1a17bebcda, type: 3}
+    isLoopable: 0
+  - nameIt: GlowToyShake
+    clip: {fileID: 8300000, guid: 0cbe00506aa2da84db1ebb47de650c8b, type: 3}
+    isLoopable: 0
+  - nameIt: GlowToyFinished
+    clip: {fileID: 8300000, guid: 2f6c78a54c0e1ee4a8b676baa7fd7fc9, type: 3}
+    isLoopable: 0
+  musicSource: {fileID: 4403457727567812962}
+  soundSource: {fileID: 6635395641617692469}
 --- !u!1 &6229587203305443461
 GameObject:
   m_ObjectHideFlags: 0
@@ -508,7 +522,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7274282923335637390}
-  - component: {fileID: 6894081428406389821}
+  - component: {fileID: 6635395641617692469}
   m_Layer: 0
   m_Name: Sound
   m_TagString: Untagged
@@ -531,7 +545,7 @@ Transform:
   m_Father: {fileID: 2423531116417032915}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &6894081428406389821
+--- !u!82 &6635395641617692469
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -540,10 +554,9 @@ AudioSource:
   m_GameObject: {fileID: 6229587203305443461}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -2412039025560733703, guid: 7f9d3a509ce85454897128499aa3082d,
-    type: 2}
+  OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

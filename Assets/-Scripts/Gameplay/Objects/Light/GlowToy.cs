@@ -49,15 +49,9 @@ public class GlowToy : MonoBehaviour
 
     #region Glow-Toy Methods
 
-    private void HandleInput(bool value)
-    {
-        HoldingInputDown = value;
-    }
-
-    private void ToggleLight(bool value)
-    {
-        GlowToyLight.enabled = value;
-    }
+    private void HandleInput(bool value) => HoldingInputDown = value;
+    private void ToggleLight(bool value) => GlowToyLight.enabled = value;
+    private void Toggle() => isOn = !isOn;
 
     private void UpdateBatteryUI()
     {
@@ -96,18 +90,6 @@ public class GlowToy : MonoBehaviour
 
         await Task.Delay((int)BatteryTickRate * 1000);
         CurrentBattery -= BatteryTickAmount * Time.deltaTime;
-    }
-
-    private void Toggle()
-    {
-        isOn = !isOn;
-    }
-
-    private void ShutOffLight()
-    {
-        CurrentDebounce = 1.0f;
-        Toggle();
-        ToggleLight(false);
     }
 
     #endregion
@@ -190,7 +172,11 @@ public class GlowToy : MonoBehaviour
 
             if ((HoldingInputDown && !WaitingForRelease) || GameManager.Instance.Player.isInLight)
             {
-                ShutOffLight();
+                CurrentDebounce = 1.0f;
+                
+                Toggle();
+                ToggleLight(false);
+
                 return;
             }
 
@@ -220,9 +206,7 @@ public class GlowToy : MonoBehaviour
 
             if (CurrentFadeIn < MaxFadeIn)
             {
-                // audioName : string, looping : boolean
-                //audioManager.Play("GlowToyRising", false);
-
+                AudioManager.Instance.PlaySFX("GlowToyShake");
                 CurrentFadeIn += FadeModifier * Time.deltaTime;
                 return;
             }
@@ -232,6 +216,9 @@ public class GlowToy : MonoBehaviour
 
             Toggle();
             ToggleLight(true);
+
+            AudioManager.Instance.StopSFX("GlowToyShake");
+            AudioManager.Instance.PlaySFX("GlowToyFinished");
 
             return;
         }
