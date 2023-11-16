@@ -2,10 +2,10 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(PlayerInput))]
 public class InputManager : MonoBehaviour
 {
     public static InputManager Instance { get; set; }
+    private GameInput Inputs;
 
     #region Events
 
@@ -19,11 +19,33 @@ public class InputManager : MonoBehaviour
     private void Awake() {
         if (!Instance)
             Instance = this;
+        Inputs = new();
         Initialize();     
     }
 
+    private void OnEnable()
+    {
+        Inputs.Player.Move.performed += PlayerMove;
+        Inputs.Player.Fire.performed += PlayerFire;
+        Inputs.Player.GlowToy.performed += PlayerGlowtoy;
+        Inputs.Player.Interact.performed += PlayerInteract;
+        Inputs.Player.Look.performed += PlayerLook;
+
+        Inputs.Player.Enable();
+    }
+    private void OnDisable()
+    {
+        Inputs.Player.Move.performed -= PlayerMove;
+        Inputs.Player.Fire.performed -= PlayerFire;
+        Inputs.Player.GlowToy.performed -= PlayerGlowtoy;
+        Inputs.Player.Interact.performed -= PlayerInteract;
+        Inputs.Player.Look.performed -= PlayerLook;
+
+        Inputs.Player.Disable();
+    }
     private void Initialize()
     {
+
         Player_Interact ??= new();
         Player_Fire ??= new();
         Player_Glowtoy ??= new();
