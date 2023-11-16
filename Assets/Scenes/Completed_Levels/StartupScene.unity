@@ -1270,12 +1270,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!82 &300652092 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 4137352001182381047, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
-    type: 3}
-  m_PrefabInstance: {fileID: 494113452}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &323406795 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8283319524239909344, guid: e25616cada009b54894dc2c11d4fdd42,
@@ -1781,17 +1775,17 @@ PrefabInstance:
     - target: {fileID: 1542532855439216240, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
         type: 3}
       propertyPath: <Scenes>k__BackingField.Array.data[2].Pool.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1542532855439216240, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
         type: 3}
       propertyPath: <Scenes>k__BackingField.Array.data[3].Pool.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1542532855439216240, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
         type: 3}
       propertyPath: <Scenes>k__BackingField.Array.data[4].Pool.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1542532855439216240, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
         type: 3}
@@ -1825,8 +1819,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1542532855439216240, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
         type: 3}
+      propertyPath: <Scenes>k__BackingField.Array.data[2].Pool.Array.data[1]
+      value: Easy_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1542532855439216240, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
+        type: 3}
       propertyPath: <Scenes>k__BackingField.Array.data[3].Pool.Array.data[0]
-      value: 
+      value: Medium_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1542532855439216240, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
+        type: 3}
+      propertyPath: <Scenes>k__BackingField.Array.data[4].Pool.Array.data[0]
+      value: Hard_2
       objectReference: {fileID: 0}
     - target: {fileID: 1973221105950864377, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
         type: 3}
@@ -1867,12 +1871,12 @@ PrefabInstance:
         type: 3}
       propertyPath: musicSource
       value: 
-      objectReference: {fileID: 1444293827}
+      objectReference: {fileID: 951604553}
     - target: {fileID: 6629401664964146712, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
         type: 3}
       propertyPath: soundSource
       value: 
-      objectReference: {fileID: 300652092}
+      objectReference: {fileID: 1655910928}
     - target: {fileID: 6629401664964146712, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
         type: 3}
       propertyPath: music.Array.size
@@ -3047,6 +3051,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &951604553 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6618699669018846888, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
+    type: 3}
+  m_PrefabInstance: {fileID: 494113452}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &955704637
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4538,12 +4548,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1439881021}
   m_PrefabAsset: {fileID: 0}
---- !u!82 &1444293827 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 418843684137519927, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
-    type: 3}
-  m_PrefabInstance: {fileID: 494113452}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1467066870
 GameObject:
   m_ObjectHideFlags: 0
@@ -4905,16 +4909,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventParams:
-  - Title: < Playing >
-    Body: Would you like to start from the beginning?
-    ApplyBtnText: Sure!
-    DenyBtnText: Nah...
-    EventName: play
-  - Title: < Leaving >
-    Body: Are you sure you want to leave? ... Don't you want to help Ruben?
-    ApplyBtnText: I changed my mind.
-    DenyBtnText: Not really... no.
-    EventName: leaving
+    Title: 
+    Body: 
+    ApplyBtnText: 
+    DenyBtnText: 
+    EventName: 
   playButton: {fileID: 102968504}
   optionsButton: {fileID: 560200201}
   leaveButton: {fileID: 1307157018}
@@ -5109,6 +5108,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5af6a92c8a70f714fa5af867acd09130, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &1655910928 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4238951710681319679, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
+    type: 3}
+  m_PrefabInstance: {fileID: 494113452}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1685505609
 GameObject:
   m_ObjectHideFlags: 0
