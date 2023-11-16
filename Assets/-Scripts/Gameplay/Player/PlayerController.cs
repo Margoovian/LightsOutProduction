@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
         get => GameManager.Instance.PlayerData.FearLevel; 
         
         set {
+            if (PlayerData.Instance.InMenu) return;
             if (!GameManager.Instance.GameSettings.EnableGodMode )
             {
                 GameManager.Instance.PlayerData.FearLevel = value;

@@ -11,6 +11,8 @@ public class PlayerData : MonoBehaviour
     public float ElapsedTime { get; set; }
     public bool InMenu { get; set; } = true;
     public bool ToyOn { get; set; } = false;
+    public string LevelNumber { get; set; }
+    public int LevelID { get; set; }
 
     private void Awake()
     {

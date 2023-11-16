@@ -54,7 +54,7 @@ public class SceneControllerEditor : Editor
             GUILayout.BeginHorizontal();
 
             if (GUILayout.Button("Next Level (Destructive)"))
-                SceneController.Instance.NextLevel(() => { Destroy(GameManager.Instance.Player); });
+                SceneController.Instance.NextLevel(() => { Destroy(GameManager.Instance.Player); return null; });
 
             if (GUILayout.Button("To Selected (Destructive)"))
                 SceneController.Instance.LoadSpecific(selectedLevel, () => { Destroy(GameManager.Instance.Player); });
