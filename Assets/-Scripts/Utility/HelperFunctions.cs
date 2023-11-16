@@ -17,7 +17,7 @@ public static class HelperFunctions
 
     public static void GroupWrapper(string label, Action element)
     {
-        //EditorGUILayout.LabelField(label);
+        EditorGUILayout.LabelField(label);
         GUILayout.BeginVertical("GroupBox");
         {
             element();
@@ -29,7 +29,7 @@ public static class HelperFunctions
     {
         GUILayout.BeginHorizontal();
         {
-            //EditorGUILayout.LabelField(label);
+            EditorGUILayout.LabelField(label);
             element();
         }
         GUILayout.EndHorizontal();
