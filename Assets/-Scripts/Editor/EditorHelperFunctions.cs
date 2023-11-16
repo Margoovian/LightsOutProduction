@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using UnityEditor;
 using UnityEngine;
 
-public static class HelperFunctions
+public static class EditorHelperFunctions
 {
     public static void GroupWrapper(string label, Action element)
     {

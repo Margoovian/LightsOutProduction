@@ -32,7 +32,7 @@ public class SceneControllerEditor : Editor
             levels.Add(pair.Name, pair.LoadOrder);
         }
 
-        HelperFunctions.GroupWrapper("Functions", () => {
+        EditorHelperFunctions.GroupWrapper("Functions", () => {
 
             GUILayout.BeginHorizontal();
 

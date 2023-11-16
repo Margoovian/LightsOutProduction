@@ -16,75 +16,75 @@ public class GameSettingsEditor : Editor
         {
             GUILayout.BeginVertical("GroupBox");
             {
-                HelperFunctions.GroupWrapper("Difficulty", () =>
+                EditorHelperFunctions.GroupWrapper("Difficulty", () =>
                 {
-                    HelperFunctions.LabeledWrapper("Difficulty", () =>
+                    EditorHelperFunctions.LabeledWrapper("Difficulty", () =>
                     {
                         settings.Difficulty = (Difficulty)EditorGUILayout.EnumPopup(settings.Difficulty);
                     });
 
-                    HelperFunctions.LabeledWrapper("Mode Name", () =>
+                    EditorHelperFunctions.LabeledWrapper("Mode Name", () =>
                     {
                         settings.DifficultyName = EditorGUILayout.TextField(settings.DifficultyName);
                     });
                 });
 
-                HelperFunctions.GroupWrapper("Player", () =>
+                EditorHelperFunctions.GroupWrapper("Player", () =>
                 {
-                    HelperFunctions.LabeledWrapper("Base Speed", () =>
+                    EditorHelperFunctions.LabeledWrapper("Base Speed", () =>
                     {
                         settings.PlayerBaseSpeed = EditorGUILayout.FloatField(settings.PlayerBaseSpeed);
                     });
 
-                    HelperFunctions.LabeledWrapper("Fear Speed Multiplyer", () =>
+                    EditorHelperFunctions.LabeledWrapper("Fear Speed Multiplyer", () =>
                     {
                         settings.FearSpeedMultiplyer = EditorGUILayout.CurveField(settings.FearSpeedMultiplyer);
                     });
 
-                    HelperFunctions.LabeledWrapper("Max Fear", () =>
+                    EditorHelperFunctions.LabeledWrapper("Max Fear", () =>
                     {
                         settings.MaxFear = EditorGUILayout.FloatField(settings.MaxFear);
                     });
 
-                    HelperFunctions.LabeledWrapper("Fear Tick Rate", () =>
+                    EditorHelperFunctions.LabeledWrapper("Fear Tick Rate", () =>
                     {
                         settings.FearTickRate = EditorGUILayout.FloatField(settings.FearTickRate);
                     });
                     
-                    HelperFunctions.LabeledWrapper("Fear Tick Amout", () =>
+                    EditorHelperFunctions.LabeledWrapper("Fear Tick Amout", () =>
                     {
                         settings.FearTickAmount = EditorGUILayout.FloatField(settings.FearTickAmount);
                     });
                 });
 
-                HelperFunctions.GroupWrapper("Glow Toy", () => 
+                EditorHelperFunctions.GroupWrapper("Glow Toy", () => 
                 {
-                    HelperFunctions.LabeledWrapper("Glow Toy Fade In", () =>
+                    EditorHelperFunctions.LabeledWrapper("Glow Toy Fade In", () =>
                     {
                         settings.GlowToyFadeIn = EditorGUILayout.FloatField(settings.GlowToyFadeIn);
                     });
 
-                    HelperFunctions.LabeledWrapper("Glow Toy Fade Modifier", () =>
+                    EditorHelperFunctions.LabeledWrapper("Glow Toy Fade Modifier", () =>
                     {
                         settings.GlowToyFadeModifier = EditorGUILayout.FloatField(settings.GlowToyFadeModifier);
                     });
 
-                    HelperFunctions.LabeledWrapper("Glow Toy Debounce Modifier", () =>
+                    EditorHelperFunctions.LabeledWrapper("Glow Toy Debounce Modifier", () =>
                     {
                         settings.GlowToyDebounceModifier = EditorGUILayout.FloatField(settings.GlowToyDebounceModifier);
                     });
 
-                    HelperFunctions.LabeledWrapper("Glow Toy Max Battery", () =>
+                    EditorHelperFunctions.LabeledWrapper("Glow Toy Max Battery", () =>
                     {
                         settings.GlowToyMaxBattery = EditorGUILayout.FloatField(settings.GlowToyMaxBattery);
                     });                    
                     
-                    HelperFunctions.LabeledWrapper("Glow Toy Battery Rate", () =>
+                    EditorHelperFunctions.LabeledWrapper("Glow Toy Battery Rate", () =>
                     {
                         settings.GlowToyBatteryTickRate = EditorGUILayout.FloatField(settings.GlowToyBatteryTickRate);
                     });
 
-                    HelperFunctions.LabeledWrapper("Glow Toy Battery Amount", () =>
+                    EditorHelperFunctions.LabeledWrapper("Glow Toy Battery Amount", () =>
                     {
                         settings.GlowToyBatteryTickAmount = EditorGUILayout.FloatField(settings.GlowToyBatteryTickAmount);
                     });
@@ -100,12 +100,12 @@ public class GameSettingsEditor : Editor
         {
             GUILayout.BeginVertical("GroupBox");
             {
-                HelperFunctions.LabeledWrapper("Enable Timer", () =>
+                EditorHelperFunctions.LabeledWrapper("Enable Timer", () =>
                 {
                     settings.EnableTimer = EditorGUILayout.Toggle(settings.EnableTimer);
                 });
                 
-                HelperFunctions.LabeledWrapper("Enable Random Rooms", () =>
+                EditorHelperFunctions.LabeledWrapper("Enable Random Rooms", () =>
                 {
                     settings.EnableRandomRooms = EditorGUILayout.Toggle(settings.EnableRandomRooms);
                 });
@@ -121,12 +121,12 @@ public class GameSettingsEditor : Editor
         {
             GUILayout.BeginVertical("GroupBox");
             {
-                HelperFunctions.LabeledWrapper("God Mode", () =>
+                EditorHelperFunctions.LabeledWrapper("God Mode", () =>
                 {
                     settings.EnableGodMode = EditorGUILayout.Toggle(settings.EnableGodMode);
                 });
 
-                HelperFunctions.LabeledWrapper("Speed Modifier", () =>
+                EditorHelperFunctions.LabeledWrapper("Speed Modifier", () =>
                 {
                     settings.EnableSpeedModifier = EditorGUILayout.Toggle(settings.EnableSpeedModifier);
                     if (settings.EnableSpeedModifier)
