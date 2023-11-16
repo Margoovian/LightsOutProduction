@@ -2486,6 +2486,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 494183800}
   m_Mesh: {fileID: 6078955504782685818, guid: 52ded330d15ce8b41818e9419a1de22b, type: 3}
+--- !u!82 &508150547 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4238951710681319679, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
+    type: 3}
+  m_PrefabInstance: {fileID: 1101372155}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &518450980
 GameObject:
   m_ObjectHideFlags: 0
@@ -6160,6 +6166,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Scene Essentials
       objectReference: {fileID: 0}
+    - target: {fileID: 6629401664964146712, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
+        type: 3}
+      propertyPath: musicSource
+      value: 
+      objectReference: {fileID: 1877625231}
+    - target: {fileID: 6629401664964146712, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
+        type: 3}
+      propertyPath: soundSource
+      value: 
+      objectReference: {fileID: 508150547}
     - target: {fileID: 7966588693149933208, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
         type: 3}
       propertyPath: field of view
@@ -8277,6 +8293,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1780294716}
   m_Mesh: {fileID: 4068373912626513877, guid: c70aea6b161583b47bc0c9a7f0543730, type: 3}
+--- !u!82 &1877625231 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6618699669018846888, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
+    type: 3}
+  m_PrefabInstance: {fileID: 1101372155}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1886916498
 GameObject:
   m_ObjectHideFlags: 0
