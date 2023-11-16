@@ -1,7 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 //public class AudioManager : MonoBehaviour
@@ -10,8 +7,8 @@ using UnityEngine;
 //    private void Awake() { if (!Instance) Instance = this; }
 //}
 
-[System.Serializable]
-public class Sound
+[Serializable]
+public class Audio
 {
     public void Play()
     {
@@ -27,7 +24,7 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
 
-    public Sound[] music, sounds;
+    public Audio[] music, sounds;
     public AudioSource musicSource, soundSource;
 
     private void Awake()
@@ -37,50 +34,78 @@ public class AudioManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
-
-        else
-        {
-            Destroy(this);
-        }
-    }
-
-    private void Start()
-    {
-        PlayMusic("music");
     }
 
     public void PlayMusic(string name)
     {
-        Sound s = Array.Find(music, x => x.nameIt == name);
-        if (s == null)
+        Audio a = Array.Find(music, x => x.nameIt == name);
+
+        if (a == null)
         {
-            Debug.Log(name + " Not Found");
+            Debug.Log(name + " not found in array: " + music.ToString() + "!", this);
             return;
         }
 
-        musicSource.clip = s.clip;
-
-        if (s.isLoopable)
-            musicSource.loop = true;
-
+        musicSource.clip = a.clip;
+        musicSource.loop = a.isLoopable;
         musicSource.Play();
+    }
+
+    public void StopMusic(string name)
+    {
+        Audio a = Array.Find(music, x => x.nameIt == name);
+
+        if (a == null)
+        {
+            Debug.Log(name + " not found in array: " + music.ToString() + "!", this);
+            return;
+        }
+
+        if (a.clip != musicSource.clip)
+            return;
+
+        if (!musicSource.isPlaying)
+            return;
+
+        musicSource.Stop();
     }
 
     public void PlaySFX(string name)
     {
-        Sound s = Array.Find(sounds, x => x.nameIt == name);
-        if (s == null)
+        Audio a = Array.Find(sounds, x => x.nameIt == name);
+
+        if (a == null)
         {
-            Debug.Log(name + " Not Found");
+            Debug.Log(name + " not found in array: " + sounds.ToString() + "!", this);
             return;
         }
 
-        soundSource.loop = s.isLoopable;
-        soundSource.clip = s.clip;
+        if (soundSource.isPlaying)
+            return;
+
+        soundSource.loop = a.isLoopable;
+        soundSource.clip = a.clip;
         soundSource.Play();
     }
 
+    public void StopSFX(string name)
+    {
+        Audio a = Array.Find(sounds, x => x.nameIt == name);
 
+        if (a == null)
+        {
+            Debug.Log(name + " not found in array: " + sounds.ToString() + "!", this);
+            return;
+        }
+
+        if (a.clip != soundSource.clip)
+            return;
+
+        if (!soundSource.isPlaying)
+            return;
+
+        soundSource.Stop();
+    }
 
     public void ToggleLoopableAudio()
     {
@@ -95,21 +120,19 @@ public class AudioManager : MonoBehaviour
 }
 
 [CreateAssetMenu(menuName = "scriptableObjects/SFX", fileName = "SFX")]
-
 public class SFX : ScriptableObject
 {
-
     public virtual void Play()
     {
         AudioManager.Instance.PlaySFX(nameIt);
     }
+
     public string nameIt;
     public AudioClip clip;
     public bool isLoopable;
 }
 
 [CreateAssetMenu(menuName = "scriptableObjects/Music", fileName = "Music")]
-
 public class Music : SFX
 {
     public override void Play()

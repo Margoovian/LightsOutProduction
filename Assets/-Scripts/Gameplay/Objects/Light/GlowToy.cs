@@ -44,21 +44,14 @@ public class GlowToy : MonoBehaviour
     private int CurrentBatteryValue = 0;
 
     public BatteryUI[] BatteryUISprites = new BatteryUI[BatteryUICap];
-    //public int[] BatteryUIStates = new int[BatteryUICap];
 
     #endregion
 
     #region Glow-Toy Methods
 
-    private void HandleInput(bool value)
-    {
-        HoldingInputDown = value;
-    }
-
-    private void ToggleLight(bool value)
-    {
-        GlowToyLight.enabled = value;
-    }
+    private void HandleInput(bool value) => HoldingInputDown = value;
+    private void ToggleLight(bool value) => GlowToyLight.enabled = value;
+    private void Toggle() => isOn = !isOn;
 
     private void UpdateBatteryUI()
     {
@@ -97,11 +90,6 @@ public class GlowToy : MonoBehaviour
 
         await Task.Delay((int)BatteryTickRate * 1000);
         CurrentBattery -= BatteryTickAmount * Time.deltaTime;
-    }
-
-    private void Toggle()
-    {
-        isOn = !isOn;
     }
 
     #endregion
@@ -158,27 +146,19 @@ public class GlowToy : MonoBehaviour
             return;
         }
 
-        //if (BatteryUISprites.Length != BatteryUICap)
-        //{
-        //    Debug.LogWarning("You can only have " + BatteryUICap.ToString() + " amounts of sprites at a given time using the BatteryUISprites array.", this);
-        //    return;
-        //}
+        if (BatteryUISprites.Length != BatteryUICap)
+        {
+            Debug.LogWarning("You can only have " + BatteryUICap.ToString() + " amounts of sprites at a given time using the BatteryUISprites array.", this);
+            return;
+        }
 
-        //if (BatteryUIStates.Length != BatteryUICap)
-        //{
-        //    Debug.LogWarning("You can only have " + BatteryUICap.ToString() + " amounts of states at a given time using the BatteryUIStates array.", this);
-        //    return;
-        //}
-
-        //if (BatteryUIRenderer.sprite == null)
-        //    BatteryUIRenderer.sprite = BatteryUISprites[0];
+        if (BatteryUIRenderer.sprite == null)
+            BatteryUIRenderer.sprite = BatteryUISprites[0].sprite;
 
         if (BatteryUIRenderer.enabled)
             BatteryUIRenderer.enabled = false;
 
         CurrentBattery = MaxBattery;
-        //_meshRenderer = GetComponentInChildren<MeshRenderer>();
-        //ChangeMaterial();
     }
 
     private void Update()
@@ -190,10 +170,10 @@ public class GlowToy : MonoBehaviour
             if (!HoldingInputDown && WaitingForRelease)
                 WaitingForRelease = false;
 
-            if (HoldingInputDown && !WaitingForRelease)
+            if ((HoldingInputDown && !WaitingForRelease) || GameManager.Instance.Player.isInLight)
             {
                 CurrentDebounce = 1.0f;
-
+                
                 Toggle();
                 ToggleLight(false);
 
@@ -226,9 +206,7 @@ public class GlowToy : MonoBehaviour
 
             if (CurrentFadeIn < MaxFadeIn)
             {
-                // audioName : string, looping : boolean
-                //audioManager.Play("GlowToyRising", false);
-
+                AudioManager.Instance.PlaySFX("GlowToyShake");
                 CurrentFadeIn += FadeModifier * Time.deltaTime;
                 return;
             }
@@ -238,6 +216,9 @@ public class GlowToy : MonoBehaviour
 
             Toggle();
             ToggleLight(true);
+
+            AudioManager.Instance.StopSFX("GlowToyShake");
+            AudioManager.Instance.PlaySFX("GlowToyFinished");
 
             return;
         }

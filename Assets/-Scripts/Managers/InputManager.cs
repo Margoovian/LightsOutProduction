@@ -2,10 +2,10 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(PlayerInput))]
 public class InputManager : MonoBehaviour
 {
     public static InputManager Instance { get; set; }
+    private GameInput Inputs;
 
     #region Events
 
@@ -19,11 +19,53 @@ public class InputManager : MonoBehaviour
     private void Awake() {
         if (!Instance)
             Instance = this;
+        Inputs = new();
         Initialize();     
     }
 
+    private void OnEnable()
+    {
+        
+        Inputs.Player.Fire.performed += PlayerFire;
+        Inputs.Player.Interact.performed += PlayerInteract;
+
+        Inputs.Player.Move.performed += PlayerMove;
+        Inputs.Player.Look.performed += PlayerLook;
+        Inputs.Player.GlowToy.performed += PlayerGlowtoy;
+
+        Inputs.Player.Move.started += PlayerMove;
+        Inputs.Player.Look.started += PlayerLook;
+        Inputs.Player.GlowToy.started += PlayerGlowtoy;
+
+        Inputs.Player.Move.canceled += PlayerMove;
+        Inputs.Player.Look.canceled += PlayerLook;
+        Inputs.Player.GlowToy.canceled += PlayerGlowtoy;
+
+        Inputs.Player.Enable();
+    }
+    private void OnDisable()
+    {
+
+        Inputs.Player.Interact.performed -= PlayerInteract;
+        Inputs.Player.Fire.performed -= PlayerFire;
+
+        Inputs.Player.Move.performed -= PlayerMove;
+        Inputs.Player.GlowToy.performed -= PlayerGlowtoy;  
+        Inputs.Player.Look.performed -= PlayerLook;
+
+        Inputs.Player.Move.started -= PlayerMove;
+        Inputs.Player.Look.started -= PlayerLook;
+        Inputs.Player.GlowToy.started -= PlayerGlowtoy;
+
+        Inputs.Player.Move.canceled -= PlayerMove;
+        Inputs.Player.Look.canceled -= PlayerLook;
+        Inputs.Player.GlowToy.canceled -= PlayerGlowtoy;
+
+        Inputs.Player.Disable();
+    }
     private void Initialize()
     {
+
         Player_Interact ??= new();
         Player_Fire ??= new();
         Player_Glowtoy ??= new();
