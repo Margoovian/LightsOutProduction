@@ -17,7 +17,7 @@ public class EventParams
 public class MainMenu : MonoBehaviour
 {
     [Header("Main")]
-    public EventParams eventParams;
+    public EventParams[] eventParams = new EventParams[2];
 
     [Header("Buttons")]
     public Button playButton;
@@ -30,7 +30,8 @@ public class MainMenu : MonoBehaviour
 
     private Canvas _menuGUI;
 
-    private UnityEvent<bool, string> passthroughEvent;
+    private UnityEvent<bool, string> passthroughEvent1;
+    private UnityEvent<bool, string> passthroughEvent2;
 
     private void HandleQuitting(bool result, string eventName)
     {
@@ -44,12 +45,32 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
 
+    private void HandlePlaying(bool result, string eventName)
+    {
+        if (!result)
+            return;
+
+        GameManager.Instance.PlayerData.InMenu = false;
+        
+        if (GameGUI != null) 
+            GameGUI.SetActive(true);
+
+        AudioManager.Instance.Stop("TestMusic");
+        SceneController.Instance.LoadSpecific(0);
+    }
+
     private void Start()
     {
-        if (passthroughEvent == null)
+        if (passthroughEvent1 == null)
         {
-            passthroughEvent = new();
-            passthroughEvent.AddListener(HandleQuitting);
+            passthroughEvent1 = new();
+            passthroughEvent1.AddListener(HandleQuitting);
+        }
+
+        if (passthroughEvent2 == null)
+        {
+            passthroughEvent2 = new();
+            passthroughEvent2.AddListener(HandlePlaying);
         }
 
         if (GameGUI != null) 
@@ -64,13 +85,7 @@ public class MainMenu : MonoBehaviour
 
     public void OnPlay()
     {
-        GameManager.Instance.PlayerData.InMenu = false;
-
-        if (GameGUI != null)
-            GameGUI.SetActive(true);
-
-        AudioManager.Instance.StopMusic("TestMusic");
-        SceneController.Instance.LoadSpecific(SceneController.Instance.GetStartIndex() + 1);
+        PromptManager.Instance.StartPrompt(eventParams[0].Title, eventParams[0].Body, eventParams[0].ApplyBtnText, eventParams[0].DenyBtnText, eventParams[0].EventName, passthroughEvent2);
     }
 
     public void OnOptions()
@@ -83,6 +98,6 @@ public class MainMenu : MonoBehaviour
 
     public void OnLeave()
     {
-        PromptManager.Instance.StartPrompt(eventParams.Title, eventParams.Body, eventParams.ApplyBtnText, eventParams.DenyBtnText, eventParams.EventName, passthroughEvent);
+        PromptManager.Instance.StartPrompt(eventParams[1].Title, eventParams[1].Body, eventParams[1].ApplyBtnText, eventParams[1].DenyBtnText, eventParams[1].EventName, passthroughEvent1);
     }
 }
