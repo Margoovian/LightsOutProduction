@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Audio;
-using static Unity.VisualScripting.Member;
 
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance { get; private set; }
 
-    public Dictionary<string, Stem> Stems = new();
+    public Dictionary<string, Stem> Stems; public Dictionary<string, AudioSource> Sources;
     [field: SerializeField] public GameObject AudioObject { get; set; }
     [field: SerializeField] public string AudioPath { get; set; } // This has to be relative to the Resource folder (I:E in it) 
     [field: SerializeField] public AudioMixer AudioMixer { get; set; }
@@ -18,12 +17,17 @@ public class AudioManager : MonoBehaviour
 
     private void Awake() {
         if (!Instance)
+        {
             Instance = this;
-        Initialize();
+            Initialize();
+        }
     }
 
     void Initialize ()
     {
+        Stems = new();
+        Sources = new();
+
         if(!AudioObject) { Debug.LogWarning("No Audio Object! (There will be no audio!)"); }
 
         Stem[] stems = Resources.LoadAll<Stem>(AudioPath);

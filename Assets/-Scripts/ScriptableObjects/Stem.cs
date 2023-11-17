@@ -22,6 +22,10 @@ public class Stem : ScriptableObject
     public Vector2 RandomPitchRange { get; set; } = new Vector2(1,1);
     public Vector2 RandomPanRange { get; set; } = new Vector2(0, 0);
     public Vector2 RandomVolumeRange { get; set; } = new Vector2(1, 1);
+    internal void OnEnable()
+    {
+        
+    }
 
     internal void Play(bool overrideVolume = true)
     {
