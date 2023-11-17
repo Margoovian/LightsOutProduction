@@ -372,23 +372,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3017961788277489036, guid: 3a8ddabdd5fd4144fae68e69ddd0aef2,
         type: 3}
+      propertyPath: carryPreviousValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3017961788277489036, guid: 3a8ddabdd5fd4144fae68e69ddd0aef2,
+        type: 3}
       propertyPath: listables.Array.size
-      value: 6
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3017961788277489036, guid: 3a8ddabdd5fd4144fae68e69ddd0aef2,
         type: 3}
       propertyPath: listables.Array.data[0].m_Text
-      value: Very Low
+      value: Performant
       objectReference: {fileID: 0}
     - target: {fileID: 3017961788277489036, guid: 3a8ddabdd5fd4144fae68e69ddd0aef2,
         type: 3}
       propertyPath: listables.Array.data[1].m_Text
-      value: Low
+      value: Balanced
       objectReference: {fileID: 0}
     - target: {fileID: 3017961788277489036, guid: 3a8ddabdd5fd4144fae68e69ddd0aef2,
         type: 3}
       propertyPath: listables.Array.data[2].m_Text
-      value: Medium
+      value: High Fidelity
       objectReference: {fileID: 0}
     - target: {fileID: 3017961788277489036, guid: 3a8ddabdd5fd4144fae68e69ddd0aef2,
         type: 3}
@@ -985,6 +990,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MusVolSlider
       objectReference: {fileID: 0}
+    - target: {fileID: 6665382414227476717, guid: e25616cada009b54894dc2c11d4fdd42,
+        type: 3}
+      propertyPath: m_MinValue
+      value: 0.001
+      objectReference: {fileID: 0}
     - target: {fileID: 8522232390552214213, guid: e25616cada009b54894dc2c11d4fdd42,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -1321,12 +1331,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!82 &365175075 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 6618699669018846888, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
-    type: 3}
-  m_PrefabInstance: {fileID: 494113452}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &425248614
 GameObject:
   m_ObjectHideFlags: 0
@@ -1867,12 +1871,12 @@ PrefabInstance:
         type: 3}
       propertyPath: musicSource
       value: 
-      objectReference: {fileID: 365175075}
+      objectReference: {fileID: 0}
     - target: {fileID: 6629401664964146712, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
         type: 3}
       propertyPath: soundSource
       value: 
-      objectReference: {fileID: 763672334}
+      objectReference: {fileID: 0}
     - target: {fileID: 6629401664964146712, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
         type: 3}
       propertyPath: music.Array.size
@@ -2724,12 +2728,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!82 &763672334 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 4238951710681319679, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
-    type: 3}
-  m_PrefabInstance: {fileID: 494113452}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &789439828
 GameObject:
   m_ObjectHideFlags: 0
@@ -3601,6 +3599,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SFXVolSlider
+      objectReference: {fileID: 0}
+    - target: {fileID: 6665382414227476717, guid: e25616cada009b54894dc2c11d4fdd42,
+        type: 3}
+      propertyPath: m_MinValue
+      value: 0.001
       objectReference: {fileID: 0}
     - target: {fileID: 8522232390552214213, guid: e25616cada009b54894dc2c11d4fdd42,
         type: 3}
@@ -4905,11 +4908,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventParams:
-    Title: 
-    Body: 
-    ApplyBtnText: 
-    DenyBtnText: 
-    EventName: 
+    Title: < Leaving >
+    Body: Are you sure you want to leave? Don't you want to help Ruben?
+    ApplyBtnText: Nah... not really.
+    DenyBtnText: I guess I do...
+    EventName: leaving
   playButton: {fileID: 102968504}
   optionsButton: {fileID: 560200201}
   leaveButton: {fileID: 1307157018}
@@ -4936,6 +4939,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MasVolSlider
+      objectReference: {fileID: 0}
+    - target: {fileID: 6665382414227476717, guid: e25616cada009b54894dc2c11d4fdd42,
+        type: 3}
+      propertyPath: m_MinValue
+      value: 0.001
       objectReference: {fileID: 0}
     - target: {fileID: 8522232390552214213, guid: e25616cada009b54894dc2c11d4fdd42,
         type: 3}

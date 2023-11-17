@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Audio;
 
 public class GameManager : MonoBehaviour
 {
@@ -7,7 +6,6 @@ public class GameManager : MonoBehaviour
     [field: SerializeField] public Cinemachine.CinemachineVirtualCamera Camera { get; set; }
     [field: SerializeField] public GameSettings GameSettings { get; set; }
     [field: SerializeField] public PlayerData PlayerData { get; set; }
-    [field: SerializeField] public AudioMixer GameMixer { get; set; }
     [field: SerializeField] public Animator SceneTransition { get; set; }
     public PlayerController Player { get; set; }
 
