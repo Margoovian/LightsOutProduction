@@ -206,7 +206,7 @@ public class GlowToy : MonoBehaviour
 
             if (CurrentFadeIn < MaxFadeIn)
             {
-                AudioManager.Instance.PlaySFX("GlowToyShake");
+                AudioManager.Instance.Play("ShakeLoop");
                 CurrentFadeIn += FadeModifier * Time.deltaTime;
                 return;
             }
@@ -217,8 +217,8 @@ public class GlowToy : MonoBehaviour
             Toggle();
             ToggleLight(true);
 
-            AudioManager.Instance.StopSFX("GlowToyShake");
-            AudioManager.Instance.PlaySFX("GlowToyFinished");
+            AudioManager.Instance.Stop("ShakeLoop");
+            AudioManager.Instance.Play("ShakeDone");
 
             return;
         }

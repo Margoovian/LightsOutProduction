@@ -372,33 +372,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3017961788277489036, guid: 3a8ddabdd5fd4144fae68e69ddd0aef2,
         type: 3}
-      propertyPath: ignoreListables
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3017961788277489036, guid: 3a8ddabdd5fd4144fae68e69ddd0aef2,
-        type: 3}
-      propertyPath: carryPreviousValue
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3017961788277489036, guid: 3a8ddabdd5fd4144fae68e69ddd0aef2,
-        type: 3}
       propertyPath: listables.Array.size
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3017961788277489036, guid: 3a8ddabdd5fd4144fae68e69ddd0aef2,
         type: 3}
       propertyPath: listables.Array.data[0].m_Text
-      value: Performant
+      value: Very Low
       objectReference: {fileID: 0}
     - target: {fileID: 3017961788277489036, guid: 3a8ddabdd5fd4144fae68e69ddd0aef2,
         type: 3}
       propertyPath: listables.Array.data[1].m_Text
-      value: Balanced
+      value: Low
       objectReference: {fileID: 0}
     - target: {fileID: 3017961788277489036, guid: 3a8ddabdd5fd4144fae68e69ddd0aef2,
         type: 3}
       propertyPath: listables.Array.data[2].m_Text
-      value: High Fidelity
+      value: Medium
       objectReference: {fileID: 0}
     - target: {fileID: 3017961788277489036, guid: 3a8ddabdd5fd4144fae68e69ddd0aef2,
         type: 3}
@@ -1331,6 +1321,12 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!82 &365175075 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6618699669018846888, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
+    type: 3}
+  m_PrefabInstance: {fileID: 494113452}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &425248614
 GameObject:
   m_ObjectHideFlags: 0
@@ -1871,12 +1867,12 @@ PrefabInstance:
         type: 3}
       propertyPath: musicSource
       value: 
-      objectReference: {fileID: 1223182317}
+      objectReference: {fileID: 365175075}
     - target: {fileID: 6629401664964146712, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
         type: 3}
       propertyPath: soundSource
       value: 
-      objectReference: {fileID: 1488676007}
+      objectReference: {fileID: 763672334}
     - target: {fileID: 6629401664964146712, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
         type: 3}
       propertyPath: music.Array.size
@@ -2728,6 +2724,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &763672334 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4238951710681319679, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
+    type: 3}
+  m_PrefabInstance: {fileID: 494113452}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &789439828
 GameObject:
   m_ObjectHideFlags: 0
@@ -3793,12 +3795,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!82 &1223182317 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 6618699669018846888, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
-    type: 3}
-  m_PrefabInstance: {fileID: 494113452}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1264895415 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8790955650892496996, guid: e25616cada009b54894dc2c11d4fdd42,
@@ -4624,12 +4620,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1467066870}
   m_CullTransparentMesh: 1
---- !u!82 &1488676007 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 4238951710681319679, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
-    type: 3}
-  m_PrefabInstance: {fileID: 494113452}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1515934004
 PrefabInstance:
   m_ObjectHideFlags: 0
