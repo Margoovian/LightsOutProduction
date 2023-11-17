@@ -49,61 +49,63 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    internal bool IsPlaying(string clip)
+    {
+        Stem stem;
+        bool exists = Stems.TryGetValue(clip, out stem);
+        if (exists) return stem.source.isPlaying;
+        else return false;
+
+    }
     internal void Play(string clip)
     {
         Stem stem;
         bool exists = Stems.TryGetValue(clip, out stem);
-        if (exists)
-            stem.Play();
+        if (exists) stem.Play();
     }
 
     internal void PlaySFX(string clip)
     {
         Stem stem;
         bool exists = Stems.TryGetValue(clip, out stem);
-        if (exists)
-            stem.PlayAsSFX();
+        if (exists) stem.PlayAsSFX();
     }
 
     internal void Stop(string clip)
     {
         Stem stem;
         bool exists = Stems.TryGetValue(clip, out stem);
-        if (exists)
-            stem.Stop();
+        if (exists) stem.Stop();
     }
 
     internal void Pause(string clip)
     {
         Stem stem;
         bool exists = Stems.TryGetValue(clip, out stem);
-        if (exists)
-            stem.Pause();
+        if (exists) stem.Pause();
     }
 
     internal void UnPause(string clip)
     {
         Stem stem;
         bool exists = Stems.TryGetValue(clip, out stem);
-        if (exists)
-            stem.UnPause();
+        if (exists) stem.UnPause();
     }
 
     internal void FadeIn(string clip, float timeInSeconds = 2)
     {
         Stem stem;
         bool exists = Stems.TryGetValue(clip, out stem);
-        if (exists)
-            stem.FadeIn(timeInSeconds);
+        if (exists) stem.FadeIn(timeInSeconds);
     }
 
     internal void FadeOut(string clip, float timeInSeconds = 2)
     {
         Stem stem;
         bool exists = Stems.TryGetValue(clip, out stem);
-        if (exists)
-            stem.FadeOut(timeInSeconds);
+        if (exists) stem.FadeOut(timeInSeconds);
     }
+
 
     internal void Crossfade(string clipA, string clipB, float timeInSeconds = 2) // ClipA is fade in, ClipB is fadeout
     {
