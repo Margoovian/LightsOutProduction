@@ -55,7 +55,7 @@ public class MainMenu : MonoBehaviour
         if (GameGUI != null) 
             GameGUI.SetActive(true);
 
-        AudioManager.Instance.StopMusic("TestMusic");
+        AudioManager.Instance.Stop("TestMusic");
         SceneController.Instance.LoadSpecific(0);
     }
 

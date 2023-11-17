@@ -1,135 +1,120 @@
-using System;
+using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
-
-//public class AudioManager : MonoBehaviour
-//{
-//    public static AudioManager Instance { get; internal set; }
-//    private void Awake() { if (!Instance) Instance = this; }
-//}
-
-[Serializable]
-public class Sound
-{
-    public void Play()
-    {
-        AudioManager.Instance.PlaySFX(nameIt);
-    }
-
-    public string nameIt;
-    public AudioClip clip;
-    public bool isLoopable;
-}
+using UnityEngine.Audio;
+using static Unity.VisualScripting.Member;
 
 public class AudioManager : MonoBehaviour
 {
-    public static AudioManager Instance;
+    public static AudioManager Instance { get; private set; }
 
-    public Sound[] music, sounds;
-    public AudioSource musicSource, soundSource;
+    public Dictionary<string, Stem> Stems = new();
+    [field: SerializeField] public GameObject AudioObject { get; set; }
+    [field: SerializeField] public string AudioPath { get; set; } // This has to be relative to the Resource folder (I:E in it) 
+    [field: SerializeField] public AudioMixerGroup MusicMixer { get; set; } = null;
+    [field: SerializeField] public AudioMixerGroup SFXMixer { get; set; } = null;
 
-    private void Awake()
+    private void Awake() => Instance = this;
+    
+    void Start()
     {
-        if (Instance == null)
+        if(!AudioObject) { Debug.LogWarning("No Audio Object! (There will be no audio!)"); }
+
+        Stem[] stems = Resources.LoadAll<Stem>(AudioPath);
+
+        foreach(Stem stem in stems)
         {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-            return;
-        }
+            AudioSource source = AudioObject.AddComponent<AudioSource>();
+            source.clip = stem.Clip;
+            stem.source = source;
 
-        Destroy(this); // ...but why though?
+            RouteStem(stem);
+
+            if (stem.FriendlyName == "" || Stems.ContainsKey(stem.FriendlyName))
+                Stems.Add(stem.Clip.name, stem);
+            else
+                Stems.Add(stem.FriendlyName, stem);
+        }
     }
 
-    public void PlayMusic(string name)
+    private void RouteStem(Stem stem) // Call after assigning source to stem
     {
-        Sound s = Array.Find(music, x => x.nameIt == name);
-
-        if (s == null)
+        if (!MusicMixer || !SFXMixer) return;
+        switch (stem.ClipType)
         {
-            Debug.Log(name + " not found in array: " + music.ToString() + "!", this);
-            return;
+            case StemType.Music: stem.source.outputAudioMixerGroup = MusicMixer; break;
+            case StemType.SFX: stem.source.outputAudioMixerGroup = SFXMixer; break;
+            default: break;
         }
-
-        musicSource.clip = s.clip;
-
-        if (s.isLoopable)
-            musicSource.loop = true;
-
-        musicSource.Play();
     }
 
-    public void StopMusic(string name)
+    internal void Play(string clip)
     {
-        Sound s = Array.Find(music, x => x.nameIt == name);
+        Stem stem;
+        bool exists = Stems.TryGetValue(clip, out stem);
+        if (exists)
+            stem.Play();
+    }
 
-        if (s == null)
+    internal void PlaySFX(string clip)
+    {
+        Stem stem;
+        bool exists = Stems.TryGetValue(clip, out stem);
+        if (exists)
+            stem.PlayAsSFX();
+    }
+
+    internal void Stop(string clip)
+    {
+        Stem stem;
+        bool exists = Stems.TryGetValue(clip, out stem);
+        if (exists)
+            stem.Stop();
+    }
+
+    internal void Pause(string clip)
+    {
+        Stem stem;
+        bool exists = Stems.TryGetValue(clip, out stem);
+        if (exists)
+            stem.Pause();
+    }
+
+    internal void UnPause(string clip)
+    {
+        Stem stem;
+        bool exists = Stems.TryGetValue(clip, out stem);
+        if (exists)
+            stem.UnPause();
+    }
+
+    internal void FadeIn(string clip, float timeInSeconds = 2)
+    {
+        Stem stem;
+        bool exists = Stems.TryGetValue(clip, out stem);
+        if (exists)
+            stem.FadeIn(timeInSeconds);
+    }
+
+    internal void FadeOut(string clip, float timeInSeconds = 2)
+    {
+        Stem stem;
+        bool exists = Stems.TryGetValue(clip, out stem);
+        if (exists)
+            stem.FadeOut(timeInSeconds);
+    }
+
+    internal void Crossfade(string clipA, string clipB, float timeInSeconds = 2) // ClipA is fade in, ClipB is fadeout
+    {
+        Stem stemA;
+        Stem stemB;
+        bool existsA = Stems.TryGetValue(clipA, out stemA);
+        bool existsB = Stems.TryGetValue(clipB, out stemB);
+        if (existsA && existsB)
         {
-            Debug.Log(name + " not found in array: " + music.ToString() + "!", this);
-            return;
+            stemA.FadeIn(timeInSeconds);
+            stemB.FadeOut(timeInSeconds);
         }
-
-        if (s.clip != musicSource.clip)
-        {
-            Debug.Log(name = "'s clip isn't equal to " + musicSource.name + "'s clip!", this);
-            return;
-        }
-
-        if (!musicSource.isPlaying)
-        {
-            Debug.Log(musicSource.name + " isn't playing any music!", this);
-            return;
-        }
-
-        musicSource.Stop();
-    }
-
-    public void PlaySFX(string name)
-    {
-        Sound s = Array.Find(sounds, x => x.nameIt == name);
-
-        if (s == null)
-        {
-            Debug.Log(name + " not found in array: " + sounds.ToString() + "!", this);
-            return;
-        }
-
-        if (soundSource.isPlaying)
-            return;
-
-        soundSource.loop = s.isLoopable;
-        soundSource.clip = s.clip;
-        soundSource.Play();
-    }
-
-    public void ToggleLoopableAudio()
-    {
-        musicSource.mute = !musicSource.mute;
-
-    }
-    public void ToggleSFX()
-    {
-        soundSource.mute = !soundSource.mute;
-
-    }
-}
-
-[CreateAssetMenu(menuName = "scriptableObjects/SFX", fileName = "SFX")]
-public class SFX : ScriptableObject
-{
-    public virtual void Play()
-    {
-        AudioManager.Instance.PlaySFX(nameIt);
-    }
-
-    public string nameIt;
-    public AudioClip clip;
-    public bool isLoopable;
-}
-
-[CreateAssetMenu(menuName = "scriptableObjects/Music", fileName = "Music")]
-public class Music : SFX
-{
-    public override void Play()
-    {
-        AudioManager.Instance.PlayMusic(nameIt);
     }
 }
