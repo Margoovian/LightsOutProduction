@@ -1270,12 +1270,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!82 &300652092 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 4137352001182381047, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
-    type: 3}
-  m_PrefabInstance: {fileID: 494113452}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &323406795 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8283319524239909344, guid: e25616cada009b54894dc2c11d4fdd42,
@@ -1327,6 +1321,12 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!82 &365175075 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6618699669018846888, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
+    type: 3}
+  m_PrefabInstance: {fileID: 494113452}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &425248614
 GameObject:
   m_ObjectHideFlags: 0
@@ -1730,6 +1730,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1542532855439216240, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
         type: 3}
+      propertyPath: <Scenes>k__BackingField.Array.data[6].Name
+      value: FireplaceRoom_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1542532855439216240, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
+        type: 3}
       propertyPath: <Scenes>k__BackingField.Array.data[0].LoadOrder
       value: -1
       objectReference: {fileID: 0}
@@ -1760,6 +1765,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1542532855439216240, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
         type: 3}
+      propertyPath: <Scenes>k__BackingField.Array.data[6].LoadOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1542532855439216240, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
+        type: 3}
       propertyPath: <Scenes>k__BackingField.Array.data[0].Pool.Array.size
       value: 0
       objectReference: {fileID: 0}
@@ -1767,6 +1777,11 @@ PrefabInstance:
         type: 3}
       propertyPath: <Scenes>k__BackingField.Array.data[1].Pool.Array.size
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1542532855439216240, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
+        type: 3}
+      propertyPath: <Scenes>k__BackingField.Array.data[2].Pool.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1542532855439216240, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
         type: 3}
@@ -1802,6 +1817,11 @@ PrefabInstance:
         type: 3}
       propertyPath: <Scenes>k__BackingField.Array.data[1].Pool.Array.data[3]
       value: Art_Test
+      objectReference: {fileID: 0}
+    - target: {fileID: 1542532855439216240, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
+        type: 3}
+      propertyPath: <Scenes>k__BackingField.Array.data[2].Pool.Array.data[0]
+      value: Easy_2
       objectReference: {fileID: 0}
     - target: {fileID: 1542532855439216240, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
         type: 3}
@@ -1847,12 +1867,12 @@ PrefabInstance:
         type: 3}
       propertyPath: musicSource
       value: 
-      objectReference: {fileID: 1444293827}
+      objectReference: {fileID: 365175075}
     - target: {fileID: 6629401664964146712, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
         type: 3}
       propertyPath: soundSource
       value: 
-      objectReference: {fileID: 300652092}
+      objectReference: {fileID: 763672334}
     - target: {fileID: 6629401664964146712, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
         type: 3}
       propertyPath: music.Array.size
@@ -2704,6 +2724,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &763672334 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4238951710681319679, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
+    type: 3}
+  m_PrefabInstance: {fileID: 494113452}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &789439828
 GameObject:
   m_ObjectHideFlags: 0
@@ -4518,12 +4544,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1439881021}
   m_PrefabAsset: {fileID: 0}
---- !u!82 &1444293827 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 418843684137519927, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
-    type: 3}
-  m_PrefabInstance: {fileID: 494113452}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1467066870
 GameObject:
   m_ObjectHideFlags: 0
@@ -4885,16 +4905,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventParams:
-  - Title: < Playing >
-    Body: Would you like to start from the beginning?
-    ApplyBtnText: Sure!
-    DenyBtnText: Nah...
-    EventName: play
-  - Title: < Leaving >
-    Body: Are you sure you want to leave? ... Don't you want to help Ruben?
-    ApplyBtnText: I changed my mind.
-    DenyBtnText: Not really... no.
-    EventName: leaving
+    Title: 
+    Body: 
+    ApplyBtnText: 
+    DenyBtnText: 
+    EventName: 
   playButton: {fileID: 102968504}
   optionsButton: {fileID: 560200201}
   leaveButton: {fileID: 1307157018}
