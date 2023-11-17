@@ -54789,6 +54789,7 @@ GameObject:
   - component: {fileID: 1704303118}
   - component: {fileID: 1704303120}
   - component: {fileID: 1704303119}
+  - component: {fileID: 1704303121}
   m_Layer: 0
   m_Name: FloorTile
   m_TagString: Untagged
@@ -54860,6 +54861,20 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1704303117}
+  m_Mesh: {fileID: 6946868759442727253, guid: 4bac3139198716940919cf93a9ec76c8, type: 3}
+--- !u!64 &1704303121
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1704303117}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: 6946868759442727253, guid: 4bac3139198716940919cf93a9ec76c8, type: 3}
 --- !u!1 &1705974427
 GameObject:
