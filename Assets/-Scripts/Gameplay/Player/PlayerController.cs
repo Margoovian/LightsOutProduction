@@ -76,11 +76,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_moveDirection.x != 0 || _moveDirection.y != 0)
-            AudioManager.Instance.PlaySFX("Footsteps");
-        else
-            AudioManager.Instance.StopSFX("Footsteps");
-
         _characterController.Move(new Vector3(_moveDirection.x * CharacterSpeed, -Gravity, _moveDirection.y * CharacterSpeed) * Time.deltaTime);
 
         if (_fearTime >= GameManager.Instance.GameSettings.FearTickRate)

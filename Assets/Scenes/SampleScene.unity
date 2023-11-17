@@ -444,6 +444,16 @@ PrefabInstance:
       propertyPath: <DefaultState>k__BackingField
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7597031337152258746, guid: 115a4f666a1d65a41b3ffceef51c8257,
+        type: 3}
+      propertyPath: <LightVolumes>k__BackingField.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7597031337152258746, guid: 115a4f666a1d65a41b3ffceef51c8257,
+        type: 3}
+      propertyPath: <LightVolumes>k__BackingField.Array.data[0]
+      value: 
+      objectReference: {fileID: 765294732}
     - target: {fileID: 8940999277910706598, guid: 115a4f666a1d65a41b3ffceef51c8257,
         type: 3}
       propertyPath: m_Name
@@ -669,7 +679,7 @@ MonoBehaviour:
   <OffMaterial>k__BackingField: {fileID: 2100000, guid: 7ec4e7373ac023f42bc829945cdcdf38,
     type: 2}
   <DefaultState>k__BackingField: 1
-  <LightVolume>k__BackingField: {fileID: 0}
+  <LightVolumes>k__BackingField: []
 --- !u!65 &135930569
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1731,7 +1741,7 @@ MonoBehaviour:
   <OffMaterial>k__BackingField: {fileID: 2100000, guid: 7ec4e7373ac023f42bc829945cdcdf38,
     type: 2}
   <DefaultState>k__BackingField: 1
-  <LightVolume>k__BackingField: {fileID: 0}
+  <LightVolumes>k__BackingField: []
 --- !u!65 &342224280
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2028,7 +2038,7 @@ MonoBehaviour:
   <OffMaterial>k__BackingField: {fileID: 2100000, guid: 7ec4e7373ac023f42bc829945cdcdf38,
     type: 2}
   <DefaultState>k__BackingField: 1
-  <LightVolume>k__BackingField: {fileID: 0}
+  <LightVolumes>k__BackingField: []
 --- !u!65 &390965184
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2486,6 +2496,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 494183800}
   m_Mesh: {fileID: 6078955504782685818, guid: 52ded330d15ce8b41818e9419a1de22b, type: 3}
+--- !u!82 &508150547 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4238951710681319679, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
+    type: 3}
+  m_PrefabInstance: {fileID: 1101372155}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &518450980
 GameObject:
   m_ObjectHideFlags: 0
@@ -4733,7 +4749,7 @@ MonoBehaviour:
   <OffMaterial>k__BackingField: {fileID: 2100000, guid: 7ec4e7373ac023f42bc829945cdcdf38,
     type: 2}
   <DefaultState>k__BackingField: 1
-  <LightVolume>k__BackingField: {fileID: 0}
+  <LightVolumes>k__BackingField: []
 --- !u!65 &776122795
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4932,7 +4948,7 @@ MonoBehaviour:
   <OffMaterial>k__BackingField: {fileID: 2100000, guid: 7ec4e7373ac023f42bc829945cdcdf38,
     type: 2}
   <DefaultState>k__BackingField: 1
-  <LightVolume>k__BackingField: {fileID: 0}
+  <LightVolumes>k__BackingField: []
 --- !u!65 &820739740
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5444,7 +5460,7 @@ MonoBehaviour:
   <OffMaterial>k__BackingField: {fileID: 2100000, guid: 7ec4e7373ac023f42bc829945cdcdf38,
     type: 2}
   <DefaultState>k__BackingField: 1
-  <LightVolume>k__BackingField: {fileID: 0}
+  <LightVolumes>k__BackingField: []
 --- !u!65 &938898045
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5560,7 +5576,7 @@ MonoBehaviour:
   <OffMaterial>k__BackingField: {fileID: 2100000, guid: 7ec4e7373ac023f42bc829945cdcdf38,
     type: 2}
   <DefaultState>k__BackingField: 1
-  <LightVolume>k__BackingField: {fileID: 0}
+  <LightVolumes>k__BackingField: []
   <InteractionRange>k__BackingField: 0.65
 --- !u!65 &953428913
 BoxCollider:
@@ -5926,7 +5942,7 @@ MonoBehaviour:
   <OffMaterial>k__BackingField: {fileID: 2100000, guid: 7ec4e7373ac023f42bc829945cdcdf38,
     type: 2}
   <DefaultState>k__BackingField: 1
-  <LightVolume>k__BackingField: {fileID: 0}
+  <LightVolumes>k__BackingField: []
 --- !u!65 &1023738560
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6160,6 +6176,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Scene Essentials
       objectReference: {fileID: 0}
+    - target: {fileID: 6629401664964146712, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
+        type: 3}
+      propertyPath: musicSource
+      value: 
+      objectReference: {fileID: 1877625231}
+    - target: {fileID: 6629401664964146712, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
+        type: 3}
+      propertyPath: soundSource
+      value: 
+      objectReference: {fileID: 508150547}
     - target: {fileID: 7966588693149933208, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
         type: 3}
       propertyPath: field of view
@@ -6459,7 +6485,7 @@ MonoBehaviour:
   <OffMaterial>k__BackingField: {fileID: 2100000, guid: 7ec4e7373ac023f42bc829945cdcdf38,
     type: 2}
   <DefaultState>k__BackingField: 1
-  <LightVolume>k__BackingField: {fileID: 0}
+  <LightVolumes>k__BackingField: []
 --- !u!65 &1227229076
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7398,7 +7424,7 @@ MonoBehaviour:
   <OffMaterial>k__BackingField: {fileID: 2100000, guid: 7ec4e7373ac023f42bc829945cdcdf38,
     type: 2}
   <DefaultState>k__BackingField: 1
-  <LightVolume>k__BackingField: {fileID: 0}
+  <LightVolumes>k__BackingField: []
   <InteractionRange>k__BackingField: 0.65
 --- !u!65 &1477295262
 BoxCollider:
@@ -8028,7 +8054,7 @@ MonoBehaviour:
   <OffMaterial>k__BackingField: {fileID: 2100000, guid: 7ec4e7373ac023f42bc829945cdcdf38,
     type: 2}
   <DefaultState>k__BackingField: 1
-  <LightVolume>k__BackingField: {fileID: 0}
+  <LightVolumes>k__BackingField: []
 --- !u!65 &1669660106
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8277,6 +8303,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1780294716}
   m_Mesh: {fileID: 4068373912626513877, guid: c70aea6b161583b47bc0c9a7f0543730, type: 3}
+--- !u!82 &1877625231 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6618699669018846888, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
+    type: 3}
+  m_PrefabInstance: {fileID: 1101372155}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1886916498
 GameObject:
   m_ObjectHideFlags: 0
@@ -8314,7 +8346,7 @@ MonoBehaviour:
   <OffMaterial>k__BackingField: {fileID: 2100000, guid: 7ec4e7373ac023f42bc829945cdcdf38,
     type: 2}
   <DefaultState>k__BackingField: 1
-  <LightVolume>k__BackingField: {fileID: 0}
+  <LightVolumes>k__BackingField: []
 --- !u!65 &1886916500
 BoxCollider:
   m_ObjectHideFlags: 0
