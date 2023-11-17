@@ -115,6 +115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GlowToyLight: {fileID: 3267368749233999573}
   BatteryUIRenderer: {fileID: 627237785721865408}
+  <Animator>k__BackingField: {fileID: 1442136420990596715}
   BatteryUISprites:
   - sprite: {fileID: 21300000, guid: ab5a35936e7f25c44be74ac4360c7e3e, type: 3}
     percentage: 100
@@ -569,7 +570,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: CM_Ruben_006
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5866666021909216657, guid: efa03b30269567148907bc625efa8814, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: efa03b30269567148907bc625efa8814, type: 3}
 --- !u!1 &2391981378667676552 stripped
 GameObject:
