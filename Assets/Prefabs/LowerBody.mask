@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: LowerBody
+  m_Mask: 01000000000000000000000001000000010000000000000000000000000000000000000001000000010000000000000000000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: JNT_Root
+    m_Weight: 1
+  - m_Path: JNT_Root/JNT_Pelvis
+    m_Weight: 1
+  - m_Path: JNT_Root/JNT_Pelvis/JNT_Hip_L
+    m_Weight: 1
+  - m_Path: JNT_Root/JNT_Pelvis/JNT_Hip_L/JNT_Knee_L
+    m_Weight: 1
+  - m_Path: JNT_Root/JNT_Pelvis/JNT_Hip_L/JNT_Knee_L/JNT_Foot_L
+    m_Weight: 1
+  - m_Path: JNT_Root/JNT_Pelvis/JNT_Hip_R
+    m_Weight: 1
+  - m_Path: JNT_Root/JNT_Pelvis/JNT_Hip_R/JNT_Knee_R
+    m_Weight: 1
+  - m_Path: JNT_Root/JNT_Pelvis/JNT_Hip_R/JNT_Knee_R/JNT_Foot_R
+    m_Weight: 1
+  - m_Path: JNT_Root/JNT_Pelvis/JNT_Spine
+    m_Weight: 0
+  - m_Path: JNT_Root/JNT_Pelvis/JNT_Spine/JNT_Chest
+    m_Weight: 0
+  - m_Path: JNT_Root/JNT_Pelvis/JNT_Spine/JNT_Chest/JNT_Neck
+    m_Weight: 0
+  - m_Path: JNT_Root/JNT_Pelvis/JNT_Spine/JNT_Chest/JNT_Neck/JNT_Head
+    m_Weight: 0
+  - m_Path: JNT_Root/JNT_Pelvis/JNT_Spine/JNT_Chest/JNT_Neck/JNT_Head/JNT_Hat0
+    m_Weight: 0
+  - m_Path: JNT_Root/JNT_Pelvis/JNT_Spine/JNT_Chest/JNT_Neck/JNT_Head/JNT_Hat0/JNT_Hat1
+    m_Weight: 0
+  - m_Path: JNT_Root/JNT_Pelvis/JNT_Spine/JNT_Chest/JNT_Neck/JNT_Head/JNT_Hat0/JNT_Hat1/JNT_Hat2
+    m_Weight: 0
+  - m_Path: JNT_Root/JNT_Pelvis/JNT_Spine/JNT_Chest/JNT_Shoulder_L
+    m_Weight: 0
+  - m_Path: JNT_Root/JNT_Pelvis/JNT_Spine/JNT_Chest/JNT_Shoulder_L/JNT_Elbow_L
+    m_Weight: 0
+  - m_Path: JNT_Root/JNT_Pelvis/JNT_Spine/JNT_Chest/JNT_Shoulder_L/JNT_Elbow_L/JNT_Hand_L
+    m_Weight: 0
+  - m_Path: JNT_Root/JNT_Pelvis/JNT_Spine/JNT_Chest/JNT_Shoulder_R
+    m_Weight: 0
+  - m_Path: JNT_Root/JNT_Pelvis/JNT_Spine/JNT_Chest/JNT_Shoulder_R/JNT_Elbow_R
+    m_Weight: 0
+  - m_Path: JNT_Root/JNT_Pelvis/JNT_Spine/JNT_Chest/JNT_Shoulder_R/JNT_Elbow_R/JNT_Hand_R
+    m_Weight: 0
+  - m_Path: Ruben_Mesh
+    m_Weight: 0
