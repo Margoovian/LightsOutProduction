@@ -39,8 +39,11 @@ public class PlayerController : MonoBehaviour
     private float _fearTime;
     private Vector2 _moveDirection;
     private CharacterController _characterController;
+    private Animator _animator;
 
     [field: SerializeField] public float Gravity { get; set; }
+
+    public void Footstep(int index) => AudioManager.Instance.PlaySFX("FootStep" + index.ToString());
 
     private void OnEnable() {
         HelperFunctions.WaitForTask(WaitForManagers(), () =>
@@ -70,17 +73,13 @@ public class PlayerController : MonoBehaviour
     {
         name = "Player";
         _characterController = GetComponent<CharacterController>();
+        _animator = GetComponent<Animator>();
         CharacterSpeed = GameManager.Instance.GameSettings.PlayerBaseSpeed;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if (_moveDirection.x != 0 || _moveDirection.y != 0)
-            AudioManager.Instance.PlaySFX("Footsteps");
-        else
-            AudioManager.Instance.StopSFX("Footsteps");
-
+        _animator.SetBool("IsWalking", _moveDirection.x != 0 || _moveDirection.y != 0);
         _characterController.Move(new Vector3(_moveDirection.x * CharacterSpeed, -Gravity, _moveDirection.y * CharacterSpeed) * Time.deltaTime);
 
         if (_fearTime >= GameManager.Instance.GameSettings.FearTickRate)

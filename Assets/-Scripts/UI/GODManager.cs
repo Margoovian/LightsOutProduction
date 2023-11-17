@@ -13,17 +13,8 @@ public class GODManager : MonoBehaviour
         PlayerData.Instance.BatteryLife = GameManager.Instance.GameSettings.GlowToyMaxBattery;
     }
 
-    private void RestartSelected()
-    {
-        Debug.Log(SceneController.Instance.GetCurrentIndex());
-        SceneController.Instance.LoadSpecific(SceneController.Instance.GetCurrentIndex(), ResetVariables);
-    }
-
-    private void BackSelected()
-    {
-        Debug.Log(SceneController.Instance.GetStartIndex());
-        SceneController.Instance.LoadSpecific(SceneController.Instance.GetStartIndex(), ResetVariables);
-    }
+    private void RestartSelected() => SceneController.Instance.LoadSpecific(SceneController.Instance.GetCurrentIndex(), ResetVariables);
+    private void BackSelected() => SceneController.Instance.LoadSpecific(SceneController.Instance.GetStartIndex(), ResetVariables);
 
     private void Start()
     {
