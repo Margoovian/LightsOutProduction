@@ -29,7 +29,7 @@ AudioMixerGroupController:
   m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: -1523983448731539159}
-  m_UserColorIndex: 0
+  m_UserColorIndex: 3
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
@@ -48,7 +48,7 @@ AudioMixerGroupController:
   m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: -8141651647507241467}
-  m_UserColorIndex: 0
+  m_UserColorIndex: 1
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
@@ -81,7 +81,13 @@ AudioMixerController:
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
   m_UpdateMode: 0
-  m_ExposedParameters: []
+  m_ExposedParameters:
+  - guid: f1929db31f2a38b4ab991525e9c72a86
+    name: ExposedMasterVolume
+  - guid: 700ef3593f556ce41aa477edeb209508
+    name: ExposedMusicVolume
+  - guid: 7b5fa36ebb28c704288568e244b84a04
+    name: ExposedSoundVolume
   m_AudioMixerGroupViews:
   - guids:
     - 67e5132815b29d548966f07da66891f2
@@ -100,14 +106,14 @@ AudioMixerGroupController:
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 67e5132815b29d548966f07da66891f2
   m_Children:
-  - {fileID: -2958962885310635547}
   - {fileID: -2412039025560733703}
+  - {fileID: -2958962885310635547}
   m_Volume: f1929db31f2a38b4ab991525e9c72a86
   m_Pitch: ad5672d7ffd05a34195125bb5d48ac67
   m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: 24400004}
-  m_UserColorIndex: 0
+  m_UserColorIndex: 8
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0

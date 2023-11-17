@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public bool isInLight { get; set; }
+    [field: SerializeField] public GameObject Model { get; set; }
     public float CharacterSpeed { 
         get 
         {
@@ -25,7 +26,8 @@ public class PlayerController : MonoBehaviour
         get => GameManager.Instance.PlayerData.FearLevel; 
         
         set {
-            if (!GameManager.Instance.GameSettings.EnableGodMode)
+            if (PlayerData.Instance.InMenu) return;
+            if (!GameManager.Instance.GameSettings.EnableGodMode )
             {
                 GameManager.Instance.PlayerData.FearLevel = value;
                 return;
@@ -74,11 +76,16 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (_moveDirection.x != 0 || _moveDirection.y != 0)
+            AudioManager.Instance.PlaySFX("Footsteps");
+        else
+            AudioManager.Instance.StopSFX("Footsteps");
+
         _characterController.Move(new Vector3(_moveDirection.x * CharacterSpeed, -Gravity, _moveDirection.y * CharacterSpeed) * Time.deltaTime);
 
         if (_fearTime >= GameManager.Instance.GameSettings.FearTickRate)
         {
-            if (isInLight) 
+            if (isInLight || PlayerData.Instance.ToyOn) 
                 Fear = Mathf.Clamp(Fear - GameManager.Instance.GameSettings.FearTickAmount, 0, GameManager.Instance.GameSettings.MaxFear);
             else 
                 Fear = Mathf.Clamp(Fear + GameManager.Instance.GameSettings.FearTickAmount, 0, GameManager.Instance.GameSettings.MaxFear);
@@ -86,8 +93,18 @@ public class PlayerController : MonoBehaviour
             _fearTime = 0;
         }
         
-        else 
+        else
             _fearTime += Time.deltaTime;
+            _fearTime += Time.deltaTime;
+
+        if (_moveDirection.magnitude > 0)
+        {
+            float radian = Mathf.Atan2(_moveDirection.y, _moveDirection.x * -1);
+            float degree = 180 * radian / Mathf.PI;
+            float rotation = (360 + Mathf.Round(degree)) % 360;
+
+            Model.transform.rotation = Quaternion.Euler(-20,rotation-90, 0);
+        }
     }
 
     private void Move(Vector2 direction) => _moveDirection = direction;

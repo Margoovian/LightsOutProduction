@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -35,8 +36,10 @@ public class SceneController : MonoBehaviour
 
     public static SceneController Instance { get; internal set; }
     [field: SerializeField] public SceneCombo[] Scenes { get; set; }
-    internal int _currentLevel = -1;
     public Dictionary<int, SceneCombo> SceneGlossary = new();
+
+    internal int _startLevel = -1;
+    internal int _currentLevel;
 
     private void Awake() {
         if (!Instance)
@@ -53,6 +56,8 @@ public class SceneController : MonoBehaviour
 
     internal void Initialize()
     {
+        _currentLevel = _startLevel;
+
         foreach(SceneCombo combo in Scenes)
         {
             if (SceneGlossary.ContainsKey(combo.LoadOrder)) 
@@ -66,18 +71,40 @@ public class SceneController : MonoBehaviour
         SceneManager.sceneUnloaded += OnSceneUnloaded;
     }
 
-    public void NextLevel(Action beforeLoad = null)
+    public int GetStartIndex()
+    {
+        return _startLevel;
+    }
+
+    public int GetCurrentIndex()
+    {
+        return _currentLevel;
+    }
+
+    public async void NextLevel(Func<Task> beforeLoad = null, Func<Task> afterLoad = null, Action beforeAction = null, Action afterAction = null)
     {
         if (!SceneGlossary.ContainsKey(_currentLevel + 1))
         { 
             Debug.LogWarning("No More Levels!"); 
-            return; 
+            return;
         }
 
-        beforeLoad?.Invoke();
+        if (beforeLoad != null)
+        {
+            Task output = beforeLoad?.Invoke();
+            if (output != null) await output;
+            beforeAction?.Invoke();
+        }
         Instance._currentLevel += 1;
 
         TryLoadRandom(_currentLevel);
+        if (afterLoad != null)
+        {
+            Task output = afterLoad?.Invoke();
+            if (output != null) await output;
+            afterAction?.Invoke();
+        }
+
     }
 
     public void LoadSpecific(int level, Action beforeLoad = null)
@@ -92,20 +119,6 @@ public class SceneController : MonoBehaviour
         TryLoadRandom(level);
 
         Instance._currentLevel = level;
-    }
-
-    public void LoadSpecificAndTransfer(int level)
-    {
-        LoadSpecific(level);
-
-        // this gets the scene loaded previously, not the currently active scene, please fix asap!
-        Scene currentScene = SceneManager.GetActiveScene();
-
-        Debug.Log("Reading From Scene: " + currentScene.name);
-        foreach (GameObject i in currentScene.GetRootGameObjects())
-        {
-            Debug.Log(i.name);
-        }
     }
 
     public void LoadScene(string scene) => SceneManager.LoadScene(scene);
