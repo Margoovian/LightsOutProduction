@@ -15,9 +15,13 @@ public class AudioManager : MonoBehaviour
     [field: SerializeField] public AudioMixerGroup MusicMixer { get; set; } = null;
     [field: SerializeField] public AudioMixerGroup SFXMixer { get; set; } = null;
 
-    private void Awake() => Instance = this;
-    
-    void Start()
+    private void Awake() {
+        if (!Instance)
+            Instance = this;
+        Initialize();
+    }
+
+    void Initialize ()
     {
         if(!AudioObject) { Debug.LogWarning("No Audio Object! (There will be no audio!)"); }
 
