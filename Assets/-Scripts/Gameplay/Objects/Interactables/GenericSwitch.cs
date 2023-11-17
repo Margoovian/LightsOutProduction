@@ -39,20 +39,21 @@ public class GenericSwitch : MonoBehaviour, ISwitch, IInteractable
     public virtual void Evaluate()
     {
         PlayerController player;
+        
         if (!GameManager.Instance.TryGetPlayer(out player)) return;
         if (Vector3.Distance(player.transform.position, gameObject.transform.position) > InteractionRange) return;
-        Interact();
 
+        Interact();
     }
 
     private void InteractWrapper(bool var) => Evaluate();
     public virtual void Interact()
     {
         foreach (GenericLight light in _lights)
-        {
             light?.Toggle();
-        }
+
         Event?.Invoke(true);
+        AudioManager.Instance.PlaySFX("Switch");
     }
 
     private void OnDrawGizmosSelected()
