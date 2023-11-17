@@ -57,7 +57,7 @@ public class SplashManager : MonoBehaviour
             titleUI.SetActive(true);
 
         if (MusicName != string.Empty)
-            AudioManager.Instance.PlayMusic(MusicName);
+            AudioManager.Instance.Play(MusicName);
 
         Task _ = FadeImage(logo, false);
         
