@@ -12,7 +12,7 @@ public class Stem : ScriptableObject
     [field: SerializeField, Tooltip("The Type of Audio Clip")] public StemType ClipType { get; set; }
     [field: SerializeField, Range(0, 1), Tooltip("Audios Natural Volume")] public float GlobalVolume { get; set; } = 1;  
     [field: SerializeField, Range(-3, 3), Tooltip("If Negative Audio is Reversed")] public float Pitch { get; set; } = 1;
-    [field: SerializeField, Range(-3, 1), Tooltip("Audio Left to Right")] public float Pan { get; set; } = 0;
+    [field: SerializeField, Range(-1, 1), Tooltip("Audio Left to Right")] public float Pan { get; set; } = 0;
     [field: SerializeField, Tooltip("Start Offset")] public float StartPosition { get; set; }
     [field: SerializeField, Tooltip("Does The Audio Loop?")] public bool IsLoop { get; set; }
 
