@@ -8302,6 +8302,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 342322782}
   m_Mesh: {fileID: 1585134276705639935, guid: 2f15e90c66069224993fe94c1a6da5d3, type: 3}
+--- !u!114 &343249158 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3019460918830265045, guid: 3293755b4ba70e9459000592f9580b4c,
+    type: 3}
+  m_PrefabInstance: {fileID: 670419923}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97c4293889f1d18428a2a563bebded5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &344557431
 GameObject:
   m_ObjectHideFlags: 0
@@ -9091,6 +9103,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 401055335}
   m_Mesh: {fileID: 1585134276705639935, guid: 2f15e90c66069224993fe94c1a6da5d3, type: 3}
+--- !u!114 &409619509 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7800560404392374438, guid: 3293755b4ba70e9459000592f9580b4c,
+    type: 3}
+  m_PrefabInstance: {fileID: 670419923}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97c4293889f1d18428a2a563bebded5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &419553231
 GameObject:
   m_ObjectHideFlags: 0
@@ -12578,6 +12602,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.x
       value: -8.564
       objectReference: {fileID: 0}
+    - target: {fileID: 2033100700055482093, guid: 3293755b4ba70e9459000592f9580b4c,
+        type: 3}
+      propertyPath: <SwitchCombos>k__BackingField.Array.data[0].<Switch>k__BackingField
+      value: 
+      objectReference: {fileID: 409619509}
+    - target: {fileID: 2033100700055482093, guid: 3293755b4ba70e9459000592f9580b4c,
+        type: 3}
+      propertyPath: <SwitchCombos>k__BackingField.Array.data[1].<Switch>k__BackingField
+      value: 
+      objectReference: {fileID: 343249158}
+    - target: {fileID: 2033100700055482093, guid: 3293755b4ba70e9459000592f9580b4c,
+        type: 3}
+      propertyPath: <SwitchCombos>k__BackingField.Array.data[2].<Switch>k__BackingField
+      value: 
+      objectReference: {fileID: 2056606549}
     - target: {fileID: 2323292345257390262, guid: 3293755b4ba70e9459000592f9580b4c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12642,6 +12681,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6069526298576249533, guid: 3293755b4ba70e9459000592f9580b4c,
+        type: 3}
+      propertyPath: <DefaultState>k__BackingField
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6252264515524059817, guid: 3293755b4ba70e9459000592f9580b4c,
         type: 3}
@@ -12727,6 +12771,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Switch Puzzle Easy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8637170276399757289, guid: 3293755b4ba70e9459000592f9580b4c,
+        type: 3}
+      propertyPath: <DefaultState>k__BackingField
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8760041567862786685, guid: 3293755b4ba70e9459000592f9580b4c,
         type: 3}
@@ -14526,6 +14575,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Switch Puzzle Medium
       objectReference: {fileID: 0}
+    - target: {fileID: 2542740186606588443, guid: 5a53ea785d295b443ade469de37e49b7,
+        type: 3}
+      propertyPath: <SwitchCombos>k__BackingField.Array.data[1].<RequiredState>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2628816263151407708, guid: 5a53ea785d295b443ade469de37e49b7,
         type: 3}
       propertyPath: m_RootOrder
@@ -14685,6 +14739,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.942
+      objectReference: {fileID: 0}
+    - target: {fileID: 6478152418172984899, guid: 5a53ea785d295b443ade469de37e49b7,
+        type: 3}
+      propertyPath: <DefaultState>k__BackingField
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8283443568153729634, guid: 5a53ea785d295b443ade469de37e49b7,
         type: 3}
@@ -28059,7 +28118,7 @@ PrefabInstance:
     - target: {fileID: 4831510591918066901, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6181660766103403424, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
         type: 3}
@@ -29908,6 +29967,18 @@ Transform:
   m_Father: {fileID: 17113998}
   m_RootOrder: 69
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2056606549 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7172694802724595868, guid: 3293755b4ba70e9459000592f9580b4c,
+    type: 3}
+  m_PrefabInstance: {fileID: 670419923}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97c4293889f1d18428a2a563bebded5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2061382475
 GameObject:
   m_ObjectHideFlags: 0
