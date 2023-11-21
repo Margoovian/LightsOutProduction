@@ -73,7 +73,7 @@ MonoBehaviour:
   - sprite: {fileID: 21300000, guid: 8cfea1b32753ec3409126c67930279bb, type: 3}
     percentage: 30
   - sprite: {fileID: 21300000, guid: 37479cb9ffc68bf429abb61a70b30f4d, type: 3}
-    percentage: 0
+    percentage: 10
 --- !u!1 &5146421867992221224
 GameObject:
   m_ObjectHideFlags: 0
@@ -315,8 +315,8 @@ Transform:
   m_GameObject: {fileID: 8224177980250688461}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 7559582316727127457}
   m_RootOrder: 1
@@ -367,7 +367,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.42, y: 0.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
