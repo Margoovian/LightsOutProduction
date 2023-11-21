@@ -372,28 +372,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3017961788277489036, guid: 3a8ddabdd5fd4144fae68e69ddd0aef2,
         type: 3}
-      propertyPath: carryPreviousValue
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3017961788277489036, guid: 3a8ddabdd5fd4144fae68e69ddd0aef2,
-        type: 3}
       propertyPath: listables.Array.size
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3017961788277489036, guid: 3a8ddabdd5fd4144fae68e69ddd0aef2,
         type: 3}
       propertyPath: listables.Array.data[0].m_Text
-      value: Performant
+      value: Very Low
       objectReference: {fileID: 0}
     - target: {fileID: 3017961788277489036, guid: 3a8ddabdd5fd4144fae68e69ddd0aef2,
         type: 3}
       propertyPath: listables.Array.data[1].m_Text
-      value: Balanced
+      value: Low
       objectReference: {fileID: 0}
     - target: {fileID: 3017961788277489036, guid: 3a8ddabdd5fd4144fae68e69ddd0aef2,
         type: 3}
       propertyPath: listables.Array.data[2].m_Text
-      value: High Fidelity
+      value: Medium
       objectReference: {fileID: 0}
     - target: {fileID: 3017961788277489036, guid: 3a8ddabdd5fd4144fae68e69ddd0aef2,
         type: 3}
@@ -989,11 +984,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MusVolSlider
-      objectReference: {fileID: 0}
-    - target: {fileID: 6665382414227476717, guid: e25616cada009b54894dc2c11d4fdd42,
-        type: 3}
-      propertyPath: m_MinValue
-      value: 0.001
       objectReference: {fileID: 0}
     - target: {fileID: 8522232390552214213, guid: e25616cada009b54894dc2c11d4fdd42,
         type: 3}
@@ -1785,17 +1775,17 @@ PrefabInstance:
     - target: {fileID: 1542532855439216240, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
         type: 3}
       propertyPath: <Scenes>k__BackingField.Array.data[2].Pool.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1542532855439216240, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
         type: 3}
       propertyPath: <Scenes>k__BackingField.Array.data[3].Pool.Array.size
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1542532855439216240, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
         type: 3}
       propertyPath: <Scenes>k__BackingField.Array.data[4].Pool.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1542532855439216240, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
         type: 3}
@@ -1829,8 +1819,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1542532855439216240, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
         type: 3}
+      propertyPath: <Scenes>k__BackingField.Array.data[2].Pool.Array.data[1]
+      value: Easy_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1542532855439216240, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
+        type: 3}
       propertyPath: <Scenes>k__BackingField.Array.data[3].Pool.Array.data[0]
-      value: 
+      value: Medium_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1542532855439216240, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
+        type: 3}
+      propertyPath: <Scenes>k__BackingField.Array.data[3].Pool.Array.data[1]
+      value: Medium_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1542532855439216240, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
+        type: 3}
+      propertyPath: <Scenes>k__BackingField.Array.data[4].Pool.Array.data[0]
+      value: Hard_2
       objectReference: {fileID: 0}
     - target: {fileID: 1973221105950864377, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
         type: 3}
@@ -3600,11 +3605,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SFXVolSlider
       objectReference: {fileID: 0}
-    - target: {fileID: 6665382414227476717, guid: e25616cada009b54894dc2c11d4fdd42,
-        type: 3}
-      propertyPath: m_MinValue
-      value: 0.001
-      objectReference: {fileID: 0}
     - target: {fileID: 8522232390552214213, guid: e25616cada009b54894dc2c11d4fdd42,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -4908,11 +4908,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventParams:
-    Title: < Leaving >
-    Body: Are you sure you want to leave? Don't you want to help Ruben?
-    ApplyBtnText: Nah... not really.
-    DenyBtnText: I guess I do...
-    EventName: leaving
+  - Title: 
+    Body: 
+    ApplyBtnText: 
+    DenyBtnText: 
+    EventName: 
+  - Title: 
+    Body: 
+    ApplyBtnText: 
+    DenyBtnText: 
+    EventName: 
+  - Title: 
+    Body: 
+    ApplyBtnText: 
+    DenyBtnText: 
+    EventName: 
+  - Title: 
+    Body: 
+    ApplyBtnText: 
+    DenyBtnText: 
+    EventName: 
+  - Title: 
+    Body: 
+    ApplyBtnText: 
+    DenyBtnText: 
+    EventName: 
   playButton: {fileID: 102968504}
   optionsButton: {fileID: 560200201}
   leaveButton: {fileID: 1307157018}
@@ -4939,11 +4959,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MasVolSlider
-      objectReference: {fileID: 0}
-    - target: {fileID: 6665382414227476717, guid: e25616cada009b54894dc2c11d4fdd42,
-        type: 3}
-      propertyPath: m_MinValue
-      value: 0.001
       objectReference: {fileID: 0}
     - target: {fileID: 8522232390552214213, guid: e25616cada009b54894dc2c11d4fdd42,
         type: 3}
