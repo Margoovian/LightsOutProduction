@@ -3780,6 +3780,16 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -2
       objectReference: {fileID: 0}
+    - target: {fileID: 6629401664964146712, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
+        type: 3}
+      propertyPath: musicSource
+      value: 
+      objectReference: {fileID: 2041267092}
+    - target: {fileID: 6629401664964146712, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
+        type: 3}
+      propertyPath: soundSource
+      value: 
+      objectReference: {fileID: 1732280501}
     - target: {fileID: 7966588693149933208, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
         type: 3}
       propertyPath: field of view
@@ -4534,6 +4544,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1708139347}
   m_Mesh: {fileID: 6078955504782685818, guid: 52ded330d15ce8b41818e9419a1de22b, type: 3}
+--- !u!82 &1732280501 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4238951710681319679, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
+    type: 3}
+  m_PrefabInstance: {fileID: 1401677997}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1768281606
 GameObject:
   m_ObjectHideFlags: 0
@@ -4695,6 +4711,32 @@ Transform:
   m_Father: {fileID: 1703774276}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1859427905 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: bfef55aa9785199428bb7b34c7a23657,
+    type: 3}
+  m_PrefabInstance: {fileID: 1924718546}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1859427907
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1859427905}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 97b21ccec8cf3b04d820e6a2638ada98, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1867675950
 GameObject:
   m_ObjectHideFlags: 0
@@ -5382,6 +5424,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2034103543}
   m_Mesh: {fileID: 6078955504782685818, guid: 52ded330d15ce8b41818e9419a1de22b, type: 3}
+--- !u!82 &2041267092 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6618699669018846888, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
+    type: 3}
+  m_PrefabInstance: {fileID: 1401677997}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2044736368
 GameObject:
   m_ObjectHideFlags: 0
