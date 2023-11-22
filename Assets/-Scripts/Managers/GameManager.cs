@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Audio;
 
 public class GameManager : MonoBehaviour
 {
@@ -7,8 +6,8 @@ public class GameManager : MonoBehaviour
     [field: SerializeField] public Cinemachine.CinemachineVirtualCamera Camera { get; set; }
     [field: SerializeField] public GameSettings GameSettings { get; set; }
     [field: SerializeField] public PlayerData PlayerData { get; set; }
-    [field: SerializeField] public AudioMixer GameMixer { get; set; }
     [field: SerializeField] public Animator SceneTransition { get; set; }
+    [field: SerializeField] public Sprite InteractSprite { get; set; }
     public PlayerController Player { get; set; }
 
     // The GODController is sorta hard-coded for the moment, sorry about that Devlyn!
