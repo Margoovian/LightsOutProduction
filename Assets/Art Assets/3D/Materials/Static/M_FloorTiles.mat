@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: M_FloorTiles
-  m_Shader: {fileID: -6465566751694194690, guid: 87f2ff9f932b50b49bed1e47a018d636,
+  m_Shader: {fileID: -6465566751694194690, guid: 7d1a0a160c127fe46b53316fbecdc8a7,
     type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -113,6 +113,7 @@ Material:
     - _DstBlend: 0
     - _Emission: 1
     - _EnvironmentReflections: 1
+    - _FrontInfluence: 0
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
@@ -130,15 +131,18 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
+    - _Tiling: 1
     - _ToonRampOffset: 0
     - _ToonRampOffsetPoint: 1
     - _ToonRampSmoothness: 1
+    - _UpInfluence: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _Position: {r: 1, g: 1, b: 1, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _ToonRampTinting: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
