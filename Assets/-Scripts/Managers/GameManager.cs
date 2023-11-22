@@ -49,7 +49,7 @@ public class GameManager : Manager<GameManager>
         {
             case GameOverType.FearWander: break;
             case GameOverType.FearWall: break;
-            case GameOverType.Timeout: break;
+            case GameOverType.Timeout: break;   // This could be an easter egg, if you stay on the start level for a long time?
             default: break;
             
         }

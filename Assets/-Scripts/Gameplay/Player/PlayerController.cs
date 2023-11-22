@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
 
     [field: SerializeField] public float Gravity { get; set; }
 
-    public void Footstep(int index) => AudioManager.Instance.PlaySFX("FootStep" + index.ToString());
+    public void Footstep(int index) { AudioManager.Instance.PlaySFX("FootStep" + index.ToString()); VFXManager.Instance.Play("Foot", transform); }
 
     private void OnEnable() {
         HelperFunctions.WaitForTask(WaitForManagers(), () =>

@@ -11,8 +11,10 @@ public class VFX : ScriptableObject
     [field: SerializeField] public float AliveTime { get; set; }
 
 
-    internal GameObject Play() {
+    internal GameObject Play(Transform position) => Play(position.position);
+    internal GameObject Play(Vector3 position) {
         GameObject obj = Instantiate(ParticalPrefab.gameObject);
+        obj.transform.position = position;
         if (DestroyAfter)
             Destroy(obj, AliveTime);
         obj.GetComponent<ParticleSystem>().Play();
@@ -20,7 +22,7 @@ public class VFX : ScriptableObject
     }
     internal GameObject Play(GameObject parent)
     {
-        GameObject obj = Play();
+        GameObject obj = Play(parent.transform);
         obj.transform.SetParent(parent.transform);
         return obj;
     }
