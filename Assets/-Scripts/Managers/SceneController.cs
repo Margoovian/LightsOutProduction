@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneController : MonoBehaviour
+public class SceneController : Manager<SceneController>
 {
     [Serializable] public class SceneCombo 
     {
@@ -34,27 +34,18 @@ public class SceneController : MonoBehaviour
         public string[] Pool;
     } 
 
-    public static SceneController Instance { get; internal set; }
     [field: SerializeField] public SceneCombo[] Scenes { get; set; }
     public Dictionary<int, SceneCombo> SceneGlossary = new();
 
     internal int _startLevel = -1;
     internal int _currentLevel;
-
-    private void Awake() {
-        if (!Instance)
-            Instance = this;
-
-        Initialize();
-    }
-
     private void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoad;
         SceneManager.sceneUnloaded -= OnSceneUnloaded;
     }
 
-    internal void Initialize()
+    protected override void Initialize()
     {
         _currentLevel = _startLevel;
 
@@ -95,7 +86,7 @@ public class SceneController : MonoBehaviour
             if (output != null) await output;
             beforeAction?.Invoke();
         }
-        Instance._currentLevel += 1;
+        _currentLevel += 1;
 
         TryLoadRandom(_currentLevel);
         if (afterLoad != null)
@@ -118,7 +109,7 @@ public class SceneController : MonoBehaviour
         beforeLoad?.Invoke();
         TryLoadRandom(level);
 
-        Instance._currentLevel = level;
+        _currentLevel = level;
     }
 
     public void LoadScene(string scene) => SceneManager.LoadScene(scene);
@@ -157,5 +148,4 @@ public class SceneController : MonoBehaviour
 
         SceneManager.LoadScene(SceneGlossary[level].Name);
     }
-
 }
