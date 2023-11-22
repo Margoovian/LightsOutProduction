@@ -215,20 +215,23 @@ public class SettingsManager : MonoBehaviour
     private void MasterSliderChanged(float value)
     {
         currentMasterVolume = value;
-        GameManager.Instance.GameMixer.SetFloat(mixerValues[0], AudioSliderCalculations(value));
+        Debug.Log(AudioSliderCalculations(value));
+        AudioManager.Instance.AudioMixer.SetFloat(mixerValues[0], AudioSliderCalculations(value));
     }
 
     private void SoundSliderChanged(float value)
     {
         currentSoundVolume = value;
-        GameManager.Instance.GameMixer.SetFloat(mixerValues[1], AudioSliderCalculations(value));
-        AudioManager.Instance.PlaySFX("TestSound");
+        AudioManager.Instance.AudioMixer.SetFloat(mixerValues[1], AudioSliderCalculations(value));
+
+        if (!AudioManager.Instance.IsPlaying("TestSound"))
+            AudioManager.Instance.Play("TestSound");
     }
 
     private void MusicSliderChanged(float value)
     {
         currentMusicVolume = value;
-        GameManager.Instance.GameMixer.SetFloat(mixerValues[2], AudioSliderCalculations(value));
+        AudioManager.Instance.AudioMixer.SetFloat(mixerValues[2], AudioSliderCalculations(value));
     }
 
     private void HudScaleSliderChanged(float value)
@@ -327,9 +330,9 @@ public class SettingsManager : MonoBehaviour
         currentSoundVolume = settings.baseSettings.soundVolume;
         currentMusicVolume = settings.baseSettings.musicVolume;
 
-        GameManager.Instance.GameMixer.SetFloat(mixerValues[0], AudioSliderCalculations(currentMasterVolume));
-        GameManager.Instance.GameMixer.SetFloat(mixerValues[1], AudioSliderCalculations(currentSoundVolume));
-        GameManager.Instance.GameMixer.SetFloat(mixerValues[2], AudioSliderCalculations(currentMusicVolume));
+        AudioManager.Instance.AudioMixer.SetFloat(mixerValues[0], AudioSliderCalculations(currentMasterVolume));
+        AudioManager.Instance.AudioMixer.SetFloat(mixerValues[1], AudioSliderCalculations(currentSoundVolume));
+        AudioManager.Instance.AudioMixer.SetFloat(mixerValues[2], AudioSliderCalculations(currentMusicVolume));
 
         currentResolution = settings.baseSettings.resolution;
         currentFullscreen = settings.baseSettings.fullscreen;

@@ -9,6 +9,7 @@ public class GenericLight : MonoBehaviour, ILight
     [field: SerializeField] public Material OffMaterial { get; set; }
     [field: SerializeField] public bool DefaultState { get; set; } = true;
     [field: SerializeField] private LightVolume[] LightVolumes { get; set; }
+    [field: SerializeField] private Light[] Lights { get; set; }
     
     protected MeshRenderer _meshRenderer;
 
@@ -40,6 +41,8 @@ public class GenericLight : MonoBehaviour, ILight
         else
             _meshRenderer.material = OffMaterial;
 
+        LevelController.Instance.UpdateLightCount();
+
         if (LightVolumes.Length == 0)
             return;
 
@@ -53,6 +56,9 @@ public class GenericLight : MonoBehaviour, ILight
             if (i.Mesh) 
                 i.Mesh.enabled = isOn;
         }
+
+        foreach (Light i in Lights)
+            i.enabled = isOn;
     }
 
     public virtual void Toggle() { isOn = !isOn; ChangeMaterial();  }

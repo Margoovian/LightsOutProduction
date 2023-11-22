@@ -9,6 +9,9 @@ public class GenericSwitch : MonoBehaviour, ISwitch, IInteractable
     public ILight[] Lights { get => _lights; set => _lights = (GenericLight[])value; }
     [SerializeField] protected GenericLight[] _lights;
 
+    private GameObject _uiHolder;
+    private SpriteRenderer _spriteRenderer;
+
     private void OnEnable()
     {
         HelperFunctions.WaitForTask(WaitForManagers(), () =>
@@ -30,18 +33,60 @@ public class GenericSwitch : MonoBehaviour, ISwitch, IInteractable
 
     private void Start()
     {
+        _uiHolder = new();
+        _uiHolder.name = "UI Holder";
+        _uiHolder.transform.SetParent(transform);
+
+        _uiHolder.transform.position = new Vector3(
+            transform.position.x + GameManager.Instance.InteractProperties.Offset.x, 
+            transform.position.y + GameManager.Instance.InteractProperties.Offset.y, 
+            transform.position.z + GameManager.Instance.InteractProperties.Offset.z
+        );
+        
+        _uiHolder.transform.localScale = new Vector2(
+            GameManager.Instance.InteractProperties.UniformScale,
+            GameManager.Instance.InteractProperties.UniformScale
+        );
+
+        _spriteRenderer = (SpriteRenderer)_uiHolder.AddComponent(typeof(SpriteRenderer));
+        _spriteRenderer.gameObject.transform.SetParent(_uiHolder.transform);
+        _spriteRenderer.sprite = GameManager.Instance.InteractProperties.Sprite;
+        _spriteRenderer.enabled = false;
+
         foreach (ILight light in Lights)
-        {
             light?.Controllers.Add(this);
-        }
+    }
+
+    private void Update()
+    {
+        PlayerController player;
+
+        if (!GameManager.Instance.TryGetPlayer(out player))
+            return;
+
+        bool isInSight = !(Vector3.Distance(player.transform.position, gameObject.transform.position) > InteractionRange);
+        _spriteRenderer.enabled = isInSight;
+
+        if (!isInSight)
+            return;
+
+        //_spriteRenderer.transform.LookAt(GameManager.Instance.Camera.transform);
+        _spriteRenderer.transform.rotation = Quaternion.Euler(
+            GameManager.Instance.Camera.transform.rotation.eulerAngles.x, 
+            0f,
+            0f
+        );
     }
 
     public virtual void Evaluate()
     {
         PlayerController player;
         
-        if (!GameManager.Instance.TryGetPlayer(out player)) return;
-        if (Vector3.Distance(player.transform.position, gameObject.transform.position) > InteractionRange) return;
+        if (!GameManager.Instance.TryGetPlayer(out player)) 
+            return;
+        
+        if (Vector3.Distance(player.transform.position, gameObject.transform.position) > InteractionRange) 
+            return;
 
         Interact();
     }

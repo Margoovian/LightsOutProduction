@@ -120,6 +120,51 @@ MonoBehaviour:
   Player_Look:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &4277826219730133253
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1737381954437140329}
+  - component: {fileID: 7876096086008038092}
+  m_Layer: 0
+  m_Name: VFXManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1737381954437140329
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4277826219730133253}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7451414505702632166}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7876096086008038092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4277826219730133253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba880afede8358a43983076b7c055fbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <VFXPath>k__BackingField: ParticleFX
 --- !u!1 &5057834704436141334
 GameObject:
   m_ObjectHideFlags: 0
@@ -199,9 +244,12 @@ MonoBehaviour:
   <GameSettings>k__BackingField: {fileID: 11400000, guid: 5804d5bf80b7d294486c32bc6cf5d764,
     type: 2}
   <PlayerData>k__BackingField: {fileID: 0}
-  <GameMixer>k__BackingField: {fileID: 24100000, guid: 7f9d3a509ce85454897128499aa3082d,
-    type: 2}
   <SceneTransition>k__BackingField: {fileID: 0}
+  <InteractProperties>k__BackingField:
+    <Sprite>k__BackingField: {fileID: 21300000, guid: b67c93b1a87a66c46bd1ff265affcca4,
+      type: 3}
+    <Offset>k__BackingField: {x: 0, y: 0.4, z: 0}
+    <UniformScale>k__BackingField: 0.05
 --- !u!1 &5963802660880265991
 GameObject:
   m_ObjectHideFlags: 0
@@ -248,7 +296,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <AudioObject>k__BackingField: {fileID: 5057834704436141334}
-  <AudioPath>k__BackingField: Audio
+  <AudioPaths>k__BackingField:
+  - Audio
+  <AudioMixer>k__BackingField: {fileID: 24100000, guid: 7f9d3a509ce85454897128499aa3082d,
+    type: 2}
   <MusicMixer>k__BackingField: {fileID: -2958962885310635547, guid: 7f9d3a509ce85454897128499aa3082d,
     type: 2}
   <SFXMixer>k__BackingField: {fileID: -2412039025560733703, guid: 7f9d3a509ce85454897128499aa3082d,
@@ -285,6 +336,7 @@ Transform:
   - {fileID: 5754228591726319822}
   - {fileID: 2423531116417032915}
   - {fileID: 6842674392059246883}
+  - {fileID: 1737381954437140329}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

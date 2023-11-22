@@ -17,7 +17,7 @@ public class EventParams
 public class MainMenu : MonoBehaviour
 {
     [Header("Main")]
-    public EventParams[] eventParams = new EventParams[2];
+    public EventParams eventParams;
 
     [Header("Buttons")]
     public Button playButton;
@@ -29,9 +29,7 @@ public class MainMenu : MonoBehaviour
     [field: SerializeField] public GameObject SettingsUI { get; set; }
 
     private Canvas _menuGUI;
-
-    private UnityEvent<bool, string> passthroughEvent1;
-    private UnityEvent<bool, string> passthroughEvent2;
+    private UnityEvent<bool, string> passthroughEvent;
 
     private void HandleQuitting(bool result, string eventName)
     {
@@ -45,32 +43,12 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
 
-    private void HandlePlaying(bool result, string eventName)
-    {
-        if (!result)
-            return;
-
-        GameManager.Instance.PlayerData.InMenu = false;
-        
-        if (GameGUI != null) 
-            GameGUI.SetActive(true);
-
-        AudioManager.Instance.Stop("TestMusic");
-        SceneController.Instance.LoadSpecific(0);
-    }
-
     private void Start()
     {
-        if (passthroughEvent1 == null)
+        if (passthroughEvent == null)
         {
-            passthroughEvent1 = new();
-            passthroughEvent1.AddListener(HandleQuitting);
-        }
-
-        if (passthroughEvent2 == null)
-        {
-            passthroughEvent2 = new();
-            passthroughEvent2.AddListener(HandlePlaying);
+            passthroughEvent = new();
+            passthroughEvent.AddListener(HandleQuitting);
         }
 
         if (GameGUI != null) 
@@ -85,7 +63,13 @@ public class MainMenu : MonoBehaviour
 
     public void OnPlay()
     {
-        PromptManager.Instance.StartPrompt(eventParams[0].Title, eventParams[0].Body, eventParams[0].ApplyBtnText, eventParams[0].DenyBtnText, eventParams[0].EventName, passthroughEvent2);
+        GameManager.Instance.PlayerData.InMenu = false;
+
+        if (GameGUI != null)
+            GameGUI.SetActive(true);
+
+        AudioManager.Instance.Stop("TestMusic");
+        SceneController.Instance.LoadSpecific(0);
     }
 
     public void OnOptions()
@@ -96,8 +80,5 @@ public class MainMenu : MonoBehaviour
         SettingsUI.SetActive(true);
     }
 
-    public void OnLeave()
-    {
-        PromptManager.Instance.StartPrompt(eventParams[1].Title, eventParams[1].Body, eventParams[1].ApplyBtnText, eventParams[1].DenyBtnText, eventParams[1].EventName, passthroughEvent1);
-    }
+    public void OnLeave() => PromptManager.Instance.StartPrompt(eventParams.Title, eventParams.Body, eventParams.ApplyBtnText, eventParams.DenyBtnText, eventParams.EventName, passthroughEvent);
 }
