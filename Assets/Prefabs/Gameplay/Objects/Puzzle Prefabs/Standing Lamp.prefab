@@ -34,6 +34,7 @@ Transform:
   - {fileID: 6103409292343969651}
   - {fileID: 5137807673179964546}
   - {fileID: 7028209413218224197}
+  - {fileID: 7689949652626899082}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -683,19 +684,81 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1076482637108852696
-MonoBehaviour:
+--- !u!1001 &3270137239075328286
+PrefabInstance:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2355989398199010481}
+    m_Modifications:
+    - target: {fileID: 5177428772129575315, guid: 83d38c42882b5644bbd16358437335e0,
+        type: 3}
+      propertyPath: m_Name
+      value: Point Light - Tall Lamp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5177428772129575316, guid: 83d38c42882b5644bbd16358437335e0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5177428772129575316, guid: 83d38c42882b5644bbd16358437335e0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.012
+      objectReference: {fileID: 0}
+    - target: {fileID: 5177428772129575316, guid: 83d38c42882b5644bbd16358437335e0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.037
+      objectReference: {fileID: 0}
+    - target: {fileID: 5177428772129575316, guid: 83d38c42882b5644bbd16358437335e0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.026
+      objectReference: {fileID: 0}
+    - target: {fileID: 5177428772129575316, guid: 83d38c42882b5644bbd16358437335e0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5177428772129575316, guid: 83d38c42882b5644bbd16358437335e0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5177428772129575316, guid: 83d38c42882b5644bbd16358437335e0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5177428772129575316, guid: 83d38c42882b5644bbd16358437335e0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5177428772129575316, guid: 83d38c42882b5644bbd16358437335e0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5177428772129575316, guid: 83d38c42882b5644bbd16358437335e0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5177428772129575316, guid: 83d38c42882b5644bbd16358437335e0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 83d38c42882b5644bbd16358437335e0, type: 3}
+--- !u!4 &7689949652626899082 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5177428772129575316, guid: 83d38c42882b5644bbd16358437335e0,
+    type: 3}
+  m_PrefabInstance: {fileID: 3270137239075328286}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7384771230615152107}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6520db8465181443ba9f9fa7c17653d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  puzzle_powerSound: {fileID: 4861990674671012113}
 --- !u!1001 &4972349543607350486
 PrefabInstance:
   m_ObjectHideFlags: 0
