@@ -2,9 +2,8 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-public class InputManager : MonoBehaviour
+public class InputManager : Manager<InputManager>
 {
-    public static InputManager Instance { get; set; }
     private GameInput Inputs;
 
     #region Events
@@ -16,12 +15,6 @@ public class InputManager : MonoBehaviour
     [HideInInspector] public UnityEvent<Vector2> Player_Look;
     
     #endregion
-    private void Awake() {
-        if (!Instance)
-            Instance = this;
-        Inputs = new();
-        Initialize();     
-    }
 
     private void OnEnable()
     {
@@ -63,8 +56,10 @@ public class InputManager : MonoBehaviour
 
         Inputs.Player.Disable();
     }
-    private void Initialize()
+    protected override void Initialize()
     {
+
+        Inputs = new();
 
         Player_Interact ??= new();
         Player_Fire ??= new();

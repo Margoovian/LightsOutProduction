@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneController : MonoBehaviour
+public class SceneController : Manager<SceneController>
 {
     [Serializable] public class SceneCombo 
     {
@@ -34,27 +34,18 @@ public class SceneController : MonoBehaviour
         public string[] Pool;
     } 
 
-    public static SceneController Instance { get; internal set; }
     [field: SerializeField] public SceneCombo[] Scenes { get; set; }
     public Dictionary<int, SceneCombo> SceneGlossary = new();
 
     internal int _startLevel = -1;
     internal int _currentLevel;
-
-    private void Awake() {
-        if (!Instance)
-            Instance = this;
-
-        Initialize();
-    }
-
     private void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoad;
         SceneManager.sceneUnloaded -= OnSceneUnloaded;
     }
 
-    internal void Initialize()
+    protected override void Initialize()
     {
         _currentLevel = _startLevel;
 
@@ -71,8 +62,15 @@ public class SceneController : MonoBehaviour
         SceneManager.sceneUnloaded += OnSceneUnloaded;
     }
 
-    public int GetStartIndex() => _startLevel;
-    public int GetCurrentIndex() => _currentLevel;
+    public int GetStartIndex()
+    {
+        return _startLevel;
+    }
+
+    public int GetCurrentIndex()
+    {
+        return _currentLevel;
+    }
 
     public async void NextLevel(Func<Task> beforeLoad = null, Func<Task> afterLoad = null, Action beforeAction = null, Action afterAction = null)
     {
@@ -88,10 +86,9 @@ public class SceneController : MonoBehaviour
             if (output != null) await output;
             beforeAction?.Invoke();
         }
+        _currentLevel += 1;
 
-        Instance._currentLevel += 1;
         TryLoadRandom(_currentLevel);
-        
         if (afterLoad != null)
         {
             Task output = afterLoad?.Invoke();
@@ -112,7 +109,7 @@ public class SceneController : MonoBehaviour
         beforeLoad?.Invoke();
         TryLoadRandom(level);
 
-        Instance._currentLevel = level;
+        _currentLevel = level;
     }
 
     public void LoadScene(string scene) => SceneManager.LoadScene(scene);
@@ -131,8 +128,6 @@ public class SceneController : MonoBehaviour
 
     private void TryLoadRandom(int level)
     {
-        LevelController.Instance.ResetValues();
-
         if (!GameManager.Instance) 
         { 
             SceneManager.LoadScene(SceneGlossary[level].Name); 
@@ -153,5 +148,4 @@ public class SceneController : MonoBehaviour
 
         SceneManager.LoadScene(SceneGlossary[level].Name);
     }
-
 }
