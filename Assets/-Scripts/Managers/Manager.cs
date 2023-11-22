@@ -4,12 +4,13 @@ using UnityEngine;
 
 public abstract class Manager<T> : MonoBehaviour where T : Manager<T>
 {
-    public static Manager<T> Instance { get; private set; }
+    public static T Instance { get => (T)_manager; private set => _manager = value; }
+    private static Manager<T> _manager = null;
     private void Awake()
     {
-        if (!Instance)
+        if (!_manager)
         {
-            Instance = this;
+            _manager = this;
             Initialize();
         }
     }

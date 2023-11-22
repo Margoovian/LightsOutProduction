@@ -36,4 +36,3 @@ public class SceneTrigger : MonoBehaviour
         SceneController.Instance.LoadSpecific(sceneIndex);
     }
 }
-class IM : Manager<IM> { }
