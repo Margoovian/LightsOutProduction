@@ -11,6 +11,7 @@ public class AudioManager : MonoBehaviour
     public Dictionary<string, Stem> Stems; public Dictionary<string, AudioSource> Sources;
     [field: SerializeField] public GameObject AudioObject { get; set; }
     [field: SerializeField] public string AudioPath { get; set; } // This has to be relative to the Resource folder (I:E in it) 
+    [field: SerializeField] public AudioMixer AudioMixer { get; set; }
     [field: SerializeField] public AudioMixerGroup MusicMixer { get; set; } = null;
     [field: SerializeField] public AudioMixerGroup SFXMixer { get; set; } = null;
 
