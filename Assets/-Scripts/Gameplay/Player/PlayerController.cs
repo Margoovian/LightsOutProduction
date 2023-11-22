@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
 
     [field: SerializeField] public float Gravity { get; set; }
 
-    public void Footstep(int index) { AudioManager.Instance.PlaySFX("FootStep" + index.ToString()); VFXManager.Instance.Play("Foot", transform); }
+    public void Footstep(int index) => AudioManager.Instance.PlaySFX("FootStep" + index.ToString());
 
     private void OnEnable() {
         HelperFunctions.WaitForTask(WaitForManagers(), () =>
@@ -82,22 +82,22 @@ public class PlayerController : MonoBehaviour
         _animator.SetBool("IsWalking", _moveDirection.x != 0 || _moveDirection.y != 0);
         _characterController.Move(new Vector3(_moveDirection.x * CharacterSpeed, -Gravity, _moveDirection.y * CharacterSpeed) * Time.deltaTime);
 
-        if (_fearTime >= GameManager.Instance.GameSettings.FearTickRate || _fearTime >= GameManager.Instance.GameSettings.FearWallTick)
+        if (_fearTime >= GameManager.Instance.GameSettings.FearTickRate)
         {
+
             if (isInLight || PlayerData.Instance.ToyOn)
                 Fear = Mathf.Clamp(Fear - GameManager.Instance.GameSettings.FearTickAmount, 0, GameManager.Instance.GameSettings.MaxFear);
             else
             {
-                if(PlayerData.Instance.InFearWall && _fearTime < GameManager.Instance.GameSettings.FearTickRate || PlayerData.Instance.InFearWall && _fearTime >= GameManager.Instance.GameSettings.FearWallTick)
+                if(PlayerData.Instance.InFearWall)
                     Fear = Mathf.Clamp(Fear + GameManager.Instance.GameSettings.FearWallTick, 0, GameManager.Instance.GameSettings.MaxFear);
                 else
                     Fear = Mathf.Clamp(Fear + GameManager.Instance.GameSettings.FearTickAmount, 0, GameManager.Instance.GameSettings.MaxFear);
             }
             _fearTime = 0;
+            
         }
-        
         else
-            _fearTime += Time.deltaTime;
             _fearTime += Time.deltaTime;
 
         if (_moveDirection.magnitude > 0)
