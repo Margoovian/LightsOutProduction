@@ -1,23 +1,42 @@
+using System;
 using UnityEngine;
 
-public class GameManager : Manager<GameManager>
+public class GameManager : MonoBehaviour
 {
+    [Serializable]
+    public class InteractionProperties
+    {
+        [field: SerializeField] public Sprite Sprite { get; set; }
+        [field: SerializeField] public Vector3 Offset { get; set; }
+        [field: SerializeField] public float UniformScale { get; set; }
+    }
+
+    [field: Header("Generic")]
+    public static GameManager Instance { get; internal set; }
     [field: SerializeField] public Cinemachine.CinemachineVirtualCamera Camera { get; set; }
     [field: SerializeField] public GameSettings GameSettings { get; set; }
     [field: SerializeField] public PlayerData PlayerData { get; set; }
     [field: SerializeField] public Animator SceneTransition { get; set; }
-    [field: SerializeField] public Sprite InteractSprite { get; set; }
+    [field: SerializeField] public InteractionProperties InteractProperties { get; set; }
     public PlayerController Player { get; set; }
+
 
     // The GODController is sorta hard-coded for the moment, sorry about that Devlyn!
     // ^ That should be fine
+
+    private void Awake()
+    {
+        if (!Instance)
+            Instance = this;
+        Initialize();     
+    }
 
     private void Update()
     {
         GODController.Instance.Update();
     }
 
-    protected override void Initialize()
+    private void Initialize()
     {
         GODController.Instance.Initalize();
     }
@@ -31,10 +50,6 @@ public class GameManager : Manager<GameManager>
         
         return true;
     } 
-    public void ScoreGame() /// TODO
-    {
-
-    }
     public void GameOver(GameOverType type)
     {
         switch (type)

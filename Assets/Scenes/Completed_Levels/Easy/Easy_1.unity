@@ -12770,6 +12770,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 651169323}
   m_Mesh: {fileID: 6946868759442727253, guid: 4bac3139198716940919cf93a9ec76c8, type: 3}
+--- !u!108 &655549881 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 7689949652626899083, guid: ce34004c44198834cb31d7682e25aab9,
+    type: 3}
+  m_PrefabInstance: {fileID: 978564740}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &661113262
 GameObject:
   m_ObjectHideFlags: 0
@@ -17259,6 +17265,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2355989398199010494, guid: ce34004c44198834cb31d7682e25aab9,
         type: 3}
+      propertyPath: <Lights>k__BackingField.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2355989398199010494, guid: ce34004c44198834cb31d7682e25aab9,
+        type: 3}
+      propertyPath: <Lights>k__BackingField.Array.data[0]
+      value: 
+      objectReference: {fileID: 655549881}
+    - target: {fileID: 2355989398199010494, guid: ce34004c44198834cb31d7682e25aab9,
+        type: 3}
       propertyPath: <LightVolumes>k__BackingField.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -17447,7 +17463,8 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.334
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4861990674671012113, guid: ce34004c44198834cb31d7682e25aab9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ce34004c44198834cb31d7682e25aab9, type: 3}
 --- !u!114 &978564741 stripped
 MonoBehaviour:
@@ -23150,7 +23167,8 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.452
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4861990674671012113, guid: ce34004c44198834cb31d7682e25aab9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ce34004c44198834cb31d7682e25aab9, type: 3}
 --- !u!1 &1528943539
 GameObject:
