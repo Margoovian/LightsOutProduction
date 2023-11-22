@@ -36,19 +36,46 @@ public class GenericSwitch : MonoBehaviour, ISwitch, IInteractable
         _uiHolder = new();
         _uiHolder.name = "UI Holder";
         _uiHolder.transform.SetParent(transform);
-        _uiHolder.transform.position = new Vector3(transform.position.x, transform.position.y + 0.4f, transform.position.z);
-        _uiHolder.transform.localScale = new Vector2(0.05f, 0.05f);
+
+        _uiHolder.transform.position = new Vector3(
+            transform.position.x + GameManager.Instance.InteractProperties.Offset.x, 
+            transform.position.y + GameManager.Instance.InteractProperties.Offset.y, 
+            transform.position.z + GameManager.Instance.InteractProperties.Offset.z
+        );
+        
+        _uiHolder.transform.localScale = new Vector2(
+            GameManager.Instance.InteractProperties.UniformScale,
+            GameManager.Instance.InteractProperties.UniformScale
+        );
 
         _spriteRenderer = (SpriteRenderer)_uiHolder.AddComponent(typeof(SpriteRenderer));
         _spriteRenderer.gameObject.transform.SetParent(_uiHolder.transform);
-        _spriteRenderer.sprite = GameManager.Instance.InteractSprite;
-        _spriteRenderer.flipX = true;
+        _spriteRenderer.sprite = GameManager.Instance.InteractProperties.Sprite;
         _spriteRenderer.enabled = false;
 
         foreach (ILight light in Lights)
-        {
             light?.Controllers.Add(this);
-        }
+    }
+
+    private void Update()
+    {
+        PlayerController player;
+
+        if (!GameManager.Instance.TryGetPlayer(out player))
+            return;
+
+        bool isInSight = !(Vector3.Distance(player.transform.position, gameObject.transform.position) > InteractionRange);
+        _spriteRenderer.enabled = isInSight;
+
+        if (!isInSight)
+            return;
+
+        //_spriteRenderer.transform.LookAt(GameManager.Instance.Camera.transform);
+        _spriteRenderer.transform.rotation = Quaternion.Euler(
+            GameManager.Instance.Camera.transform.rotation.eulerAngles.x, 
+            0f,
+            0f
+        );
     }
 
     public virtual void Evaluate()
@@ -62,22 +89,6 @@ public class GenericSwitch : MonoBehaviour, ISwitch, IInteractable
             return;
 
         Interact();
-    }
-
-    private void Update()
-    {
-        PlayerController player;
-        
-        if (!GameManager.Instance.TryGetPlayer(out player)) 
-            return;
-
-        bool isInSight = !(Vector3.Distance(player.transform.position, gameObject.transform.position) > InteractionRange);
-        _spriteRenderer.enabled = isInSight;
-
-        if (!isInSight)
-            return;
-
-        _spriteRenderer.transform.LookAt(GameManager.Instance.Camera.transform);
     }
 
     private void InteractWrapper(bool var) => Evaluate();
