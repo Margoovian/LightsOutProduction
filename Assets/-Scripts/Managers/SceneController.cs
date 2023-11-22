@@ -71,15 +71,8 @@ public class SceneController : MonoBehaviour
         SceneManager.sceneUnloaded += OnSceneUnloaded;
     }
 
-    public int GetStartIndex()
-    {
-        return _startLevel;
-    }
-
-    public int GetCurrentIndex()
-    {
-        return _currentLevel;
-    }
+    public int GetStartIndex() => _startLevel;
+    public int GetCurrentIndex() => _currentLevel;
 
     public async void NextLevel(Func<Task> beforeLoad = null, Func<Task> afterLoad = null, Action beforeAction = null, Action afterAction = null)
     {
@@ -95,9 +88,10 @@ public class SceneController : MonoBehaviour
             if (output != null) await output;
             beforeAction?.Invoke();
         }
-        Instance._currentLevel += 1;
 
+        Instance._currentLevel += 1;
         TryLoadRandom(_currentLevel);
+        
         if (afterLoad != null)
         {
             Task output = afterLoad?.Invoke();
@@ -137,6 +131,8 @@ public class SceneController : MonoBehaviour
 
     private void TryLoadRandom(int level)
     {
+        LevelController.Instance.ResetValues();
+
         if (!GameManager.Instance) 
         { 
             SceneManager.LoadScene(SceneGlossary[level].Name); 

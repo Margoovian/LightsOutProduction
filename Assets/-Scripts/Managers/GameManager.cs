@@ -11,7 +11,6 @@ public class GameManager : MonoBehaviour
         [field: SerializeField] public float UniformScale { get; set; }
     }
 
-    [field: Header("Generic")]
     public static GameManager Instance { get; internal set; }
     [field: SerializeField] public Cinemachine.CinemachineVirtualCamera Camera { get; set; }
     [field: SerializeField] public GameSettings GameSettings { get; set; }
@@ -19,7 +18,6 @@ public class GameManager : MonoBehaviour
     [field: SerializeField] public Animator SceneTransition { get; set; }
     [field: SerializeField] public InteractionProperties InteractProperties { get; set; }
     public PlayerController Player { get; set; }
-
 
     // The GODController is sorta hard-coded for the moment, sorry about that Devlyn!
     // ^ That should be fine
@@ -50,6 +48,7 @@ public class GameManager : MonoBehaviour
         
         return true;
     } 
+
     public void GameOver(GameOverType type)
     {
         switch (type)
