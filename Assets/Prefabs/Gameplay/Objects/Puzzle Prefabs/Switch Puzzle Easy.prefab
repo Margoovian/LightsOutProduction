@@ -265,6 +265,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69c44e81de09b2d46b1c1b611da7d139, type: 3}
+--- !u!108 &7075708317494872342 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 4928576734249901794, guid: 69c44e81de09b2d46b1c1b611da7d139,
+    type: 3}
+  m_PrefabInstance: {fileID: 2761873516536485876}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5819040842919110983
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -608,6 +614,16 @@ PrefabInstance:
       propertyPath: <LightVolume>k__BackingField
       value: 
       objectReference: {fileID: 1017501493341738012}
+    - target: {fileID: 7597031337152258746, guid: 115a4f666a1d65a41b3ffceef51c8257,
+        type: 3}
+      propertyPath: <Lights>k__BackingField.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7597031337152258746, guid: 115a4f666a1d65a41b3ffceef51c8257,
+        type: 3}
+      propertyPath: <Lights>k__BackingField.Array.data[0]
+      value: 
+      objectReference: {fileID: 7075708317494872342}
     - target: {fileID: 7597031337152258746, guid: 115a4f666a1d65a41b3ffceef51c8257,
         type: 3}
       propertyPath: <LightVolumes>k__BackingField.Array.size
