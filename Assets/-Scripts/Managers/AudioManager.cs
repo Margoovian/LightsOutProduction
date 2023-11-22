@@ -4,25 +4,15 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Audio;
 
-public class AudioManager : MonoBehaviour
+public class AudioManager : Manager<AudioManager>
 {
-    public static AudioManager Instance { get; private set; }
-
     public Dictionary<string, Stem> Stems; public Dictionary<string, AudioSource> Sources;
     [field: SerializeField] public GameObject AudioObject { get; set; }
     [field: SerializeField] public string AudioPath { get; set; } // This has to be relative to the Resource folder (I:E in it) 
     [field: SerializeField] public AudioMixerGroup MusicMixer { get; set; } = null;
     [field: SerializeField] public AudioMixerGroup SFXMixer { get; set; } = null;
 
-    private void Awake() {
-        if (!Instance)
-        {
-            Instance = this;
-            Initialize();
-        }
-    }
-
-    void Initialize ()
+    protected override void Initialize ()
     {
         Stems = new();
         Sources = new();
