@@ -94,7 +94,7 @@ public class GenericSwitch : MonoBehaviour, ISwitch, IInteractable
     private void InteractWrapper(bool var) => Evaluate();
     public virtual void Interact()
     {
-        foreach (GenericLight light in _lights)
+        foreach (ILight light in _lights)
             light?.Toggle();
 
         Event?.Invoke(true);
