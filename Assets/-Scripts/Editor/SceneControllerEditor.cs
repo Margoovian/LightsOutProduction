@@ -28,8 +28,8 @@ public class SceneControllerEditor : Editor
 
         foreach (var pair in sc.Scenes)
         {
-            levelNames.Add(pair.Name);
-            levels.Add(pair.Name, pair.LoadOrder);
+            levelNames.Add(pair.Level.Name);
+            levels.Add(pair.Level.Name, pair.LoadOrder);
         }
 
         EditorHelperFunctions.GroupWrapper("Functions", () => {
