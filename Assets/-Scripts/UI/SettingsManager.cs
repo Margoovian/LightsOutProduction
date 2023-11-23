@@ -206,16 +206,11 @@ public class SettingsManager : MonoBehaviour
 
     #region Slider Controls
 
-    private float AudioSliderCalculations(float value)
-    {
-        // original math equation: (float)Math.Log10(Math.Pow(10, value / 10)) * 10 - 100;
-        return Mathf.Log10(value) * 20;
-    }
+    private float AudioSliderCalculations(float value) => Mathf.Log10(value) * 20;
 
     private void MasterSliderChanged(float value)
     {
         currentMasterVolume = value;
-        Debug.Log(AudioSliderCalculations(value));
         AudioManager.Instance.AudioMixer.SetFloat(mixerValues[0], AudioSliderCalculations(value));
     }
 
