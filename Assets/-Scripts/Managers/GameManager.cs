@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class GameManager : Manager<GameManager>
+public class GameManager : MonoBehaviour
 {
     [Serializable]
     public class InteractionProperties
@@ -12,6 +12,7 @@ public class GameManager : Manager<GameManager>
     }
 
     [field: Header("Generic")]
+    public static GameManager Instance { get; internal set; }
     [field: SerializeField] public Cinemachine.CinemachineVirtualCamera Camera { get; set; }
     [field: SerializeField] public GameSettings GameSettings { get; set; }
     [field: SerializeField] public PlayerData PlayerData { get; set; }
@@ -23,13 +24,19 @@ public class GameManager : Manager<GameManager>
     // The GODController is sorta hard-coded for the moment, sorry about that Devlyn!
     // ^ That should be fine
 
+    private void Awake()
+    {
+        if (!Instance)
+            Instance = this;
+        Initialize();     
+    }
 
     private void Update()
     {
         GODController.Instance.Update();
     }
 
-    protected override void Initialize()
+    private void Initialize()
     {
         GODController.Instance.Initalize();
     }
@@ -49,14 +56,9 @@ public class GameManager : Manager<GameManager>
         {
             case GameOverType.FearWander: break;
             case GameOverType.FearWall: break;
-            case GameOverType.Timeout: break;   // This could be an easter egg, if you stay on the start level for a long time?
+            case GameOverType.Timeout: break;
             default: break;
             
         }
-    }
-
-    public void ScoreGame()
-    {
-        
     }
 }

@@ -41,8 +41,6 @@ public class GenericLight : MonoBehaviour, ILight
         else
             _meshRenderer.material = OffMaterial;
 
-        LevelController.Instance.UpdateLightCount();
-
         if (LightVolumes.Length == 0)
             return;
 

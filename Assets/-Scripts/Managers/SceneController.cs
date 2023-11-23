@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneController : Manager<SceneController>
+public class SceneController : MonoBehaviour
 {
     [Serializable] public class SceneCombo 
     {
@@ -34,18 +34,27 @@ public class SceneController : Manager<SceneController>
         public string[] Pool;
     } 
 
+    public static SceneController Instance { get; internal set; }
     [field: SerializeField] public SceneCombo[] Scenes { get; set; }
     public Dictionary<int, SceneCombo> SceneGlossary = new();
 
     internal int _startLevel = -1;
     internal int _currentLevel;
+
+    private void Awake() {
+        if (!Instance)
+            Instance = this;
+
+        Initialize();
+    }
+
     private void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoad;
         SceneManager.sceneUnloaded -= OnSceneUnloaded;
     }
 
-    protected override void Initialize()
+    internal void Initialize()
     {
         _currentLevel = _startLevel;
 
@@ -86,7 +95,7 @@ public class SceneController : Manager<SceneController>
             if (output != null) await output;
             beforeAction?.Invoke();
         }
-        _currentLevel += 1;
+        Instance._currentLevel += 1;
 
         TryLoadRandom(_currentLevel);
         if (afterLoad != null)
@@ -109,7 +118,7 @@ public class SceneController : Manager<SceneController>
         beforeLoad?.Invoke();
         TryLoadRandom(level);
 
-        _currentLevel = level;
+        Instance._currentLevel = level;
     }
 
     public void LoadScene(string scene) => SceneManager.LoadScene(scene);
@@ -128,8 +137,6 @@ public class SceneController : Manager<SceneController>
 
     private void TryLoadRandom(int level)
     {
-        LevelController.Instance.ResetValues();
-
         if (!GameManager.Instance) 
         { 
             SceneManager.LoadScene(SceneGlossary[level].Name); 
@@ -150,4 +157,5 @@ public class SceneController : Manager<SceneController>
 
         SceneManager.LoadScene(SceneGlossary[level].Name);
     }
+
 }
