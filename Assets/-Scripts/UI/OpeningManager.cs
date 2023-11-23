@@ -27,7 +27,12 @@ public class OpeningManager : MonoBehaviour
     {
         Color UpdateAlpha(float i)
         {
-            return new Color(1, 1, 1, i);
+            return new() { 
+                r = image.color.r,
+                g = image.color.g,
+                b = image.color.b,
+                a = i 
+            };
         }
 
         if (!fadeIn)
@@ -52,13 +57,24 @@ public class OpeningManager : MonoBehaviour
     {
         IntervalDuration *= 1000;
 
-        Color offColor = new() { a = 0 };
-
         if (Background.color.a > 0)
-            Background.color = offColor;
+            Background.color = new() { a = 0 };
 
         if (OpeningImage.color.a > 0)
-            OpeningImage.color = offColor;
+        {
+            OpeningImage.color = new()
+            {
+                r = OpeningImage.color.r,
+                g = OpeningImage.color.g,
+                b = OpeningImage.color.b,
+                a = 0
+            };
+        }
+
+        if (HideCursor)
+            Cursor.visible = false;
+
+        AudioManager.Instance.FadeOut("TestMusic");
 
         Task task1 = FadeImage(Background, true);
         await task1;
@@ -73,5 +89,8 @@ public class OpeningManager : MonoBehaviour
 
         await Task.Delay(IntervalDuration / 4);
         MainMenu.Instance.OnPlay();
+
+        if (HideCursor)
+            Cursor.visible = true;
     }
 }

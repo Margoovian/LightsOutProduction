@@ -27,13 +27,12 @@ public class LevelController : MonoBehaviour
         SceneTrigger.enabled = result;
 
         if (result)
-            result = true; // This is here temporarily until the DoorOpening sound is made!
-            //AudioManager.Instance.Play("DoorOpening");
+            AudioManager.Instance.Play("DoorOpened");
 
         if (!result && SceneTrigger.enabled)
         {
             SceneTrigger.enabled = false;
-            //AudioManager.Instance.Play("DoorClosing");
+            AudioManager.Instance.Play("DoorOpened");
         }
 
         //Debug.LogWarning("Door Opened Status: " + SceneTrigger.enabled.ToString());
@@ -53,6 +52,10 @@ public class LevelController : MonoBehaviour
         if (TargetLights.Length == 0)
         {
             Debug.LogWarning("No GenericLight Instances were added to array: 'TargetLights'", this);
+
+            if (!SceneTrigger.enabled)
+                SceneTrigger.enabled = true;
+
             return;
         }
 
