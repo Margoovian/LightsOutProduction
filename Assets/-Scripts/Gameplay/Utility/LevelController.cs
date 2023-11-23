@@ -26,7 +26,7 @@ public class LevelController : MonoBehaviour
         //TODO: COREY FIX THIS, PS try and stop using singletons
         //TrackLightCount.Instance.Modify(CurrentLights, GetMaxLights());
 
-        bool result = _lightCount == 0;
+        bool result = _lightCount <= 0;
         SceneTrigger.enabled = result;
 
         if (result)
