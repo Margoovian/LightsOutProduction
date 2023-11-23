@@ -128,6 +128,8 @@ public class SceneController : Manager<SceneController>
 
     private void TryLoadRandom(int level)
     {
+        LevelController.Instance.ResetValues();
+
         if (!GameManager.Instance) 
         { 
             SceneManager.LoadScene(SceneGlossary[level].Name); 
