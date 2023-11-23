@@ -45,22 +45,56 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Scenes>k__BackingField:
-  - Name: SampleScene
-    RandomLevel: 
+  - Level:
+      Name: StartupScene
+      AltLevel: 
+    RandomLevel:
+      Name: 
+      AltLevel: 
+    LoadOrder: -1
+    Pool: []
+  - Level:
+      Name: 
+      AltLevel: 
+    RandomLevel:
+      Name: Easy_1
+      AltLevel: 
     LoadOrder: 0
     Pool: []
-  - Name: Art_Test
-    RandomLevel: 
+  - Level:
+      Name: Easy_2
+      AltLevel: 
+    RandomLevel:
+      Name: 
+      AltLevel: 
     LoadOrder: 1
     Pool: []
-  - Name: Alicia_Easy_1
-    RandomLevel: 
+  - Level:
+      Name: Easy_3
+      AltLevel: 
+    RandomLevel:
+      Name: 
+      AltLevel: 
     LoadOrder: 2
     Pool: []
-  - Name: Traveen_Easy_1
-    RandomLevel: 
+  - Level:
+      Name: Medium_1
+      AltLevel: 
+    RandomLevel:
+      Name: 
+      AltLevel: 
     LoadOrder: 3
     Pool: []
+  - Level:
+      Name: Medium_2
+      AltLevel: 
+    RandomLevel:
+      Name: 
+      AltLevel: 
+    LoadOrder: 4
+    Pool:
+    - Name: 
+      AltLevel: 
 --- !u!1 &3970232227816179341
 GameObject:
   m_ObjectHideFlags: 0
@@ -164,7 +198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba880afede8358a43983076b7c055fbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <VFXPath>k__BackingField: ParticleFX
+  <VFXPaths>k__BackingField: []
 --- !u!1 &5057834704436141334
 GameObject:
   m_ObjectHideFlags: 0
