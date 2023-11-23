@@ -56,6 +56,10 @@ public class InputManager : Manager<InputManager>
 
         Inputs.Player.Disable();
     }
+
+    public void EnableControls() => OnEnable();
+    public void DisableControls() => OnDisable();
+
     protected override void Initialize()
     {
 
