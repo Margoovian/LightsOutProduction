@@ -21,15 +21,15 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 1
-      inSlope: 0.18948068
-      outSlope: 0.18948068
+      inSlope: 0.23693508
+      outSlope: 0.23693508
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.25289166
-      value: 1.0479181
+      time: 0.19039166
+      value: 1.0451105
       inSlope: 0.40993503
       outSlope: 0.40993503
       tangentMode: 0
@@ -37,8 +37,17 @@ MonoBehaviour:
       inWeight: 0.39873844
       outWeight: 1
     - serializedVersion: 3
-      time: 0.38839263
-      value: 1.2294114
+      time: 0.4401373
+      value: 1.2830377
+      inSlope: 1.8376857
+      outSlope: 1.8376857
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.4204434
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.55923206
+      value: 1.627842
       inSlope: 1.7130995
       outSlope: 1.7130995
       tangentMode: 0
@@ -46,28 +55,37 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.017801259
     - serializedVersion: 3
-      time: 0.645
-      value: 2.009997
-      inSlope: 0.37423256
-      outSlope: 0.37423256
+      time: 0.7158445
+      value: 1.7712556
+      inSlope: -0.011612138
+      outSlope: -0.011612138
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.1271939
-      outWeight: 0.46627656
+      outWeight: 1
     - serializedVersion: 3
-      time: 0.86084664
-      value: 1.0278214
-      inSlope: -2.9259605
-      outSlope: -2.9259605
+      time: 0.8294065
+      value: 1.5775554
+      inSlope: -4.858004
+      outSlope: -4.858004
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.059718996
+      inWeight: 0.22580661
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.9025184
+      value: 0.9889115
+      inSlope: -3.5371714
+      outSlope: -3.5371714
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.65178853
       outWeight: 0.10967718
     - serializedVersion: 3
       time: 1
       value: 0.59999084
-      inSlope: -3.0745256
-      outSlope: -3.0745256
+      inSlope: -3.9896824
+      outSlope: -3.9896824
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -76,9 +94,18 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   <MaxFear>k__BackingField: 100
-  <FearTickRate>k__BackingField: 0.25
+  <FearTickRate>k__BackingField: 0.185
   <FearTickAmount>k__BackingField: 1
+  <FearWallSpeed>k__BackingField: 0
+  <FearWallTick>k__BackingField: 0
+  <GlowToyFadeIn>k__BackingField: 2.5
+  <GlowToyFadeModifier>k__BackingField: 2
+  <GlowToyDebounceModifier>k__BackingField: 1
+  <GlowToyMaxBattery>k__BackingField: 100
+  <GlowToyBatteryTickRate>k__BackingField: 2
+  <GlowToyBatteryTickAmount>k__BackingField: 1
   <EnableTimer>k__BackingField: 0
+  <EnableRandomRooms>k__BackingField: 0
   <EnableGodMode>k__BackingField: 0
   <EnableSpeedModifier>k__BackingField: 0
   <SpeedModifier>k__BackingField: 2

@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -8,29 +5,54 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public bool isInLight { get; set; }
+    [field: SerializeField] public GameObject Model { get; set; }
     public float CharacterSpeed { 
-        get {
+        get 
+        {
             float s = _speed * GameManager.Instance.GameSettings.FearSpeedMultiplyer.Evaluate(Fear / GameManager.Instance.GameSettings.MaxFear);
-            if (GameManager.Instance.GameSettings.EnableSpeedModifier) return s * GameManager.Instance.GameSettings.SpeedModifier;
-            else return s; 
-        } set => _speed = value; }
-    private float _speed;
-    public float Fear { get => _fear; set {
-            if (!GameManager.Instance.GameSettings.EnableGodMode)
-                _fear = value;
-            else _fear = 0;
-        }}
-    private float _fear = 0;
-    private float _time;
-    [field: SerializeField] public float Gravity { get; set; }
-    private Vector2 _moveDirection;
+            
+            if (GameManager.Instance.GameSettings.EnableSpeedModifier) 
+                return s * GameManager.Instance.GameSettings.SpeedModifier; 
+                
+            return s; 
+        }
+        
+        set => _speed = value; 
+    }
 
+    private float _speed;
+    public float Fear 
+    { 
+        get => GameManager.Instance.PlayerData.FearLevel; 
+        
+        set {
+            if (PlayerData.Instance.InMenu) return;
+            if (!GameManager.Instance.GameSettings.EnableGodMode )
+            {
+                GameManager.Instance.PlayerData.FearLevel = value;
+                return;
+            }
+
+            GameManager.Instance.PlayerData.FearLevel = 0;
+        }}
+
+    private float _fearTime;
+    private Vector2 _moveDirection;
     private CharacterController _characterController;
+    private Animator _animator;
+
+    [field: SerializeField] public float Gravity { get; set; }
+
+    public void Footstep(int index) { AudioManager.Instance.PlaySFX("FootStep" + index.ToString()); VFXManager.Instance.Play("Foot", transform); }
+
     private void OnEnable() {
         HelperFunctions.WaitForTask(WaitForManagers(), () =>
         {
             GameManager.Instance.Player = this;
             InputManager.Instance.Player_Move.AddListener(Move);
+
+            GameManager.Instance.PlayerData.InMenu = false;
+
         });
     }
 
@@ -41,27 +63,51 @@ public class PlayerController : MonoBehaviour
     }
 
     private void OnDisable() { 
-        if(GameManager.Instance)
+        if (GameManager.Instance)
             GameManager.Instance.Player = null;
+
         if (InputManager.Instance)
             InputManager.Instance.Player_Move.RemoveListener(Move);
     }
-    void Start()
+    private void Start()
     {
+        name = "Player";
         _characterController = GetComponent<CharacterController>();
+        _animator = GetComponent<Animator>();
         CharacterSpeed = GameManager.Instance.GameSettings.PlayerBaseSpeed;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
+        _animator.SetBool("IsWalking", _moveDirection.x != 0 || _moveDirection.y != 0);
         _characterController.Move(new Vector3(_moveDirection.x * CharacterSpeed, -Gravity, _moveDirection.y * CharacterSpeed) * Time.deltaTime);
-        if(_time >= GameManager.Instance.GameSettings.FearTickRate)
+
+        if (_fearTime >= GameManager.Instance.GameSettings.FearTickRate || _fearTime >= GameManager.Instance.GameSettings.FearWallTick)
         {
-            if (isInLight) Fear = Mathf.Clamp(Fear - GameManager.Instance.GameSettings.FearTickAmount, 0, GameManager.Instance.GameSettings.MaxFear);
-            else Fear = Mathf.Clamp(Fear + GameManager.Instance.GameSettings.FearTickAmount, 0, GameManager.Instance.GameSettings.MaxFear);
-            _time = 0;
-        } else _time += Time.deltaTime; 
+            if (isInLight || PlayerData.Instance.ToyOn)
+                Fear = Mathf.Clamp(Fear - GameManager.Instance.GameSettings.FearTickAmount, 0, GameManager.Instance.GameSettings.MaxFear);
+            else
+            {
+                if(PlayerData.Instance.InFearWall && _fearTime < GameManager.Instance.GameSettings.FearTickRate || PlayerData.Instance.InFearWall && _fearTime >= GameManager.Instance.GameSettings.FearWallTick)
+                    Fear = Mathf.Clamp(Fear + GameManager.Instance.GameSettings.FearWallTick, 0, GameManager.Instance.GameSettings.MaxFear);
+                else
+                    Fear = Mathf.Clamp(Fear + GameManager.Instance.GameSettings.FearTickAmount, 0, GameManager.Instance.GameSettings.MaxFear);
+            }
+            _fearTime = 0;
+        }
+        
+        else
+            _fearTime += Time.deltaTime;
+            _fearTime += Time.deltaTime;
+
+        if (_moveDirection.magnitude > 0)
+        {
+            float radian = Mathf.Atan2(_moveDirection.y, _moveDirection.x * -1);
+            float degree = 180 * radian / Mathf.PI;
+            float rotation = (360 + Mathf.Round(degree)) % 360;
+
+            Model.transform.rotation = Quaternion.Euler(-20,rotation-90, 0);
+        }
     }
 
     private void Move(Vector2 direction) => _moveDirection = direction;
