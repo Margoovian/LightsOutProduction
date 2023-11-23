@@ -84,16 +84,20 @@ public class PlayerController : MonoBehaviour
 
         if (_fearTime >= GameManager.Instance.GameSettings.FearTickRate)
         {
-            if (isInLight || PlayerData.Instance.ToyOn) 
+
+            if (isInLight || PlayerData.Instance.ToyOn)
                 Fear = Mathf.Clamp(Fear - GameManager.Instance.GameSettings.FearTickAmount, 0, GameManager.Instance.GameSettings.MaxFear);
-            else 
-                Fear = Mathf.Clamp(Fear + GameManager.Instance.GameSettings.FearTickAmount, 0, GameManager.Instance.GameSettings.MaxFear);
-            
+            else
+            {
+                if(PlayerData.Instance.InFearWall)
+                    Fear = Mathf.Clamp(Fear + GameManager.Instance.GameSettings.FearWallTick, 0, GameManager.Instance.GameSettings.MaxFear);
+                else
+                    Fear = Mathf.Clamp(Fear + GameManager.Instance.GameSettings.FearTickAmount, 0, GameManager.Instance.GameSettings.MaxFear);
+            }
             _fearTime = 0;
+            
         }
-        
         else
-            _fearTime += Time.deltaTime;
             _fearTime += Time.deltaTime;
 
         if (_moveDirection.magnitude > 0)
