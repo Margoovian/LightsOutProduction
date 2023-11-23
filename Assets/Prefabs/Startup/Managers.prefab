@@ -45,22 +45,56 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Scenes>k__BackingField:
-  - Name: SampleScene
-    RandomLevel: 
+  - Level:
+      Name: StartupScene
+      AltLevel: 
+    RandomLevel:
+      Name: 
+      AltLevel: 
+    LoadOrder: -1
+    Pool: []
+  - Level:
+      Name: 
+      AltLevel: 
+    RandomLevel:
+      Name: Easy_1
+      AltLevel: 
     LoadOrder: 0
     Pool: []
-  - Name: Art_Test
-    RandomLevel: 
+  - Level:
+      Name: Easy_2
+      AltLevel: 
+    RandomLevel:
+      Name: 
+      AltLevel: 
     LoadOrder: 1
     Pool: []
-  - Name: Alicia_Easy_1
-    RandomLevel: 
+  - Level:
+      Name: Easy_3
+      AltLevel: 
+    RandomLevel:
+      Name: 
+      AltLevel: 
     LoadOrder: 2
     Pool: []
-  - Name: Traveen_Easy_1
-    RandomLevel: 
+  - Level:
+      Name: Medium_1
+      AltLevel: 
+    RandomLevel:
+      Name: 
+      AltLevel: 
     LoadOrder: 3
     Pool: []
+  - Level:
+      Name: Medium_2
+      AltLevel: 
+    RandomLevel:
+      Name: 
+      AltLevel: 
+    LoadOrder: 4
+    Pool:
+    - Name: 
+      AltLevel: 
 --- !u!1 &3970232227816179341
 GameObject:
   m_ObjectHideFlags: 0
@@ -120,6 +154,51 @@ MonoBehaviour:
   Player_Look:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &4277826219730133253
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1737381954437140329}
+  - component: {fileID: 7876096086008038092}
+  m_Layer: 0
+  m_Name: VFXManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1737381954437140329
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4277826219730133253}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7451414505702632166}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7876096086008038092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4277826219730133253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba880afede8358a43983076b7c055fbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <VFXPaths>k__BackingField: []
 --- !u!1 &5057834704436141334
 GameObject:
   m_ObjectHideFlags: 0
@@ -251,7 +330,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <AudioObject>k__BackingField: {fileID: 5057834704436141334}
-  <AudioPath>k__BackingField: Audio
+  <AudioPaths>k__BackingField:
+  - Audio
   <AudioMixer>k__BackingField: {fileID: 24100000, guid: 7f9d3a509ce85454897128499aa3082d,
     type: 2}
   <MusicMixer>k__BackingField: {fileID: -2958962885310635547, guid: 7f9d3a509ce85454897128499aa3082d,
@@ -290,6 +370,7 @@ Transform:
   - {fileID: 5754228591726319822}
   - {fileID: 2423531116417032915}
   - {fileID: 6842674392059246883}
+  - {fileID: 1737381954437140329}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -190,7 +190,7 @@ public class GlowToy : MonoBehaviour
 
         Animator.SetBool("IsShaking", HoldingInputDown && CurrentBattery > 0);
 
-        if (HoldingInputDown && CurrentBattery > 0)
+        if (HoldingInputDown && CurrentBattery > 0 && !GameManager.Instance.Player.isInLight)
         {
             if (!gameObject.activeSelf)
                 gameObject.SetActive(true);
