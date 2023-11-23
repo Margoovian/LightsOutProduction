@@ -6,35 +6,38 @@ public class PlayerController : MonoBehaviour
 {
     public bool isInLight { get; set; }
     [field: SerializeField] public GameObject Model { get; set; }
-    public float CharacterSpeed { 
-        get 
+    public float CharacterSpeed
+    {
+        get
         {
             float s = _speed * GameManager.Instance.GameSettings.FearSpeedMultiplyer.Evaluate(Fear / GameManager.Instance.GameSettings.MaxFear);
-            
-            if (GameManager.Instance.GameSettings.EnableSpeedModifier) 
-                return s * GameManager.Instance.GameSettings.SpeedModifier; 
-                
-            return s; 
+
+            if (GameManager.Instance.GameSettings.EnableSpeedModifier)
+                return s * GameManager.Instance.GameSettings.SpeedModifier;
+
+            return s;
         }
-        
-        set => _speed = value; 
+
+        set => _speed = value;
     }
 
     private float _speed;
-    public float Fear 
-    { 
-        get => GameManager.Instance.PlayerData.FearLevel; 
-        
-        set {
+    public float Fear
+    {
+        get => GameManager.Instance.PlayerData.FearLevel;
+
+        set
+        {
             if (PlayerData.Instance.InMenu) return;
-            if (!GameManager.Instance.GameSettings.EnableGodMode )
+            if (!GameManager.Instance.GameSettings.EnableGodMode)
             {
                 GameManager.Instance.PlayerData.FearLevel = value;
                 return;
             }
 
             GameManager.Instance.PlayerData.FearLevel = 0;
-        }}
+        }
+    }
 
     private float _fearTime;
     private Vector2 _moveDirection;
@@ -45,7 +48,8 @@ public class PlayerController : MonoBehaviour
 
     public void Footstep(int index) => AudioManager.Instance.PlaySFX("FootStep" + index.ToString());
 
-    private void OnEnable() {
+    private void OnEnable()
+    {
         HelperFunctions.WaitForTask(WaitForManagers(), () =>
         {
             GameManager.Instance.Player = this;
@@ -62,7 +66,8 @@ public class PlayerController : MonoBehaviour
             await Task.Yield();
     }
 
-    private void OnDisable() { 
+    private void OnDisable()
+    {
         if (GameManager.Instance)
             GameManager.Instance.Player = null;
 
@@ -89,13 +94,13 @@ public class PlayerController : MonoBehaviour
                 Fear = Mathf.Clamp(Fear - GameManager.Instance.GameSettings.FearTickAmount, 0, GameManager.Instance.GameSettings.MaxFear);
             else
             {
-                if(PlayerData.Instance.InFearWall)
+                if (PlayerData.Instance.InFearWall)
                     Fear = Mathf.Clamp(Fear + GameManager.Instance.GameSettings.FearWallTick, 0, GameManager.Instance.GameSettings.MaxFear);
                 else
                     Fear = Mathf.Clamp(Fear + GameManager.Instance.GameSettings.FearTickAmount, 0, GameManager.Instance.GameSettings.MaxFear);
             }
             _fearTime = 0;
-            
+
         }
         else
             _fearTime += Time.deltaTime;
@@ -106,7 +111,7 @@ public class PlayerController : MonoBehaviour
             float degree = 180 * radian / Mathf.PI;
             float rotation = (360 + Mathf.Round(degree)) % 360;
 
-            Model.transform.rotation = Quaternion.Euler(-20,rotation-90, 0);
+            Model.transform.rotation = Quaternion.Euler(-20, rotation - 90, 0);
         }
     }
 
