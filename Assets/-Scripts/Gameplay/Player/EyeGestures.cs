@@ -71,17 +71,17 @@ public class EyeGestures : MonoBehaviour
 
         float fear = GameManager.Instance.PlayerData.FearLevel / GameManager.Instance.GameSettings.MaxFear;
 
-        if (fear < 0.25)
+        if (fear < 0.40)
         {
             ChangeEyes(Gestures.Default);
         }
 
-        else if  (fear < 0.50)
+        else if  (fear < 0.70)
         {
             ChangeEyes(Gestures.Worried);
         }
 
-        else if  (fear < 0.75)
+        else if  (fear < 0.90)
         {
             ChangeEyes(Gestures.Scared);
         }
