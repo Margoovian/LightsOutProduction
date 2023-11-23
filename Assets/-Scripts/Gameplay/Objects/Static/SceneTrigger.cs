@@ -33,6 +33,7 @@ public class SceneTrigger : MonoBehaviour
             return;
         }
 
+        InputManager.Instance.DisableControls();
         SceneController.Instance.LoadSpecific(sceneIndex);
     }
 }

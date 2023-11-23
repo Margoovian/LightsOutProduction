@@ -6,11 +6,16 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
+    [Serializable] public class Level
+    {
+        public string Name;
+        public string AltLevel;
+    }
     [Serializable] public class SceneCombo 
     {
         public SceneCombo() { }
-        public SceneCombo(string Name, int LoadOrder) {
-            this.Name = Name;
+        public SceneCombo(Level Level, int LoadOrder) {
+            this.Level = Level;
             this.LoadOrder = LoadOrder;
         }
 
@@ -19,19 +24,19 @@ public class SceneController : MonoBehaviour
             RandomLevel = RandomLevelFromPool();
         }
 
-        private string RandomLevelFromPool()
+        private Level RandomLevelFromPool()
         {
             if (Pool.Length <= 0) 
-                return "";
+                return null;
 
             var random = new System.Random();
             return Pool[random.Next(Pool.Length)];
         }
 
-        public string Name;
-        public string RandomLevel;
+        public Level Level;
+        public Level RandomLevel;
         public int LoadOrder;
-        public string[] Pool;
+        public Level[] Pool;
     } 
 
     public static SceneController Instance { get; internal set; }
@@ -139,23 +144,23 @@ public class SceneController : MonoBehaviour
     {
         if (!GameManager.Instance) 
         { 
-            SceneManager.LoadScene(SceneGlossary[level].Name); 
+            SceneManager.LoadScene(SceneGlossary[level].Level.Name); 
             return; 
         }
 
         if (GameManager.Instance.GameSettings.EnableRandomRooms)
         {
-            if (SceneGlossary[_currentLevel].RandomLevel == "") 
+            if (SceneGlossary[_currentLevel].RandomLevel == null) 
             { 
-                SceneManager.LoadScene(SceneGlossary[level].Name); 
+                SceneManager.LoadScene(SceneGlossary[level].Level.Name); 
                 return; 
             }
 
-            SceneManager.LoadScene(SceneGlossary[level].RandomLevel);
+            SceneManager.LoadScene(SceneGlossary[level].RandomLevel.Name);
             return;
         }
 
-        SceneManager.LoadScene(SceneGlossary[level].Name);
+        SceneManager.LoadScene(SceneGlossary[level].Level.Name);
     }
 
 }
