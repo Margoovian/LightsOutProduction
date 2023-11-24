@@ -6980,7 +6980,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _lights.Array.data[0]
       value: 
-      objectReference: {fileID: 386694660}
+      objectReference: {fileID: 0}
     - target: {fileID: 205550576273173087, guid: 5db0cf98e4e43254fb7faea0bd6f9435,
         type: 3}
       propertyPath: <SwitchCombos>k__BackingField.Array.data[0].<Switch>k__BackingField
@@ -7200,7 +7200,7 @@ PrefabInstance:
         type: 3}
       propertyPath: <LightVolume>k__BackingField
       value: 
-      objectReference: {fileID: 1955824122}
+      objectReference: {fileID: 0}
     - target: {fileID: 3623721759910656231, guid: 5db0cf98e4e43254fb7faea0bd6f9435,
         type: 3}
       propertyPath: _lights.Array.data[0]
@@ -7563,18 +7563,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 97c4293889f1d18428a2a563bebded5d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &386694660 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3262065090719743815, guid: 5db0cf98e4e43254fb7faea0bd6f9435,
-    type: 3}
-  m_PrefabInstance: {fileID: 386694653}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 461eaef824ee87f499cb8842926b40ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &389572943
@@ -45091,6 +45079,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TriggerCube
       objectReference: {fileID: 0}
+    - target: {fileID: 5014542588923706221, guid: 27e80198d3f19f14ebc3da9578efe043,
+        type: 3}
+      propertyPath: <IgnoreIndex>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5014542588923706223, guid: 27e80198d3f19f14ebc3da9578efe043,
         type: 3}
       propertyPath: m_IsTrigger
@@ -46079,18 +46072,6 @@ Transform:
   m_Father: {fileID: 476058630}
   m_RootOrder: 66
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1955824122 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4081479656950821291, guid: 5db0cf98e4e43254fb7faea0bd6f9435,
-    type: 3}
-  m_PrefabInstance: {fileID: 386694653}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa344a15e4c08c3439447ca63a7a5aac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1960547848
 GameObject:
   m_ObjectHideFlags: 0
