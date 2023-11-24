@@ -7,10 +7,11 @@ public class SceneTrigger : MonoBehaviour
 
     private BoxCollider trigger;
 
-    private void Start()
+    private void OnEnable()
     {
         trigger = GetComponent<BoxCollider>();
         trigger.isTrigger = true;
+        trigger.enabled = true;
     }
 
     private void OnTriggerEnter(Collider other)

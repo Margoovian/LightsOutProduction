@@ -11,8 +11,8 @@ public class LevelController : MonoBehaviour
 
     [HideInInspector] public int CurrentLights;
 
-    public int GetMaxLights() => TargetLights.Length;
-    public void ResetValues() => CurrentLights = 0;
+    public int GetMaxLights() => _lightCount;
+    public void ResetValues() => _lightCount = 0;
 
     public void UpdateLightCount()
     {
@@ -20,13 +20,14 @@ public class LevelController : MonoBehaviour
         //foreach (GenericLight i in TargetLights)
         //{
         //    if (i.isOn)
-        //        CurrentLights++;
+        //        CurrentLights++;s
         //}
         
         //TODO: COREY FIX THIS, PS try and stop using singletons
         //TrackLightCount.Instance.Modify(CurrentLights, GetMaxLights());
 
         bool result = _lightCount <= 0;
+        Debug.Log(_lightCount <= 0);
         SceneTrigger.enabled = result;
 
         if (result)
@@ -58,7 +59,7 @@ public class LevelController : MonoBehaviour
             return;
         }
 
-        if (TargetLights.Length == 0)
+        if (_lightCount == 0)
         {
             Debug.LogWarning("No GenericLight Instances were added to array: 'TargetLights'", this);
 
