@@ -42,6 +42,7 @@ public class GlowToy : MonoBehaviour
 
     private bool HoldingInputDown = false;
     private bool WaitingForRelease = false;
+    private bool CanTurnOn = false;
 
     #endregion
 
@@ -153,6 +154,7 @@ public class GlowToy : MonoBehaviour
     private void Update()
     {
         UpdateBatteryUI();
+        CanTurnOn = HoldingInputDown && CurrentBattery > 0 && !GameManager.Instance.Player.isInLight;
 
         if (isOn)
         {
@@ -188,9 +190,9 @@ public class GlowToy : MonoBehaviour
             return;
         }
 
-        Animator.SetBool("IsShaking", HoldingInputDown && CurrentBattery > 0);
+        Animator.SetBool("IsShaking", CanTurnOn);
 
-        if (HoldingInputDown && CurrentBattery > 0 && !GameManager.Instance.Player.isInLight)
+        if (CanTurnOn)
         {
             if (!gameObject.activeSelf)
                 gameObject.SetActive(true);
