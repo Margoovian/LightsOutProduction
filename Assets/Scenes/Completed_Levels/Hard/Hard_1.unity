@@ -24756,18 +24756,6 @@ Transform:
   m_Father: {fileID: 1463124581}
   m_RootOrder: 91
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1111887540 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4081479656950821291, guid: 5db0cf98e4e43254fb7faea0bd6f9435,
-    type: 3}
-  m_PrefabInstance: {fileID: 2034603085}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa344a15e4c08c3439447ca63a7a5aac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1118434902
 GameObject:
   m_ObjectHideFlags: 0
@@ -49721,18 +49709,6 @@ Transform:
   m_Father: {fileID: 1463124581}
   m_RootOrder: 69
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1791947178 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3262065090719743815, guid: 5db0cf98e4e43254fb7faea0bd6f9435,
-    type: 3}
-  m_PrefabInstance: {fileID: 2034603085}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 461eaef824ee87f499cb8842926b40ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1801426297
 GameObject:
   m_ObjectHideFlags: 0
@@ -54324,6 +54300,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TriggerCube
       objectReference: {fileID: 0}
+    - target: {fileID: 5014542588923706221, guid: 27e80198d3f19f14ebc3da9578efe043,
+        type: 3}
+      propertyPath: <IgnoreIndex>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5014542588923706258, guid: 27e80198d3f19f14ebc3da9578efe043,
         type: 3}
       propertyPath: m_RootOrder
@@ -56333,7 +56314,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _lights.Array.data[0]
       value: 
-      objectReference: {fileID: 1791947178}
+      objectReference: {fileID: 0}
     - target: {fileID: 205550576273173087, guid: 5db0cf98e4e43254fb7faea0bd6f9435,
         type: 3}
       propertyPath: <SwitchCombos>k__BackingField.Array.data[0].<Switch>k__BackingField
@@ -56558,7 +56539,7 @@ PrefabInstance:
         type: 3}
       propertyPath: <LightVolume>k__BackingField
       value: 
-      objectReference: {fileID: 1111887540}
+      objectReference: {fileID: 0}
     - target: {fileID: 3623721759910656231, guid: 5db0cf98e4e43254fb7faea0bd6f9435,
         type: 3}
       propertyPath: _lights.Array.data[0]
