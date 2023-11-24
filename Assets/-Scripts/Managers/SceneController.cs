@@ -45,6 +45,7 @@ public class SceneController : MonoBehaviour
 
     internal int _startLevel = -1;
     internal int _currentLevel;
+    internal bool _isAltLevel;
 
     private void Awake() {
         if (!Instance)
@@ -76,19 +77,12 @@ public class SceneController : MonoBehaviour
         SceneManager.sceneUnloaded += OnSceneUnloaded;
     }
 
-    public int GetStartIndex()
-    {
-        return _startLevel;
-    }
-
-    public int GetCurrentIndex()
-    {
-        return _currentLevel;
-    }
+    public int GetStartIndex() => _startLevel;
+    public int GetCurrentIndex() => _currentLevel;
 
     public async void NextLevel(Func<Task> beforeLoad = null, Func<Task> afterLoad = null, Action beforeAction = null, Action afterAction = null)
     {
-        if (!SceneGlossary.ContainsKey(_currentLevel + 1))
+        if (!SceneGlossary.ContainsKey(_isAltLevel? _currentLevel - 1 : _currentLevel + 1))
         { 
             Debug.LogWarning("No More Levels!"); 
             return;
@@ -100,6 +94,7 @@ public class SceneController : MonoBehaviour
             if (output != null) await output;
             beforeAction?.Invoke();
         }
+
         Instance._currentLevel += 1;
 
         TryLoadRandom(_currentLevel);
@@ -143,8 +138,8 @@ public class SceneController : MonoBehaviour
     private void TryLoadRandom(int level)
     {
         if (!GameManager.Instance) 
-        { 
-            SceneManager.LoadScene(SceneGlossary[level].Level.Name); 
+        {
+            SceneManager.LoadScene(_isAltLevel? SceneGlossary[level].Level.AltLevel : SceneGlossary[level].Level.Name); 
             return; 
         }
 
