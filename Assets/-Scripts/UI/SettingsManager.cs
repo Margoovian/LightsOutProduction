@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Audio;
 using UnityEngine.Events;
 
 using TMPro;
@@ -106,6 +105,7 @@ public class SettingsManager : MonoBehaviour
 #endif
         Resolution targetResolution = settings.resolutions[currentResolution];
         Screen.SetResolution(targetResolution.width, targetResolution.height, currentFullscreen);
+        QualitySettings.SetQualityLevel(settings.baseSettings.quality);
 
         #endregion
 
@@ -159,16 +159,6 @@ public class SettingsManager : MonoBehaviour
         #endregion
     }
 
-    public void ApplyDenied()
-    {
-        PromptManager.Instance.SetFrameVisibility(false);
-    }
-
-    public void RevertDenied()
-    {
-        PromptManager.Instance.SetFrameVisibility(false);
-    }
-
     private void ToggleMenu(Target Data)
     {
         if (currentFrame == Data.Frame)
@@ -189,16 +179,13 @@ public class SettingsManager : MonoBehaviour
 
     #region Prompt Functions
 
-    public void OnPromptFrame(string title, string body, string eventName)
-    {
-        PromptManager.Instance.StartPrompt(title, body, eventName, passthroughEvent);
-    }
+    public void ApplyDenied() => PromptManager.Instance.SetFrameVisibility(false);
+    public void RevertDenied() => PromptManager.Instance.SetFrameVisibility(false);
+
+    public void OnPromptFrame(string title, string body, string eventName) => PromptManager.Instance.StartPrompt(title, body, eventName, passthroughEvent);
 
     public void PromptResultReceived(bool result, string eventName)
     {
-        // visibility and unhooking of buttons happen automatically as of now!
-        Debug.Log(eventName);
-
         foreach (Events i in applicableEvents)
         {
             if (i.eventName == eventName)
@@ -219,29 +206,27 @@ public class SettingsManager : MonoBehaviour
 
     #region Slider Controls
 
-    private float AudioSliderCalculations(float value)
-    {
-        // original math equation: (float)Math.Log10(Math.Pow(10, value / 10)) * 10 - 100;
-        return Mathf.Log10(value) * 20;
-    }
+    private float AudioSliderCalculations(float value) => Mathf.Log10(value) * 20;
 
     private void MasterSliderChanged(float value)
     {
         currentMasterVolume = value;
-        GameManager.Instance.GameMixer.SetFloat(mixerValues[0], AudioSliderCalculations(value));
+        AudioManager.Instance.AudioMixer.SetFloat(mixerValues[0], AudioSliderCalculations(value));
     }
 
     private void SoundSliderChanged(float value)
     {
         currentSoundVolume = value;
-        GameManager.Instance.GameMixer.SetFloat(mixerValues[1], AudioSliderCalculations(value));
-        AudioManager.Instance.PlaySFX("TestSound");
+        AudioManager.Instance.AudioMixer.SetFloat(mixerValues[1], AudioSliderCalculations(value));
+
+        if (!AudioManager.Instance.IsPlaying("TestSound"))
+            AudioManager.Instance.Play("TestSound");
     }
 
     private void MusicSliderChanged(float value)
     {
         currentMusicVolume = value;
-        GameManager.Instance.GameMixer.SetFloat(mixerValues[2], AudioSliderCalculations(value));
+        AudioManager.Instance.AudioMixer.SetFloat(mixerValues[2], AudioSliderCalculations(value));
     }
 
     private void HudScaleSliderChanged(float value)
@@ -255,11 +240,7 @@ public class SettingsManager : MonoBehaviour
 
     #region Private Functions
 
-    private void QualityChanged(int value)
-    {
-        currentQuality = value;
-        QualitySettings.SetQualityLevel(value);
-    }
+    private void QualityChanged(int value) => currentQuality = value;
 
     private void SetupResolutions()
     {
@@ -344,9 +325,9 @@ public class SettingsManager : MonoBehaviour
         currentSoundVolume = settings.baseSettings.soundVolume;
         currentMusicVolume = settings.baseSettings.musicVolume;
 
-        GameManager.Instance.GameMixer.SetFloat(mixerValues[0], AudioSliderCalculations(currentMasterVolume));
-        GameManager.Instance.GameMixer.SetFloat(mixerValues[1], AudioSliderCalculations(currentSoundVolume));
-        GameManager.Instance.GameMixer.SetFloat(mixerValues[2], AudioSliderCalculations(currentMusicVolume));
+        AudioManager.Instance.AudioMixer.SetFloat(mixerValues[0], AudioSliderCalculations(currentMasterVolume));
+        AudioManager.Instance.AudioMixer.SetFloat(mixerValues[1], AudioSliderCalculations(currentSoundVolume));
+        AudioManager.Instance.AudioMixer.SetFloat(mixerValues[2], AudioSliderCalculations(currentMusicVolume));
 
         currentResolution = settings.baseSettings.resolution;
         currentFullscreen = settings.baseSettings.fullscreen;

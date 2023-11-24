@@ -9,8 +9,10 @@ public class LeverSwitch : BoxSwitch
         isOn = true;
         foreach(GenericLight light in _lights)
         {
+            if (light.isOn == isOn) continue;
             light.isOn = isOn;
             light.ChangeMaterial();
+            light.EditLightCount();
         }
     }
 }

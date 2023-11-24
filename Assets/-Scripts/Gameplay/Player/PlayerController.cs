@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public bool isInLight { get; set; }
-    [field: SerializeField] public GameObject Model { get; set; }
+    [field: SerializeField] public GameObject Model { get; set; }    
     public float CharacterSpeed { 
         get 
         {
@@ -39,8 +39,11 @@ public class PlayerController : MonoBehaviour
     private float _fearTime;
     private Vector2 _moveDirection;
     private CharacterController _characterController;
+    private Animator _animator;
 
     [field: SerializeField] public float Gravity { get; set; }
+
+    public void Footstep(int index) => AudioManager.Instance.PlaySFX("FootStep" + index.ToString());
 
     private void OnEnable() {
         HelperFunctions.WaitForTask(WaitForManagers(), () =>
@@ -71,30 +74,30 @@ public class PlayerController : MonoBehaviour
         name = "Player";
         _characterController = GetComponent<CharacterController>();
         CharacterSpeed = GameManager.Instance.GameSettings.PlayerBaseSpeed;
+        _animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if (_moveDirection.x != 0 || _moveDirection.y != 0)
-            AudioManager.Instance.PlaySFX("Footsteps");
-        else
-            AudioManager.Instance.StopSFX("Footsteps");
-
+        _animator.SetBool("IsWalking", _moveDirection.x != 0 || _moveDirection.y != 0);
         _characterController.Move(new Vector3(_moveDirection.x * CharacterSpeed, -Gravity, _moveDirection.y * CharacterSpeed) * Time.deltaTime);
 
         if (_fearTime >= GameManager.Instance.GameSettings.FearTickRate)
         {
-            if (isInLight || PlayerData.Instance.ToyOn) 
+
+            if (isInLight || PlayerData.Instance.ToyOn)
                 Fear = Mathf.Clamp(Fear - GameManager.Instance.GameSettings.FearTickAmount, 0, GameManager.Instance.GameSettings.MaxFear);
-            else 
-                Fear = Mathf.Clamp(Fear + GameManager.Instance.GameSettings.FearTickAmount, 0, GameManager.Instance.GameSettings.MaxFear);
-            
+            else
+            {
+                if(PlayerData.Instance.InFearWall)
+                    Fear = Mathf.Clamp(Fear + GameManager.Instance.GameSettings.FearWallTick, 0, GameManager.Instance.GameSettings.MaxFear);
+                else
+                    Fear = Mathf.Clamp(Fear + GameManager.Instance.GameSettings.FearTickAmount, 0, GameManager.Instance.GameSettings.MaxFear);
+            }
             _fearTime = 0;
+            
         }
-        
         else
-            _fearTime += Time.deltaTime;
             _fearTime += Time.deltaTime;
 
         if (_moveDirection.magnitude > 0)

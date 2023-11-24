@@ -1,5 +1,3 @@
-using System.Threading;
-using System.Threading.Tasks;
 using UnityEngine;
 
 public class SceneTrigger : MonoBehaviour
@@ -9,10 +7,11 @@ public class SceneTrigger : MonoBehaviour
 
     private BoxCollider trigger;
 
-    private void Start()
+    private void OnEnable()
     {
         trigger = GetComponent<BoxCollider>();
         trigger.isTrigger = true;
+        trigger.enabled = true;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -35,6 +34,7 @@ public class SceneTrigger : MonoBehaviour
             return;
         }
 
+        InputManager.Instance.DisableControls();
         SceneController.Instance.LoadSpecific(sceneIndex);
     }
 }

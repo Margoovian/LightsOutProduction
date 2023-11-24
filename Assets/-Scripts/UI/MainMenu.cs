@@ -16,6 +16,8 @@ public class EventParams
 
 public class MainMenu : MonoBehaviour
 {
+    public static MainMenu Instance { get; set; }
+
     [Header("Main")]
     public EventParams eventParams;
 
@@ -26,9 +28,8 @@ public class MainMenu : MonoBehaviour
 
     [field: Header("Uncategorized")]
     [field: SerializeField] public GameObject GameGUI { get; set; }
-    [field: SerializeField] public GameObject SettingsUI { get; set; }
-
-    private Canvas _menuGUI;
+    [field: SerializeField] public SettingsManager SettingsUI { get; set; }
+    [field: SerializeField] public OpeningManager OpeningUI { get; set; }
 
     private UnityEvent<bool, string> passthroughEvent;
 
@@ -46,6 +47,9 @@ public class MainMenu : MonoBehaviour
 
     private void Start()
     {
+        if (!Instance)
+            Instance = this;
+
         if (passthroughEvent == null)
         {
             passthroughEvent = new();
@@ -54,10 +58,9 @@ public class MainMenu : MonoBehaviour
 
         if (GameGUI != null) 
             GameGUI.SetActive(false);
-        
-        _menuGUI = GetComponent<Canvas>();
 
-        playButton.onClick.AddListener(OnPlay);
+        playButton.onClick.AddListener(delegate { OpeningUI.gameObject.SetActive(true); });
+
         optionsButton.onClick.AddListener(OnOptions);
         leaveButton.onClick.AddListener(OnLeave);
     }
@@ -69,20 +72,17 @@ public class MainMenu : MonoBehaviour
         if (GameGUI != null)
             GameGUI.SetActive(true);
 
-        AudioManager.Instance.StopMusic("TestMusic");
-        SceneController.Instance.LoadSpecific(SceneController.Instance.GetStartIndex() + 1);
+        AudioManager.Instance.Stop("TestMusic");
+        SceneController.Instance.LoadSpecific(0);
     }
 
     public void OnOptions()
     {
-        if (SettingsUI.activeSelf)
+        if (SettingsUI.gameObject.activeSelf)
             return;
 
-        SettingsUI.SetActive(true);
+        SettingsUI.gameObject.SetActive(true);
     }
 
-    public void OnLeave()
-    {
-        PromptManager.Instance.StartPrompt(eventParams.Title, eventParams.Body, eventParams.ApplyBtnText, eventParams.DenyBtnText, eventParams.EventName, passthroughEvent);
-    }
+    public void OnLeave() => PromptManager.Instance.StartPrompt(eventParams.Title, eventParams.Body, eventParams.ApplyBtnText, eventParams.DenyBtnText, eventParams.EventName, passthroughEvent);
 }

@@ -30,20 +30,19 @@ public class GlowToy : MonoBehaviour
         }
     }
 
+    public Light GlowToyLight;
+    public SpriteRenderer BatteryUIRenderer;
+    [field: SerializeField] public Animator Animator { get; set; }
+
+    private const int BatteryUICap = 4;
+    public BatteryUI[] BatteryUISprites = new BatteryUI[BatteryUICap];
+
     private float CurrentFadeIn;
     private float CurrentDebounce;
 
     private bool HoldingInputDown = false;
     private bool WaitingForRelease = false;
-
-    public Light GlowToyLight;
-    // public AudioManager audioManager;
-    public SpriteRenderer BatteryUIRenderer;
-
-    private const int BatteryUICap = 4;
-    private int CurrentBatteryValue = 0;
-
-    public BatteryUI[] BatteryUISprites = new BatteryUI[BatteryUICap];
+    private bool CanTurnOn = false;
 
     #endregion
 
@@ -56,23 +55,14 @@ public class GlowToy : MonoBehaviour
     private void UpdateBatteryUI()
     {
         BatteryUIRenderer.enabled = isOn;
+
+        if (!isOn)
+            return;
+
         BatteryUIRenderer.transform.LookAt(GameManager.Instance.Camera.transform);
 
-        // Figure out a way to condense this with math later down the road!
-        for (int i = 0; i < BatteryUISprites.Length; i++)
-        {
-            if (BatteryUISprites[i].percentage == Math.Round(CurrentBattery))
-            {
-                CurrentBatteryValue = i;
-                break;
-            }
-        }
-
-        //int nearest = BatteryUIStates.OrderBy(x => Math.Abs(x - CurrentBattery)).First();
-        //int index = Array.FindIndex(BatteryUIStates, row => row == nearest);
-
-        //Debug.Log(nearest + " | " + index);
-        BatteryUIRenderer.sprite = BatteryUISprites[CurrentBatteryValue].sprite;
+        int batteryIndex = (int)Mathf.Lerp(BatteryUICap - 1, 0, CurrentBattery / MaxBattery);
+        BatteryUIRenderer.sprite = BatteryUISprites[batteryIndex].sprite;
     }
 
     private async void HandleBattery()
@@ -164,6 +154,7 @@ public class GlowToy : MonoBehaviour
     private void Update()
     {
         UpdateBatteryUI();
+        CanTurnOn = HoldingInputDown && CurrentBattery > 0 && !GameManager.Instance.Player.isInLight;
 
         if (isOn)
         {
@@ -199,15 +190,20 @@ public class GlowToy : MonoBehaviour
             return;
         }
 
-        if (HoldingInputDown && CurrentBattery > 0)
+        Animator.SetBool("IsShaking", CanTurnOn);
+
+        if (CanTurnOn)
         {
             if (!gameObject.activeSelf)
                 gameObject.SetActive(true);
 
             if (CurrentFadeIn < MaxFadeIn)
             {
-                AudioManager.Instance.PlaySFX("GlowToyShake");
+                if (!AudioManager.Instance.IsPlaying("ShakeLoop"))
+                    AudioManager.Instance.Play("ShakeLoop");
+
                 CurrentFadeIn += FadeModifier * Time.deltaTime;
+                
                 return;
             }
 
@@ -217,8 +213,8 @@ public class GlowToy : MonoBehaviour
             Toggle();
             ToggleLight(true);
 
-            AudioManager.Instance.StopSFX("GlowToyShake");
-            AudioManager.Instance.PlaySFX("GlowToyFinished");
+            AudioManager.Instance.Stop("ShakeLoop");
+            AudioManager.Instance.Play("ShakeDone");
 
             return;
         }
@@ -227,6 +223,9 @@ public class GlowToy : MonoBehaviour
 
         if (CurrentFadeIn > 0.0f)
         {
+            if (AudioManager.Instance.IsPlaying("ShakeLoop"))
+                AudioManager.Instance.Stop("ShakeLoop");
+
             CurrentFadeIn -= FadeModifier * Time.deltaTime;
             return;
         }

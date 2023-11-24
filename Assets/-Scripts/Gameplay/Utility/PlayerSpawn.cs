@@ -20,7 +20,7 @@ public class PlayerSpawn : MonoBehaviour
         player.transform.position = new Vector3(0f,0.5f,0f) + transform.position;
         player.transform.rotation = transform.rotation;
         GameManager.Instance.Player = player;
-
+        InputManager.Instance.EnableControls();
     }
 
     private void OnDrawGizmosSelected()
