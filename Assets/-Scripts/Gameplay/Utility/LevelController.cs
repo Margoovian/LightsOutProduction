@@ -13,6 +13,7 @@ public class LevelController : MonoBehaviour
 
     public int GetMaxLights() => _lightCount;
     public void ResetValues() => _lightCount = 0;
+    public int GetValues() => _lightCount;
 
     public void UpdateLightCount()
     {
