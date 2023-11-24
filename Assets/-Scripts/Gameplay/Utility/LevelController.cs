@@ -4,16 +4,18 @@ public class LevelController : MonoBehaviour
 {
     public static LevelController Instance { get; internal set; }
 
-    //Recompile!
-    private int _lightCount = 0;
     [field: SerializeField] public SceneTrigger SceneTrigger { get; set; }
     [field: SerializeField] protected GenericLight[] TargetLights { get; set; }
 
-    [HideInInspector] public int CurrentLights;
-
     public int GetMaxLights() => TargetLights.Length;
-    public void ResetValues() => CurrentLights = 0;
+    public void ResetValues() => _lightCount = 0;
+    public void IncreaseLightCount() => _lightCount++;
+    public void ModifyLightCount(int amount) { _lightCount += amount; UpdateLightCount(); }
+    public int[] GetValues() => new int[] { _lightCount, GetMaxLights() };
 
+    //Recompile!
+    private int _lightCount = 0;
+    
     public void UpdateLightCount()
     {
         //CurrentLights = 0;
@@ -22,9 +24,6 @@ public class LevelController : MonoBehaviour
         //    if (i.isOn)
         //        CurrentLights++;
         //}
-        
-        //TODO: COREY FIX THIS, PS try and stop using singletons
-        //TrackLightCount.Instance.Modify(CurrentLights, GetMaxLights());
 
         bool result = _lightCount <= 0;
         SceneTrigger.enabled = result;
@@ -41,12 +40,6 @@ public class LevelController : MonoBehaviour
         //Debug.LogWarning("Door Opened Status: " + SceneTrigger.enabled.ToString());
     }
 
-    public void IncreaseLightCount()
-    {
-        _lightCount++;
-    }
-    public void ModifyLightCount(int amount) { _lightCount += amount; UpdateLightCount(); }
-
     private void Awake()
     {
         if (!Instance)
@@ -60,7 +53,7 @@ public class LevelController : MonoBehaviour
 
         if (TargetLights.Length == 0)
         {
-            Debug.LogWarning("No GenericLight Instances were added to array: 'TargetLights'", this);
+            Debug.LogWarning("No GenericLight Instances were added to array: " + TargetLights.ToString(), this);
 
             if (!SceneTrigger.enabled)
                 SceneTrigger.enabled = true;
@@ -68,7 +61,7 @@ public class LevelController : MonoBehaviour
             return;
         }
 
-        CurrentLights = GetMaxLights();
+        //_lightCount = GetMaxLights();
 
         if (SceneTrigger.enabled)
             SceneTrigger.enabled = false;
