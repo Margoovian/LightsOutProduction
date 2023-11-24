@@ -7,7 +7,7 @@ AnimatorStateMachine:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Base Layer
+  m_Name: Lower_Body
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 5803817811903922161}
@@ -154,7 +154,7 @@ AnimatorController:
     m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
-    m_Name: Base Layer
+    m_Name: Lower_Body
     m_StateMachine: {fileID: -8667724452332321332}
     m_Mask: {fileID: 31900000, guid: 77126d6409bbf244c91b9b89e6c94bf4, type: 2}
     m_Motions: []
@@ -171,7 +171,7 @@ AnimatorController:
     m_Mask: {fileID: 31900000, guid: 6fdf6eb2a65135a4480b242333a20f17, type: 2}
     m_Motions: []
     m_Behaviours: []
-    m_BlendingMode: 0
+    m_BlendingMode: 1
     m_SyncedLayerIndex: -1
     m_DefaultWeight: 1
     m_IKPass: 0
