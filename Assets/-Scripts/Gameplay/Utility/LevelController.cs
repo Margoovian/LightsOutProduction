@@ -4,30 +4,21 @@ public class LevelController : MonoBehaviour
 {
     public static LevelController Instance { get; internal set; }
 
+    [field: SerializeField] public int MaxLights { get; set; }
+    [field: SerializeField] public SceneTrigger SceneTrigger { get; set; }
+
     //Recompile!
     private int _lightCount = 0;
-    [field: SerializeField] public SceneTrigger SceneTrigger { get; set; }
-    [field: SerializeField] protected GenericLight[] TargetLights { get; set; }
 
-    [HideInInspector] public int CurrentLights;
-
-    public int GetMaxLights() => _lightCount;
+    public int GetMaxLights() => MaxLights;
     public void ResetValues() => _lightCount = 0;
+    public void IncreaseLightCount() => _lightCount++;
+    public (int, int) GetValues() => (_lightCount, GetMaxLights());
+    public void ModifyLightCount(int amount) { _lightCount += amount; UpdateLightCount(); }
 
     public void UpdateLightCount()
     {
-        //CurrentLights = 0;
-        //foreach (GenericLight i in TargetLights)
-        //{
-        //    if (i.isOn)
-        //        CurrentLights++;s
-        //}
-        
-        //TODO: COREY FIX THIS, PS try and stop using singletons
-        //TrackLightCount.Instance.Modify(CurrentLights, GetMaxLights());
-
         bool result = _lightCount <= 0;
-        Debug.Log(_lightCount <= 0);
         SceneTrigger.enabled = result;
 
         if (result)
@@ -41,12 +32,6 @@ public class LevelController : MonoBehaviour
 
         //Debug.LogWarning("Door Opened Status: " + SceneTrigger.enabled.ToString());
     }
-
-    public void IncreaseLightCount()
-    {
-        _lightCount++;
-    }
-    public void ModifyLightCount(int amount) { _lightCount += amount; UpdateLightCount(); }
 
     private void Awake()
     {
@@ -69,7 +54,7 @@ public class LevelController : MonoBehaviour
             return;
         }
 
-        CurrentLights = GetMaxLights();
+        _lightCount = GetMaxLights();
 
         if (SceneTrigger.enabled)
             SceneTrigger.enabled = false;
