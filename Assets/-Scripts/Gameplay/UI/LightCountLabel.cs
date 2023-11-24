@@ -9,8 +9,8 @@ public class LightCountLabel : MonoBehaviour
 
     private void Update()
     {
-        int value = LevelController.Instance.GetValues();
-        UpdateLabel(value, value);
+        (int, int) values = LevelController.Instance.GetValues();
+        UpdateLabel(values.Item1, values.Item2);
     }
 
     private void Start()
