@@ -4,6 +4,8 @@ public class LevelController : MonoBehaviour
 {
     public static LevelController Instance { get; internal set; }
 
+    //Recompile!
+    private int _lightCount = 0;
     [field: SerializeField] public SceneTrigger SceneTrigger { get; set; }
     [field: SerializeField] protected GenericLight[] TargetLights { get; set; }
 
@@ -14,16 +16,17 @@ public class LevelController : MonoBehaviour
 
     public void UpdateLightCount()
     {
-        CurrentLights = 0;
-        foreach (GenericLight i in TargetLights)
-        {
-            if (i.isOn)
-                CurrentLights++;
-        }
+        //CurrentLights = 0;
+        //foreach (GenericLight i in TargetLights)
+        //{
+        //    if (i.isOn)
+        //        CurrentLights++;
+        //}
+        
+        //TODO: COREY FIX THIS, PS try and stop using singletons
+        //TrackLightCount.Instance.Modify(CurrentLights, GetMaxLights());
 
-        TrackLightCount.Instance.Modify(CurrentLights, GetMaxLights());
-
-        bool result = CurrentLights == 0;
+        bool result = _lightCount <= 0;
         SceneTrigger.enabled = result;
 
         if (result)
@@ -37,6 +40,12 @@ public class LevelController : MonoBehaviour
 
         //Debug.LogWarning("Door Opened Status: " + SceneTrigger.enabled.ToString());
     }
+
+    public void IncreaseLightCount()
+    {
+        _lightCount++;
+    }
+    public void ModifyLightCount(int amount) { _lightCount += amount; UpdateLightCount(); }
 
     private void Awake()
     {
