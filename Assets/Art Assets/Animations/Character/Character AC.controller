@@ -7,14 +7,14 @@ AnimatorStateMachine:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Base Layer
+  m_Name: Lower_Body
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 5803817811903922161}
-    m_Position: {x: 40, y: 180, z: 0}
+    m_Position: {x: 110, y: 160, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3609072896785364041}
-    m_Position: {x: 40, y: 270, z: 0}
+    m_Position: {x: 110, y: 260, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -46,7 +46,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 1827226128182048838, guid: 7be8945242f81d24aba0082a74fac6b9,
+  m_Motion: {fileID: 1827226128182048838, guid: 31056ceede360224c9ab0a8f34779cfa,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -124,7 +124,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 1827226128182048838, guid: e7137275d692b7141a548597ff06d439,
+  m_Motion: {fileID: 1827226128182048838, guid: efbfa7fe92ebb3740bb510acb45389d7,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -145,16 +145,16 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: IsShaking
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
-    m_Name: Base Layer
+    m_Name: Lower_Body
     m_StateMachine: {fileID: -8667724452332321332}
     m_Mask: {fileID: 31900000, guid: 77126d6409bbf244c91b9b89e6c94bf4, type: 2}
     m_Motions: []
@@ -171,7 +171,7 @@ AnimatorController:
     m_Mask: {fileID: 31900000, guid: 6fdf6eb2a65135a4480b242333a20f17, type: 2}
     m_Motions: []
     m_Behaviours: []
-    m_BlendingMode: 0
+    m_BlendingMode: 1
     m_SyncedLayerIndex: -1
     m_DefaultWeight: 1
     m_IKPass: 0
@@ -301,7 +301,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 1827226128182048838, guid: 2381fc86af3b3aa41bfcc3f07193194f,
+  m_Motion: {fileID: 1827226128182048838, guid: eb876f6b8699c7942b99d19600aaff83,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
