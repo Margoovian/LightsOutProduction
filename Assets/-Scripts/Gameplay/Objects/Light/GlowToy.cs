@@ -154,7 +154,6 @@ public class GlowToy : MonoBehaviour
     private void Update()
     {
         UpdateBatteryUI();
-
         CanTurnOn = HoldingInputDown && CurrentBattery > 0 && !GameManager.Instance.Player.isInLight;
 
         if (isOn)
