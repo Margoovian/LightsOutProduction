@@ -4,13 +4,12 @@ using UnityEngine;
 public class LightCountLabel : MonoBehaviour
 {
     private TMP_Text TextLabel;
-    private bool CanRun;
 
     public void UpdateLabel(int current, int max) => TextLabel.text = current.ToString() + " / " + max.ToString();
 
     private void Update()
     {
-        if (!CanRun)
+        if (!LevelController.Instance)
             return;
 
         (int, int) values = LevelController.Instance.GetValues();
@@ -21,7 +20,5 @@ public class LightCountLabel : MonoBehaviour
     {
         if (TextLabel == null)
             TextLabel = GetComponent<TMP_Text>();
-
-        CanRun = LevelController.Instance;
     }
 }
