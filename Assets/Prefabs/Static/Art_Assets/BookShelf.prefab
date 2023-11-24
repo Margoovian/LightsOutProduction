@@ -9,8 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7838085954220540908}
-  - component: {fileID: 6586974261246970953}
-  - component: {fileID: 8974923610872658051}
   - component: {fileID: 115686072053015099}
   m_Layer: 0
   m_Name: BookShelf
@@ -30,60 +28,11 @@ Transform:
   m_LocalPosition: {x: -6.218, y: 0.462, z: 0.52}
   m_LocalScale: {x: 1, y: 0.65746176, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2835687420265834940}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &6586974261246970953
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7461806014396569942}
-  m_Mesh: {fileID: -5135906133751270757, guid: 18f78ae121b5d874386a67791a4b72c2, type: 3}
---- !u!23 &8974923610872658051
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7461806014396569942}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 8e7921a40edd9a24794cd73504bb51fb, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &115686072053015099
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -97,3 +46,83 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.19959071, y: 1.4944991, z: 0.9531055}
   m_Center: {x: -0.000000018626453, y: -0.031376872, z: 0}
+--- !u!1001 &2364631500369972823
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7838085954220540908}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: a83be0ade6a54fa42a4f98f9c0ac130e,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a83be0ade6a54fa42a4f98f9c0ac130e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.079
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a83be0ade6a54fa42a4f98f9c0ac130e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.303
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a83be0ade6a54fa42a4f98f9c0ac130e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a83be0ade6a54fa42a4f98f9c0ac130e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a83be0ade6a54fa42a4f98f9c0ac130e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a83be0ade6a54fa42a4f98f9c0ac130e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a83be0ade6a54fa42a4f98f9c0ac130e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a83be0ade6a54fa42a4f98f9c0ac130e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a83be0ade6a54fa42a4f98f9c0ac130e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a83be0ade6a54fa42a4f98f9c0ac130e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: a83be0ade6a54fa42a4f98f9c0ac130e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bfdbf12de9eb48e41b2419a8707b544d, type: 2}
+    - target: {fileID: 919132149155446097, guid: a83be0ade6a54fa42a4f98f9c0ac130e,
+        type: 3}
+      propertyPath: m_Name
+      value: SM_Bookshelf_004
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a83be0ade6a54fa42a4f98f9c0ac130e, type: 3}
+--- !u!4 &2835687420265834940 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a83be0ade6a54fa42a4f98f9c0ac130e,
+    type: 3}
+  m_PrefabInstance: {fileID: 2364631500369972823}
+  m_PrefabAsset: {fileID: 0}
