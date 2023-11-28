@@ -48,14 +48,18 @@ public class SwitchBox : MonoBehaviour, IController
         if (state)
             foreach (GenericLight light in _lights)
             {
+                if (light.isOn == state) continue;
                 light.isOn = true;
                 light.ChangeMaterial();
+                light.EditLightCount();
             }
         else
             foreach (GenericLight light in _lights)
             {
+                if (light.isOn == state) continue;
                 light.isOn = false;
                 light.ChangeMaterial();
+                light.EditLightCount();
             }
     }
 }

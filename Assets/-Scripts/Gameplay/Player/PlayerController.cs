@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public bool isInLight { get; set; }
-    [field: SerializeField] public GameObject Model { get; set; }
+    [field: SerializeField] public GameObject Model { get; set; }    
     public float CharacterSpeed { 
         get 
         {
@@ -73,8 +73,8 @@ public class PlayerController : MonoBehaviour
     {
         name = "Player";
         _characterController = GetComponent<CharacterController>();
-        _animator = GetComponent<Animator>();
         CharacterSpeed = GameManager.Instance.GameSettings.PlayerBaseSpeed;
+        _animator = GetComponent<Animator>();
     }
 
     private void Update()
