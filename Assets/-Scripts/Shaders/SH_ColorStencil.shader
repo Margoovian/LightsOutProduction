@@ -51,7 +51,7 @@ Shader "Custom/StencilLight Color"
             Zwrite off
             Ztest Lequal
             Cull Back
-            Blend OneMinusDstColor One
+            Blend DstColor One
 
             Stencil
             {
@@ -76,7 +76,7 @@ Shader "Custom/StencilLight Color"
             ZTest always
             ZWrite on
             Cull Front
-            Blend OneMinusDstColor One
+            Blend DstColor One
 
             Stencil
             {
