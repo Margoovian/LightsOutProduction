@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     [field: SerializeField] public Animator SceneTransition { get; set; }
     [field: SerializeField] public InteractionProperties InteractProperties { get; set; }
     public PlayerController Player { get; set; }
+    public int PuzzlesCompleted { get; set; }
 
 
     // The GODController is sorta hard-coded for the moment, sorry about that Devlyn!
@@ -60,5 +61,29 @@ public class GameManager : MonoBehaviour
             default: break;
             
         }
+    }
+    public EndRatingEnum CalcEndScore()
+    {
+        int P = PuzzlesCompleted;
+        float B = PlayerData.BatteryLife / 10;
+        float T = PlayerData.ElapsedTime;
+        int R = (int)((P + B) / T);
+
+        switch(R) // Turn this info else if for more control
+        {
+            case 0: return EndRatingEnum.F;
+            case 1: return EndRatingEnum.E;
+            case 2: return EndRatingEnum.D;
+            case 3: return EndRatingEnum.C;
+            case 4: return EndRatingEnum.B;
+            case 5: return EndRatingEnum.A;
+            case 6: return EndRatingEnum.S;
+            case 7: return EndRatingEnum.SS;
+            case 8: return EndRatingEnum.R;
+            case 9: return EndRatingEnum.RR;
+            case 10: return EndRatingEnum.L;
+            default: return EndRatingEnum.X;
+        }
+        
     }
 }

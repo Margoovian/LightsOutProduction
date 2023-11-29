@@ -25,7 +25,14 @@ public class GODController
         if (GameManager.Instance.PlayerData.FearLevel >= GameManager.Instance.GameSettings.MaxFear && !triggered)
         {
             triggered = true;
-            SceneManager.LoadScene("GameOverDeath");
+
+            if (PlayerData.Instance.InFearWall)  SceneManager.LoadScene("GameOverWall");
+            else SceneManager.LoadScene("GameOverFear");
+
+        } else if (SceneController.Instance.GetCurrentIndex() == 0 && GameManager.Instance.PlayerData.ElapsedTime > 300)
+        {
+            triggered = true;
+            SceneManager.LoadScene("GameOverTime");
         }
     }
 }
