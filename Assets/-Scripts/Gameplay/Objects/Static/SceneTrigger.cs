@@ -42,6 +42,7 @@ public class SceneTrigger : MonoBehaviour
             return;
         }
 
+        GameManager.Instance.PuzzlesCompleted += 1;
         InputManager.Instance.DisableControls();
         SceneController.Instance.LoadSpecific(SceneIndex);
     }
