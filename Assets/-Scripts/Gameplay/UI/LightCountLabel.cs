@@ -12,8 +12,8 @@ public class LightCountLabel : MonoBehaviour
         if (!LevelController.Instance)
             return;
 
-        (int, int) values = LevelController.Instance.GetValues();
-        UpdateLabel(values.Item1, values.Item2);
+        int current = LevelController.Instance.GetCurrentValue();
+        UpdateLabel(current, LevelController.Instance.MaxLights);
     }
 
     private void Start()
