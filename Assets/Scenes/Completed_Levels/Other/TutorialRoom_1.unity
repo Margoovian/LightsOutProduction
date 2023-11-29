@@ -6889,8 +6889,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 288433425}
   - {fileID: 1259328099}
+  - {fileID: 288433425}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8056,6 +8056,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8903439427162060583, guid: 137b3bf2ed8a9364c9f6825209d8a4b5,
+        type: 3}
+      propertyPath: <InteractionRange>k__BackingField
+      value: 0.8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 137b3bf2ed8a9364c9f6825209d8a4b5, type: 3}
 --- !u!1001 &1202602857
@@ -8167,7 +8172,7 @@ PrefabInstance:
     - target: {fileID: 2355989398199010481, guid: ce34004c44198834cb31d7682e25aab9,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2355989398199010481, guid: ce34004c44198834cb31d7682e25aab9,
         type: 3}
@@ -8237,12 +8242,12 @@ PrefabInstance:
     - target: {fileID: 5137807673179964546, guid: ce34004c44198834cb31d7682e25aab9,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.08399999
+      value: -0.071
       objectReference: {fileID: 0}
     - target: {fileID: 5137807673179964546, guid: ce34004c44198834cb31d7682e25aab9,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.954
+      value: 0.8477
       objectReference: {fileID: 0}
     - target: {fileID: 5137807673179964546, guid: ce34004c44198834cb31d7682e25aab9,
         type: 3}
