@@ -154,7 +154,9 @@ public class GlowToy : MonoBehaviour
     private void Update()
     {
         UpdateBatteryUI();
+
         CanTurnOn = HoldingInputDown && CurrentBattery > 0 && !GameManager.Instance.Player.isInLight;
+        Animator.SetBool("IsShaking", CanTurnOn && !isOn && CurrentDebounce == 0.0f);
 
         if (isOn)
         {
@@ -189,8 +191,6 @@ public class GlowToy : MonoBehaviour
 
             return;
         }
-
-        Animator.SetBool("IsShaking", CanTurnOn);
 
         if (CanTurnOn)
         {
