@@ -18,8 +18,14 @@ public class LeverController : MonoBehaviour, IController
     private Task _timer = null;
     private bool _complete = false;
 
+    // For audio
+    private bool isPlayingAudio = false;
+    private float timerAudio = 0;
+
     private void Start()
     {
+        timerAudio = 0;
+
         foreach (ILight light in Lights)
         {
             light?.Controllers.Add(this);
@@ -40,22 +46,41 @@ public class LeverController : MonoBehaviour, IController
     private void StartTimer()
     {
         bool timerIsRunning;
-        if( _timer != null) 
+        if (_timer != null)
+        {
             timerIsRunning = !_timer.IsCompleted;
+        }
         else
         {
+            if (!isPlayingAudio)
+            {
+                AudioManager.Instance.PlaySFX("LeverTimer");
+                isPlayingAudio = true;
+            }
             _timer = HelperFunctions.Timer(TimeInMS);
             return;
         }
         if (!timerIsRunning && !_complete) ResetSwitches();
+
         return;
 
     }
-
+    
     private void Update()
     {
         if (_timer == null) return;
         if(_timer.IsCompleted && !_complete) ResetSwitches();
+
+        if (isPlayingAudio)
+        {
+            timerAudio += Time.unscaledDeltaTime;
+
+            if (timerAudio >= 5)
+            {
+                isPlayingAudio = false;
+                timerAudio = 0;
+            }
+        }
     }
 
 
@@ -66,6 +91,8 @@ public class LeverController : MonoBehaviour, IController
             lever?.ResetSwitch();
         }
         _timer = null;
+        AudioManager.Instance.Stop("LeverTimer");
+        //AudioManager.Instance.PlaySFX("FailSound");
     }
 
     private void EvaluateWrapper(bool var) => Evaluate();
