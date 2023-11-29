@@ -1,10 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class BoxSwitch : GenericSwitch
 {
-    public bool isOn { get; set; } = true;
+    // What was this used for exactly?
+    // I reckon it could be removed
+    // -- Corey A.
+    public new bool isOn { get; set; } = true;
+
     public override void Interact()
     {
         isOn = !isOn;

@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -11,6 +12,16 @@ public class GenericSwitch : MonoBehaviour, ISwitch, IInteractable
 
     private GameObject _uiHolder;
     private SpriteRenderer _spriteRenderer;
+
+    [field: SerializeField] public string SoundName { get; set; } = "Switch";
+    [field: SerializeField] public Animator Animator { get; set; }
+    [field: SerializeField] public float AnimationModifier { get; set; } = 0.01f;
+    [field: SerializeField] public Vector2 AnimationIntervals { get; set; } = new(0.0f, 1.0f);
+    [field: SerializeField] public bool isOn { get; set; } = true;
+
+    private float currentTime = 0.0f;
+    private bool animating = false;
+    private bool requested = false;
 
     private void OnEnable()
     {
@@ -59,6 +70,9 @@ public class GenericSwitch : MonoBehaviour, ISwitch, IInteractable
 
     private void Update()
     {
+        if (Animator != null)
+            UpdateAnimation();
+
         PlayerController player;
 
         if (!GameManager.Instance.TryGetPlayer(out player))
@@ -92,18 +106,52 @@ public class GenericSwitch : MonoBehaviour, ISwitch, IInteractable
     }
 
     private void InteractWrapper(bool var) => Evaluate();
-    public virtual void Interact()
-    {
-        foreach (ILight light in _lights)
-            light?.Toggle();
-
-        Event?.Invoke(true);
-        AudioManager.Instance.PlaySFX("Switch");
-    }
 
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(gameObject.transform.position, InteractionRange);
+    }
+    
+    public virtual void Interact()
+    {
+        isOn = !isOn;
+        requested = true;
+
+        foreach (ILight light in _lights)
+            light?.Toggle();
+
+        Event?.Invoke(true);
+        AudioManager.Instance.PlaySFX(SoundName);
+    }
+
+    public void UpdateAnimation()
+    {
+        if (animating && !requested)
+            return;
+
+        //Debug.Log(currentTime, this);
+        //Debug.Log(AnimationIntervals.x, this);
+        //Debug.Log(AnimationIntervals.y, this);
+
+        //Debug.Log(currentTime > AnimationIntervals.y, this);
+        //Debug.Log(currentTime < AnimationIntervals.x, this);
+
+        if (currentTime > AnimationIntervals.y || currentTime < AnimationIntervals.x)
+        {
+            currentTime = 0.0f;
+
+            requested = false;
+            animating = false;
+
+            return;
+        }
+
+        float realModifier = AnimationModifier;
+        if (!isOn)
+            realModifier = -realModifier;
+
+        currentTime += realModifier;
+        Animator.SetFloat("Toggle", Mathf.Lerp(AnimationIntervals.x, AnimationIntervals.y, currentTime));
     }
 }
