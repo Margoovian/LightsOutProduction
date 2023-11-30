@@ -46,24 +46,49 @@ public class LeverController : MonoBehaviour, IController
     private void StartTimer()
     {
         bool timerIsRunning;
+
         if (_timer != null)
-        {
             timerIsRunning = !_timer.IsCompleted;
-        }
         else
         {
             if (!isPlayingAudio)
-            {
-                AudioManager.Instance.PlaySFX("LeverTimer");
                 isPlayingAudio = true;
-            }
+
             _timer = HelperFunctions.Timer(TimeInMS);
+            AudioManager.Instance.Play("LeverTimer");
+
             return;
         }
-        if (!timerIsRunning && !_complete) ResetSwitches();
+
+        _complete = !ValidateSwitches();
+
+        if (!timerIsRunning && !_complete)
+        {
+            ResetSwitches();
+            return;
+        }
+
+        if (timerIsRunning && _complete)
+        {
+            AudioManager.Instance.Stop("LeverTimer");
+            AudioManager.Instance.Play("LeverComplete");
+        }
 
         return;
+    }
 
+    private bool ValidateSwitches()
+    {
+        bool eval = true;
+
+        foreach (LeverSwitch lever in Switches)
+        {
+            eval = lever.isOn;
+            if (eval)
+                return eval;
+        }
+
+        return eval;
     }
     
     private void Update()
@@ -87,26 +112,21 @@ public class LeverController : MonoBehaviour, IController
     private void ResetSwitches()
     {
         foreach(LeverSwitch lever in Switches)
-        {
             lever?.ResetSwitch();
-        }
+
+        AudioManager.Instance.PlaySFX("FailedSound");
         _timer = null;
-        AudioManager.Instance.Stop("LeverTimer");
-        //AudioManager.Instance.PlaySFX("FailSound");
     }
 
     private void EvaluateWrapper(bool var) => Evaluate();
     public void Evaluate()
     {
-        if (_complete) return;
+        if (_complete) 
+            return;
+
         StartTimer();
-        bool eval = true;
-        foreach (LeverSwitch lever in Switches)
-        {
-            eval = lever.isOn;
-            if (eval)
-                return;
-        }
+        bool eval = ValidateSwitches();
+
         _complete = !eval;
         FlipLights(!eval);
     }
