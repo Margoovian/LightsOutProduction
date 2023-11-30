@@ -27,7 +27,7 @@ public class TableLamp : GenericLight, IController, IInteractable
             InputManager.Instance.Player_Interact.RemoveListener(InteractWrapper);
     }
 
-    private void Start()
+    private new void Start()
     {
         Controllers.Add(this);
         _meshRenderer = GetComponent<MeshRenderer>();

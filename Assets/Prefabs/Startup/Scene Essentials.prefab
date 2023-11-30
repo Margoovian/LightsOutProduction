@@ -164,7 +164,7 @@ GameObject:
   - component: {fileID: 3974152519385264245}
   - component: {fileID: 1590803210569606276}
   m_Layer: 5
-  m_Name: LightUI
+  m_Name: ImageIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -177,17 +177,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2850431729496106291}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7813701702530043382}
-  m_RootOrder: 2
+  m_Father: {fileID: 3761909526024236919}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -70, y: 70}
+  m_AnchoredPosition: {x: 840, y: -384}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3974152519385264245
@@ -283,9 +283,8 @@ GameObject:
   - component: {fileID: 571104319541600264}
   - component: {fileID: 81478120945565454}
   - component: {fileID: 3973075926608278221}
-  - component: {fileID: 301970864575309750}
   m_Layer: 5
-  m_Name: LightCount
+  m_Name: TextLabel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -298,17 +297,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3237066254750472835}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7813701702530043382}
-  m_RootOrder: 1
+  m_Father: {fileID: 3761909526024236919}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -190, y: 45}
+  m_AnchoredPosition: {x: 720, y: -409}
   m_SizeDelta: {x: 100, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &81478120945565454
@@ -341,8 +340,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 0 / 0
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: d8097047793727c44bc37117ce189e2f, type: 2}
-  m_sharedMaterial: {fileID: -2513320993246893062, guid: d8097047793727c44bc37117ce189e2f,
+  m_fontAsset: {fileID: 11400000, guid: a9c0429ecc26faa4bbdb89eb267ade8e, type: 2}
+  m_sharedMaterial: {fileID: -6650959833599234297, guid: a9c0429ecc26faa4bbdb89eb267ade8e,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -367,7 +366,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48.3
+  m_fontSize: 45.2
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -409,18 +408,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &301970864575309750
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3237066254750472835}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f02fc297ecd21cf4f91ab981fa583b32, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &3382417196258860158
 GameObject:
   m_ObjectHideFlags: 0
@@ -451,7 +438,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7813701702530043382}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -587,8 +574,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7921218282419339720}
-  - {fileID: 571104319541600264}
-  - {fileID: 1431185521365796267}
+  - {fileID: 3761909526024236919}
   - {fileID: 4510813679237676972}
   m_Father: {fileID: 256863611705425002}
   m_RootOrder: 3
@@ -859,6 +845,64 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &7998545880577806245
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3761909526024236919}
+  - component: {fileID: 4608216385019083516}
+  m_Layer: 5
+  m_Name: LightUI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &3761909526024236919
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7998545880577806245}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 571104319541600264}
+  - {fileID: 1431185521365796267}
+  m_Father: {fileID: 7813701702530043382}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &4608216385019083516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7998545880577806245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f02fc297ecd21cf4f91ab981fa583b32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <TextLabel>k__BackingField: {fileID: 3973075926608278221}
+  <Icon>k__BackingField: {fileID: 1590803210569606276}
+  <OnSprite>k__BackingField: {fileID: 21300000, guid: 11701f8dbadad4748b0d66dc46692d30,
+    type: 3}
+  <OffSprite>k__BackingField: {fileID: 21300000, guid: 4d15665a6d72c1540b67e4f713788a6d,
+    type: 3}
+  <AdjustTextColor>k__BackingField: 1
 --- !u!1001 &360038123206981180
 PrefabInstance:
   m_ObjectHideFlags: 0
