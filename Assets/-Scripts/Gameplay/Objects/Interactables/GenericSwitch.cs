@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public class GenericSwitch : MonoBehaviour, ISwitch, IInteractable
 {
+    [field: SerializeField] public bool isOn { get; set; } = true;
     [field: SerializeField] public float InteractionRange { get; set; }
     public UnityEvent<bool> Event { get; set; } = new();
     public ILight[] Lights { get => _lights; set => _lights = (GenericLight[])value; }
@@ -17,7 +18,6 @@ public class GenericSwitch : MonoBehaviour, ISwitch, IInteractable
     [field: SerializeField] public Animator Animator { get; set; }
     [field: SerializeField] public float AnimationModifier { get; set; } = 0.01f;
     [field: SerializeField] public Vector2 AnimationIntervals { get; set; } = new(0.0f, 1.0f);
-    [field: SerializeField] public bool isOn { get; set; } = true;
 
     private float currentTime = 0.0f;
     private bool animating = false;
