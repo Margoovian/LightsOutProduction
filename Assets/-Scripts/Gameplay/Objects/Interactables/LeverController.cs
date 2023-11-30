@@ -1,14 +1,10 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using Unity.VisualScripting;
+
 using UnityEngine;
 using UnityEngine.Events;
 
 public class LeverController : MonoBehaviour, IController
 {
-
     [field: SerializeField] public LeverSwitch[] Switches {get;set;}
     [field: SerializeField] public int TimeInMS { get; set; }
     public UnityEvent<bool> Event { get; set; }
@@ -107,7 +103,6 @@ public class LeverController : MonoBehaviour, IController
             }
         }
     }
-
 
     private void ResetSwitches()
     {
