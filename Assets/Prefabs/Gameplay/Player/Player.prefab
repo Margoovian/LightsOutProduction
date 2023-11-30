@@ -255,7 +255,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Model>k__BackingField: {fileID: 2391981378667676552}
-  <Animator>k__BackingField: {fileID: 5080837673869694704}
   <Gravity>k__BackingField: 1
 --- !u!114 &5419010294229761325
 MonoBehaviour:
@@ -373,6 +372,75 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &71855413566227196
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3060713578847164722}
+    m_Modifications:
+    - target: {fileID: 1115304476528591913, guid: b4839479ec152bc4f9f3879de67abee0,
+        type: 3}
+      propertyPath: m_Name
+      value: vfx_Dust
+      objectReference: {fileID: 0}
+    - target: {fileID: 1115304476528591914, guid: b4839479ec152bc4f9f3879de67abee0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1115304476528591914, guid: b4839479ec152bc4f9f3879de67abee0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1115304476528591914, guid: b4839479ec152bc4f9f3879de67abee0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1115304476528591914, guid: b4839479ec152bc4f9f3879de67abee0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1115304476528591914, guid: b4839479ec152bc4f9f3879de67abee0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1115304476528591914, guid: b4839479ec152bc4f9f3879de67abee0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1115304476528591914, guid: b4839479ec152bc4f9f3879de67abee0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1115304476528591914, guid: b4839479ec152bc4f9f3879de67abee0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1115304476528591914, guid: b4839479ec152bc4f9f3879de67abee0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1115304476528591914, guid: b4839479ec152bc4f9f3879de67abee0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1115304476528591914, guid: b4839479ec152bc4f9f3879de67abee0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b4839479ec152bc4f9f3879de67abee0, type: 3}
 --- !u!1001 &301009836258352157
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -714,6 +782,29 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3311112978066783961}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6413265268095962344 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8427098559260586545, guid: efa03b30269567148907bc625efa8814,
+    type: 3}
+  m_PrefabInstance: {fileID: 3311112978066783961}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7285334470647681872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6413265268095962344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50611ee7ea7fc774aa9943271ec9e589, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  positions:
+  - {x: 0, y: 0}
+  - {x: 0.5, y: 0}
+  - {x: 0, y: 0.5}
+  - {x: 0.5, y: 0.5}
 --- !u!4 &6771032735494886971 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -1151542906449958686, guid: efa03b30269567148907bc625efa8814,

@@ -50,8 +50,7 @@ public class EyeGestures : MonoBehaviour
 
                 break;
         }
-
-        
+                
         material.SetFloat("_HorizontalEye", formula.x);
         material.SetFloat("_VerticalEye", formula.y);
     }
