@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1270261163152391781}
   - component: {fileID: 8453013421721271480}
-  - component: {fileID: 9164806347431571993}
+  - component: {fileID: 5719207104630645689}
   m_Layer: 0
   m_Name: Light Switch 1
   m_TagString: Untagged
@@ -48,7 +48,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -1661166752878027172, guid: 08b6740eb649853409b64a3982cef8cb, type: 3}
---- !u!114 &9164806347431571993
+--- !u!114 &5719207104630645689
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -57,9 +57,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1939660972240954591}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97c4293889f1d18428a2a563bebded5d, type: 3}
+  m_Script: {fileID: 11500000, guid: d62810160e1013244a185bf48624310e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <isOn>k__BackingField: 1
   <InteractionRange>k__BackingField: 0.5
   _lights:
   - {fileID: 0}
@@ -67,7 +68,6 @@ MonoBehaviour:
   <Animator>k__BackingField: {fileID: 31442023540611844}
   <AnimationModifier>k__BackingField: 0.05
   <AnimationIntervals>k__BackingField: {x: 0, y: 1}
-  <isOn>k__BackingField: 1
 --- !u!1001 &6168592278660905120
 PrefabInstance:
   m_ObjectHideFlags: 0

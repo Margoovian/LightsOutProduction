@@ -16,12 +16,12 @@ public class GenericSwitch : MonoBehaviour, ISwitch, IInteractable
 
     [field: SerializeField] public string SoundName { get; set; } = "Switch";
     [field: SerializeField] public Animator Animator { get; set; }
+    [field: SerializeField] public string AnimationName { get; set; } = "Toggle";
     [field: SerializeField] public float AnimationModifier { get; set; } = 0.01f;
     [field: SerializeField] public Vector2 AnimationIntervals { get; set; } = new(0.0f, 1.0f);
 
-    private float currentTime = 0.0f;
-    private bool animating = false;
-    private bool requested = false;
+    private float currentTime;
+    private bool requested;
 
     private void OnEnable()
     {
@@ -62,10 +62,17 @@ public class GenericSwitch : MonoBehaviour, ISwitch, IInteractable
         _spriteRenderer = (SpriteRenderer)_uiHolder.AddComponent(typeof(SpriteRenderer));
         _spriteRenderer.gameObject.transform.SetParent(_uiHolder.transform);
         _spriteRenderer.sprite = GameManager.Instance.InteractProperties.Sprite;
+        _spriteRenderer.color = GameManager.Instance.InteractProperties.Color;
         _spriteRenderer.enabled = false;
 
         foreach (ILight light in Lights)
             light?.Controllers.Add(this);
+
+        if (Animator != null)
+        {
+            float result = isOn ? 1.0f : 0.0f;
+            Animator.SetFloat(AnimationName, result);
+        }
     }
 
     private void Update()
@@ -127,31 +134,18 @@ public class GenericSwitch : MonoBehaviour, ISwitch, IInteractable
 
     public void UpdateAnimation()
     {
-        if (animating && !requested)
+        if (!requested)
             return;
-
-        //Debug.Log(currentTime, this);
-        //Debug.Log(AnimationIntervals.x, this);
-        //Debug.Log(AnimationIntervals.y, this);
-
-        //Debug.Log(currentTime > AnimationIntervals.y, this);
-        //Debug.Log(currentTime < AnimationIntervals.x, this);
 
         if (currentTime > AnimationIntervals.y || currentTime < AnimationIntervals.x)
         {
-            currentTime = 0.0f;
-
+            currentTime = !isOn ? AnimationIntervals.x : AnimationIntervals.y;
             requested = false;
-            animating = false;
 
             return;
         }
 
-        float realModifier = AnimationModifier;
-        if (!isOn)
-            realModifier = -realModifier;
-
-        currentTime += realModifier;
-        Animator.SetFloat("Toggle", Mathf.Lerp(AnimationIntervals.x, AnimationIntervals.y, currentTime));
+        currentTime = isOn ? currentTime += AnimationModifier : currentTime -= AnimationModifier;
+        Animator.SetFloat(AnimationName, Mathf.Lerp(AnimationIntervals.x, AnimationIntervals.y, currentTime));
     }
 }

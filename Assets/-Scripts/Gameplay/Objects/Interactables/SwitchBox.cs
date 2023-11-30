@@ -8,7 +8,7 @@ public class SwitchBox : MonoBehaviour, IController
 {
     [Serializable] public class Combo
     {
-        [field: SerializeField] public BoxSwitch Switch { get; set; }
+        [field: SerializeField] public GenericSwitch Switch { get; set; }
         [field: SerializeField] public bool RequiredState { get; set; }
     }
     public UnityEvent<bool> Event { get; set; } = new();

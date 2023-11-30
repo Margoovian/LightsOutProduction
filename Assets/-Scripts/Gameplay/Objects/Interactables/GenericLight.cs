@@ -5,6 +5,7 @@ public class GenericLight : MonoBehaviour, ILight
 {
     public bool isOn { get; set; }
     public List<IController> Controllers { get; set; } = new();
+    [field: SerializeField] public bool IgnoreMaterials { get; set; } = true;
     [field: SerializeField] public Material OnMaterial { get; set; }
     [field: SerializeField] public Material OffMaterial { get; set; }
     [field: SerializeField] public bool DefaultState { get; set; } = true;
@@ -34,24 +35,25 @@ public class GenericLight : MonoBehaviour, ILight
 
     public void ChangeMaterial()
     {
-        //Debug.LogWarning(this);
+        if (!IgnoreMaterials)
+        {
+            if (OnMaterial == null)
+            {
+                Debug.LogWarning("No OnMaterial", this);
+                return;
+            }
 
-        if (OnMaterial == null) 
-        { 
-            Debug.LogWarning("No OnMaterial", this); 
-            return; 
+            if (OffMaterial == null)
+            {
+                Debug.LogWarning("No OffMaterial", this);
+                return;
+            }
         }
 
-        if (OffMaterial == null) 
-        { 
-            Debug.LogWarning("No OffMaterial", this); 
-            return; 
-        }
+        Material material = isOn ? OnMaterial : OffMaterial;
 
-        if (isOn)
-            _meshRenderer.material = OnMaterial;
-        else
-            _meshRenderer.material = OffMaterial;
+        if (material != null)
+            _meshRenderer.material = material;
 
         if (LightVolumes.Length == 0)
             return;

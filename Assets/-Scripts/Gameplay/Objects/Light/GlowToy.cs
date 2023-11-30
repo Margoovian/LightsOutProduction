@@ -30,6 +30,12 @@ public class GlowToy : MonoBehaviour
         }
     }
 
+    [field: Header("Materials")]
+    [field: SerializeField] public MeshRenderer ToyRender { get; set; }
+    [field: SerializeField] public Material DefaultMaterial { get; set; }
+    [field: SerializeField] public Material GlowMaterial { get; set; }
+
+    [field: Header("Miscellaneous")]
     public Light GlowToyLight;
     public SpriteRenderer BatteryUIRenderer;
     [field: SerializeField] public Animator Animator { get; set; }
@@ -157,6 +163,7 @@ public class GlowToy : MonoBehaviour
 
         CanTurnOn = HoldingInputDown && CurrentBattery > 0 && !GameManager.Instance.Player.isInLight;
         Animator.SetBool("IsShaking", CanTurnOn && !isOn && CurrentDebounce == 0.0f);
+        ToyRender.material = isOn ? GlowMaterial : DefaultMaterial;
 
         if (isOn)
         {
