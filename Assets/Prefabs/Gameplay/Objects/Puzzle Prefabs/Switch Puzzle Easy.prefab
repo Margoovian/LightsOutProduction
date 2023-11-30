@@ -121,6 +121,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1400274834548556479}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6642934813374931206 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5719207104630645689, guid: c71955a568357df4e82479a8f54c16a1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1400274834548556479}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d62810160e1013244a185bf48624310e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2064171708278364805
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -206,6 +218,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2064171708278364805}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6051674290258032956 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5719207104630645689, guid: c71955a568357df4e82479a8f54c16a1,
+    type: 3}
+  m_PrefabInstance: {fileID: 2064171708278364805}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d62810160e1013244a185bf48624310e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2761873516536485876
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -531,6 +555,18 @@ PrefabInstance:
       objectReference: {fileID: 673317212}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c71955a568357df4e82479a8f54c16a1, type: 3}
+--- !u!114 &1843693991293117301 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5719207104630645689, guid: c71955a568357df4e82479a8f54c16a1,
+    type: 3}
+  m_PrefabInstance: {fileID: 6253434337852260556}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d62810160e1013244a185bf48624310e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &5145493046053715625 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1270261163152391781, guid: c71955a568357df4e82479a8f54c16a1,
@@ -847,17 +883,17 @@ PrefabInstance:
         type: 3}
       propertyPath: <SwitchCombos>k__BackingField.Array.data[0].<Switch>k__BackingField
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 6642934813374931206}
     - target: {fileID: 7973213376614067308, guid: 1c9409172ee667d47a67b9c7da2fd664,
         type: 3}
       propertyPath: <SwitchCombos>k__BackingField.Array.data[1].<Switch>k__BackingField
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1843693991293117301}
     - target: {fileID: 7973213376614067308, guid: 1c9409172ee667d47a67b9c7da2fd664,
         type: 3}
       propertyPath: <SwitchCombos>k__BackingField.Array.data[2].<Switch>k__BackingField
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 6051674290258032956}
     - target: {fileID: 7973213376614067308, guid: 1c9409172ee667d47a67b9c7da2fd664,
         type: 3}
       propertyPath: <SwitchCombos>k__BackingField.Array.data[0].<RequiredState>k__BackingField
@@ -901,6 +937,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49720e98ca7d8134a95226865cfdb1e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <IgnoreMaterials>k__BackingField: 1
   <OnMaterial>k__BackingField: {fileID: 2100000, guid: 58f4d8fd12f9a094c86ad6e7629488c0,
     type: 2}
   <OffMaterial>k__BackingField: {fileID: 2100000, guid: eb41299d0aa26b548bb46c29f32b4c5d,
@@ -932,6 +969,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49720e98ca7d8134a95226865cfdb1e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <IgnoreMaterials>k__BackingField: 1
   <OnMaterial>k__BackingField: {fileID: 2100000, guid: 58f4d8fd12f9a094c86ad6e7629488c0,
     type: 2}
   <OffMaterial>k__BackingField: {fileID: 2100000, guid: eb41299d0aa26b548bb46c29f32b4c5d,
@@ -976,6 +1014,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49720e98ca7d8134a95226865cfdb1e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <IgnoreMaterials>k__BackingField: 1
   <OnMaterial>k__BackingField: {fileID: 2100000, guid: 58f4d8fd12f9a094c86ad6e7629488c0,
     type: 2}
   <OffMaterial>k__BackingField: {fileID: 2100000, guid: eb41299d0aa26b548bb46c29f32b4c5d,
