@@ -12,6 +12,7 @@ public class SceneControllerEditor : Editor
     private static List<string> levelNames;
     private static Dictionary<string,int> levels;
     private static string specificScene;
+    private static int setCurrentLevel;
     
     private void OnEnable()
     {
@@ -68,9 +69,19 @@ public class SceneControllerEditor : Editor
 
             GUILayout.EndHorizontal();
 
+            GUILayout.BeginHorizontal();
+            setCurrentLevel = EditorGUILayout.IntField(setCurrentLevel);
+            if (GUILayout.Button("Set Scene Index"))
+                SetCurrentSceneIndex();
+
+            GUILayout.EndHorizontal();
+
         });
 
 
     }
+
+    private void SetCurrentSceneIndex() => SceneController.Instance._currentLevel = setCurrentLevel;
+
 
 }

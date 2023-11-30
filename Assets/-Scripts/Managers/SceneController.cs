@@ -44,7 +44,7 @@ public class SceneController : MonoBehaviour
     public Dictionary<int, SceneCombo> SceneGlossary = new();
 
     internal int _startLevel = -1;
-    internal int _currentLevel;
+    public int _currentLevel;
     internal bool _isAltLevel;
 
     private void Awake() {
@@ -82,7 +82,7 @@ public class SceneController : MonoBehaviour
 
     public async void NextLevel(Func<Task> beforeLoad = null, Func<Task> afterLoad = null, Action beforeAction = null, Action afterAction = null)
     {
-        if (!SceneGlossary.ContainsKey(_isAltLevel? _currentLevel - 1 : _currentLevel + 1))
+        if (!SceneGlossary.ContainsKey(_isAltLevel == true ? _currentLevel - 1 : _currentLevel + 1))
         { 
             Debug.LogWarning("No More Levels!"); 
             return;
@@ -95,7 +95,7 @@ public class SceneController : MonoBehaviour
             beforeAction?.Invoke();
         }
 
-        Instance._currentLevel += 1;
+        Instance._currentLevel = _isAltLevel == true ? Instance._currentLevel -= 1: Instance._currentLevel += 1;
 
         TryLoadRandom(_currentLevel);
         if (afterLoad != null)
@@ -139,7 +139,7 @@ public class SceneController : MonoBehaviour
     {
         if (!GameManager.Instance) 
         {
-            SceneManager.LoadScene(_isAltLevel? SceneGlossary[level].Level.AltLevel : SceneGlossary[level].Level.Name); 
+            SceneManager.LoadScene(_isAltLevel == true ? SceneGlossary[level].Level.AltLevel : SceneGlossary[level].Level.Name); 
             return; 
         }
 
@@ -147,15 +147,15 @@ public class SceneController : MonoBehaviour
         {
             if (SceneGlossary[_currentLevel].RandomLevel == null) 
             { 
-                SceneManager.LoadScene(SceneGlossary[level].Level.Name); 
+                SceneManager.LoadScene(_isAltLevel == true ? SceneGlossary[level].Level.AltLevel: SceneGlossary[level].Level.Name); 
                 return; 
             }
 
-            SceneManager.LoadScene(SceneGlossary[level].RandomLevel.Name);
+            SceneManager.LoadScene(_isAltLevel == true ? SceneGlossary[level].RandomLevel.AltLevel : SceneGlossary[level].RandomLevel.Name);
             return;
         }
 
-        SceneManager.LoadScene(SceneGlossary[level].Level.Name);
+        SceneManager.LoadScene(_isAltLevel == true ? SceneGlossary[level].Level.AltLevel : SceneGlossary[level].Level.Name);
     }
 
 }

@@ -27,7 +27,8 @@ public class SceneTrigger : MonoBehaviour
         if (!other.TryGetComponent<PlayerController>(out var _))
             return;
 
-        SceneController.Instance._isAltLevel = ReverseIndex;
+        if(ReverseIndex) 
+            SceneController.Instance._isAltLevel = ReverseIndex;
 
         if (IgnoreIndex)
         {
