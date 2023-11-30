@@ -1,11 +1,45 @@
 using TMPro;
+
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LightCountLabel : MonoBehaviour
 {
-    private TMP_Text TextLabel;
+    [field: Header("Assets")]
+    [field: SerializeField] public TMP_Text TextLabel { get; set; }
+    [field: SerializeField] public Image Icon { get; set; }
 
-    public void UpdateLabel(int current, int max) => TextLabel.text = current.ToString() + " / " + max.ToString();
+    [field: Header("Icon Sprites")]
+    [field: SerializeField] public Sprite OnSprite { get; set; }
+    [field: SerializeField] public Sprite OffSprite { get; set; }
+
+    [field: Header("Configuration")]
+    [field: SerializeField] public bool AdjustTextColor { get; set; }
+
+    public void UpdateLabel(int current, int max)
+    {
+        if (AdjustTextColor)
+        {
+            Color color = new(1, 1, 1, 1);
+
+            if (current <= 0)
+                color = new(0, 1, 0, 1);
+
+            TextLabel.color = color;
+        }
+
+        TextLabel.text = current.ToString() + " / " + max.ToString();
+    }
+
+    public void UpdateIcon(int current)
+    {
+        Sprite sprite = OnSprite;
+
+        if (current <= 0)
+            sprite = OffSprite;
+
+        Icon.sprite = sprite;
+    }
 
     private void Update()
     {
@@ -13,12 +47,8 @@ public class LightCountLabel : MonoBehaviour
             return;
 
         int current = LevelController.Instance.GetCurrentValue();
+        
         UpdateLabel(current, LevelController.Instance.MaxLights);
-    }
-
-    private void Start()
-    {
-        if (TextLabel == null)
-            TextLabel = GetComponent<TMP_Text>();
+        UpdateIcon(current);
     }
 }

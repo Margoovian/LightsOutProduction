@@ -19,6 +19,17 @@ public class InputManager : Manager<InputManager>
 
     private void OnEnable()
     {
+        if (Instance) return;
+        EnableControls();
+    }
+    private void OnDisable()
+    {
+        if (Instance) return;
+        DisableControls();
+    }
+
+    public void EnableControls() 
+    {
         Inputs.Player.Fire.performed += PlayerFire;
         Inputs.Player.Interact.performed += PlayerInteract;
 
@@ -39,13 +50,13 @@ public class InputManager : Manager<InputManager>
 
         Inputs.Player.Enable();
     }
-    private void OnDisable()
+    public void DisableControls()
     {
         Inputs.Player.Interact.performed -= PlayerInteract;
         Inputs.Player.Fire.performed -= PlayerFire;
 
         Inputs.Player.Move.performed -= PlayerMove;
-        Inputs.Player.GlowToy.performed -= PlayerGlowtoy;  
+        Inputs.Player.GlowToy.performed -= PlayerGlowtoy;
         Inputs.Player.Look.performed -= PlayerLook;
 
         Inputs.Player.Move.started -= PlayerMove;
@@ -58,9 +69,6 @@ public class InputManager : Manager<InputManager>
 
         Inputs.Player.Disable();
     }
-
-    public void EnableControls() => OnEnable();
-    public void DisableControls() => OnDisable();
 
     protected override void Initialize()
     {
