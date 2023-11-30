@@ -277,7 +277,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _lights.Array.data[0]
       value: 
-      objectReference: {fileID: 4021123133347322393}
+      objectReference: {fileID: 0}
     - target: {fileID: 972712126468793911, guid: bdc3f5e9f60542d46ade25782c4f6feb,
         type: 3}
       propertyPath: <SwitchCombos>k__BackingField.Array.data[0].<Switch>k__BackingField
@@ -748,6 +748,31 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7597031337152258746, guid: 115a4f666a1d65a41b3ffceef51c8257,
+        type: 3}
+      propertyPath: <Lights>k__BackingField.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7597031337152258746, guid: 115a4f666a1d65a41b3ffceef51c8257,
+        type: 3}
+      propertyPath: <Lights>k__BackingField.Array.data[0]
+      value: 
+      objectReference: {fileID: 4986073684716127627}
+    - target: {fileID: 7597031337152258746, guid: 115a4f666a1d65a41b3ffceef51c8257,
+        type: 3}
+      propertyPath: <LightVolumes>k__BackingField.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7597031337152258746, guid: 115a4f666a1d65a41b3ffceef51c8257,
+        type: 3}
+      propertyPath: <LightVolumes>k__BackingField.Array.data[0]
+      value: 
+      objectReference: {fileID: 4434004738728282273}
+    - target: {fileID: 7597031337152258746, guid: 115a4f666a1d65a41b3ffceef51c8257,
+        type: 3}
+      propertyPath: <LightVolumes>k__BackingField.Array.data[1]
+      value: 
+      objectReference: {fileID: 434886880516471462}
     - target: {fileID: 8940999277910706598, guid: 115a4f666a1d65a41b3ffceef51c8257,
         type: 3}
       propertyPath: m_Name
@@ -1224,33 +1249,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de71c25450c816d45932fe589f44707d, type: 3}
---- !u!1 &5831667516665959045 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2829100976156502888, guid: de71c25450c816d45932fe589f44707d,
-    type: 3}
-  m_PrefabInstance: {fileID: 8623481706559306221}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &4021123133347322393
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5831667516665959045}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 461eaef824ee87f499cb8842926b40ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <IgnoreMaterials>k__BackingField: 1
-  <OnMaterial>k__BackingField: {fileID: 0}
-  <OffMaterial>k__BackingField: {fileID: 0}
-  <DefaultState>k__BackingField: 1
-  <LightVolumes>k__BackingField:
-  - {fileID: 4434004738728282273}
-  - {fileID: 434886880516471462}
-  <Lights>k__BackingField:
-  - {fileID: 4986073684716127627}
 --- !u!4 &6603946223537702975 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3173116846043083218, guid: de71c25450c816d45932fe589f44707d,
