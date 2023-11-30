@@ -7,8 +7,9 @@ public class GameManager : MonoBehaviour
     public class InteractionProperties
     {
         [field: SerializeField] public Sprite Sprite { get; set; }
-        [field: SerializeField] public Vector3 Offset { get; set; }
         [field: SerializeField] public float UniformScale { get; set; }
+        [field: SerializeField] public Vector3 Offset { get; set; }
+        [field: SerializeField] public Color Color { get; set; }
     }
 
     [field: Header("Generic")]

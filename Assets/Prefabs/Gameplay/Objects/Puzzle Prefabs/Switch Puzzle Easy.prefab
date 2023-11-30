@@ -103,6 +103,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Light Switch 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5719207104630645689, guid: c71955a568357df4e82479a8f54c16a1,
+        type: 3}
+      propertyPath: _lights.Array.data[0]
+      value: 
+      objectReference: {fileID: 1588856033}
     - target: {fileID: 9164806347431571993, guid: c71955a568357df4e82479a8f54c16a1,
         type: 3}
       propertyPath: _lights.Array.data[0]
@@ -116,18 +121,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1400274834548556479}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7800560404392374438 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9164806347431571993, guid: c71955a568357df4e82479a8f54c16a1,
-    type: 3}
-  m_PrefabInstance: {fileID: 1400274834548556479}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97c4293889f1d18428a2a563bebded5d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &2064171708278364805
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -195,6 +188,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Light Switch 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5719207104630645689, guid: c71955a568357df4e82479a8f54c16a1,
+        type: 3}
+      propertyPath: _lights.Array.data[0]
+      value: 
+      objectReference: {fileID: 1571642065}
     - target: {fileID: 9164806347431571993, guid: c71955a568357df4e82479a8f54c16a1,
         type: 3}
       propertyPath: _lights.Array.data[0]
@@ -208,18 +206,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2064171708278364805}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7172694802724595868 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9164806347431571993, guid: c71955a568357df4e82479a8f54c16a1,
-    type: 3}
-  m_PrefabInstance: {fileID: 2064171708278364805}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97c4293889f1d18428a2a563bebded5d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &2761873516536485876
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -533,6 +519,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Light Switch 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5719207104630645689, guid: c71955a568357df4e82479a8f54c16a1,
+        type: 3}
+      propertyPath: _lights.Array.data[0]
+      value: 
+      objectReference: {fileID: 673317212}
     - target: {fileID: 9164806347431571993, guid: c71955a568357df4e82479a8f54c16a1,
         type: 3}
       propertyPath: _lights.Array.data[0]
@@ -540,18 +531,6 @@ PrefabInstance:
       objectReference: {fileID: 673317212}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c71955a568357df4e82479a8f54c16a1, type: 3}
---- !u!114 &3019460918830265045 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9164806347431571993, guid: c71955a568357df4e82479a8f54c16a1,
-    type: 3}
-  m_PrefabInstance: {fileID: 6253434337852260556}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97c4293889f1d18428a2a563bebded5d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &5145493046053715625 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1270261163152391781, guid: c71955a568357df4e82479a8f54c16a1,
@@ -868,17 +847,17 @@ PrefabInstance:
         type: 3}
       propertyPath: <SwitchCombos>k__BackingField.Array.data[0].<Switch>k__BackingField
       value: 
-      objectReference: {fileID: 7800560404392374438}
+      objectReference: {fileID: 0}
     - target: {fileID: 7973213376614067308, guid: 1c9409172ee667d47a67b9c7da2fd664,
         type: 3}
       propertyPath: <SwitchCombos>k__BackingField.Array.data[1].<Switch>k__BackingField
       value: 
-      objectReference: {fileID: 3019460918830265045}
+      objectReference: {fileID: 0}
     - target: {fileID: 7973213376614067308, guid: 1c9409172ee667d47a67b9c7da2fd664,
         type: 3}
       propertyPath: <SwitchCombos>k__BackingField.Array.data[2].<Switch>k__BackingField
       value: 
-      objectReference: {fileID: 7172694802724595868}
+      objectReference: {fileID: 0}
     - target: {fileID: 7973213376614067308, guid: 1c9409172ee667d47a67b9c7da2fd664,
         type: 3}
       propertyPath: <SwitchCombos>k__BackingField.Array.data[0].<RequiredState>k__BackingField
