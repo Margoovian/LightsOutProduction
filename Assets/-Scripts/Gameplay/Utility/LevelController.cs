@@ -10,10 +10,8 @@ public class LevelController : MonoBehaviour
     //Recompile!
     private int _lightCount = 0;
 
-    public int GetMaxLights() => MaxLights;
-    public void ResetValues() => _lightCount = 0;
-    public void IncreaseLightCount() => _lightCount++;
-    public (int, int) GetValues() => (_lightCount, GetMaxLights());
+    public void ResetValues() => _lightCount = MaxLights;
+    public int GetCurrentValue() => (_lightCount);
     public void ModifyLightCount(int amount) { _lightCount += amount; UpdateLightCount(); }
 
     public void UpdateLightCount()
@@ -44,17 +42,17 @@ public class LevelController : MonoBehaviour
             return;
         }
 
-        if (_lightCount == 0)
+        //_lightCount = GetMaxLights();
+
+        if (MaxLights == 0)
         {
-            Debug.LogWarning("No GenericLight Instances were added to array: 'TargetLights'", this);
+            Debug.LogWarning("'Max Lights' weren't adjusted or set to zero, skipping...", this);
 
             if (!SceneTrigger.enabled)
                 SceneTrigger.enabled = true;
 
             return;
         }
-
-        _lightCount = GetMaxLights();
 
         if (SceneTrigger.enabled)
             SceneTrigger.enabled = false;
