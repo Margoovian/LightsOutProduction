@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <IgnoreMaterials>k__BackingField: 1
-  <OnMaterial>k__BackingField: {fileID: 2100000, guid: f1e38594f14520c48bc546f3a41f4f56,
+  <OnMaterial>k__BackingField: {fileID: 2100000, guid: ec3ccddfa6de54d408920e0dd6026948,
     type: 2}
   <OffMaterial>k__BackingField: {fileID: 2100000, guid: 7ec4e7373ac023f42bc829945cdcdf38,
     type: 2}
@@ -381,11 +381,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GenericSwitch
       objectReference: {fileID: 0}
-    - target: {fileID: 7388185581910889408, guid: 3bdb0c17c5085634fb2c1f1c1ab7a6b9,
-        type: 3}
-      propertyPath: <IgnoreMaterials>k__BackingField
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7493725055046385442, guid: 3bdb0c17c5085634fb2c1f1c1ab7a6b9,
         type: 3}
       propertyPath: m_RootOrder
@@ -458,18 +453,13 @@ PrefabInstance:
       objectReference: {fileID: 5060423394364156000}
     - target: {fileID: 7566672349085162013, guid: 3bdb0c17c5085634fb2c1f1c1ab7a6b9,
         type: 3}
-      propertyPath: <SoundName>k__BackingField
-      value: Power
-      objectReference: {fileID: 0}
-    - target: {fileID: 7566672349085162013, guid: 3bdb0c17c5085634fb2c1f1c1ab7a6b9,
-        type: 3}
       propertyPath: <InteractionRange>k__BackingField
-      value: 1
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 8708816621854449830, guid: 3bdb0c17c5085634fb2c1f1c1ab7a6b9,
         type: 3}
-      propertyPath: m_RootOrder
-      value: 1
+      propertyPath: m_LocalPosition.x
+      value: -0.733
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3bdb0c17c5085634fb2c1f1c1ab7a6b9, type: 3}
