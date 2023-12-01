@@ -16,7 +16,9 @@ public class BaseSettings
     public int resolution; // 0+
     public int quality; // 0+
     public bool fullscreen;
-    public float hudScale; // 0.00 - 1.00
+
+    public int frames; // 5 - 400
+    public bool displayFPS;
 }
 
 public class SettingsData : MonoBehaviour
@@ -29,6 +31,7 @@ public class SettingsData : MonoBehaviour
 
     [Header("Events")]
     public UnityEvent initalizeEvent;
+    public UnityEvent<bool> settingsChanged;
 
     [Header("Debugging")]
     public bool deleteFileOnStart;
@@ -43,7 +46,9 @@ public class SettingsData : MonoBehaviour
     [HideInInspector] public int defaultResolution;
     [HideInInspector] public int defaultQuality;
     [HideInInspector] public bool defaultFullscreen;
-    [HideInInspector] public float defaultHudScale;
+
+    [HideInInspector] public int defaultFrames;
+    [HideInInspector] public bool defaultDisplayFPS;
 
     public void ApplySettings(BaseSettings newerSettings)
     {
@@ -57,6 +62,9 @@ public class SettingsData : MonoBehaviour
         DataManager dataInst = new();
 
         dataInst.SaveAllData(baseSettings, filePath);
+
+        if (settingsChanged != null)
+            settingsChanged.Invoke(baseSettings.displayFPS);
     }
 
     private void SetDefaults()
@@ -68,7 +76,9 @@ public class SettingsData : MonoBehaviour
         defaultResolution = baseSettings.resolution;
         defaultQuality = baseSettings.quality;
         defaultFullscreen = baseSettings.fullscreen;
-        defaultHudScale = baseSettings.hudScale;
+
+        defaultFrames = baseSettings.frames;
+        defaultDisplayFPS = baseSettings.displayFPS;
     }
 
     private void ManageData()
