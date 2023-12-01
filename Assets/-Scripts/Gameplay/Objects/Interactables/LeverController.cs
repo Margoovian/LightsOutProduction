@@ -11,6 +11,9 @@ public class LeverController : MonoBehaviour, IController
     public ILight[] Lights { get => _lights; set => _lights = (GenericLight[])value; }
     [SerializeField] private GenericLight[] _lights;
 
+    [field: SerializeField] public string CompleteSound { get; set; } = "LeverComplete";
+    [field: SerializeField] public string TimerSound { get; set; } = "LeverTimer";
+
     private Task _timer = null;
     private bool _complete = false;
 
@@ -51,7 +54,7 @@ public class LeverController : MonoBehaviour, IController
                 isPlayingAudio = true;
 
             _timer = HelperFunctions.Timer(TimeInMS);
-            AudioManager.Instance.Play("LeverTimer");
+            AudioManager.Instance.Play(TimerSound);
 
             return;
         }
@@ -66,8 +69,8 @@ public class LeverController : MonoBehaviour, IController
 
         if (timerIsRunning && _complete)
         {
-            AudioManager.Instance.Stop("LeverTimer");
-            AudioManager.Instance.Play("LeverComplete");
+            AudioManager.Instance.Stop(TimerSound);
+            AudioManager.Instance.Play(CompleteSound);
         }
 
         return;
