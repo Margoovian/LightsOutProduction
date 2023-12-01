@@ -12,9 +12,6 @@ public class GenericSwitch : MonoBehaviour, ISwitch, IInteractable
     public ILight[] Lights { get => _lights; set => _lights = (GenericLight[])value; }
     [SerializeField] protected GenericLight[] _lights;
 
-    private GameObject _uiHolder;
-    private SpriteRenderer _spriteRenderer;
-
     [field: Header("Miscellaneous")]
     [field: SerializeField] public string SoundName { get; set; } = "Switch";
 
@@ -22,10 +19,17 @@ public class GenericSwitch : MonoBehaviour, ISwitch, IInteractable
     [field: SerializeField] public Animator Animator { get; set; }
     [field: SerializeField] public string AnimationName { get; set; } = "Toggle";
     [field: SerializeField] public float AnimationModifier { get; set; } = 0.01f;
+    [field: SerializeField] public bool FlipAnimation { get; set; }
     [field: SerializeField] public Vector2 AnimationIntervals { get; set; } = new(0.0f, 1.0f);
 
-    private float currentTime;
-    private bool requested;
+    private GameObject _uiHolder;
+    private SpriteRenderer _spriteRenderer;
+
+    [field: SerializeField] public float currentTime { get; set; }
+    [field: SerializeField] bool animating { get; set; }
+
+    private float defaultCurrentTime;
+    private bool defaultFlipState;
 
     private void OnEnable()
     {
@@ -74,7 +78,15 @@ public class GenericSwitch : MonoBehaviour, ISwitch, IInteractable
 
         if (Animator != null)
         {
-            float result = isOn ? 1.0f : 0.0f;
+            float result = isOn ? AnimationIntervals.y : AnimationIntervals.x;
+
+            if (FlipAnimation)
+                result = isOn ? AnimationIntervals.x : AnimationIntervals.y;
+
+            currentTime = result;
+            defaultCurrentTime = currentTime;
+            defaultFlipState = !FlipAnimation;
+
             Animator.SetFloat(AnimationName, result);
         }
     }
@@ -103,6 +115,15 @@ public class GenericSwitch : MonoBehaviour, ISwitch, IInteractable
         );
     }
 
+    public void ResetAnimation()
+    {
+        if (Animator == null)
+            return;
+
+        currentTime = defaultCurrentTime;
+        Task task = Animate(defaultFlipState);
+    }
+
     public virtual void Evaluate()
     {
         PlayerController player;
@@ -126,30 +147,63 @@ public class GenericSwitch : MonoBehaviour, ISwitch, IInteractable
     
     public virtual void Interact()
     {
+        if (animating)
+            return;
+
         isOn = !isOn;
-        requested = true;
 
         foreach (ILight light in _lights)
             light?.Toggle();
 
         Event?.Invoke(true);
         AudioManager.Instance.PlaySFX(SoundName);
+
+        Task task = Animate(isOn);
+    }
+
+    private async Task Animate(bool toggle)
+    {
+        if (animating || Animator == null)
+            return;
+
+        animating = true;
+
+        float start = toggle ? AnimationIntervals.x : AnimationIntervals.y;
+        float end = toggle ? AnimationIntervals.y : AnimationIntervals.x;
+        float modifier = AnimationModifier * Time.deltaTime;
+
+        if (toggle)
+        {
+            for (float i = start; i <= end; i += modifier)
+            {
+                currentTime = i;
+                await Task.Yield();
+            }
+        }
+
+        else
+        {
+            for (float i = start; i >= end; i -= modifier)
+            {
+                currentTime = i;
+                await Task.Yield();
+            }
+        }
+
+        if (currentTime != end)
+            currentTime = end;
+
+        animating = false;
     }
 
     public void UpdateAnimation()
     {
-        if (!requested)
-            return;
-
         if (currentTime > AnimationIntervals.y || currentTime < AnimationIntervals.x)
         {
             currentTime = !isOn ? AnimationIntervals.x : AnimationIntervals.y;
-            requested = false;
-
             return;
         }
 
-        currentTime = isOn ? currentTime += AnimationModifier : currentTime -= AnimationModifier;
         Animator.SetFloat(AnimationName, Mathf.Lerp(AnimationIntervals.x, AnimationIntervals.y, currentTime));
     }
 }

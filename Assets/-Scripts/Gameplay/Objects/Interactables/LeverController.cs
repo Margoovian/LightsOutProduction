@@ -5,14 +5,22 @@ using UnityEngine.Events;
 
 public class LeverController : MonoBehaviour, IController
 {
-    [field: SerializeField] public LeverSwitch[] Switches {get;set;}
-    [field: SerializeField] public int TimeInMS { get; set; }
+    [field: Header("IController Descendants")]
     public UnityEvent<bool> Event { get; set; }
     public ILight[] Lights { get => _lights; set => _lights = (GenericLight[])value; }
+
+    [field: Header("Lever Controller Specifics")]
+    [field: SerializeField] public int TimeInMS { get; set; }
+    [field: SerializeField] public LeverSwitch[] Switches {get;set;}
     [SerializeField] private GenericLight[] _lights;
 
+    [field: Header("Sounds")]
     [field: SerializeField] public string CompleteSound { get; set; } = "LeverComplete";
     [field: SerializeField] public string TimerSound { get; set; } = "LeverTimer";
+    [field: SerializeField] public string FailedSound { get; set; } = "LeverFailed";
+
+    [field: Header("Miscellaneous")]
+    [field: SerializeField] public UnityEvent ResetLeverAnimation { get; set; }
 
     private Task _timer = null;
     private bool _complete = false;
@@ -26,20 +34,15 @@ public class LeverController : MonoBehaviour, IController
         timerAudio = 0;
 
         foreach (ILight light in Lights)
-        {
             light?.Controllers.Add(this);
-        }
+
         foreach (LeverSwitch lever in Switches)
-        {
             lever.Event?.AddListener(EvaluateWrapper);
-        }
     }
     private void OnDestroy()
     {
         foreach (LeverSwitch lever in Switches)
-        {
             lever.Event?.RemoveListener(EvaluateWrapper);
-        }
     }
 
     private void StartTimer()
@@ -112,7 +115,9 @@ public class LeverController : MonoBehaviour, IController
         foreach(LeverSwitch lever in Switches)
             lever?.ResetSwitch();
 
-        AudioManager.Instance.PlaySFX("FailedSound");
+        ResetLeverAnimation?.Invoke();
+        AudioManager.Instance.PlaySFX(FailedSound);
+
         _timer = null;
     }
 

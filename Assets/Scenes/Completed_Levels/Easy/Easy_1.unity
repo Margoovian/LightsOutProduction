@@ -3234,6 +3234,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 236100755}
   m_Mesh: {fileID: 6946868759442727253, guid: 4bac3139198716940919cf93a9ec76c8, type: 3}
+--- !u!114 &237563832 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8027938429453120785, guid: 97cbc84873ddf784ca4ef7894e79daa2,
+    type: 3}
+  m_PrefabInstance: {fileID: 2088741271}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b05e8d52ebb5e564688b24a559cfac42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &237700960
 GameObject:
   m_ObjectHideFlags: 0
@@ -10460,6 +10472,12 @@ PrefabInstance:
       propertyPath: <Scenes>k__BackingField.Array.data[6].Pool.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2930605845598393402, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -6650959833599234297, guid: a9c0429ecc26faa4bbdb89eb267ade8e,
+        type: 2}
     - target: {fileID: 3973075926608278221, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
         type: 3}
       propertyPath: m_fontSize
@@ -10476,26 +10494,6 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-    - target: {fileID: 4112998738802813266, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
-        type: 3}
-      propertyPath: <InteractProperties>k__BackingField.<Color>k__BackingField.a
-      value: 0.5882353
-      objectReference: {fileID: 0}
-    - target: {fileID: 4112998738802813266, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
-        type: 3}
-      propertyPath: <InteractProperties>k__BackingField.<Color>k__BackingField.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4112998738802813266, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
-        type: 3}
-      propertyPath: <InteractProperties>k__BackingField.<Color>k__BackingField.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4112998738802813266, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
-        type: 3}
-      propertyPath: <InteractProperties>k__BackingField.<Color>k__BackingField.r
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4831510591918066901, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
         type: 3}
       propertyPath: m_IsActive
@@ -19555,6 +19553,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 983839668}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &987709653 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8027938428627097251, guid: 97cbc84873ddf784ca4ef7894e79daa2,
+    type: 3}
+  m_PrefabInstance: {fileID: 2088741271}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b05e8d52ebb5e564688b24a559cfac42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &999223678
 GameObject:
   m_ObjectHideFlags: 0
@@ -20864,6 +20874,18 @@ Transform:
   m_Father: {fileID: 981414077}
   m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1084972253 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8027938429002423156, guid: 97cbc84873ddf784ca4ef7894e79daa2,
+    type: 3}
+  m_PrefabInstance: {fileID: 2088741271}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b05e8d52ebb5e564688b24a559cfac42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1087050031
 GameObject:
   m_ObjectHideFlags: 0
@@ -34556,6 +34578,11 @@ PrefabInstance:
       objectReference: {fileID: 1074883912}
     - target: {fileID: 8027938428627097251, guid: 97cbc84873ddf784ca4ef7894e79daa2,
         type: 3}
+      propertyPath: <FlipAnimation>k__BackingField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8027938428627097251, guid: 97cbc84873ddf784ca4ef7894e79daa2,
+        type: 3}
       propertyPath: <InteractionRange>k__BackingField
       value: 0.6
       objectReference: {fileID: 0}
@@ -34571,6 +34598,11 @@ PrefabInstance:
       objectReference: {fileID: 222951256}
     - target: {fileID: 8027938429002423156, guid: 97cbc84873ddf784ca4ef7894e79daa2,
         type: 3}
+      propertyPath: <FlipAnimation>k__BackingField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8027938429002423156, guid: 97cbc84873ddf784ca4ef7894e79daa2,
+        type: 3}
       propertyPath: <InteractionRange>k__BackingField
       value: 0.5
       objectReference: {fileID: 0}
@@ -34584,6 +34616,11 @@ PrefabInstance:
       propertyPath: _lights.Array.data[1]
       value: 
       objectReference: {fileID: 349951375}
+    - target: {fileID: 8027938429453120785, guid: 97cbc84873ddf784ca4ef7894e79daa2,
+        type: 3}
+      propertyPath: <FlipAnimation>k__BackingField
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8027938429453120785, guid: 97cbc84873ddf784ca4ef7894e79daa2,
         type: 3}
       propertyPath: <InteractionRange>k__BackingField
@@ -34620,6 +34657,101 @@ PrefabInstance:
       propertyPath: _lights.Array.data[2]
       value: 
       objectReference: {fileID: 222951256}
+    - target: {fileID: 9112485058081624628, guid: 97cbc84873ddf784ca4ef7894e79daa2,
+        type: 3}
+      propertyPath: <ResetLeverAnimation>k__BackingField.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9112485058081624628, guid: 97cbc84873ddf784ca4ef7894e79daa2,
+        type: 3}
+      propertyPath: <ResetLeverAnimation>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9112485058081624628, guid: 97cbc84873ddf784ca4ef7894e79daa2,
+        type: 3}
+      propertyPath: <ResetLeverAnimation>k__BackingField.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9112485058081624628, guid: 97cbc84873ddf784ca4ef7894e79daa2,
+        type: 3}
+      propertyPath: <ResetLeverAnimation>k__BackingField.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9112485058081624628, guid: 97cbc84873ddf784ca4ef7894e79daa2,
+        type: 3}
+      propertyPath: <ResetLeverAnimation>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1084972253}
+    - target: {fileID: 9112485058081624628, guid: 97cbc84873ddf784ca4ef7894e79daa2,
+        type: 3}
+      propertyPath: <ResetLeverAnimation>k__BackingField.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 237563832}
+    - target: {fileID: 9112485058081624628, guid: 97cbc84873ddf784ca4ef7894e79daa2,
+        type: 3}
+      propertyPath: <ResetLeverAnimation>k__BackingField.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 987709653}
+    - target: {fileID: 9112485058081624628, guid: 97cbc84873ddf784ca4ef7894e79daa2,
+        type: 3}
+      propertyPath: <ResetLeverAnimation>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9112485058081624628, guid: 97cbc84873ddf784ca4ef7894e79daa2,
+        type: 3}
+      propertyPath: <ResetLeverAnimation>k__BackingField.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9112485058081624628, guid: 97cbc84873ddf784ca4ef7894e79daa2,
+        type: 3}
+      propertyPath: <ResetLeverAnimation>k__BackingField.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9112485058081624628, guid: 97cbc84873ddf784ca4ef7894e79daa2,
+        type: 3}
+      propertyPath: <ResetLeverAnimation>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ResetAnimation
+      objectReference: {fileID: 0}
+    - target: {fileID: 9112485058081624628, guid: 97cbc84873ddf784ca4ef7894e79daa2,
+        type: 3}
+      propertyPath: <ResetLeverAnimation>k__BackingField.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ResetAnimation
+      objectReference: {fileID: 0}
+    - target: {fileID: 9112485058081624628, guid: 97cbc84873ddf784ca4ef7894e79daa2,
+        type: 3}
+      propertyPath: <ResetLeverAnimation>k__BackingField.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: ResetAnimation
+      objectReference: {fileID: 0}
+    - target: {fileID: 9112485058081624628, guid: 97cbc84873ddf784ca4ef7894e79daa2,
+        type: 3}
+      propertyPath: <ResetLeverAnimation>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GenericSwitch, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 9112485058081624628, guid: 97cbc84873ddf784ca4ef7894e79daa2,
+        type: 3}
+      propertyPath: <ResetLeverAnimation>k__BackingField.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: GenericSwitch, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 9112485058081624628, guid: 97cbc84873ddf784ca4ef7894e79daa2,
+        type: 3}
+      propertyPath: <ResetLeverAnimation>k__BackingField.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: GenericSwitch, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 9112485058081624628, guid: 97cbc84873ddf784ca4ef7894e79daa2,
+        type: 3}
+      propertyPath: <ResetLeverAnimation>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 9112485058081624628, guid: 97cbc84873ddf784ca4ef7894e79daa2,
+        type: 3}
+      propertyPath: <ResetLeverAnimation>k__BackingField.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 9112485058081624628, guid: 97cbc84873ddf784ca4ef7894e79daa2,
+        type: 3}
+      propertyPath: <ResetLeverAnimation>k__BackingField.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 9162295159942756762, guid: 97cbc84873ddf784ca4ef7894e79daa2,
         type: 3}
       propertyPath: m_IsActive

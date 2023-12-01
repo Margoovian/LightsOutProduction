@@ -47,7 +47,6 @@ public class SettingsManager : MonoBehaviour
     [Header("Setup")]
     public TMP_Text title;
     public SettingsData settings;
-    public RectTransform safeZone;
     public Button exitBtn;
 
     [Header("Values - Audio")]
@@ -57,9 +56,11 @@ public class SettingsManager : MonoBehaviour
 
     [Header("Values - Video")]
     public Toggle fullscreenCheckbox;
-    public SlideManager hudScaleSlider;
     public DropdownManager resolutionDropdown;
     public DropdownManager qualityDropdown;
+
+    public SlideManager framesSlider;
+    public Toggle displayFPSCheckbox;
 
     [Header("Audio Mixing")]
     public string[] mixerValues = new string[3];
@@ -86,9 +87,11 @@ public class SettingsManager : MonoBehaviour
     private float currentMusicVolume;
 
     private int currentResolution;
+    private int currentFrames;
     private int currentQuality;
+    
     private bool currentFullscreen;
-    private float currentHudScale;
+    private bool currentDisplayFPS; 
 
     #endregion
 
@@ -105,7 +108,9 @@ public class SettingsManager : MonoBehaviour
 #endif
         Resolution targetResolution = settings.resolutions[currentResolution];
         Screen.SetResolution(targetResolution.width, targetResolution.height, currentFullscreen);
-        QualitySettings.SetQualityLevel(settings.baseSettings.quality);
+        
+        QualitySettings.SetQualityLevel(currentQuality);
+        Application.targetFrameRate = currentFrames;
 
         #endregion
 
@@ -120,7 +125,9 @@ public class SettingsManager : MonoBehaviour
             resolution = currentResolution,
             quality = currentQuality,
             fullscreen = currentFullscreen,
-            hudScale = currentHudScale
+
+            frames = currentFrames,
+            displayFPS = currentDisplayFPS
         };
 
         settings.ApplySettings(newerSettings);
@@ -141,7 +148,9 @@ public class SettingsManager : MonoBehaviour
         currentResolution = settings.defaultResolution;
         currentQuality = settings.defaultQuality;
         currentFullscreen = settings.defaultFullscreen;
-        currentHudScale = settings.defaultHudScale;
+
+        currentFrames = settings.defaultFrames;
+        currentDisplayFPS = settings.defaultDisplayFPS;
 
         #endregion
 
@@ -154,7 +163,9 @@ public class SettingsManager : MonoBehaviour
         resolutionDropdown.dropdown.value = currentResolution;
         qualityDropdown.dropdown.value = currentQuality;
         fullscreenCheckbox.isOn = currentFullscreen;
-        hudScaleSlider.slider.value = currentHudScale;
+
+        framesSlider.slider.value = currentFrames;
+        displayFPSCheckbox.isOn = currentDisplayFPS;
 
         #endregion
     }
@@ -229,18 +240,16 @@ public class SettingsManager : MonoBehaviour
         AudioManager.Instance.AudioMixer.SetFloat(mixerValues[2], AudioSliderCalculations(value));
     }
 
-    private void HudScaleSliderChanged(float value)
-    {
-        currentHudScale = (float)Math.Round(value, 2);
-        float result = Mathf.Lerp(0f, 100f, currentHudScale);
-        safeZone.sizeDelta = new Vector2(-result, -result);
-    }
+    private void FramesSliderChanged(float value) => currentFrames = (int)value;
 
     #endregion
 
     #region Private Functions
 
+    private void ResolutionChanged(int value) => currentResolution = value;
     private void QualityChanged(int value) => currentQuality = value;
+    private void FullscreenChanged(bool value) => currentFullscreen = value;
+    private void DisplayFPSChanged(bool value) => currentDisplayFPS = value;
 
     private void SetupResolutions()
     {
@@ -283,12 +292,6 @@ public class SettingsManager : MonoBehaviour
             musicVolumeSlider.slider.maxValue
             );
 
-        settings.baseSettings.hudScale = Mathf.Clamp(
-            settings.baseSettings.hudScale, 
-            hudScaleSlider.slider.minValue, 
-            hudScaleSlider.slider.maxValue
-            );
-
         settings.baseSettings.resolution = Mathf.Clamp(
             settings.baseSettings.resolution,
             0,
@@ -300,6 +303,12 @@ public class SettingsManager : MonoBehaviour
             0,
             qualityDropdown.dropdown.options.Count
             );
+
+        settings.baseSettings.frames = Mathf.Clamp(
+            settings.baseSettings.frames,
+            (int)framesSlider.slider.minValue,
+            (int)framesSlider.slider.maxValue
+            );
     }
 
     private void PostInitSetup()
@@ -307,19 +316,18 @@ public class SettingsManager : MonoBehaviour
         masterVolumeSlider.slider.value = settings.baseSettings.masterVolume;
         soundVolumeSlider.slider.value = settings.baseSettings.soundVolume;
         musicVolumeSlider.slider.value = settings.baseSettings.musicVolume;
+        framesSlider.slider.value = settings.baseSettings.frames;
 
         masterVolumeSlider.inputField.text = settings.baseSettings.masterVolume.ToString();
         soundVolumeSlider.inputField.text = settings.baseSettings.soundVolume.ToString();
         musicVolumeSlider.inputField.text = settings.baseSettings.musicVolume.ToString();
+        framesSlider.inputField.text = settings.baseSettings.frames.ToString();
 
         qualityDropdown.dropdown.value = settings.baseSettings.quality;
         QualitySettings.SetQualityLevel(settings.baseSettings.quality);
 
         fullscreenCheckbox.isOn = settings.baseSettings.fullscreen;
-
-        hudScaleSlider.slider.value = settings.baseSettings.hudScale;
-        hudScaleSlider.inputField.text = settings.baseSettings.hudScale.ToString();
-        HudScaleSliderChanged(hudScaleSlider.slider.value);
+        displayFPSCheckbox.isOn = settings.baseSettings.displayFPS; 
 
         currentMasterVolume = settings.baseSettings.masterVolume;
         currentSoundVolume = settings.baseSettings.soundVolume;
@@ -331,21 +339,26 @@ public class SettingsManager : MonoBehaviour
 
         currentResolution = settings.baseSettings.resolution;
         currentFullscreen = settings.baseSettings.fullscreen;
-        currentHudScale = settings.baseSettings.hudScale;
+
+        currentFrames = settings.baseSettings.frames;
+        currentDisplayFPS = settings.baseSettings.displayFPS;
 
         masterVolumeSlider.slider.onValueChanged.AddListener(MasterSliderChanged);
         soundVolumeSlider.slider.onValueChanged.AddListener(SoundSliderChanged);
         musicVolumeSlider.slider.onValueChanged.AddListener(MusicSliderChanged);
+        framesSlider.slider.onValueChanged.AddListener(FramesSliderChanged);
 
-        fullscreenCheckbox.onValueChanged.AddListener((bool value) => { currentFullscreen = value; });
-        resolutionDropdown.dropdown.onValueChanged.AddListener((int value) => { currentResolution = value; });
+        fullscreenCheckbox.onValueChanged.AddListener(FullscreenChanged);
+        resolutionDropdown.dropdown.onValueChanged.AddListener(ResolutionChanged);
         qualityDropdown.dropdown.onValueChanged.AddListener(QualityChanged);
-        hudScaleSlider.slider.onValueChanged.AddListener(HudScaleSliderChanged);
+        displayFPSCheckbox.onValueChanged.AddListener(DisplayFPSChanged);
 
         applyBtn.onClick.AddListener(() => { OnPromptFrame(applicableEvents[0].promptTitle, applicableEvents[0].promptBody, applicableEvents[0].eventName); });
         revertBtn.onClick.AddListener(() => { OnPromptFrame(applicableEvents[1].promptTitle, applicableEvents[1].promptBody, applicableEvents[1].eventName); });
 
         exitBtn.onClick.AddListener(delegate { gameObject.SetActive(false); });
+
+        settings.settingsChanged.Invoke(settings.baseSettings.displayFPS);
     }
 
     #endregion

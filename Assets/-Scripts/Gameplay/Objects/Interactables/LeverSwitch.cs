@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LeverSwitch : BoxSwitch
+public class LeverSwitch : GenericSwitch
 {
     public void ResetSwitch()
     {
