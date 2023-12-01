@@ -33904,17 +33904,17 @@ PrefabInstance:
     - target: {fileID: 5530762769253642908, guid: 97cbc84873ddf784ca4ef7894e79daa2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.03311
+      value: -0.03366
       objectReference: {fileID: 0}
     - target: {fileID: 5530762769253642908, guid: 97cbc84873ddf784ca4ef7894e79daa2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.16046
+      value: -0.16044
       objectReference: {fileID: 0}
     - target: {fileID: 5530762769253642908, guid: 97cbc84873ddf784ca4ef7894e79daa2,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.0022
+      value: -0.01018
       objectReference: {fileID: 0}
     - target: {fileID: 5530762769253642908, guid: 97cbc84873ddf784ca4ef7894e79daa2,
         type: 3}
@@ -34351,6 +34351,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 6943709005075007434, guid: 97cbc84873ddf784ca4ef7894e79daa2,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: a3b632c6adf91664ca336e06098d63a4, type: 2}
     - target: {fileID: 7208492528230703597, guid: 97cbc84873ddf784ca4ef7894e79daa2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -34481,11 +34486,6 @@ PrefabInstance:
       propertyPath: _lights.Array.data[1]
       value: 
       objectReference: {fileID: 1074883912}
-    - target: {fileID: 8027938428627097251, guid: 97cbc84873ddf784ca4ef7894e79daa2,
-        type: 3}
-      propertyPath: <InteractionRange>k__BackingField
-      value: 0.6
-      objectReference: {fileID: 0}
     - target: {fileID: 8027938429002423156, guid: 97cbc84873ddf784ca4ef7894e79daa2,
         type: 3}
       propertyPath: _lights.Array.size
@@ -34493,14 +34493,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8027938429002423156, guid: 97cbc84873ddf784ca4ef7894e79daa2,
         type: 3}
+      propertyPath: <isOn>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8027938429002423156, guid: 97cbc84873ddf784ca4ef7894e79daa2,
+        type: 3}
       propertyPath: _lights.Array.data[1]
       value: 
       objectReference: {fileID: 222951256}
-    - target: {fileID: 8027938429002423156, guid: 97cbc84873ddf784ca4ef7894e79daa2,
-        type: 3}
-      propertyPath: <InteractionRange>k__BackingField
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 8027938429453120785, guid: 97cbc84873ddf784ca4ef7894e79daa2,
         type: 3}
       propertyPath: _lights.Array.size
@@ -34511,11 +34511,6 @@ PrefabInstance:
       propertyPath: _lights.Array.data[1]
       value: 
       objectReference: {fileID: 349951375}
-    - target: {fileID: 8027938429453120785, guid: 97cbc84873ddf784ca4ef7894e79daa2,
-        type: 3}
-      propertyPath: <InteractionRange>k__BackingField
-      value: 0.6
-      objectReference: {fileID: 0}
     - target: {fileID: 8172955771439818243, guid: 97cbc84873ddf784ca4ef7894e79daa2,
         type: 3}
       propertyPath: m_Enabled
@@ -34530,13 +34525,13 @@ PrefabInstance:
     - target: {fileID: 9112485058081624628, guid: 97cbc84873ddf784ca4ef7894e79daa2,
         type: 3}
       propertyPath: _lights.Array.size
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9112485058081624628, guid: 97cbc84873ddf784ca4ef7894e79daa2,
         type: 3}
       propertyPath: _lights.Array.data[0]
       value: 
-      objectReference: {fileID: 1074883912}
+      objectReference: {fileID: 222951256}
     - target: {fileID: 9112485058081624628, guid: 97cbc84873ddf784ca4ef7894e79daa2,
         type: 3}
       propertyPath: _lights.Array.data[1]
@@ -34546,7 +34541,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _lights.Array.data[2]
       value: 
-      objectReference: {fileID: 222951256}
+      objectReference: {fileID: 1074883912}
     - target: {fileID: 9162295159942756762, guid: 97cbc84873ddf784ca4ef7894e79daa2,
         type: 3}
       propertyPath: m_IsActive

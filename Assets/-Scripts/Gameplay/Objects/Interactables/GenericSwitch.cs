@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public class GenericSwitch : MonoBehaviour, ISwitch, IInteractable
 {
+    [field: Header("Generics")]
     [field: SerializeField] public bool isOn { get; set; } = true;
     [field: SerializeField] public float InteractionRange { get; set; }
     public UnityEvent<bool> Event { get; set; } = new();
@@ -14,7 +15,10 @@ public class GenericSwitch : MonoBehaviour, ISwitch, IInteractable
     private GameObject _uiHolder;
     private SpriteRenderer _spriteRenderer;
 
+    [field: Header("Miscellaneous")]
     [field: SerializeField] public string SoundName { get; set; } = "Switch";
+
+    [field: Header("Animation Settings")]
     [field: SerializeField] public Animator Animator { get; set; }
     [field: SerializeField] public string AnimationName { get; set; } = "Toggle";
     [field: SerializeField] public float AnimationModifier { get; set; } = 0.01f;

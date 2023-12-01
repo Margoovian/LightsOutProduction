@@ -50,6 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 461eaef824ee87f499cb8842926b40ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <IgnoreMaterials>k__BackingField: 1
   <OnMaterial>k__BackingField: {fileID: 2100000, guid: f1e38594f14520c48bc546f3a41f4f56,
     type: 2}
   <OffMaterial>k__BackingField: {fileID: 2100000, guid: 7ec4e7373ac023f42bc829945cdcdf38,
@@ -440,6 +441,11 @@ PrefabInstance:
       propertyPath: _lights.Array.data[0]
       value: 
       objectReference: {fileID: 2355989398199010494}
+    - target: {fileID: 7566672349085162013, guid: 3bdb0c17c5085634fb2c1f1c1ab7a6b9,
+        type: 3}
+      propertyPath: <SoundName>k__BackingField
+      value: Power
+      objectReference: {fileID: 0}
     - target: {fileID: 7566672349085162013, guid: 3bdb0c17c5085634fb2c1f1c1ab7a6b9,
         type: 3}
       propertyPath: <InteractionRange>k__BackingField
