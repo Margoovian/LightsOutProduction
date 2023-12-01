@@ -112,6 +112,25 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2152195941217555702}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4223495292815392670 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2829100976156502888, guid: de71c25450c816d45932fe589f44707d,
+    type: 3}
+  m_PrefabInstance: {fileID: 2152195941217555702}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &7437080083373475690
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4223495292815392670}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.44073483, y: 0.5994398, z: 0.31459743}
+  m_Center: {x: 0.24916513, y: 0.105668515, z: -0.005840391}
 --- !u!1001 &2357209023268456785
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -210,9 +229,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97c4293889f1d18428a2a563bebded5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <isOn>k__BackingField: 1
   <InteractionRange>k__BackingField: 0.5
   _lights:
   - {fileID: 8224168900451898659}
+  <SoundName>k__BackingField: Switch
+  <Animator>k__BackingField: {fileID: 3043955528217076022}
+  <AnimationName>k__BackingField: Toggle
+  <AnimationModifier>k__BackingField: 0.05
+  <AnimationIntervals>k__BackingField: {x: 0, y: 1}
 --- !u!4 &4217078371808522277 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1887130778092058996, guid: 1060572774f1c02459e1a9f5d15ec8d4,
@@ -386,6 +411,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Breaker Box Medium
       objectReference: {fileID: 0}
+    - target: {fileID: 4076105357599507382, guid: 24b9b235e9a401a46ac14274d5f52500,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.271654
+      objectReference: {fileID: 0}
+    - target: {fileID: 4076105357599507382, guid: 24b9b235e9a401a46ac14274d5f52500,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 0.32024267
+      objectReference: {fileID: 0}
+    - target: {fileID: 4076105357599507382, guid: 24b9b235e9a401a46ac14274d5f52500,
+        type: 3}
+      propertyPath: m_Center.x
+      value: -0.010579079
+      objectReference: {fileID: 0}
+    - target: {fileID: 4076105357599507382, guid: 24b9b235e9a401a46ac14274d5f52500,
+        type: 3}
+      propertyPath: m_Center.z
+      value: -0.08012135
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3309461343474613002, guid: 24b9b235e9a401a46ac14274d5f52500, type: 3}
     - {fileID: 4107134873442827786, guid: 24b9b235e9a401a46ac14274d5f52500, type: 3}
@@ -410,6 +455,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49720e98ca7d8134a95226865cfdb1e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <IgnoreMaterials>k__BackingField: 1
   <OnMaterial>k__BackingField: {fileID: 2100000, guid: 58f4d8fd12f9a094c86ad6e7629488c0,
     type: 2}
   <OffMaterial>k__BackingField: {fileID: 2100000, guid: eb41299d0aa26b548bb46c29f32b4c5d,
@@ -435,6 +481,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49720e98ca7d8134a95226865cfdb1e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <IgnoreMaterials>k__BackingField: 1
   <OnMaterial>k__BackingField: {fileID: 2100000, guid: 58f4d8fd12f9a094c86ad6e7629488c0,
     type: 2}
   <OffMaterial>k__BackingField: {fileID: 2100000, guid: eb41299d0aa26b548bb46c29f32b4c5d,
@@ -466,6 +513,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49720e98ca7d8134a95226865cfdb1e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <IgnoreMaterials>k__BackingField: 1
   <OnMaterial>k__BackingField: {fileID: 2100000, guid: 58f4d8fd12f9a094c86ad6e7629488c0,
     type: 2}
   <OffMaterial>k__BackingField: {fileID: 2100000, guid: eb41299d0aa26b548bb46c29f32b4c5d,
@@ -491,6 +539,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49720e98ca7d8134a95226865cfdb1e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <IgnoreMaterials>k__BackingField: 1
   <OnMaterial>k__BackingField: {fileID: 2100000, guid: 58f4d8fd12f9a094c86ad6e7629488c0,
     type: 2}
   <OffMaterial>k__BackingField: {fileID: 2100000, guid: eb41299d0aa26b548bb46c29f32b4c5d,
@@ -578,6 +627,12 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 3049269239432989228, guid: 1060572774f1c02459e1a9f5d15ec8d4, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1060572774f1c02459e1a9f5d15ec8d4, type: 3}
+--- !u!95 &3043955528217076022 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7624766957884125074, guid: 1060572774f1c02459e1a9f5d15ec8d4,
+    type: 3}
+  m_PrefabInstance: {fileID: 4895078862865993380}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5950785178094071146 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1259811477264688078, guid: 1060572774f1c02459e1a9f5d15ec8d4,
@@ -596,9 +651,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97c4293889f1d18428a2a563bebded5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <isOn>k__BackingField: 1
   <InteractionRange>k__BackingField: 0.5
   _lights:
   - {fileID: 138721576717363613}
+  <SoundName>k__BackingField: Switch
+  <Animator>k__BackingField: {fileID: 3043955528217076022}
+  <AnimationName>k__BackingField: Toggle
+  <AnimationModifier>k__BackingField: 0.05
+  <AnimationIntervals>k__BackingField: {x: 0, y: 1}
 --- !u!4 &6475823577957709776 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1887130778092058996, guid: 1060572774f1c02459e1a9f5d15ec8d4,
@@ -703,9 +764,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97c4293889f1d18428a2a563bebded5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <isOn>k__BackingField: 1
   <InteractionRange>k__BackingField: 0.5
   _lights:
   - {fileID: 8899043303878244623}
+  <SoundName>k__BackingField: Switch
+  <Animator>k__BackingField: {fileID: 3043955528217076022}
+  <AnimationName>k__BackingField: Toggle
+  <AnimationModifier>k__BackingField: 0.05
+  <AnimationIntervals>k__BackingField: {x: 0, y: 1}
 --- !u!4 &5629173349180583569 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1887130778092058996, guid: 1060572774f1c02459e1a9f5d15ec8d4,
@@ -912,9 +979,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97c4293889f1d18428a2a563bebded5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <isOn>k__BackingField: 1
   <InteractionRange>k__BackingField: 0.5
   _lights:
   - {fileID: 4236671484350582067}
+  <SoundName>k__BackingField: Switch
+  <Animator>k__BackingField: {fileID: 3043955528217076022}
+  <AnimationName>k__BackingField: Toggle
+  <AnimationModifier>k__BackingField: 0.05
+  <AnimationIntervals>k__BackingField: {x: 0, y: 1}
 --- !u!1001 &8950858300658600841
 PrefabInstance:
   m_ObjectHideFlags: 0
