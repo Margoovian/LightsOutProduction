@@ -1,17 +1,26 @@
 using System.Threading.Tasks;
 
+using TMPro;
+
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class OpeningManager : MonoBehaviour
 {
     // FIELDS //
-    [field: Header("Assets")]
+    [field: Header("Settings")]
     [Tooltip("The Interval (In Seconds!) after Fading in and before fading out of the scene.")]
-    [field: SerializeField] public int IntervalDuration { get; set; }
+    [field: SerializeField] public float IntervalDuration { get; set; } = 3.0f;
+
+    [Tooltip("Mouse to next scene Text Label.")]
+    [field: SerializeField] public TMP_Text TextLabel { get; set; }
 
     [Tooltip("Hide the Mouse Cursor during the Splash Screen.")]
-    [field: SerializeField] public bool HideCursor { get; set; }
+    [field: SerializeField] public bool HideCursor { get; set; } = true;
+
+    [Tooltip("Determine whether or not the player should have to use their mouse to continue to the next scene.")]
+    [field: SerializeField] public bool UseMouse { get; set; } = true;
 
     [field: Header("Assets")]
     [Tooltip("The Background that fades in and out behind the opening image.")]
@@ -22,6 +31,8 @@ public class OpeningManager : MonoBehaviour
 
     [Tooltip("The Name of the Music to fade out before the gameplay begins. (Make sure this aligns with the SplashManager's 'MusicName' string!")]
     [field: SerializeField] public string MusicName { get; set; }
+
+    private bool canClick = false;
 
     private async Task FadeImage(Image image, bool fadeIn)
     {
@@ -53,9 +64,58 @@ public class OpeningManager : MonoBehaviour
         }
     }
 
+    private async Task FadeText(TMP_Text text, bool fadeIn)
+    {
+        Color UpdateAlpha(float i)
+        {
+            return new()
+            {
+                r = text.color.r,
+                g = text.color.g,
+                b = text.color.b,
+                a = i
+            };
+        }
+
+        if (!fadeIn)
+        {
+            for (float i = 1; i >= 0; i -= Time.deltaTime)
+            {
+                text.color = UpdateAlpha(i);
+                await Task.Yield();
+            }
+
+            return;
+        }
+
+        for (float i = 0; i <= 1; i += Time.deltaTime)
+        {
+            text.color = UpdateAlpha(i);
+            await Task.Yield();
+        }
+    }
+
+    private async void StartGame()
+    {
+        Task task = FadeImage(OpeningImage, false);
+        
+        if (!UseMouse)
+            await task;
+        else
+        {
+            Task subTask = FadeText(TextLabel, false);
+            await subTask;
+        }
+
+        if (HideCursor && !Cursor.visible)
+            Cursor.visible = true;
+
+        MainMenu.Instance.OnPlay();
+    }
+
     private async void Start()
     {
-        IntervalDuration *= 1000;
+        IntervalDuration *= 1000.0f;
 
         if (Background.color.a > 0)
             Background.color = new() { a = 0 };
@@ -71,6 +131,17 @@ public class OpeningManager : MonoBehaviour
             };
         }
 
+        if (UseMouse && TextLabel.color.a > 0)
+        {
+            TextLabel.color = new()
+            {
+                r = TextLabel.color.r,
+                g = TextLabel.color.g,
+                b = TextLabel.color.b,
+                a = 0
+            };
+        }
+
         if (HideCursor)
             Cursor.visible = false;
 
@@ -82,15 +153,38 @@ public class OpeningManager : MonoBehaviour
         Task task2 = FadeImage(OpeningImage, true);
         await task2;
 
-        await Task.Delay(IntervalDuration);
+        await Task.Delay((int)IntervalDuration);
 
-        task2 = FadeImage(OpeningImage, false);
-        await task2;
+        if (!UseMouse)
+        {
+            task2 = FadeImage(OpeningImage, false);
+            await task2;
 
-        await Task.Delay(IntervalDuration / 4);
-        MainMenu.Instance.OnPlay();
+            await Task.Delay((int)IntervalDuration / 4);
+
+            StartGame();
+
+            return;
+        }
 
         if (HideCursor)
             Cursor.visible = true;
+
+        Task task3 = FadeText(TextLabel, true);
+        await task3;
+
+        canClick = true;
+    }
+
+    private void Update()
+    {
+        if (!canClick)
+            return;
+
+        if (!Mouse.current.leftButton.isPressed)
+            return;
+
+        canClick = false;
+        StartGame();
     }
 }
