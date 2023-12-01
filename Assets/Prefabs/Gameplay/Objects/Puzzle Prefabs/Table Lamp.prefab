@@ -50,6 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 461eaef824ee87f499cb8842926b40ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <IgnoreMaterials>k__BackingField: 1
   <OnMaterial>k__BackingField: {fileID: 2100000, guid: ec3ccddfa6de54d408920e0dd6026948,
     type: 2}
   <OffMaterial>k__BackingField: {fileID: 2100000, guid: 7ec4e7373ac023f42bc829945cdcdf38,
@@ -104,9 +105,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d62810160e1013244a185bf48624310e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <isOn>k__BackingField: 1
   <InteractionRange>k__BackingField: 0.8
   _lights:
   - {fileID: 6625238286531903431}
+  <SoundName>k__BackingField: Switch
+  <Animator>k__BackingField: {fileID: 0}
+  <AnimationName>k__BackingField: Toggle
+  <AnimationModifier>k__BackingField: 0.01
+  <AnimationIntervals>k__BackingField: {x: 0, y: 1}
 --- !u!1 &6369622532926119486
 GameObject:
   m_ObjectHideFlags: 0
@@ -488,6 +495,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7907794530816018451, guid: 02819849bdf505243809aeb9a60e9d29,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 76.85007
+      objectReference: {fileID: 0}
+    - target: {fileID: 7907794530816018451, guid: 02819849bdf505243809aeb9a60e9d29,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 79.30862
+      objectReference: {fileID: 0}
+    - target: {fileID: 7907794530816018451, guid: 02819849bdf505243809aeb9a60e9d29,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 60.823166
       objectReference: {fileID: 0}
     - target: {fileID: 7907794530816018451, guid: 02819849bdf505243809aeb9a60e9d29,
         type: 3}
