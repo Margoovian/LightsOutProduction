@@ -112,6 +112,25 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2152195941217555702}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4223495292815392670 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2829100976156502888, guid: de71c25450c816d45932fe589f44707d,
+    type: 3}
+  m_PrefabInstance: {fileID: 2152195941217555702}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &7437080083373475690
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4223495292815392670}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.44073483, y: 0.5994398, z: 0.31459743}
+  m_Center: {x: 0.24916513, y: 0.105668515, z: -0.005840391}
 --- !u!1001 &2357209023268456785
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -391,6 +410,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Breaker Box Medium
+      objectReference: {fileID: 0}
+    - target: {fileID: 4076105357599507382, guid: 24b9b235e9a401a46ac14274d5f52500,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.271654
+      objectReference: {fileID: 0}
+    - target: {fileID: 4076105357599507382, guid: 24b9b235e9a401a46ac14274d5f52500,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 0.32024267
+      objectReference: {fileID: 0}
+    - target: {fileID: 4076105357599507382, guid: 24b9b235e9a401a46ac14274d5f52500,
+        type: 3}
+      propertyPath: m_Center.x
+      value: -0.010579079
+      objectReference: {fileID: 0}
+    - target: {fileID: 4076105357599507382, guid: 24b9b235e9a401a46ac14274d5f52500,
+        type: 3}
+      propertyPath: m_Center.z
+      value: -0.08012135
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3309461343474613002, guid: 24b9b235e9a401a46ac14274d5f52500, type: 3}
