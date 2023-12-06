@@ -1,9 +1,8 @@
-using UnityEngine.SceneManagement;
-
 public class GODController
 {
-    private static GODController instance;
+    public bool Triggered { get; set; }
 
+    private static GODController instance;
     public static GODController Instance
     {
         get
@@ -13,26 +12,27 @@ public class GODController
         }
     }
 
-    public bool triggered;
-
-    public void Initalize()
-    {
-        instance ??= new();
-    }
+    public void Initalize() => instance ??= new();
 
     public void Update()
     {
-        if (GameManager.Instance.PlayerData.FearLevel >= GameManager.Instance.GameSettings.MaxFear && !triggered)
-        {
-            triggered = true;
+        if (Triggered)
+            return;
 
-            if (PlayerData.Instance.InFearWall)  SceneManager.LoadScene("GameOverWall");
-            else SceneManager.LoadScene("GameOverFear");
-
-        } else if (SceneController.Instance.GetCurrentIndex() == 0 && GameManager.Instance.PlayerData.ElapsedTime > 300)
+        if (GameManager.Instance.PlayerData.FearLevel >= GameManager.Instance.GameSettings.MaxFear)
         {
-            triggered = true;
-            SceneManager.LoadScene("GameOverTime");
+            Triggered = true;
+
+            if (PlayerData.Instance.InFearWall)
+                GameManager.Instance.GameOver(GameOverType.FearWall);
+            else
+                GameManager.Instance.GameOver(GameOverType.FearWander);
+        }
+
+        else if (SceneController.Instance.GetCurrentIndex() == 0 && GameManager.Instance.PlayerData.ElapsedTime > 300)
+        {
+            Triggered = true;
+            GameManager.Instance.GameOver(GameOverType.Timeout);
         }
     }
 }
