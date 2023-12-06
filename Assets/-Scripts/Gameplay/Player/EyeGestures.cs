@@ -16,7 +16,7 @@ public class EyeGestures : MonoBehaviour
     private Material material;
     public Vector2[] positions = new Vector2[4]
     { 
-        // possistional co-ords for sliders
+        // possitional co-ords for sliders
         // Defualt
         new(0.0f,0.0f),
         // Worried
