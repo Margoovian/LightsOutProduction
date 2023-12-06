@@ -677,6 +677,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 169692658}
   m_Mesh: {fileID: 1585134276705639935, guid: 2f15e90c66069224993fe94c1a6da5d3, type: 3}
+--- !u!108 &176117618 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 7827262120408870967, guid: 6282e4bfcddd1f046b3d336ad925ac69,
+    type: 3}
+  m_PrefabInstance: {fileID: 799170649}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &186378438
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2374,6 +2380,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 375116702}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &376856384 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7698134093494095026, guid: 6282e4bfcddd1f046b3d336ad925ac69,
+    type: 3}
+  m_PrefabInstance: {fileID: 799170649}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa344a15e4c08c3439447ca63a7a5aac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &387851389
 GameObject:
   m_ObjectHideFlags: 0
@@ -5067,6 +5085,36 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1575892183088504761, guid: 6282e4bfcddd1f046b3d336ad925ac69,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1575892183088504761, guid: 6282e4bfcddd1f046b3d336ad925ac69,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.229
+      objectReference: {fileID: 0}
+    - target: {fileID: 1575892183088504761, guid: 6282e4bfcddd1f046b3d336ad925ac69,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.429
+      objectReference: {fileID: 0}
+    - target: {fileID: 1575892183088504761, guid: 6282e4bfcddd1f046b3d336ad925ac69,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.081
+      objectReference: {fileID: 0}
+    - target: {fileID: 2114936924279493315, guid: 6282e4bfcddd1f046b3d336ad925ac69,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.431
+      objectReference: {fileID: 0}
+    - target: {fileID: 2114936924279493315, guid: 6282e4bfcddd1f046b3d336ad925ac69,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.269
+      objectReference: {fileID: 0}
     - target: {fileID: 3148172129588860846, guid: 6282e4bfcddd1f046b3d336ad925ac69,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -5127,6 +5175,31 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.032
       objectReference: {fileID: 0}
+    - target: {fileID: 5048162333541629006, guid: 6282e4bfcddd1f046b3d336ad925ac69,
+        type: 3}
+      propertyPath: _lights.Array.data[0]
+      value: 
+      objectReference: {fileID: 1559309778}
+    - target: {fileID: 5048162333541629006, guid: 6282e4bfcddd1f046b3d336ad925ac69,
+        type: 3}
+      propertyPath: <SoundName>k__BackingField
+      value: FireDouse
+      objectReference: {fileID: 0}
+    - target: {fileID: 5048162333541629010, guid: 6282e4bfcddd1f046b3d336ad925ac69,
+        type: 3}
+      propertyPath: <Lights>k__BackingField.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5048162333541629010, guid: 6282e4bfcddd1f046b3d336ad925ac69,
+        type: 3}
+      propertyPath: <Lights>k__BackingField.Array.data[0]
+      value: 
+      objectReference: {fileID: 176117618}
+    - target: {fileID: 5048162333541629010, guid: 6282e4bfcddd1f046b3d336ad925ac69,
+        type: 3}
+      propertyPath: <Lights>k__BackingField.Array.data[1]
+      value: 
+      objectReference: {fileID: 176117618}
     - target: {fileID: 7396629472539373628, guid: 6282e4bfcddd1f046b3d336ad925ac69,
         type: 3}
       propertyPath: m_RootOrder
@@ -5187,7 +5260,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: FirePlace
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5048162333541629010, guid: 6282e4bfcddd1f046b3d336ad925ac69, type: 3}
+    - {fileID: 5048162333541629006, guid: 6282e4bfcddd1f046b3d336ad925ac69, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 6282e4bfcddd1f046b3d336ad925ac69, type: 3}
 --- !u!1 &810337711
 GameObject:
@@ -9922,6 +9997,34 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1534119965}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1559309776 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4818610206207029427, guid: 6282e4bfcddd1f046b3d336ad925ac69,
+    type: 3}
+  m_PrefabInstance: {fileID: 799170649}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1559309778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1559309776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 461eaef824ee87f499cb8842926b40ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <IgnoreMaterials>k__BackingField: 1
+  <OnMaterial>k__BackingField: {fileID: 0}
+  <OffMaterial>k__BackingField: {fileID: 0}
+  <DefaultState>k__BackingField: 1
+  <LightVolumes>k__BackingField:
+  - {fileID: 1711301488}
+  - {fileID: 376856384}
+  <Lights>k__BackingField:
+  - {fileID: 176117618}
+  - {fileID: 0}
 --- !u!1001 &1601319155
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10095,6 +10198,36 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1659932106}
   m_Mesh: {fileID: -2664514252783673714, guid: 62c24cb10ab25e94a95671445251e2f0, type: 3}
+--- !u!1 &1669161966 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3924840285476728512, guid: 6282e4bfcddd1f046b3d336ad925ac69,
+    type: 3}
+  m_PrefabInstance: {fileID: 799170649}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1669161968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1669161966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d62810160e1013244a185bf48624310e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <isOn>k__BackingField: 1
+  <InteractionRange>k__BackingField: 0.5
+  _lights:
+  - {fileID: 1559309778}
+  <SoundName>k__BackingField: FireDouse
+  <Animator>k__BackingField: {fileID: 0}
+  <AnimationName>k__BackingField: Toggle
+  <AnimationModifier>k__BackingField: 0.01
+  <FlipAnimation>k__BackingField: 0
+  <AnimationIntervals>k__BackingField: {x: 0, y: 1}
+  <currentTime>k__BackingField: 0
+  <animating>k__BackingField: 0
 --- !u!1 &1685705706
 GameObject:
   m_ObjectHideFlags: 0
@@ -10458,6 +10591,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1706507104}
   m_Mesh: {fileID: 1585134276705639935, guid: 2f15e90c66069224993fe94c1a6da5d3, type: 3}
+--- !u!114 &1711301488 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8316715417253634331, guid: 6282e4bfcddd1f046b3d336ad925ac69,
+    type: 3}
+  m_PrefabInstance: {fileID: 799170649}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa344a15e4c08c3439447ca63a7a5aac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1739228697
 GameObject:
   m_ObjectHideFlags: 0
