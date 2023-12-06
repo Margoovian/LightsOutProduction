@@ -53,14 +53,16 @@ MonoBehaviour:
       AltLevel: 
     LoadOrder: -1
     Pool: []
+    Index: 0
   - Level:
-      Name: 
+      Name: Easy_1
       AltLevel: 
     RandomLevel:
-      Name: Easy_1
+      Name: 
       AltLevel: 
     LoadOrder: 0
     Pool: []
+    Index: 0
   - Level:
       Name: Easy_2
       AltLevel: 
@@ -69,6 +71,7 @@ MonoBehaviour:
       AltLevel: 
     LoadOrder: 1
     Pool: []
+    Index: 0
   - Level:
       Name: Easy_3
       AltLevel: 
@@ -77,6 +80,7 @@ MonoBehaviour:
       AltLevel: 
     LoadOrder: 2
     Pool: []
+    Index: 0
   - Level:
       Name: Medium_1
       AltLevel: 
@@ -85,6 +89,7 @@ MonoBehaviour:
       AltLevel: 
     LoadOrder: 3
     Pool: []
+    Index: 0
   - Level:
       Name: Medium_2
       AltLevel: 
@@ -95,6 +100,18 @@ MonoBehaviour:
     Pool:
     - Name: 
       AltLevel: 
+    Index: 0
+  - Level:
+      Name: GameEnd
+      AltLevel: 
+    RandomLevel:
+      Name: 
+      AltLevel: 
+    LoadOrder: 6
+    Pool:
+    - Name: 
+      AltLevel: 
+    Index: 0
 --- !u!1 &3970232227816179341
 GameObject:
   m_ObjectHideFlags: 0
@@ -334,14 +351,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <AudioObject>k__BackingField: {fileID: 5057834704436141334}
-  <AudioPaths>k__BackingField:
-  - Audio
   <AudioMixer>k__BackingField: {fileID: 24100000, guid: 7f9d3a509ce85454897128499aa3082d,
     type: 2}
   <MusicMixer>k__BackingField: {fileID: -2958962885310635547, guid: 7f9d3a509ce85454897128499aa3082d,
     type: 2}
   <SFXMixer>k__BackingField: {fileID: -2412039025560733703, guid: 7f9d3a509ce85454897128499aa3082d,
     type: 2}
+  <AudioPaths>k__BackingField:
+  - Audio
 --- !u!1 &8058844441290604138
 GameObject:
   m_ObjectHideFlags: 0
