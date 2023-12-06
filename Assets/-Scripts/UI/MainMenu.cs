@@ -27,9 +27,9 @@ public class MainMenu : MonoBehaviour
     public Button leaveButton;
 
     [field: Header("Uncategorized")]
-    [field: SerializeField] public GameObject GameGUI { get; set; }
     [field: SerializeField] public SettingsManager SettingsUI { get; set; }
     [field: SerializeField] public OpeningManager OpeningUI { get; set; }
+    [field: SerializeField] public Transform CamTransform { get; set; }
 
     private UnityEvent<bool, string> passthroughEvent;
 
@@ -56,11 +56,12 @@ public class MainMenu : MonoBehaviour
             passthroughEvent.AddListener(HandleQuitting);
         }
 
-        if (GameGUI != null) 
-            GameGUI.SetActive(false);
+        if (GameManager.Instance.MainGUI != null)
+            GameManager.Instance.MainGUI.SetActive(false);
+
+        GameManager.Instance.Camera.ForceCameraPosition(CamTransform.position, CamTransform.rotation);
 
         playButton.onClick.AddListener(delegate { OpeningUI.gameObject.SetActive(true); });
-
         optionsButton.onClick.AddListener(OnOptions);
         leaveButton.onClick.AddListener(OnLeave);
     }
@@ -69,8 +70,8 @@ public class MainMenu : MonoBehaviour
     {
         GameManager.Instance.PlayerData.InMenu = false;
 
-        if (GameGUI != null)
-            GameGUI.SetActive(true);
+        if (GameManager.Instance.MainGUI != null)
+            GameManager.Instance.MainGUI.SetActive(true);
 
         AudioManager.Instance.Stop("TestMusic");
         SceneController.Instance.LoadSpecific(0);

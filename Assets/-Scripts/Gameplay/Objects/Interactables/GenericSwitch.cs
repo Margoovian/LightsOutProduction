@@ -14,6 +14,7 @@ public class GenericSwitch : MonoBehaviour, ISwitch, IInteractable
 
     [field: Header("Miscellaneous")]
     [field: SerializeField] public string SoundName { get; set; } = "Switch";
+    [field: SerializeField] public Vector3 UIOverrideOffset { get; set; } = Vector3.zero; 
 
     [field: Header("Animation Settings")]
     [field: SerializeField] public Animator Animator { get; set; }
@@ -25,6 +26,7 @@ public class GenericSwitch : MonoBehaviour, ISwitch, IInteractable
     private GameObject _uiHolder;
     private SpriteRenderer _spriteRenderer;
 
+    // debugging, these will be invisible to the inspector once testing has finished!
     [field: SerializeField] public float currentTime { get; set; }
     [field: SerializeField] bool animating { get; set; }
 
@@ -56,12 +58,8 @@ public class GenericSwitch : MonoBehaviour, ISwitch, IInteractable
         _uiHolder.name = "UI Holder";
         _uiHolder.transform.SetParent(transform);
 
-        _uiHolder.transform.position = new Vector3(
-            transform.position.x + GameManager.Instance.InteractProperties.Offset.x, 
-            transform.position.y + GameManager.Instance.InteractProperties.Offset.y, 
-            transform.position.z + GameManager.Instance.InteractProperties.Offset.z
-        );
-        
+        _uiHolder.transform.position = UIOverrideOffset == Vector3.zero ? GameManager.Instance.InteractProperties.Offset : UIOverrideOffset;
+
         _uiHolder.transform.localScale = new Vector2(
             GameManager.Instance.InteractProperties.UniformScale,
             GameManager.Instance.InteractProperties.UniformScale
@@ -86,6 +84,8 @@ public class GenericSwitch : MonoBehaviour, ISwitch, IInteractable
             currentTime = result;
             defaultCurrentTime = currentTime;
             defaultFlipState = !FlipAnimation;
+
+            Debug.Log(FlipAnimation ? "On" : "Off", this);
 
             Animator.SetFloat(AnimationName, result);
         }
