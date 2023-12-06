@@ -21,27 +21,15 @@ public class GameManager : MonoBehaviour
     [field: SerializeField] public InteractionProperties InteractProperties { get; set; }
     public PlayerController Player { get; set; }
     public int PuzzlesCompleted { get; set; }
-
-
-    // The GODController is sorta hard-coded for the moment, sorry about that Devlyn!
-    // ^ That should be fine
+    public GameOverType GameOverType { get; set; }
 
     private void Awake()
     {
-        if (!Instance)
-            Instance = this;
-        Initialize();     
-    }
-
-    private void Update()
-    {
-        GODController.Instance.Update();
-    }
-
-    private void Initialize()
-    {
+        Instance ??= this;
         GODController.Instance.Initalize();
     }
+
+    private void Update() => GODController.Instance.Update();
 
     public bool TryGetPlayer(out PlayerController player)
     {
@@ -51,18 +39,14 @@ public class GameManager : MonoBehaviour
             return false;    
         
         return true;
-    } 
-    public void GameOver(GameOverType type)
-    {
-        switch (type)
-        {
-            case GameOverType.FearWander: break;
-            case GameOverType.FearWall: break;
-            case GameOverType.Timeout: break;
-            default: break;
-            
-        }
     }
+
+    public void GameOver(GameOverType type) 
+    {
+        GameOverType = type;
+        SceneController.Instance.LoadSpecific("GameEnd");
+    }
+
     public EndRatingEnum CalcEndScore()
     {
         int P = PuzzlesCompleted;

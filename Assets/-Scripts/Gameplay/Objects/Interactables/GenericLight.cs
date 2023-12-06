@@ -26,11 +26,13 @@ public class GenericLight : MonoBehaviour, ILight
     
     internal virtual void EditLightCount()
     {
-        if (isIndication) return;
-        if (isOn)
-            LevelController.Instance.ModifyLightCount(1);
-        else
-            LevelController.Instance.ModifyLightCount(-1);
+        if (isIndication) 
+            return;
+
+        int value = isOn ? 1 : -1;
+
+        if (LevelController.Instance != null)
+            LevelController.Instance.ModifyLightCount(value);
     }
 
     public void ChangeMaterial()

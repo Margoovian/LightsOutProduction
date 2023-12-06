@@ -19,10 +19,7 @@ public class SceneController : MonoBehaviour
             this.LoadOrder = LoadOrder;
         }
 
-        public void Init()
-        {
-            RandomLevel = RandomLevelFromPool();
-        }
+        public void Init() => RandomLevel = RandomLevelFromPool();
 
         private Level RandomLevelFromPool()
         {
@@ -47,21 +44,15 @@ public class SceneController : MonoBehaviour
     internal int _currentLevel;
     internal bool _isAltLevel;
 
-    private void Awake() {
-        if (!Instance)
-            Instance = this;
-
-        Initialize();
-    }
-
     private void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoad;
         SceneManager.sceneUnloaded -= OnSceneUnloaded;
     }
 
-    internal void Initialize()
+    private void Awake()
     {
+        Instance ??= this;
         _currentLevel = _startLevel;
 
         foreach(SceneCombo combo in Scenes)
@@ -107,7 +98,7 @@ public class SceneController : MonoBehaviour
 
     }
 
-    public void LoadSpecific(int level, Action beforeLoad = null)
+    public void LoadSpecific(int level, Action beforeLoad = null, Action afterLoad = null)
     {
         if (!SceneGlossary.ContainsKey(level))
         { 
@@ -117,8 +108,35 @@ public class SceneController : MonoBehaviour
 
         beforeLoad?.Invoke();
         TryLoadRandom(level);
+        afterLoad?.Invoke();
 
         Instance._currentLevel = level;
+    }
+
+    public void LoadSpecific(string level, Action beforeLoad = null,  Action afterLoad = null)
+    {
+        SceneCombo found = null;
+
+        foreach (SceneCombo combo in Scenes)
+        {
+            if (combo.Level.Name == level)
+            {
+                found = combo;
+                break;
+            }
+        }
+
+        if (found == null)
+        {
+            Debug.LogWarning("Level does not exist!");
+            return;
+        }
+
+        beforeLoad?.Invoke();
+        TryLoadRandom(found.LoadOrder);
+        afterLoad?.Invoke();
+
+        Instance._currentLevel = found.LoadOrder;
     }
 
     public void LoadScene(string scene) => SceneManager.LoadScene(scene);
@@ -157,5 +175,4 @@ public class SceneController : MonoBehaviour
 
         SceneManager.LoadScene(SceneGlossary[level].Level.Name);
     }
-
 }
