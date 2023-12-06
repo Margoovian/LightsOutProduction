@@ -5,8 +5,10 @@ public class SceneTrigger : MonoBehaviour
     [field: SerializeField] public int SceneIndex { get; set; }
     [field: SerializeField] public bool IgnoreIndex { get; set; }
     [field: SerializeField] public bool ReverseIndex { get; set; }
-    
+    [field: SerializeField] public bool TriggerWinState { get; set; } = false;
+
     private BoxCollider _trigger;
+    private bool triggered;
 
     private void Awake() => _trigger = GetComponent<BoxCollider>();
 
@@ -26,6 +28,17 @@ public class SceneTrigger : MonoBehaviour
     {
         if (!other.TryGetComponent<PlayerController>(out var _))
             return;
+
+        if (triggered)
+            return;
+
+        triggered = true;
+        
+        if (TriggerWinState)
+        {
+            GameManager.Instance.GameOver(GameOverType.Win);
+            return;
+        }
 
         SceneController.Instance._isAltLevel = ReverseIndex;
 
