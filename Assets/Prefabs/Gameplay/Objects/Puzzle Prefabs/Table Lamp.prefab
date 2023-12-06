@@ -113,7 +113,10 @@ MonoBehaviour:
   <Animator>k__BackingField: {fileID: 0}
   <AnimationName>k__BackingField: Toggle
   <AnimationModifier>k__BackingField: 0.01
+  <FlipAnimation>k__BackingField: 0
   <AnimationIntervals>k__BackingField: {x: 0, y: 1}
+  <currentTime>k__BackingField: 0
+  <animating>k__BackingField: 0
 --- !u!1 &6369622532926119486
 GameObject:
   m_ObjectHideFlags: 0
@@ -396,6 +399,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7786297438223119211}
     m_Modifications:
+    - target: {fileID: 6143628325801693373, guid: 8baf9f9c23c50e9478b612959dde0d7d,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.27659786
+      objectReference: {fileID: 0}
+    - target: {fileID: 6143628325801693373, guid: 8baf9f9c23c50e9478b612959dde0d7d,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 0.39671057
+      objectReference: {fileID: 0}
+    - target: {fileID: 6143628325801693373, guid: 8baf9f9c23c50e9478b612959dde0d7d,
+        type: 3}
+      propertyPath: m_Center.x
+      value: 0.014231801
+      objectReference: {fileID: 0}
+    - target: {fileID: 6143628325801693373, guid: 8baf9f9c23c50e9478b612959dde0d7d,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 0.021102928
+      objectReference: {fileID: 0}
     - target: {fileID: 8135171723052141140, guid: 8baf9f9c23c50e9478b612959dde0d7d,
         type: 3}
       propertyPath: m_RootOrder

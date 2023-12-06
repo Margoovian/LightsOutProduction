@@ -46,8 +46,8 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 0.96862745, g: 0.8784314, b: 0.3529412, a: 1}
-  m_Intensity: 1
-  m_Range: 0.3
+  m_Intensity: 15
+  m_Range: 0.1
   m_SpotAngle: 10.09443
   m_InnerSpotAngle: 4.6149855
   m_CookieSize: 10
@@ -128,6 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49720e98ca7d8134a95226865cfdb1e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <IgnoreMaterials>k__BackingField: 1
   <OnMaterial>k__BackingField: {fileID: 0}
   <OffMaterial>k__BackingField: {fileID: 0}
   <DefaultState>k__BackingField: 1
