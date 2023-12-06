@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EyeGestures : MonoBehaviour
 {
+    //STATES
     enum Gestures
     {
         Default = 0,
@@ -15,9 +16,14 @@ public class EyeGestures : MonoBehaviour
     private Material material;
     public Vector2[] positions = new Vector2[4]
     { 
+        // possitional co-ords for sliders
+        // Defualt
         new(0.0f,0.0f),
+        // Worried
         new(0.5f,0.0f),
+        //Scared
         new(0.0f,0.5f),
+        //Death
         new(0.5f,0.5f)
     };
 
@@ -67,7 +73,7 @@ public class EyeGestures : MonoBehaviour
 
     private void Update()
     {
-
+        // in relation to the Vingnette
         float fear = GameManager.Instance.PlayerData.FearLevel / GameManager.Instance.GameSettings.MaxFear;
 
         if (fear < 0.40)

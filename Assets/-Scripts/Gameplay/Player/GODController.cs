@@ -1,5 +1,3 @@
-using UnityEngine.SceneManagement;
-
 public class GODController
 {
     public bool Triggered { get; set; }

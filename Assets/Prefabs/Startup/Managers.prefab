@@ -53,7 +53,6 @@ MonoBehaviour:
       AltLevel: 
     LoadOrder: -1
     Pool: []
-    Index: 0
   - Level:
       Name: Easy_1
       AltLevel: 
@@ -62,7 +61,6 @@ MonoBehaviour:
       AltLevel: 
     LoadOrder: 0
     Pool: []
-    Index: 0
   - Level:
       Name: Easy_2
       AltLevel: 
@@ -71,7 +69,6 @@ MonoBehaviour:
       AltLevel: 
     LoadOrder: 1
     Pool: []
-    Index: 0
   - Level:
       Name: Easy_3
       AltLevel: 
@@ -80,7 +77,6 @@ MonoBehaviour:
       AltLevel: 
     LoadOrder: 2
     Pool: []
-    Index: 0
   - Level:
       Name: Medium_1
       AltLevel: 
@@ -89,7 +85,6 @@ MonoBehaviour:
       AltLevel: 
     LoadOrder: 3
     Pool: []
-    Index: 0
   - Level:
       Name: Medium_2
       AltLevel: 
@@ -100,7 +95,6 @@ MonoBehaviour:
     Pool:
     - Name: 
       AltLevel: 
-    Index: 0
   - Level:
       Name: GameEnd
       AltLevel: 
@@ -111,7 +105,6 @@ MonoBehaviour:
     Pool:
     - Name: 
       AltLevel: 
-    Index: 0
 --- !u!1 &3970232227816179341
 GameObject:
   m_ObjectHideFlags: 0
@@ -218,7 +211,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba880afede8358a43983076b7c055fbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <VFXPaths>k__BackingField: []
+  <VFXPaths>k__BackingField:
+  - VFX
 --- !u!1 &5057834704436141334
 GameObject:
   m_ObjectHideFlags: 0
@@ -299,6 +293,7 @@ MonoBehaviour:
     type: 2}
   <PlayerData>k__BackingField: {fileID: 0}
   <SceneTransition>k__BackingField: {fileID: 0}
+  <MainGUI>k__BackingField: {fileID: 0}
   <InteractProperties>k__BackingField:
     <Sprite>k__BackingField: {fileID: 21300000, guid: b67c93b1a87a66c46bd1ff265affcca4,
       type: 3}
