@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -8,10 +6,10 @@ public class AudioManager : Manager<AudioManager>
 {
     public Dictionary<string, Stem> Stems;
     [field: SerializeField] public GameObject AudioObject { get; set; }
-    [field: SerializeField] public string[] AudioPaths { get; set; } // This has to be relative to the Resource folder (I:E in it) 
     [field: SerializeField] public AudioMixer AudioMixer { get; set; }
     [field: SerializeField] public AudioMixerGroup MusicMixer { get; set; } = null;
     [field: SerializeField] public AudioMixerGroup SFXMixer { get; set; } = null;
+    [field: SerializeField] public string[] AudioPaths { get; set; } // This has to be relative to the Resource folder (I:E in it) 
 
     protected override void Initialize ()
     {

@@ -5,7 +5,6 @@ public class PlayerData : MonoBehaviour
 {
     public static PlayerData Instance { get; internal set; }
 
-    private Task _timer = null;
     public float BatteryLife { get; set; }
     public float FearLevel { get; set; }
     public float ElapsedTime { get; set; }
@@ -15,11 +14,8 @@ public class PlayerData : MonoBehaviour
     public string LevelNumber { get; set; }
     public int LevelID { get; set; }
 
-    private void Awake()
-    {
-        Instance ??= this;
-        _timer ??= Timer();
-    }
+    private void Awake() => Instance ??= this;
+
     private async Task Timer()
     {
         while (true)
