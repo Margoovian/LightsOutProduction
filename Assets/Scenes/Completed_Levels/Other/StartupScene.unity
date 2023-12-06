@@ -716,7 +716,7 @@ Transform:
   - {fileID: 828243352}
   - {fileID: 1398550831}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &129310123
 GameObject:
@@ -1840,6 +1840,37 @@ Transform:
   m_Father: {fileID: 178823962}
   m_RootOrder: 36
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &395094062
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 395094063}
+  m_Layer: 0
+  m_Name: CamTransform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &395094063
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 395094062}
+  m_LocalRotation: {x: 0.25455973, y: 0, z: 0, w: 0.96705705}
+  m_LocalPosition: {x: 21.003, y: 1.037, z: -22.317}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 29.495, y: 0, z: 0}
 --- !u!1 &402487876
 GameObject:
   m_ObjectHideFlags: 0
@@ -2209,7 +2240,7 @@ PrefabInstance:
     - target: {fileID: 5411872255731732449, guid: 630cfe93fca1b7e488221171b17bb970,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5411872255731732449, guid: 630cfe93fca1b7e488221171b17bb970,
         type: 3}
@@ -7590,12 +7621,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &1174924544 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 2409967851509016941, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
-    type: 3}
-  m_PrefabInstance: {fileID: 1960995385}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1193417490
 GameObject:
   m_ObjectHideFlags: 0
@@ -11041,12 +11066,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1411239768}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1443497435 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4831510591918066901, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
-    type: 3}
-  m_PrefabInstance: {fileID: 1960995385}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1518187657
 GameObject:
   m_ObjectHideFlags: 0
@@ -13691,11 +13710,6 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4112998738802813266, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
-        type: 3}
-      propertyPath: <SceneTransition>k__BackingField
-      value: 
-      objectReference: {fileID: 1174924544}
     - target: {fileID: 4304068302068221612, guid: 1a8d24b0118a61f40bfbd1ff284b1300,
         type: 3}
       propertyPath: m_IsActive
@@ -14058,7 +14072,7 @@ RectTransform:
   - {fileID: 1721320395}
   - {fileID: 1826511735}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -14762,9 +14776,9 @@ MonoBehaviour:
   playButton: {fileID: 756217074}
   optionsButton: {fileID: 579386051}
   leaveButton: {fileID: 70924673}
-  <GameGUI>k__BackingField: {fileID: 1443497435}
   <SettingsUI>k__BackingField: {fileID: 1283564773}
   <OpeningUI>k__BackingField: {fileID: 1721320396}
+  <CamTransform>k__BackingField: {fileID: 395094063}
 --- !u!1 &2114650898
 GameObject:
   m_ObjectHideFlags: 0

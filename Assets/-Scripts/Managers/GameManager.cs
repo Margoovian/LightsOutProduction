@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     [field: SerializeField] public GameSettings GameSettings { get; set; }
     [field: SerializeField] public PlayerData PlayerData { get; set; }
     [field: SerializeField] public Animator SceneTransition { get; set; }
+    [field: SerializeField] public GameObject MainGUI { get; set; }
     [field: SerializeField] public InteractionProperties InteractProperties { get; set; }
     public PlayerController Player { get; set; }
     public int PuzzlesCompleted { get; set; }
