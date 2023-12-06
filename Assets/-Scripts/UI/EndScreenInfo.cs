@@ -10,6 +10,13 @@ public class EndScreenInfo : MonoBehaviour
         public string Text;
     }
 
+    [System.Serializable]
+    public class RankSprite
+    {
+        public EndRatingEnum Rank;
+        public Sprite Sprite;
+    }
+
     [Header("Backgrounds")]
     [SerializeField] private Sprite Win;
     [SerializeField] private Sprite Lose;
@@ -23,20 +30,25 @@ public class EndScreenInfo : MonoBehaviour
     [Header("Control")]
     [SerializeField] private Button RestartBtn;
     [SerializeField] private Button ExitBtn;
+    [SerializeField] private Button WinExitBtn;
 
     [Header("Miscellaneous")]
     [SerializeField] private GameObject MainGui;
     [SerializeField] private Image Background;
     [SerializeField] private GameObject Container;
     [SerializeField] private TMPro.TMP_Text DeathType;
+
+    [Header("Arrays")]
     [SerializeField] private DeathVisual[] DeathVisuals;
+
+    // Unused for the moment, will be used once all the Rank sprites have been made and imported!
+    [SerializeField] private RankSprite[] RankSprites;
 
     private bool selected;
 
     private void ResetVariables()
     {
         selected = true;
-
         GODController.Instance.Triggered = false;
 
         PlayerData.Instance.FearLevel = 0.0f;
@@ -45,7 +57,7 @@ public class EndScreenInfo : MonoBehaviour
         GameManager.Instance.GameOverType = GameOverType.None;
     }
 
-    public void Restart() { if (selected) return; SceneController.Instance.LoadSpecific(SceneController.Instance.GetCurrentIndex(), ResetVariables); }
+    public void Restart() { if (selected) return; SceneController.Instance.LoadSpecific(GameManager.Instance.PreviousGameScene, ResetVariables); }
 
     public void Exit() { if (selected) return; SceneController.Instance.LoadSpecific(SceneController.Instance.GetStartIndex(), ResetVariables); }
 
@@ -56,9 +68,14 @@ public class EndScreenInfo : MonoBehaviour
 
         MainGui.SetActive(false);
 
+        RestartBtn.gameObject.SetActive(GameManager.Instance.GameOverType != GameOverType.Win);
+        ExitBtn.gameObject.SetActive(GameManager.Instance.GameOverType != GameOverType.Win);
+
+        WinExitBtn.gameObject.SetActive(GameManager.Instance.GameOverType == GameOverType.Win);
+        Container.SetActive(GameManager.Instance.GameOverType == GameOverType.Win);
+
         if (GameManager.Instance.GameOverType != GameOverType.Win)
         {
-            Container.SetActive(false);
             DeathType.enabled = true;
             Background.sprite = Lose;
 
@@ -74,14 +91,12 @@ public class EndScreenInfo : MonoBehaviour
             return;
         }
 
-        RestartBtn.gameObject.SetActive(false);
-        ExitBtn.gameObject.SetActive(false);
-
         Background.sprite = Win;
-
         EndRatingEnum rating = GameManager.Instance.CalcEndScore();
+        WinExitBtn.onClick.AddListener(Exit);
 
         // Change to use vertex colour instead of rich text
+        // This will be replaced with colours associated on the images themselves!
         switch (rating)
         {
             case EndRatingEnum.F: Rating.text = $"<color=red>{rating}"; break;

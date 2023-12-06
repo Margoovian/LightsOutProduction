@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     public PlayerController Player { get; set; }
     public int PuzzlesCompleted { get; set; }
     public GameOverType GameOverType { get; set; }
+    public int PreviousGameScene { get; set; }
 
     private void Awake()
     {
@@ -44,6 +45,7 @@ public class GameManager : MonoBehaviour
     public void GameOver(GameOverType type) 
     {
         GameOverType = type;
+        PreviousGameScene = SceneController.Instance.GetCurrentIndex();
         SceneController.Instance.LoadSpecific("GameEnd");
     }
 
