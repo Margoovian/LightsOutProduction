@@ -170,7 +170,7 @@ public class GlowToy : MonoBehaviour
             if (!HoldingInputDown && WaitingForRelease)
                 WaitingForRelease = false;
 
-            if ((HoldingInputDown && !WaitingForRelease) || GameManager.Instance.Player.isInLight)
+            if ((HoldingInputDown && !WaitingForRelease))
             {
                 CurrentDebounce = 1.0f;
                 
