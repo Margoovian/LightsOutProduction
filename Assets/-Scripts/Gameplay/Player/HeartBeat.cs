@@ -7,14 +7,12 @@ using UnityEngine;
 
 public class HeartBeat : MonoBehaviour
 {
-    // to be continued
-
     float delay = 0;
-
     public Stem heartBeat;
 
     enum HeartBeatStates
     {
+        // Definitions (used later)
         HeartBeatStable = 0,
         HeartBeatStartle,
         HeartBeatPanic,
@@ -22,6 +20,7 @@ public class HeartBeat : MonoBehaviour
 
     void Beating(HeartBeatStates HeartStates)
     {
+        // cooldown delay between "loops"
         delay += Time.deltaTime;
 
         switch (HeartStates)
@@ -32,9 +31,8 @@ public class HeartBeat : MonoBehaviour
                 {
                     //AudioManager.Instance.AudioMixer.SetFloat();
                     heartBeat.Pitch = 0.7f;
-                    heartBeat.GlobalVolume = 0.45f;
+                    heartBeat.GlobalVolume = 0.4f;
                     AudioManager.Instance.PlaySFX("HeartBeat");
-
 
                     delay = 0;
                 }
@@ -42,7 +40,7 @@ public class HeartBeat : MonoBehaviour
 
             case HeartBeatStates.HeartBeatStartle:
 
-                if (delay > 0.7)
+                if (delay > 0.8)
                 {
                     heartBeat.Pitch = 0.8f;
                     heartBeat.GlobalVolume = 0.7f;
@@ -52,9 +50,9 @@ public class HeartBeat : MonoBehaviour
                 break;
 
             case HeartBeatStates.HeartBeatPanic:
-                if (delay > 0.4)
+                if (delay > 0.55)
                 {
-                    heartBeat.Pitch = 0.8f;
+                    heartBeat.Pitch = 0.9f;
                     heartBeat.GlobalVolume = 1f;
                     AudioManager.Instance.PlaySFX("HeartBeat");
                     delay = 0;
@@ -71,15 +69,17 @@ public class HeartBeat : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        // THIS IS A BAD IDEA TO PUT IN UPDATE. DONT KNOW WHERE TO MAKE/PUT IT
-
         float fear = GameManager.Instance.PlayerData.FearLevel / GameManager.Instance.GameSettings.MaxFear;
 
+        // Manually adjested to correspond to EyeGestures
+
+        // Worried - Scared
         if (fear >= 0.34 && fear <= 0.67)
         {
             Beating(HeartBeatStates.HeartBeatStable);
         }
-
+        
+        // Scared - Death
         else if (fear > 0.67 && fear < 0.88)
         {
             Beating(HeartBeatStates.HeartBeatStartle);
