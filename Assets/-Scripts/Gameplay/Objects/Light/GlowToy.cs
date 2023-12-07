@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class GlowToy : MonoBehaviour
 {
@@ -37,8 +38,12 @@ public class GlowToy : MonoBehaviour
 
     [field: Header("Miscellaneous")]
     public Light GlowToyLight;
+    public GameObject glowToyVolume;
+
     public SpriteRenderer BatteryUIRenderer;
     [field: SerializeField] public Animator Animator { get; set; }
+
+    LightVolume lightVolume;
 
     private const int BatteryUICap = 4;
     public BatteryUI[] BatteryUISprites = new BatteryUI[BatteryUICap];
@@ -55,8 +60,21 @@ public class GlowToy : MonoBehaviour
     #region Glow-Toy Methods
 
     private void HandleInput(bool value) => HoldingInputDown = value;
-    private void ToggleLight(bool value) => GlowToyLight.enabled = value;
     private void Toggle() => isOn = !isOn;
+    
+    private void ToggleLight(bool value)
+    {
+        GlowToyLight.enabled = value;
+
+        // Update lightVolume
+        if (value)
+        {
+            lightVolume.enabled = value;
+        }
+        lightVolume.Renderer.enabled = value;
+        lightVolume.Mesh.enabled = value;
+        lightVolume.enabled = value;
+    }
 
     private void UpdateBatteryUI()
     {
@@ -116,9 +134,15 @@ public class GlowToy : MonoBehaviour
             InputManager.Instance.Player_Glowtoy.RemoveListener(HandleInput);
     }
 
+    private void Awake()
+    {
+        lightVolume = glowToyVolume.GetComponent<LightVolume>();
+    }
+
     private void Start()
     {
         // improve this at some point in the future asap!
+
         if (MaxFadeIn == 0 && FadeModifier == 0
             && MaxBattery == 0 && BatteryTickRate == 0
             && BatteryTickAmount == 0 && DebounceModifier == 0)
@@ -170,7 +194,7 @@ public class GlowToy : MonoBehaviour
             if (!HoldingInputDown && WaitingForRelease)
                 WaitingForRelease = false;
 
-            if ((HoldingInputDown && !WaitingForRelease) || GameManager.Instance.Player.isInLight)
+            if ((HoldingInputDown && !WaitingForRelease))
             {
                 CurrentDebounce = 1.0f;
                 

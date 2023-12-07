@@ -27,6 +27,12 @@ public class EyeGestures : MonoBehaviour
         new(0.5f,0.5f)
     };
 
+    [Header("Texture Switch Thresholds")]
+    [SerializeField] float thresholdOne = 0.4f;
+    [SerializeField] float thresholdTwo = 0.7f;
+    [SerializeField] float thresholdThree = 0.9f;
+
+
     void ChangeEyes(Gestures eyeGesture)
     {
         Vector2 formula = Vector2.zero;
@@ -76,17 +82,17 @@ public class EyeGestures : MonoBehaviour
         // in relation to the Vingnette
         float fear = GameManager.Instance.PlayerData.FearLevel / GameManager.Instance.GameSettings.MaxFear;
 
-        if (fear < 0.40)
+        if (fear < thresholdOne)
         {
             ChangeEyes(Gestures.Default);
         }
 
-        else if  (fear < 0.70)
+        else if  (fear < thresholdTwo)
         {
             ChangeEyes(Gestures.Worried);
         }
 
-        else if  (fear < 0.90)
+        else if  (fear < thresholdThree)
         {
             ChangeEyes(Gestures.Scared);
         }

@@ -18,10 +18,12 @@ public class GameManager : MonoBehaviour
     [field: SerializeField] public GameSettings GameSettings { get; set; }
     [field: SerializeField] public PlayerData PlayerData { get; set; }
     [field: SerializeField] public Animator SceneTransition { get; set; }
+    [field: SerializeField] public GameObject MainGUI { get; set; }
     [field: SerializeField] public InteractionProperties InteractProperties { get; set; }
     public PlayerController Player { get; set; }
     public int PuzzlesCompleted { get; set; }
     public GameOverType GameOverType { get; set; }
+    public int PreviousGameScene { get; set; }
 
     private void Awake()
     {
@@ -44,6 +46,7 @@ public class GameManager : MonoBehaviour
     public void GameOver(GameOverType type) 
     {
         GameOverType = type;
+        PreviousGameScene = SceneController.Instance.GetCurrentIndex();
         SceneController.Instance.LoadSpecific("GameEnd");
     }
 

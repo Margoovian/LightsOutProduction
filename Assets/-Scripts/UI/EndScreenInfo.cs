@@ -10,12 +10,19 @@ public class EndScreenInfo : MonoBehaviour
         public string Text;
     }
 
+    [System.Serializable]
+    public class RankSprite
+    {
+        public EndRatingEnum Rank;
+        public Sprite Sprite;
+    }
+
     [Header("Backgrounds")]
     [SerializeField] private Sprite Win;
     [SerializeField] private Sprite Lose;
 
     [Header("Assets")]
-    [SerializeField] private TMPro.TMP_Text Rating;
+    [SerializeField] private Image Rating;
     [SerializeField] private TMPro.TMP_Text Battery;
     [SerializeField] private TMPro.TMP_Text TimeLeft;
     [SerializeField] private TMPro.TMP_Text Levels;
@@ -23,20 +30,25 @@ public class EndScreenInfo : MonoBehaviour
     [Header("Control")]
     [SerializeField] private Button RestartBtn;
     [SerializeField] private Button ExitBtn;
+    [SerializeField] private Button WinExitBtn;
 
     [Header("Miscellaneous")]
     [SerializeField] private GameObject MainGui;
     [SerializeField] private Image Background;
     [SerializeField] private GameObject Container;
     [SerializeField] private TMPro.TMP_Text DeathType;
+
+    [Header("Arrays")]
     [SerializeField] private DeathVisual[] DeathVisuals;
+
+    // Unused for the moment, will be used once all the Rank sprites have been made and imported!
+    [SerializeField] private RankSprite[] RankSprites;
 
     private bool selected;
 
     private void ResetVariables()
     {
         selected = true;
-
         GODController.Instance.Triggered = false;
 
         PlayerData.Instance.FearLevel = 0.0f;
@@ -45,7 +57,7 @@ public class EndScreenInfo : MonoBehaviour
         GameManager.Instance.GameOverType = GameOverType.None;
     }
 
-    public void Restart() { if (selected) return; SceneController.Instance.LoadSpecific(SceneController.Instance.GetCurrentIndex(), ResetVariables); }
+    public void Restart() { if (selected) return; SceneController.Instance.LoadSpecific(GameManager.Instance.PreviousGameScene, ResetVariables); }
 
     public void Exit() { if (selected) return; SceneController.Instance.LoadSpecific(SceneController.Instance.GetStartIndex(), ResetVariables); }
 
@@ -56,9 +68,14 @@ public class EndScreenInfo : MonoBehaviour
 
         MainGui.SetActive(false);
 
+        RestartBtn.gameObject.SetActive(GameManager.Instance.GameOverType != GameOverType.Win);
+        ExitBtn.gameObject.SetActive(GameManager.Instance.GameOverType != GameOverType.Win);
+
+        WinExitBtn.gameObject.SetActive(GameManager.Instance.GameOverType == GameOverType.Win);
+        Container.SetActive(GameManager.Instance.GameOverType == GameOverType.Win);
+
         if (GameManager.Instance.GameOverType != GameOverType.Win)
         {
-            Container.SetActive(false);
             DeathType.enabled = true;
             Background.sprite = Lose;
 
@@ -74,28 +91,19 @@ public class EndScreenInfo : MonoBehaviour
             return;
         }
 
-        RestartBtn.gameObject.SetActive(false);
-        ExitBtn.gameObject.SetActive(false);
-
         Background.sprite = Win;
+        WinExitBtn.onClick.AddListener(Exit);
 
         EndRatingEnum rating = GameManager.Instance.CalcEndScore();
 
-        // Change to use vertex colour instead of rich text
-        switch (rating)
+        RankSprite target = null;
+        foreach (RankSprite i in RankSprites)
         {
-            case EndRatingEnum.F: Rating.text = $"<color=red>{rating}"; break;
-            case EndRatingEnum.E: Rating.text = $"<color=grey>{rating}"; break;
-            case EndRatingEnum.D: Rating.text = $"<color=grey>{rating}"; break;
-            case EndRatingEnum.C: Rating.text = $"<color=white>{rating}"; break;
-            case EndRatingEnum.B: Rating.text = $"<color=blue>{rating}"; break;
-            case EndRatingEnum.A: Rating.text = $"<color=green>{rating}"; break;
-            case EndRatingEnum.S: Rating.text = $"<color=pink>{rating}"; break;
-            case EndRatingEnum.SS: Rating.text = $"<color=pink>{rating}"; break;
-            case EndRatingEnum.R: Rating.text = $"<color=orange>{rating}"; break;
-            case EndRatingEnum.RR: Rating.text = $"<color=orange>{rating}"; break;
-            case EndRatingEnum.L: Rating.text = $"<color=yellow>{rating}"; break;
-            default: Rating.text = $"<color=white>{rating}"; break;
+            if (i.Rank == rating)
+            {
+                target = i;
+                break;
+            }
         }
 
         if (Levels)
@@ -106,5 +114,14 @@ public class EndScreenInfo : MonoBehaviour
 
         if (Battery)
             Battery.text = $"{(int)(GameManager.Instance.PlayerData.BatteryLife / GameManager.Instance.GameSettings.GlowToyMaxBattery * 100)}%";
+
+        if (target == null)
+        {
+            Debug.Log("Couldn't find 'RankSprite' for Rank: " + rating.ToString(), this);
+            Rating.color = new Color(0, 0, 0, 0);
+            return;
+        }
+
+        Rating.sprite = target.Sprite;
     }
 }

@@ -11,6 +11,7 @@ public class GameSettings : ScriptableObject
     [field: SerializeField] public float MaxFear { get; set; }
     [field: SerializeField] public float FearTickRate { get; set; }
     [field: SerializeField] public float FearTickAmount { get; set; }
+    [field: SerializeField] public float FearDropAmount { get; set; }
     [field: SerializeField] public float FearWallSpeed { get; set; }
     [field: SerializeField] public float FearWallTick { get; set; }
     [field: SerializeField] public float GlowToyFadeIn { get; set; }

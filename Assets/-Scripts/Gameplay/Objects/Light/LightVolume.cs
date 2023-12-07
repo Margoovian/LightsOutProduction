@@ -6,7 +6,7 @@ public class LightVolume : MonoBehaviour, IVolume
     public MeshRenderer Renderer { get; set; }
     public MeshCollider Mesh { get; set; }
 
-    private void Start()
+    private void Awake()
     {
         Renderer = gameObject.GetComponent<MeshRenderer>();
         Mesh = gameObject.GetComponent<MeshCollider>();
