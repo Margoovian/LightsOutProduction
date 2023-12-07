@@ -43,7 +43,7 @@ public class GlowToy : MonoBehaviour
     public SpriteRenderer BatteryUIRenderer;
     [field: SerializeField] public Animator Animator { get; set; }
 
-    [SerializeField] LightVolume lightVolume;
+    LightVolume lightVolume;
 
     private const int BatteryUICap = 4;
     public BatteryUI[] BatteryUISprites = new BatteryUI[BatteryUICap];
