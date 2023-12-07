@@ -53,9 +53,14 @@ public class GameSettingsEditor : Editor
                         settings.FearTickRate = EditorGUILayout.FloatField(settings.FearTickRate);
                     });
                     
-                    EditorHelperFunctions.LabeledWrapper("Fear Tick Amout", () =>
+                    EditorHelperFunctions.LabeledWrapper("Fear Tick Amount", () =>
                     {
                         settings.FearTickAmount = EditorGUILayout.FloatField(settings.FearTickAmount);
+                    });
+
+                    EditorHelperFunctions.LabeledWrapper("Fear Drop Amount", () =>
+                    {
+                        settings.FearDropAmount = EditorGUILayout.FloatField(settings.FearDropAmount);
                     });
                 });
 
