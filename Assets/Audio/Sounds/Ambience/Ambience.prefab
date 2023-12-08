@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8613199928068981095}
   - component: {fileID: 3050473276847503327}
   - component: {fileID: 3537001294658090261}
+  - component: {fileID: 6233810652739734904}
   m_Layer: 0
   m_Name: Ambience
   m_TagString: Untagged
@@ -141,3 +142,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fe310788a6ed3e48bd4ccab22db8a9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6233810652739734904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8862733619223648339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba247f497c806114b9387667f530b11a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: d5586498cfbc8f74a93532722244ffdf, type: 3}
+  frequencyMin: 20
+  frequencyMax: 50
+  pitchMin: 0.4
+  pitchMax: 0.8
