@@ -86,7 +86,13 @@ public class GlowToy : MonoBehaviour
         BatteryUIRenderer.transform.LookAt(GameManager.Instance.Camera.transform);
 
         int batteryIndex = (int)Mathf.Lerp(BatteryUICap - 1, 0, CurrentBattery / MaxBattery);
-        BatteryUIRenderer.sprite = BatteryUISprites[batteryIndex].sprite;
+        bool result = BatteryUIRenderer.sprite != BatteryUISprites[batteryIndex].sprite;
+
+        if (result)
+        {
+            BatteryUIRenderer.sprite = BatteryUISprites[batteryIndex].sprite;
+            AudioManager.Instance.Play("Battery Changed");
+        }
     }
 
     private async void HandleBattery()
