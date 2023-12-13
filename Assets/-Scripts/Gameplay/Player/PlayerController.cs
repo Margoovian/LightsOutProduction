@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour
         {
 
             if (isInLight || PlayerData.Instance.ToyOn)
-                Fear = Mathf.Clamp(Fear - GameManager.Instance.GameSettings.FearTickAmount, 0, GameManager.Instance.GameSettings.MaxFear);
+                Fear = Mathf.Clamp(Fear - GameManager.Instance.GameSettings.FearDropAmount, 0, GameManager.Instance.GameSettings.MaxFear);
             else
             {
                 if(PlayerData.Instance.InFearWall)

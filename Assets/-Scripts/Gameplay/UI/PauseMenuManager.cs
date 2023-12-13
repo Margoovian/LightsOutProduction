@@ -10,7 +10,7 @@ public class PauseMenuManager : MonoBehaviour
 
     [field: Header("Buttons")]
     [field: SerializeField] public Button ResumeBtn { get; set; }
-    [field: SerializeField] public Button OptionsBtn { get; set; }
+    [field: SerializeField] public Button SettingsBtn { get; set; }
     [field: SerializeField] public Button MainMenuBtn { get; set; }
 
     private bool IsPaused = true;
@@ -72,11 +72,11 @@ public class PauseMenuManager : MonoBehaviour
             return;
         }
 
-        ResumeBtn.onClick.AddListener(delegate { HandleInput(false); });
-        OptionsBtn.onClick.AddListener(delegate { Debug.LogWarning("Hasn't been implemented yet!"); });
-        MainMenuBtn.onClick.AddListener(delegate { Debug.LogWarning("Hasn't been implemented yet!"); });
-
         if (Menu.activeSelf)
             Menu.SetActive(false);
+
+        ResumeBtn.onClick.AddListener(delegate { HandleInput(false); });
+        SettingsBtn.onClick.AddListener(delegate { Debug.LogWarning("Hasn't been implemented yet!"); });
+        MainMenuBtn.onClick.AddListener(delegate { Debug.LogWarning("Hasn't been implemented yet!"); });
     }
 }

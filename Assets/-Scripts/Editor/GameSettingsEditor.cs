@@ -7,6 +7,7 @@ public class GameSettingsEditor : Editor
     public static bool open = false;
     public override void OnInspectorGUI()
     {
+        serializedObject.Update();
         GameSettings settings = (GameSettings)target;
 
         GUILayout.BeginVertical();
@@ -52,9 +53,14 @@ public class GameSettingsEditor : Editor
                         settings.FearTickRate = EditorGUILayout.FloatField(settings.FearTickRate);
                     });
                     
-                    EditorHelperFunctions.LabeledWrapper("Fear Tick Amout", () =>
+                    EditorHelperFunctions.LabeledWrapper("Fear Tick Amount", () =>
                     {
                         settings.FearTickAmount = EditorGUILayout.FloatField(settings.FearTickAmount);
+                    });
+
+                    EditorHelperFunctions.LabeledWrapper("Fear Drop Amount", () =>
+                    {
+                        settings.FearDropAmount = EditorGUILayout.FloatField(settings.FearDropAmount);
                     });
                 });
 
@@ -159,6 +165,11 @@ public class GameSettingsEditor : Editor
         GUILayout.EndHorizontal();
 
         GUILayout.EndVertical();
+
+        EditorUtility.SetDirty(target);
+        //Needed for undo stack. Would be very costly if not done conditionally.
+        //TODO: Track when changes occur to the instance being edited and only add an undo entry as needed. Same applies to SetDirty.
+        //Undo.RecordObject(target, settings.name + " value change");
     }
 
 }
