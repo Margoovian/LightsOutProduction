@@ -178,7 +178,11 @@ public class GlowToy : MonoBehaviour
         if (BatteryUIRenderer.enabled)
             BatteryUIRenderer.enabled = false;
 
-        CurrentBattery = MaxBattery;
+        if (!PlayerData.Instance.BatteryLifeSet)
+        {
+            CurrentBattery = MaxBattery;
+            PlayerData.Instance.BatteryLifeSet = true;
+        }
     }
 
     private void Update()

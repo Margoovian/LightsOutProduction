@@ -13,11 +13,12 @@ public class PlayerData : MonoBehaviour
     public bool InFearWall { get; set; } = false;
     public string LevelNumber { get; set; }
     public int LevelID { get; set; }
+    public bool BatteryLifeSet { get; set; }
 
     private void Awake()
     {
         Instance ??= this;
-        Task time = Timer();
+        Task _ = Timer();
     }
 
     private async Task Timer()
