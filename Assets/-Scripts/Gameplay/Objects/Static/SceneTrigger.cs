@@ -62,7 +62,7 @@ public class SceneTrigger : MonoBehaviour
             return;
         }
 
-        GameManager.Instance.PuzzlesCompleted += 1;
+        GameManager.Instance.PuzzlesCompleted += LevelController.Instance.MaxLights;
         InputManager.Instance.DisableControls();
         SceneController.Instance.LoadSpecific(SceneIndex);
     }

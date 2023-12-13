@@ -15,22 +15,32 @@ public class PauseMenuManager : MonoBehaviour
 
     private bool IsPaused = true;
 
-    public void HandleInput(bool input)
+    private void HandleInput(bool input)
     {
         IsPaused = !IsPaused;
         GameManager.Instance.PlayerData.InMenu = !IsPaused;
     }
 
-    public void ResumeGame()
+    private void ResumeGame()
     {
         Menu.SetActive(false);
         Time.timeScale = 1f;
     }
 
-    public void PauseGame()
+    private void PauseGame()
     {
         Menu.SetActive(true);
         Time.timeScale = 0f;
+    }
+
+    private void ShowSettings()
+    {
+
+    }
+
+    private void ExitGame()
+    {
+
     }
 
     private async Task WaitForManagers()
@@ -76,7 +86,7 @@ public class PauseMenuManager : MonoBehaviour
             Menu.SetActive(false);
 
         ResumeBtn.onClick.AddListener(delegate { HandleInput(false); });
-        SettingsBtn.onClick.AddListener(delegate { Debug.LogWarning("Hasn't been implemented yet!"); });
-        MainMenuBtn.onClick.AddListener(delegate { Debug.LogWarning("Hasn't been implemented yet!"); });
+        SettingsBtn.onClick.AddListener(ShowSettings);
+        MainMenuBtn.onClick.AddListener(ExitGame);
     }
 }

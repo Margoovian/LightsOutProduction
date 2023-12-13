@@ -57,12 +57,28 @@ public class EndScreenInfo : MonoBehaviour
         GameManager.Instance.GameOverType = GameOverType.None;
     }
 
-    public void Restart() { if (selected) return; SceneController.Instance.LoadSpecific(GameManager.Instance.PreviousGameScene, ResetVariables); }
+    public void Restart() 
+    { 
+        if (selected)
+            return;
 
-    public void Exit() { if (selected) return; SceneController.Instance.LoadSpecific(SceneController.Instance.GetStartIndex(), ResetVariables); }
+        GameManager.Instance.PlayerData.InMenu = false;
+        SceneController.Instance.LoadSpecific(GameManager.Instance.PreviousGameScene, ResetVariables); 
+    }
+
+    public void Exit() 
+    { 
+        if (selected) 
+            return;
+        
+        SceneController.Instance.LoadSpecific(SceneController.Instance.GetStartIndex(), ResetVariables); 
+    }
 
     private void Start()
     {
+        if (!GameManager.Instance.PlayerData.InMenu)
+            GameManager.Instance.PlayerData.InMenu = true;
+
         RestartBtn.onClick.AddListener(Restart);
         ExitBtn.onClick.AddListener(Exit);
 

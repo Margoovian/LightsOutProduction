@@ -85,7 +85,7 @@ public class GenericSwitch : MonoBehaviour, ISwitch, IInteractable
             defaultCurrentTime = currentTime;
             defaultFlipState = !FlipAnimation;
 
-            Debug.Log(FlipAnimation ? "On" : "Off", this);
+            //Debug.Log(FlipAnimation ? "On" : "Off", this);
 
             Animator.SetFloat(AnimationName, result);
         }
