@@ -18,7 +18,7 @@ public class PauseMenuManager : MonoBehaviour
     public void HandleInput(bool input)
     {
         IsPaused = !IsPaused;
-        GameManager.Instance.PlayerData.InMenu = IsPaused;
+        GameManager.Instance.PlayerData.InMenu = !IsPaused;
     }
 
     public void ResumeGame()
