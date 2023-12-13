@@ -16,6 +16,8 @@ public class LightCountLabel : MonoBehaviour
     [field: Header("Configuration")]
     [field: SerializeField] public bool AdjustTextColor { get; set; }
 
+    private string previousText;
+
     public void UpdateLabel(int current, int max)
     {
         if (AdjustTextColor)
@@ -33,12 +35,19 @@ public class LightCountLabel : MonoBehaviour
 
     public void UpdateIcon(int current)
     {
+        if (TextLabel.text == previousText)
+            return;
+
         Sprite sprite = OnSprite;
 
         if (current <= 0)
+        {
             sprite = OffSprite;
+            AudioManager.Instance.PlaySFX("DoorOpen");
+        }
 
         Icon.sprite = sprite;
+        previousText = TextLabel.text;
     }
 
     private void Update()
