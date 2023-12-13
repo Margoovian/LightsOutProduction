@@ -24,7 +24,8 @@ public class Stem : ScriptableObject
     public Vector2 RandomVolumeRange { get; set; } = new Vector2(1, 1);
     internal void OnEnable()
     {
-        
+        if (FriendlyName == String.Empty)
+            FriendlyName = name;
     }
 
     internal void Play(bool overrideVolume = true)

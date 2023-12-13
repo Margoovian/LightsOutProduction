@@ -20,12 +20,12 @@ public class LevelController : MonoBehaviour
         SceneTrigger.enabled = result;
 
         if (result)
-            AudioManager.Instance.Play("DoorOpened");
+            AudioManager.Instance.PlaySFX("DoorOpened");
 
         if (!result && SceneTrigger.enabled)
         {
             SceneTrigger.enabled = false;
-            AudioManager.Instance.Play("DoorOpened");
+            AudioManager.Instance.PlaySFX("DoorOpened");
         }
 
         //Debug.LogWarning("Door Opened Status: " + SceneTrigger.enabled.ToString());
