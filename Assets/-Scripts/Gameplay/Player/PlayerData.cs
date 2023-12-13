@@ -14,7 +14,11 @@ public class PlayerData : MonoBehaviour
     public string LevelNumber { get; set; }
     public int LevelID { get; set; }
 
-    private void Awake() => Instance ??= this;
+    private void Awake()
+    {
+        Instance ??= this;
+        Task time = Timer();
+    }
 
     private async Task Timer()
     {

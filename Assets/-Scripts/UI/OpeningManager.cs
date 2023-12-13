@@ -22,6 +22,9 @@ public class OpeningManager : MonoBehaviour
     [Tooltip("Determine whether or not the player should have to use their mouse to continue to the next scene.")]
     [field: SerializeField] public bool UseMouse { get; set; } = true;
 
+    [Tooltip("(Only Checked if UseMouse is enabled!)")]
+    [field: SerializeField] public KeyCode ContinueKey { get; set; } = KeyCode.Space;
+
     [field: Header("Assets")]
     [Tooltip("The Background that fades in and out behind the opening image.")]
     [field: SerializeField] public Image Background { get; set; }
@@ -116,6 +119,7 @@ public class OpeningManager : MonoBehaviour
     private async void Start()
     {
         IntervalDuration *= 1000.0f;
+        TextLabel.text = TextLabel.text.Replace("{KEY}", ContinueKey.ToString());
 
         if (Background.color.a > 0)
             Background.color = new() { a = 0 };
@@ -181,10 +185,10 @@ public class OpeningManager : MonoBehaviour
         if (!canClick)
             return;
 
-        if (!Mouse.current.leftButton.isPressed)
-            return;
-
-        canClick = false;
-        StartGame();
+        if (Mouse.current.leftButton.isPressed || Input.GetKeyDown(ContinueKey))
+        {
+            canClick = false;
+            StartGame();
+        }
     }
 }
