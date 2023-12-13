@@ -59,18 +59,18 @@ public class GameManager : MonoBehaviour
 
         switch(R) // Turn this info else if for more control
         {
-            case 0: return EndRatingEnum.F;
-            case 1: return EndRatingEnum.E;
-            case 2: return EndRatingEnum.D;
-            case 3: return EndRatingEnum.C;
-            case 4: return EndRatingEnum.B;
-            case 5: return EndRatingEnum.A;
-            case 6: return EndRatingEnum.S;
-            case 7: return EndRatingEnum.SS;
-            case 8: return EndRatingEnum.R;
-            case 9: return EndRatingEnum.RR;
-            case 10: return EndRatingEnum.L;
-            default: return EndRatingEnum.X;
+            //case 0: return EndRatingEnum.F;
+            //case 1: return EndRatingEnum.E;
+            //case 2: return EndRatingEnum.D;
+            //case 3: return EndRatingEnum.C;
+            //case 4: return EndRatingEnum.B;
+            //case 5: return EndRatingEnum.A;
+            //case 6: return EndRatingEnum.S;
+            //case 7: return EndRatingEnum.SS;
+            //case 8: return EndRatingEnum.R;
+            //case 9: return EndRatingEnum.RR;
+            //case 10: return EndRatingEnum.L;
+            default: return EndRatingEnum.C;
         }
         
     }
