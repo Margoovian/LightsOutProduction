@@ -71,7 +71,7 @@ public class HeartBeat : MonoBehaviour
     {
         float fear = GameManager.Instance.PlayerData.FearLevel / GameManager.Instance.GameSettings.MaxFear;
 
-        // Manually adjested to correspond to EyeGestures
+        // Manually adjested to correspond to "EyeGestures" (more or less)
 
         // Worried - Scared
         if (fear >= 0.34 && fear <= 0.67)
@@ -85,6 +85,7 @@ public class HeartBeat : MonoBehaviour
             Beating(HeartBeatStates.HeartBeatStartle);
         }
 
+        // Death - |||
         else if (fear >= 0.88)
         {
             Beating(HeartBeatStates.HeartBeatPanic);

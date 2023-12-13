@@ -68,9 +68,8 @@ public class GlowToy : MonoBehaviour
 
         // Update lightVolume
         if (value)
-        {
             lightVolume.enabled = value;
-        }
+
         lightVolume.Renderer.enabled = value;
         lightVolume.Mesh.enabled = value;
         lightVolume.enabled = value;
@@ -99,7 +98,7 @@ public class GlowToy : MonoBehaviour
     {
         if (CurrentBattery <= 0)
         {
-            // audioManager.Play("GlowToyBatteryLost", false);
+            AudioManager.Instance.Play("Battery Changed");
             CurrentBattery = 0;
 
             Toggle();
@@ -140,15 +139,10 @@ public class GlowToy : MonoBehaviour
             InputManager.Instance.Player_Glowtoy.RemoveListener(HandleInput);
     }
 
-    private void Awake()
-    {
-        lightVolume = glowToyVolume.GetComponent<LightVolume>();
-    }
+    private void Awake() => lightVolume = glowToyVolume.GetComponent<LightVolume>();
 
     private void Start()
     {
-        // improve this at some point in the future asap!
-
         if (MaxFadeIn == 0 && FadeModifier == 0
             && MaxBattery == 0 && BatteryTickRate == 0
             && BatteryTickAmount == 0 && DebounceModifier == 0)
@@ -184,14 +178,18 @@ public class GlowToy : MonoBehaviour
         if (BatteryUIRenderer.enabled)
             BatteryUIRenderer.enabled = false;
 
-        CurrentBattery = MaxBattery;
+        if (!PlayerData.Instance.BatteryLifeSet)
+        {
+            CurrentBattery = MaxBattery;
+            PlayerData.Instance.BatteryLifeSet = true;
+        }
     }
 
     private void Update()
     {
         UpdateBatteryUI();
 
-        CanTurnOn = HoldingInputDown && CurrentBattery > 0 && !GameManager.Instance.Player.isInLight;
+        CanTurnOn = HoldingInputDown && CurrentBattery > 0;
         Animator.SetBool("IsShaking", CanTurnOn && !isOn && CurrentDebounce == 0.0f);
         ToyRender.material = isOn ? GlowMaterial : DefaultMaterial;
 

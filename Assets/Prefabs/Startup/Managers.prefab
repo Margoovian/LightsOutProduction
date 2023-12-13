@@ -54,7 +54,7 @@ MonoBehaviour:
     LoadOrder: -1
     Pool: []
   - Level:
-      Name: Easy_1
+      Name: TutorialRoom_1
       AltLevel: 
     RandomLevel:
       Name: 
@@ -62,49 +62,59 @@ MonoBehaviour:
     LoadOrder: 0
     Pool: []
   - Level:
-      Name: Easy_2
+      Name: Easy_1
       AltLevel: 
     RandomLevel:
       Name: 
       AltLevel: 
     LoadOrder: 1
-    Pool: []
-  - Level:
-      Name: Easy_3
+    Pool:
+    - Name: Easy_2
       AltLevel: 
-    RandomLevel:
-      Name: 
+    - Name: Easy_3
       AltLevel: 
-    LoadOrder: 2
-    Pool: []
   - Level:
       Name: Medium_1
       AltLevel: 
     RandomLevel:
       Name: 
       AltLevel: 
-    LoadOrder: 3
-    Pool: []
+    LoadOrder: 2
+    Pool:
+    - Name: Medium_2
+      AltLevel: 
+    - Name: Medium_3
+      AltLevel: 
   - Level:
-      Name: Medium_2
+      Name: Hard_1
+      AltLevel: 
+    RandomLevel:
+      Name: 
+      AltLevel: 
+    LoadOrder: 3
+    Pool:
+    - Name: Hard_2
+      AltLevel: 
+    - Name: Hard_3
+      AltLevel: 
+    - Name: Hard_4
+      AltLevel: 
+  - Level:
+      Name: Fireplace_RubensRoom
       AltLevel: 
     RandomLevel:
       Name: 
       AltLevel: 
     LoadOrder: 4
-    Pool:
-    - Name: 
-      AltLevel: 
+    Pool: []
   - Level:
       Name: GameEnd
       AltLevel: 
     RandomLevel:
       Name: 
       AltLevel: 
-    LoadOrder: 6
-    Pool:
-    - Name: 
-      AltLevel: 
+    LoadOrder: 5
+    Pool: []
 --- !u!1 &3970232227816179341
 GameObject:
   m_ObjectHideFlags: 0
